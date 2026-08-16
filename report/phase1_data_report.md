@@ -1,8 +1,8 @@
-# Phase 1 — Dataset Collection & Preprocessing Report
+# Phase 1 — Dataset Collection, Preprocessing & Tokenizer Report
 
 Model H = Hindi (higher-resource). Model L = Nepali (lower-resource, from the assignment's
-allowed list). This report covers dataset collection, non-overlap methodology, and
-preprocessing for both, plus every non-obvious decision made along the way and why.
+allowed list). This report covers dataset collection, non-overlap methodology, preprocessing,
+and tokenizer construction for both, plus every non-obvious decision made along the way and why.
 
 ## 1. Language selection
 
@@ -213,7 +213,7 @@ collecting early — each source ran to its own natural pool exhaustion instead.
 All 5 Nepali sources exhausted their available post-2023 pools and stopped cleanly — the
 ~122.7M-token result is short of the 130M-token *planning target* by ~5.6% (the true combined
 pool across these sources, once fully scraped, was smaller than the pre-scrape estimate), but see
-§6 for why this doesn't threaten the assignment's actual (ratio-based) requirement.
+§7 for why this doesn't threaten the assignment's actual (ratio-based) requirement.
 
 ## 5. Preprocessing pipeline
 
@@ -414,12 +414,80 @@ target — effectively exact).
 
 **Manual/public provenance is not tracked through this pipeline** — `iter_all_documents` yields a
 `(source, text)` tuple, but stage 1 discards the source tag when writing its output, so the exact
-post-processing manual-token count isn't directly available from `stats.json`. The §6 ratio below
+post-processing manual-token count isn't directly available from `stats.json`. The §7 ratio below
 is therefore still the pre-processing estimate from the raw collected counts, not a post-dedup
 measurement; treat it as an approximation, not the authoritative number, unless/until
 source-tracking is added and the pipeline is re-run.
 
-## 6. Combined dataset statistics and the ≥20%-manual requirement
+## 6. Tokenizer construction
+
+SentencePiece Unigram, 32,000 vocab, trained **independently per language** on that language's
+own `train.txt` only — no shared vocabulary, no pretrained tokenizer, per the assignment's
+constraints. `character_coverage=0.9995`, standard special-token ids
+(`pad=0, unk=1, bos=2, eos=3`), shuffled sampling.
+
+### 6.1 The memory story: why the training sample is far smaller than planned
+
+The original plan was to sample 5,000,000 sentences from each language's `train.txt` (standard
+practice — SentencePiece's own docs note that a large shuffled subsample trains a vocabulary
+just as well as reading the full multi-million-line corpus, at a fraction of the cost). In
+practice, the SentencePiece unigram trainer's EM/seed-vocabulary phase (immediately after
+`"Done! preprocessed N sentences..."` in its logs) needs dramatically more memory than the raw
+sampled text, and scales worse than linearly with sentence count:
+
+| Attempt | Environment | RAM budget | Sentences | Result |
+|---|---|---:|---:|---|
+| 1 | Local | 7.6GB total | 5,000,000 | OS OOM-killer killed the process outright (~4.9GB RSS and still climbing); destabilized the whole desktop enough that `gnome-shell` itself was also invoking the OOM killer |
+| 2 | Local, `ulimit -v` capped | 3GB (explicit cap) | 1,000,000 | Clean `std::bad_alloc` right after preprocessing 292MB of text, before the EM phase could proceed |
+| 3 | Local, `ulimit -v` capped | 3GB (explicit cap) | 150,000 | **Succeeded** — trained and evaluated with healthy metrics |
+| 4 | Colab free tier | 12.7GB | 2,000,000 | Kernel OOM-crashed at the identical log transition point (right after `"Done! preprocessed 1,992,402 sentences"`) |
+| 5 | Colab free tier | 12.7GB | 1,000,000 | **Succeeded** — used for the final models reported below |
+
+The jump from attempt 2 to attempt 4 is the most informative data point: doubling the RAM budget
+(3GB → 12.7GB, a 4.2x increase) was still not enough to support 2x the sentence count. This
+suggests the unigram trainer's EM-phase memory use scales closer to quadratically than linearly
+with corpus size on this SentencePiece version — a genuine constraint of the tool on
+memory-limited hardware, not a tuning oversight. The explicit `ulimit -v` caps used locally were a
+deliberate choice too: letting the process hit the cap and fail cleanly (`MemoryError`) is far
+safer than letting the Linux OOM-killer pick a victim process system-wide, which is what happened
+in attempt 1.
+
+The final training runs (attempt 5) used **1,000,000 sentences** per language — well short of the
+original 5M target, but the largest value that reliably completed given the hardware actually
+available. To gauge whether this mattered: the 150k-sample Hindi model (attempt 3, local) and the
+1M-sample Hindi model (attempt 5, Colab, reported below) produced nearly identical fertility, UNK
+rate, and avg-chars-per-token — suggesting the vocabulary was already fairly stable well before
+1M sentences, which is some reassurance that the sample-size shortfall isn't materially hurting
+tokenizer quality, though it may still under-represent rarer domain-specific subwords relative to
+a full-corpus or 5M-sentence training run.
+
+### 6.2 Final results
+
+Evaluated on each language's held-out `val.txt` (never seen during training):
+
+| Metric | Hindi | Nepali |
+|---|---:|---:|
+| Vocab size | 32,000 | 32,000 |
+| Training sample size | 1,000,000 sentences | 1,000,000 sentences |
+| Training sample as % of `train.txt` | ~9.4% (of 10,622,764 lines) | ~6.8% (of 14,691,412 lines) |
+| Eval lines sampled (from val.txt) | 158,729 | 200,000 |
+| Fertility (tokens/word) | 1.1575 | 1.2499 |
+| UNK rate | 0.241% | 0.214% |
+| Avg chars/token | 4.4084 | 5.1823 |
+
+Both languages show fertility close to 1 (most words map to a single token or a small handful of
+subword pieces, rather than excessive fragmentation) and UNK rates well under 1%, indicating good
+coverage of each language's held-out text despite the reduced training sample size. Nepali's
+higher fertility and avg-chars-per-token relative to Hindi is consistent with Nepali's smaller,
+more repetitive collected corpus (§4.4) producing a slightly less efficient subword vocabulary at
+the same 32k budget.
+
+Output files: `hindi/tokenizer/hindi_unigram_32k.{model,vocab}`,
+`nepali/tokenizer/nepali_unigram_32k.{model,vocab}`,
+`report/{hindi,nepali}_tokenizer_stats.json` (full stats: top-20 tokens, example
+tokenizations).
+
+## 7. Combined dataset statistics and the ≥20%-manual requirement
 
 Using the raw (pre-preprocessing) token counts after the §3.3 top-up — **⚠️ this ratio needs
 active monitoring, not just a passing mention:**
@@ -440,10 +508,10 @@ depending on relative survival rates) — this table must be recomputed with rea
 before Phase 1 is considered done, and if it's still under 20%, the public download target needs
 to come back down (or manual needs a genuinely new source) rather than just noting the shortfall.
 
-## 7. Known limitations (documented, not silently glossed over)
+## 8. Known limitations (documented, not silently glossed over)
 
 - **Open, unresolved as of writing:** the ≥20%-manual requirement is no longer comfortably clear
-  of the line (§6) after the public-data top-up — Nepali is currently under it on raw counts.
+  of the line (§7) after the public-data top-up — Nepali is currently under it on raw counts.
   Needs the real post-preprocessing ratio and, if still short, a correction to the public target.
 - Tier 2 filtering (perplexity, semantic, topic) was scoped out entirely — see §5.1 for why.
 - The safety-filter blocklist is hand-curated and conservative, not comprehensive, especially for
@@ -456,3 +524,7 @@ to come back down (or manual needs a genuinely new source) rather than just noti
 - IndicCorpV2's own deduplication step is undocumented (§3.2) — our own dedup pass in §5 partly
   compensates by running exact + paragraph + MinHash dedup across manual and public data
   *combined*, not just within manual sources.
+- The tokenizer training sample (§6.1) is far smaller than originally planned (1,000,000
+  sentences vs. a 5,000,000-sentence target) due to memory constraints on both the local machine
+  and the Colab free tier — evaluation metrics look healthy, but rarer domain-specific subwords
+  may be under-represented in the learned vocabulary relative to a full-corpus training run.

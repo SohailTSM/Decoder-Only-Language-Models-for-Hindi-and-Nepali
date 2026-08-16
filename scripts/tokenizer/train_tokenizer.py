@@ -16,7 +16,12 @@ VOCAB_SIZE = 32_000
 # SentencePiece samples this many lines (shuffled) from train.txt rather than reading
 # the whole multi-GB file — standard practice; a large representative sample trains a
 # vocabulary just as well as the full corpus at a fraction of the time/memory.
-INPUT_SENTENCE_SIZE = 5_000_000
+# Kept small (rather than the more common 1-5M) because this machine has only ~7.6GB
+# RAM and the unigram trainer's EM phase needs far more memory than the raw sampled
+# text (suffix-array/substring statistics over the corpus). 5M sentences OOM-killed the
+# process outright; even 1M (292MB of text) hit std::bad_alloc under a 3GB cap right
+# after preprocessing, before the seed vocabulary/EM step could even start.
+INPUT_SENTENCE_SIZE = 150_000
 
 
 def train(lang: str, vocab_size: int = VOCAB_SIZE,
