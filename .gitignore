@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+*/data/manual/*.jsonl
+*/data/raw_public/*
+*/data/_intermediate/
+*/data/processed/*.txt
+*/data/*.log
+.DS_Store

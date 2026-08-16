@@ -1,0 +1,20 @@
+[nagariknews] discovering URLs from sitemap...
+  [warn] giving up on sitemap https://nagariknews.nagariknetwork.com/sitemap.xml: repeated network errors
+[nagariknews] 0 new candidate URLs (already have 0)
+[nagariknews] DONE (candidates exhausted): 0 articles kept, ~0 chars, 0s
+2026-08-15T17:03:49+05:30 [nepali/nagariknews] finished cleanly
+[nagariknews] discovering URLs from sitemap...
+  [warn] giving up on sitemap https://nagariknews.nagariknetwork.com/sitemap.xml: repeated network errors
+[nagariknews] 0 new candidate URLs (already have 0), discovery took 6s
+[nagariknews] DONE (candidates exhausted): 0 articles kept, ~0 chars, 6s
+2026-08-15T19:09:21+05:30 [nepali/nagariknews] finished cleanly
+[nagariknews] discovering URLs from sitemap...
+  [warn] giving up on sitemap https://nagariknews.nagariknetwork.com/sitemap.xml: repeated network errors
+[nagariknews] 0 new candidate URLs (already have 0), discovery took 6s
+[nagariknews] DONE (candidates exhausted): 0 articles kept, ~0 chars, 6s
+2026-08-15T19:59:40+05:30 [nepali/nagariknews] finished cleanly
+[nagariknews] discovering URLs from sitemap...
+  [warn] giving up on sitemap https://nagariknews.nagariknetwork.com/sitemap.xml: repeated network errors
+[nagariknews] 0 new candidate URLs (already have 0), discovery took 6s
+[nagariknews] DONE (candidates exhausted): 0 articles kept, ~0 chars, 6s
+2026-08-15T23:57:37+05:30 [nepali/nagariknews] finished cleanly

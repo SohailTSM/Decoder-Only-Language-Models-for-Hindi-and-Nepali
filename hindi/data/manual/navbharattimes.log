@@ -1,0 +1,18 @@
+[navbharattimes] discovering URLs from sitemap...
+[navbharattimes] 983 new candidate URLs (already have 0)
+[navbharattimes] 200/983 fetched, 200 kept, ~586,926 chars, 18s elapsed
+[navbharattimes] 400/983 fetched, 400 kept, ~1,186,747 chars, 34s elapsed
+[navbharattimes] 600/983 fetched, 599 kept, ~1,794,307 chars, 50s elapsed
+[navbharattimes] 800/983 fetched, 799 kept, ~2,406,254 chars, 74s elapsed
+[navbharattimes] DONE (candidates exhausted): 982 articles kept, ~2,912,282 chars, 99s
+2026-08-15T17:05:29+05:30 [hindi/navbharattimes] finished cleanly
+[navbharattimes] discovering URLs from sitemap...
+[navbharattimes] 46 new candidate URLs (already have 982), discovery took 1s
+[navbharattimes] DONE (candidates exhausted): 44 articles kept, ~126,316 chars, 5s
+2026-08-15T19:09:20+05:30 [hindi/navbharattimes] finished cleanly
+[navbharattimes] discovering URLs from sitemap...
+[navbharattimes] 17 new candidate URLs (already have 1026), discovery took 1s
+[navbharattimes] DONE (candidates exhausted): 15 articles kept, ~37,054 chars, 4s
+2026-08-15T19:59:38+05:30 [hindi/navbharattimes] finished cleanly
+[navbharattimes] shared budget already met (520,000,332/520,000,000 chars) — nothing to do
+2026-08-15T23:57:27+05:30 [hindi/navbharattimes] finished cleanly

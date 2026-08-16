@@ -1,0 +1,17 @@
+[prabhatkhabar] discovering URLs from sitemap...
+[prabhatkhabar] 700 new candidate URLs (already have 0)
+[prabhatkhabar] 200/700 fetched, 195 kept, ~651,898 chars, 36s elapsed
+[prabhatkhabar] 400/700 fetched, 392 kept, ~1,324,704 chars, 75s elapsed
+[prabhatkhabar] 600/700 fetched, 579 kept, ~1,957,758 chars, 111s elapsed
+[prabhatkhabar] DONE (candidates exhausted): 679 articles kept, ~2,225,136 chars, 130s
+2026-08-15T17:05:59+05:30 [hindi/prabhatkhabar] finished cleanly
+[prabhatkhabar] discovering URLs from sitemap...
+[prabhatkhabar] 86 new candidate URLs (already have 679), discovery took 2s
+[prabhatkhabar] DONE (candidates exhausted): 65 articles kept, ~201,969 chars, 16s
+2026-08-15T19:09:31+05:30 [hindi/prabhatkhabar] finished cleanly
+[prabhatkhabar] discovering URLs from sitemap...
+[prabhatkhabar] 45 new candidate URLs (already have 744), discovery took 0s
+[prabhatkhabar] DONE (candidates exhausted): 24 articles kept, ~70,551 chars, 6s
+2026-08-15T19:59:40+05:30 [hindi/prabhatkhabar] finished cleanly
+[prabhatkhabar] shared budget already met (520,000,332/520,000,000 chars) — nothing to do
+2026-08-15T23:57:27+05:30 [hindi/prabhatkhabar] finished cleanly

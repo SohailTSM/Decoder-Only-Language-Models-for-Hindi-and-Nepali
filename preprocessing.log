@@ -1,0 +1,7 @@
+=== HINDI (resumed from stage2) ===
+[hindi] resuming: reusing existing /home/sohailtsm/M Tech Contents/SEM III/LMA/Projects/Project 1/individual-project-SohailTSM/hindi/data/_intermediate/stage2.jsonl
+[hindi] stage 3: MinHash near-duplicate dedup...
+[hindi] stage3 (minhash dedup, 6 workers): 200,000 read, 199,969 kept, 119s, rss=288MB
+[hindi] stage3 (minhash dedup, 6 workers): 400,000 read, 399,909 kept, 212s, rss=460MB
+[hindi] stage3 (minhash dedup, 6 workers): 600,000 read, 599,830 kept, 309s, rss=606MB
+[hindi] stage3 (minhash dedup, 6 workers): 800,000 read, 799,713 kept, 402s, rss=805MB

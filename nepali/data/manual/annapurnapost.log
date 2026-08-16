@@ -1,0 +1,567 @@
+[annapurnapost] discovering URLs from sitemap...
+[annapurnapost] discovering URLs from sitemap...
+[annapurnapost] 252740 new candidate URLs (already have 0)
+[annapurnapost] 200 fetched, 200 kept, ~486,853 chars, 1296s elapsed
+[annapurnapost] 400 fetched, 400 kept, ~966,202 chars, 1590s elapsed
+[annapurnapost] 600 fetched, 599 kept, ~1,395,962 chars, 1936s elapsed
+[annapurnapost] 800 fetched, 799 kept, ~1,838,077 chars, 2422s elapsed
+[annapurnapost] 1000 fetched, 998 kept, ~2,233,040 chars, 2781s elapsed
+[annapurnapost] 1200 fetched, 1197 kept, ~2,670,089 chars, 3157s elapsed
+[annapurnapost] 1400 fetched, 1397 kept, ~3,122,324 chars, 3580s elapsed
+[annapurnapost] 1600 fetched, 1595 kept, ~3,537,625 chars, 3971s elapsed
+[annapurnapost] 1800 fetched, 1794 kept, ~3,966,044 chars, 4465s elapsed
+[annapurnapost] 2000 fetched, 1993 kept, ~4,445,750 chars, 4729s elapsed
+[annapurnapost] discovering URLs from sitemap...
+[annapurnapost] discovery in progress: 7261 candidates so far, 16s elapsed
+[annapurnapost] discovery in progress: 16861 candidates so far, 31s elapsed
+[annapurnapost] discovery in progress: 26661 candidates so far, 46s elapsed
+[annapurnapost] discovery in progress: 36061 candidates so far, 61s elapsed
+[annapurnapost] discovery in progress: 45661 candidates so far, 76s elapsed
+[annapurnapost] discovery in progress: 53061 candidates so far, 91s elapsed
+[annapurnapost] discovery in progress: 57261 candidates so far, 107s elapsed
+[annapurnapost] discovery in progress: 60261 candidates so far, 122s elapsed
+[annapurnapost] discovery in progress: 67261 candidates so far, 137s elapsed
+[annapurnapost] discovery in progress: 76461 candidates so far, 153s elapsed
+[annapurnapost] discovery in progress: 85461 candidates so far, 168s elapsed
+[annapurnapost] discovery in progress: 94261 candidates so far, 183s elapsed
+[annapurnapost] discovery in progress: 103861 candidates so far, 198s elapsed
+[annapurnapost] discovery in progress: 112461 candidates so far, 213s elapsed
+[annapurnapost] discovery in progress: 121461 candidates so far, 229s elapsed
+[annapurnapost] discovery in progress: 130661 candidates so far, 244s elapsed
+[annapurnapost] discovery in progress: 138861 candidates so far, 260s elapsed
+[annapurnapost] discovery in progress: 145261 candidates so far, 275s elapsed
+[annapurnapost] discovery in progress: 150061 candidates so far, 294s elapsed
+[annapurnapost] discovery in progress: 152261 candidates so far, 309s elapsed
+[annapurnapost] discovery in progress: 153061 candidates so far, 328s elapsed
+[annapurnapost] discovery in progress: 154861 candidates so far, 352s elapsed
+[annapurnapost] discovery in progress: 157261 candidates so far, 367s elapsed
+[annapurnapost] discovery in progress: 160661 candidates so far, 383s elapsed
+[annapurnapost] discovery in progress: 163661 candidates so far, 398s elapsed
+[annapurnapost] discovery in progress: 166861 candidates so far, 414s elapsed
+[annapurnapost] discovery in progress: 170261 candidates so far, 430s elapsed
+[annapurnapost] discovery in progress: 173261 candidates so far, 446s elapsed
+[annapurnapost] discovery in progress: 175261 candidates so far, 461s elapsed
+[annapurnapost] discovery in progress: 177461 candidates so far, 477s elapsed
+[annapurnapost] discovery in progress: 180061 candidates so far, 494s elapsed
+[annapurnapost] discovery in progress: 183261 candidates so far, 511s elapsed
+[annapurnapost] discovery in progress: 187261 candidates so far, 528s elapsed
+[annapurnapost] discovery in progress: 191261 candidates so far, 543s elapsed
+[annapurnapost] discovery in progress: 194261 candidates so far, 559s elapsed
+[annapurnapost] discovery in progress: 196861 candidates so far, 575s elapsed
+[annapurnapost] discovery in progress: 200461 candidates so far, 591s elapsed
+[annapurnapost] discovery in progress: 204061 candidates so far, 608s elapsed
+[annapurnapost] discovery in progress: 207661 candidates so far, 623s elapsed
+[annapurnapost] discovery in progress: 211061 candidates so far, 641s elapsed
+[annapurnapost] discovery in progress: 213661 candidates so far, 657s elapsed
+[annapurnapost] discovery in progress: 216661 candidates so far, 673s elapsed
+[annapurnapost] discovery in progress: 220261 candidates so far, 688s elapsed
+[annapurnapost] discovery in progress: 227661 candidates so far, 703s elapsed
+[annapurnapost] discovery in progress: 231661 candidates so far, 720s elapsed
+[annapurnapost] discovery in progress: 234461 candidates so far, 737s elapsed
+[annapurnapost] discovery in progress: 237061 candidates so far, 752s elapsed
+[annapurnapost] discovery in progress: 240261 candidates so far, 768s elapsed
+[annapurnapost] discovery in progress: 243861 candidates so far, 783s elapsed
+[annapurnapost] discovery in progress: 246461 candidates so far, 800s elapsed
+[annapurnapost] discovery in progress: 249861 candidates so far, 815s elapsed
+[annapurnapost] 250603 new candidate URLs (already have 2140), discovery took 820s
+[annapurnapost] 200 fetched, 198 kept, ~446,684 chars, 967s elapsed
+[annapurnapost] 400 fetched, 397 kept, ~951,827 chars, 1044s elapsed
+[annapurnapost] 600 fetched, 596 kept, ~1,425,051 chars, 1116s elapsed
+[annapurnapost] 800 fetched, 794 kept, ~1,842,479 chars, 1204s elapsed
+[annapurnapost] 1000 fetched, 994 kept, ~2,295,507 chars, 1313s elapsed
+[annapurnapost] 1200 fetched, 1191 kept, ~2,738,928 chars, 1387s elapsed
+[annapurnapost] 1400 fetched, 1390 kept, ~3,198,103 chars, 1477s elapsed
+[annapurnapost] 1600 fetched, 1589 kept, ~3,691,146 chars, 1554s elapsed
+[annapurnapost] 1800 fetched, 1789 kept, ~4,204,080 chars, 1655s elapsed
+[annapurnapost] 2000 fetched, 1988 kept, ~4,615,092 chars, 1738s elapsed
+[annapurnapost] 2200 fetched, 2187 kept, ~5,098,676 chars, 1875s elapsed
+[annapurnapost] 2400 fetched, 2386 kept, ~5,511,905 chars, 1935s elapsed
+[annapurnapost] 2600 fetched, 2586 kept, ~5,954,124 chars, 1981s elapsed
+[annapurnapost] discovering URLs from sitemap... (capped at page 400)
+[annapurnapost] 75190 new candidate URLs (already have 4814), discovery took 9s
+[annapurnapost] 200 fetched, 186 kept, ~391,491 chars, 91s elapsed
+[annapurnapost] 400 fetched, 386 kept, ~836,610 chars, 185s elapsed
+[annapurnapost] 600 fetched, 586 kept, ~1,285,659 chars, 268s elapsed
+[annapurnapost] 800 fetched, 786 kept, ~1,676,796 chars, 366s elapsed
+[annapurnapost] 1000 fetched, 986 kept, ~2,061,185 chars, 447s elapsed
+[annapurnapost] 1200 fetched, 1185 kept, ~2,551,614 chars, 487s elapsed
+[annapurnapost] 1400 fetched, 1380 kept, ~3,029,251 chars, 576s elapsed
+[annapurnapost] 1600 fetched, 1576 kept, ~3,478,501 chars, 622s elapsed
+[annapurnapost] 1800 fetched, 1774 kept, ~3,884,226 chars, 664s elapsed
+[annapurnapost] 2000 fetched, 1972 kept, ~4,293,564 chars, 715s elapsed
+[annapurnapost] 2200 fetched, 2171 kept, ~4,702,317 chars, 761s elapsed
+[annapurnapost] 2400 fetched, 2371 kept, ~5,097,199 chars, 812s elapsed
+[annapurnapost] 2600 fetched, 2569 kept, ~5,470,086 chars, 866s elapsed
+[annapurnapost] 2800 fetched, 2768 kept, ~5,830,133 chars, 952s elapsed
+[annapurnapost] 3000 fetched, 2967 kept, ~6,203,427 chars, 999s elapsed
+[annapurnapost] 3200 fetched, 3165 kept, ~6,600,522 chars, 1058s elapsed
+[annapurnapost] 3400 fetched, 3365 kept, ~7,011,854 chars, 1135s elapsed
+[annapurnapost] 3600 fetched, 3562 kept, ~7,397,882 chars, 1184s elapsed
+[annapurnapost] 3800 fetched, 3762 kept, ~7,818,247 chars, 1263s elapsed
+[annapurnapost] 4000 fetched, 3962 kept, ~8,191,264 chars, 1338s elapsed
+[annapurnapost] 4200 fetched, 4161 kept, ~8,648,390 chars, 1397s elapsed
+[annapurnapost] 4400 fetched, 4361 kept, ~9,084,384 chars, 1502s elapsed
+[annapurnapost] 4600 fetched, 4560 kept, ~9,481,442 chars, 1574s elapsed
+[annapurnapost] 4800 fetched, 4760 kept, ~9,933,798 chars, 1709s elapsed
+[annapurnapost] 5000 fetched, 4959 kept, ~10,298,630 chars, 1772s elapsed
+[annapurnapost] 5200 fetched, 5158 kept, ~10,583,989 chars, 1866s elapsed
+[annapurnapost] 5400 fetched, 5354 kept, ~10,829,450 chars, 1927s elapsed
+[annapurnapost] 5600 fetched, 5553 kept, ~11,316,886 chars, 2019s elapsed
+[annapurnapost] 5800 fetched, 5753 kept, ~11,775,834 chars, 2080s elapsed
+[annapurnapost] 6000 fetched, 5952 kept, ~12,293,221 chars, 2179s elapsed
+[annapurnapost] 6200 fetched, 6150 kept, ~12,761,396 chars, 2252s elapsed
+[annapurnapost] 6400 fetched, 6350 kept, ~13,339,780 chars, 2345s elapsed
+[annapurnapost] 6600 fetched, 6550 kept, ~13,867,863 chars, 2451s elapsed
+[annapurnapost] 6800 fetched, 6750 kept, ~14,395,958 chars, 2561s elapsed
+[annapurnapost] 7000 fetched, 6950 kept, ~14,803,443 chars, 2656s elapsed
+[annapurnapost] 7200 fetched, 7150 kept, ~15,349,113 chars, 2740s elapsed
+[annapurnapost] 7400 fetched, 7350 kept, ~15,822,438 chars, 2803s elapsed
+[annapurnapost] 7600 fetched, 7549 kept, ~16,162,440 chars, 2884s elapsed
+[annapurnapost] 7800 fetched, 7749 kept, ~16,627,837 chars, 2959s elapsed
+[annapurnapost] 8000 fetched, 7948 kept, ~17,048,396 chars, 3012s elapsed
+[annapurnapost] 8200 fetched, 8148 kept, ~17,470,548 chars, 3078s elapsed
+[annapurnapost] 8400 fetched, 8347 kept, ~17,929,503 chars, 3141s elapsed
+[annapurnapost] 8600 fetched, 8547 kept, ~18,363,491 chars, 3202s elapsed
+[annapurnapost] 8800 fetched, 8747 kept, ~18,795,194 chars, 3263s elapsed
+[annapurnapost] 9000 fetched, 8947 kept, ~19,283,175 chars, 3326s elapsed
+[annapurnapost] 9200 fetched, 9147 kept, ~19,700,903 chars, 3374s elapsed
+[annapurnapost] 9400 fetched, 9347 kept, ~20,126,033 chars, 3466s elapsed
+[annapurnapost] 9600 fetched, 9546 kept, ~20,581,573 chars, 3516s elapsed
+[annapurnapost] 9800 fetched, 9746 kept, ~20,975,326 chars, 3580s elapsed
+[annapurnapost] 10000 fetched, 9946 kept, ~21,447,431 chars, 3650s elapsed
+[annapurnapost] 10200 fetched, 10146 kept, ~21,881,140 chars, 3694s elapsed
+[annapurnapost] 10400 fetched, 10346 kept, ~22,272,662 chars, 3753s elapsed
+[annapurnapost] 10600 fetched, 10546 kept, ~22,716,510 chars, 3813s elapsed
+[annapurnapost] 10800 fetched, 10744 kept, ~23,117,132 chars, 3866s elapsed
+[annapurnapost] 11000 fetched, 10944 kept, ~23,494,887 chars, 3916s elapsed
+[annapurnapost] 11200 fetched, 11143 kept, ~23,897,321 chars, 3969s elapsed
+[annapurnapost] 11400 fetched, 11343 kept, ~24,308,442 chars, 4018s elapsed
+[annapurnapost] 11600 fetched, 11543 kept, ~24,734,593 chars, 4070s elapsed
+[annapurnapost] 11800 fetched, 11743 kept, ~25,132,818 chars, 4180s elapsed
+[annapurnapost] 12000 fetched, 11943 kept, ~25,537,021 chars, 4228s elapsed
+[annapurnapost] 12200 fetched, 12143 kept, ~25,937,734 chars, 4274s elapsed
+[annapurnapost] 12400 fetched, 12343 kept, ~26,310,220 chars, 4328s elapsed
+[annapurnapost] 12600 fetched, 12542 kept, ~26,596,527 chars, 4378s elapsed
+[annapurnapost] 12800 fetched, 12742 kept, ~26,995,276 chars, 4425s elapsed
+[annapurnapost] 13000 fetched, 12940 kept, ~27,387,411 chars, 4503s elapsed
+[annapurnapost] 13200 fetched, 13140 kept, ~27,770,691 chars, 4575s elapsed
+[annapurnapost] 13400 fetched, 13337 kept, ~28,080,696 chars, 4634s elapsed
+[annapurnapost] 13600 fetched, 13537 kept, ~28,425,121 chars, 4740s elapsed
+[annapurnapost] 13800 fetched, 13736 kept, ~28,700,140 chars, 4806s elapsed
+[annapurnapost] 14000 fetched, 13936 kept, ~29,072,037 chars, 4904s elapsed
+[annapurnapost] 14200 fetched, 14135 kept, ~29,494,229 chars, 4958s elapsed
+[annapurnapost] 14400 fetched, 14335 kept, ~29,888,537 chars, 5036s elapsed
+[annapurnapost] 14600 fetched, 14532 kept, ~30,260,950 chars, 5108s elapsed
+[annapurnapost] 14800 fetched, 14722 kept, ~30,560,622 chars, 5172s elapsed
+[annapurnapost] 15000 fetched, 14922 kept, ~30,920,986 chars, 5261s elapsed
+[annapurnapost] 15200 fetched, 15122 kept, ~31,339,377 chars, 5323s elapsed
+[annapurnapost] 15400 fetched, 15320 kept, ~31,752,736 chars, 5411s elapsed
+[annapurnapost] 15600 fetched, 15520 kept, ~32,147,700 chars, 5471s elapsed
+[annapurnapost] 15800 fetched, 15720 kept, ~32,555,839 chars, 5529s elapsed
+[annapurnapost] 16000 fetched, 15920 kept, ~33,019,272 chars, 5671s elapsed
+[annapurnapost] 16200 fetched, 16119 kept, ~33,449,936 chars, 5799s elapsed
+[annapurnapost] 16400 fetched, 16166 kept, ~33,543,866 chars, 6040s elapsed
+[annapurnapost] 16600 fetched, 16167 kept, ~33,544,765 chars, 6282s elapsed
+[annapurnapost] 16800 fetched, 16167 kept, ~33,544,765 chars, 6523s elapsed
+[annapurnapost] 17000 fetched, 16267 kept, ~33,729,060 chars, 6744s elapsed
+[annapurnapost] discovering URLs from sitemap... (capped at page 400)
+[annapurnapost] discovery in progress: 1 candidates so far, 18s elapsed
+[annapurnapost] discovery in progress: 11 candidates so far, 33s elapsed
+[annapurnapost] discovery in progress: 22 candidates so far, 48s elapsed
+[annapurnapost] discovery in progress: 38 candidates so far, 64s elapsed
+[annapurnapost] discovery in progress: 49 candidates so far, 79s elapsed
+[annapurnapost] discovery in progress: 55 candidates so far, 95s elapsed
+[annapurnapost] discovery in progress: 58 candidates so far, 110s elapsed
+[annapurnapost] discovery in progress: 61 candidates so far, 126s elapsed
+[annapurnapost] discovery in progress: 80 candidates so far, 143s elapsed
+[annapurnapost] discovery in progress: 420 candidates so far, 158s elapsed
+[annapurnapost] discovery in progress: 1326 candidates so far, 173s elapsed
+[annapurnapost] discovery in progress: 3326 candidates so far, 190s elapsed
+[annapurnapost] discovery in progress: 5526 candidates so far, 205s elapsed
+[annapurnapost] discovery in progress: 6926 candidates so far, 222s elapsed
+[annapurnapost] discovery in progress: 8726 candidates so far, 237s elapsed
+[annapurnapost] discovery in progress: 10726 candidates so far, 254s elapsed
+[annapurnapost] discovery in progress: 13326 candidates so far, 281s elapsed
+[annapurnapost] discovery in progress: 15726 candidates so far, 303s elapsed
+[annapurnapost] discovery in progress: 18126 candidates so far, 326s elapsed
+[annapurnapost] discovery in progress: 20526 candidates so far, 343s elapsed
+[annapurnapost] discovery in progress: 22126 candidates so far, 358s elapsed
+[annapurnapost] discovery in progress: 24326 candidates so far, 375s elapsed
+[annapurnapost] discovery in progress: 25326 candidates so far, 391s elapsed
+[annapurnapost] discovery in progress: 26926 candidates so far, 410s elapsed
+[annapurnapost] discovery in progress: 29126 candidates so far, 425s elapsed
+[annapurnapost] discovery in progress: 30726 candidates so far, 442s elapsed
+[annapurnapost] discovery in progress: 32126 candidates so far, 458s elapsed
+[annapurnapost] discovery in progress: 33326 candidates so far, 474s elapsed
+[annapurnapost] discovery in progress: 35126 candidates so far, 492s elapsed
+[annapurnapost] discovery in progress: 38326 candidates so far, 507s elapsed
+[annapurnapost] discovery in progress: 40726 candidates so far, 523s elapsed
+[annapurnapost] discovery in progress: 43526 candidates so far, 538s elapsed
+[annapurnapost] discovery in progress: 45726 candidates so far, 555s elapsed
+[annapurnapost] discovery in progress: 47926 candidates so far, 570s elapsed
+[annapurnapost] discovery in progress: 50526 candidates so far, 587s elapsed
+[annapurnapost] discovery in progress: 52926 candidates so far, 606s elapsed
+[annapurnapost] discovery in progress: 53926 candidates so far, 621s elapsed
+[annapurnapost] discovery in progress: 55926 candidates so far, 637s elapsed
+[annapurnapost] discovery in progress: 56726 candidates so far, 653s elapsed
+[annapurnapost] discovery in progress: 58726 candidates so far, 675s elapsed
+[annapurnapost] 58729 new candidate URLs (already have 21275), discovery took 675s
+[annapurnapost] 200 fetched, 120 kept, ~233,204 chars, 786s elapsed
+[annapurnapost] 400 fetched, 319 kept, ~591,273 chars, 886s elapsed
+[annapurnapost] 600 fetched, 519 kept, ~1,029,919 chars, 996s elapsed
+[annapurnapost] 800 fetched, 709 kept, ~1,420,233 chars, 1098s elapsed
+[annapurnapost] 1000 fetched, 909 kept, ~1,857,193 chars, 1202s elapsed
+[annapurnapost] 1200 fetched, 1107 kept, ~2,266,476 chars, 1339s elapsed
+[annapurnapost] 1400 fetched, 1307 kept, ~2,697,344 chars, 1497s elapsed
+[annapurnapost] 1600 fetched, 1504 kept, ~3,077,032 chars, 1624s elapsed
+[annapurnapost] 1800 fetched, 1703 kept, ~3,551,292 chars, 1818s elapsed
+[annapurnapost] 2000 fetched, 1901 kept, ~3,910,046 chars, 1920s elapsed
+[annapurnapost] 2200 fetched, 2100 kept, ~4,341,078 chars, 2043s elapsed
+  [warn] giving up on https://annapurnapost.com/story/481862/: repeated network errors
+  [warn] giving up on https://annapurnapost.com/story/481866/: repeated network errors
+  [warn] giving up on https://annapurnapost.com/story/481867/: repeated network errors
+  [warn] giving up on https://annapurnapost.com/story/481868/: repeated network errors
+  [warn] giving up on https://annapurnapost.com/story/481864/: repeated network errors
+  [warn] giving up on https://annapurnapost.com/story/481865/: repeated network errors
+  [warn] giving up on https://annapurnapost.com/story/481861/: repeated network errors
+  [warn] giving up on https://annapurnapost.com/story/481869/: repeated network errors
+  [warn] giving up on https://annapurnapost.com/story/481860/: repeated network errors
+[annapurnapost] 2400 fetched, 2290 kept, ~4,718,165 chars, 2194s elapsed
+[annapurnapost] 2600 fetched, 2488 kept, ~5,106,027 chars, 2333s elapsed
+  [warn] giving up on https://annapurnapost.com/story/481485/: repeated network errors
+  [warn] giving up on https://annapurnapost.com/story/481489/: repeated network errors
+  [warn] giving up on https://annapurnapost.com/story/481487/: repeated network errors
+  [warn] giving up on https://annapurnapost.com/story/481488/: repeated network errors
+  [warn] giving up on https://annapurnapost.com/story/481486/: repeated network errors
+  [warn] giving up on https://annapurnapost.com/story/481473/: repeated network errors
+  [warn] giving up on https://annapurnapost.com/story/481475/: repeated network errors
+  [warn] giving up on https://annapurnapost.com/story/481471/: repeated network errors
+  [warn] giving up on https://annapurnapost.com/story/481470/: repeated network errors
+  [warn] giving up on https://annapurnapost.com/story/481469/: repeated network errors
+  [warn] giving up on https://annapurnapost.com/story/481472/: repeated network errors
+  [warn] giving up on https://annapurnapost.com/story/481474/: repeated network errors
+[annapurnapost] 2800 fetched, 2620 kept, ~5,365,457 chars, 2563s elapsed
+[annapurnapost] 3000 fetched, 2620 kept, ~5,365,457 chars, 2804s elapsed
+[annapurnapost] 3200 fetched, 2700 kept, ~5,492,354 chars, 3027s elapsed
+[annapurnapost] 3400 fetched, 2767 kept, ~5,601,293 chars, 3234s elapsed
+[annapurnapost] 3600 fetched, 2967 kept, ~6,013,034 chars, 3344s elapsed
+[annapurnapost] 3800 fetched, 3165 kept, ~6,393,012 chars, 3437s elapsed
+[annapurnapost] 4000 fetched, 3365 kept, ~6,728,792 chars, 3546s elapsed
+[annapurnapost] 4200 fetched, 3564 kept, ~7,150,837 chars, 3643s elapsed
+[annapurnapost] 4400 fetched, 3764 kept, ~7,521,475 chars, 3732s elapsed
+[annapurnapost] 4600 fetched, 3964 kept, ~7,908,571 chars, 3805s elapsed
+[annapurnapost] 4800 fetched, 4164 kept, ~8,279,775 chars, 3871s elapsed
+[annapurnapost] 5000 fetched, 4364 kept, ~8,660,940 chars, 3925s elapsed
+[annapurnapost] 5200 fetched, 4563 kept, ~9,040,198 chars, 4000s elapsed
+[annapurnapost] 5400 fetched, 4763 kept, ~9,451,906 chars, 4109s elapsed
+[annapurnapost] 5600 fetched, 4962 kept, ~9,977,362 chars, 4205s elapsed
+[annapurnapost] 5800 fetched, 5161 kept, ~10,354,708 chars, 4319s elapsed
+[annapurnapost] 6000 fetched, 5359 kept, ~10,778,134 chars, 4411s elapsed
+[annapurnapost] 6200 fetched, 5559 kept, ~11,270,355 chars, 4510s elapsed
+[annapurnapost] 6400 fetched, 5757 kept, ~11,676,366 chars, 4566s elapsed
+[annapurnapost] 6600 fetched, 5956 kept, ~12,141,554 chars, 4654s elapsed
+[annapurnapost] 6800 fetched, 6154 kept, ~12,512,779 chars, 4718s elapsed
+[annapurnapost] 7000 fetched, 6352 kept, ~12,867,553 chars, 4844s elapsed
+[annapurnapost] 7200 fetched, 6552 kept, ~13,258,699 chars, 4996s elapsed
+[annapurnapost] 7400 fetched, 6751 kept, ~13,653,864 chars, 5064s elapsed
+[annapurnapost] 7600 fetched, 6951 kept, ~14,059,536 chars, 5131s elapsed
+[annapurnapost] 7800 fetched, 7151 kept, ~14,445,578 chars, 5218s elapsed
+[annapurnapost] 8000 fetched, 7350 kept, ~14,887,542 chars, 5278s elapsed
+[annapurnapost] 8200 fetched, 7550 kept, ~15,276,822 chars, 5362s elapsed
+[annapurnapost] 8400 fetched, 7747 kept, ~15,654,427 chars, 5451s elapsed
+[annapurnapost] discovering URLs from sitemap... (capped at page 400)
+[annapurnapost] discovery in progress: 0 candidates so far, 19s elapsed
+[annapurnapost] discovery in progress: 8 candidates so far, 35s elapsed
+[annapurnapost] discovery in progress: 14 candidates so far, 57s elapsed
+[annapurnapost] discovery in progress: 32 candidates so far, 72s elapsed
+[annapurnapost] discovery in progress: 46 candidates so far, 88s elapsed
+[annapurnapost] discovery in progress: 51 candidates so far, 109s elapsed
+[annapurnapost] discovery in progress: 54 candidates so far, 136s elapsed
+[annapurnapost] discovery in progress: 57 candidates so far, 162s elapsed
+[annapurnapost] discovery in progress: 66 candidates so far, 180s elapsed
+[annapurnapost] discovery in progress: 84 candidates so far, 197s elapsed
+[annapurnapost] discovery in progress: 113 candidates so far, 213s elapsed
+[annapurnapost] discovery in progress: 637 candidates so far, 232s elapsed
+[annapurnapost] discovery in progress: 648 candidates so far, 248s elapsed
+[annapurnapost] discovery in progress: 1400 candidates so far, 263s elapsed
+[annapurnapost] discovery in progress: 3000 candidates so far, 281s elapsed
+[annapurnapost] discovery in progress: 4200 candidates so far, 300s elapsed
+[annapurnapost] discovery in progress: 6000 candidates so far, 315s elapsed
+[annapurnapost] discovery in progress: 7200 candidates so far, 331s elapsed
+[annapurnapost] discovery in progress: 9000 candidates so far, 349s elapsed
+[annapurnapost] discovery in progress: 11200 candidates so far, 364s elapsed
+[annapurnapost] discovery in progress: 13600 candidates so far, 381s elapsed
+[annapurnapost] discovery in progress: 15800 candidates so far, 397s elapsed
+[annapurnapost] discovery in progress: 18200 candidates so far, 413s elapsed
+[annapurnapost] discovery in progress: 20600 candidates so far, 431s elapsed
+[annapurnapost] discovery in progress: 22000 candidates so far, 446s elapsed
+[annapurnapost] discovery in progress: 24000 candidates so far, 463s elapsed
+[annapurnapost] discovery in progress: 26200 candidates so far, 478s elapsed
+[annapurnapost] discovery in progress: 28200 candidates so far, 494s elapsed
+[annapurnapost] discovery in progress: 30200 candidates so far, 511s elapsed
+[annapurnapost] discovery in progress: 32400 candidates so far, 526s elapsed
+[annapurnapost] discovery in progress: 35000 candidates so far, 543s elapsed
+[annapurnapost] discovery in progress: 37400 candidates so far, 560s elapsed
+[annapurnapost] discovery in progress: 40000 candidates so far, 575s elapsed
+[annapurnapost] discovery in progress: 42200 candidates so far, 591s elapsed
+[annapurnapost] discovery in progress: 44600 candidates so far, 607s elapsed
+[annapurnapost] discovery in progress: 46400 candidates so far, 623s elapsed
+[annapurnapost] discovery in progress: 48400 candidates so far, 648s elapsed
+[annapurnapost] discovery in progress: 50400 candidates so far, 664s elapsed
+[annapurnapost] 50803 new candidate URLs (already have 29201), discovery took 675s
+[annapurnapost] 200 fetched, 96 kept, ~158,473 chars, 773s elapsed
+[annapurnapost] 400 fetched, 296 kept, ~582,092 chars, 874s elapsed
+[annapurnapost] 600 fetched, 493 kept, ~996,865 chars, 976s elapsed
+[annapurnapost] 800 fetched, 670 kept, ~1,351,163 chars, 1122s elapsed
+[annapurnapost] 1000 fetched, 870 kept, ~1,775,839 chars, 1223s elapsed
+[annapurnapost] 1200 fetched, 1069 kept, ~2,139,083 chars, 1319s elapsed
+[annapurnapost] 1400 fetched, 1268 kept, ~2,567,605 chars, 1465s elapsed
+[annapurnapost] 1600 fetched, 1467 kept, ~2,958,947 chars, 1589s elapsed
+[annapurnapost] 1800 fetched, 1665 kept, ~3,444,459 chars, 1724s elapsed
+[annapurnapost] 2000 fetched, 1865 kept, ~3,853,302 chars, 1843s elapsed
+[annapurnapost] 2200 fetched, 2065 kept, ~4,298,143 chars, 1961s elapsed
+[annapurnapost] 2400 fetched, 2265 kept, ~4,683,117 chars, 2097s elapsed
+[annapurnapost] 2600 fetched, 2465 kept, ~5,164,823 chars, 2206s elapsed
+[annapurnapost] 2800 fetched, 2664 kept, ~5,627,098 chars, 2339s elapsed
+[annapurnapost] 3000 fetched, 2864 kept, ~6,082,884 chars, 2446s elapsed
+[annapurnapost] 3200 fetched, 3064 kept, ~6,553,324 chars, 2548s elapsed
+[annapurnapost] 3400 fetched, 3263 kept, ~7,023,593 chars, 2682s elapsed
+[annapurnapost] 3600 fetched, 3462 kept, ~7,490,709 chars, 2857s elapsed
+[annapurnapost] 3800 fetched, 3662 kept, ~7,922,311 chars, 3010s elapsed
+[annapurnapost] 4000 fetched, 3862 kept, ~8,377,060 chars, 3142s elapsed
+[annapurnapost] 4200 fetched, 4061 kept, ~8,787,964 chars, 3274s elapsed
+[annapurnapost] 4400 fetched, 4261 kept, ~9,268,111 chars, 3411s elapsed
+[annapurnapost] 4600 fetched, 4460 kept, ~9,671,024 chars, 3535s elapsed
+[annapurnapost] 4800 fetched, 4660 kept, ~10,122,516 chars, 3643s elapsed
+[annapurnapost] 5000 fetched, 4859 kept, ~10,585,461 chars, 3773s elapsed
+[annapurnapost] 5200 fetched, 5059 kept, ~11,033,205 chars, 3914s elapsed
+[annapurnapost] 5400 fetched, 5259 kept, ~11,505,630 chars, 4073s elapsed
+[annapurnapost] 5600 fetched, 5459 kept, ~11,958,552 chars, 4195s elapsed
+[annapurnapost] 5800 fetched, 5659 kept, ~12,306,478 chars, 4303s elapsed
+[annapurnapost] 6000 fetched, 5858 kept, ~12,691,411 chars, 4390s elapsed
+[annapurnapost] 6200 fetched, 6056 kept, ~13,064,975 chars, 4505s elapsed
+[annapurnapost] 6400 fetched, 6251 kept, ~13,463,944 chars, 4699s elapsed
+[annapurnapost] 6600 fetched, 6449 kept, ~13,763,323 chars, 4829s elapsed
+[annapurnapost] 6800 fetched, 6645 kept, ~14,102,696 chars, 4899s elapsed
+[annapurnapost] 7000 fetched, 6844 kept, ~14,516,309 chars, 4987s elapsed
+[annapurnapost] 7200 fetched, 7043 kept, ~14,881,226 chars, 5065s elapsed
+[annapurnapost] 7400 fetched, 7242 kept, ~15,271,918 chars, 5156s elapsed
+[annapurnapost] 7600 fetched, 7441 kept, ~15,707,059 chars, 5249s elapsed
+[annapurnapost] 7800 fetched, 7640 kept, ~16,103,806 chars, 5331s elapsed
+[annapurnapost] 8000 fetched, 7840 kept, ~16,537,733 chars, 5425s elapsed
+[annapurnapost] 8200 fetched, 8038 kept, ~16,979,609 chars, 5509s elapsed
+[annapurnapost] 8400 fetched, 8235 kept, ~17,375,920 chars, 5588s elapsed
+[annapurnapost] 8600 fetched, 8435 kept, ~17,686,598 chars, 5662s elapsed
+[annapurnapost] 8800 fetched, 8635 kept, ~18,075,168 chars, 5768s elapsed
+[annapurnapost] 9000 fetched, 8832 kept, ~18,520,433 chars, 5949s elapsed
+[annapurnapost] 9200 fetched, 9032 kept, ~18,950,833 chars, 6065s elapsed
+[annapurnapost] 9400 fetched, 9231 kept, ~19,326,762 chars, 6141s elapsed
+[annapurnapost] 9600 fetched, 9429 kept, ~19,688,762 chars, 6236s elapsed
+[annapurnapost] 9800 fetched, 9628 kept, ~20,098,579 chars, 6436s elapsed
+[annapurnapost] 10000 fetched, 9629 kept, ~20,104,585 chars, 6677s elapsed
+[annapurnapost] 10200 fetched, 9629 kept, ~20,104,585 chars, 6918s elapsed
+[annapurnapost] 10400 fetched, 9629 kept, ~20,104,585 chars, 7159s elapsed
+[annapurnapost] 10600 fetched, 9629 kept, ~20,104,585 chars, 7370s elapsed
+[annapurnapost] 10800 fetched, 9629 kept, ~20,104,585 chars, 7567s elapsed
+[annapurnapost] 11000 fetched, 9629 kept, ~20,104,585 chars, 7769s elapsed
+[annapurnapost] 11200 fetched, 9629 kept, ~20,104,585 chars, 7923s elapsed
+[annapurnapost] 11400 fetched, 9629 kept, ~20,104,585 chars, 8087s elapsed
+[annapurnapost] 11600 fetched, 9629 kept, ~20,104,585 chars, 8288s elapsed
+[annapurnapost] 11800 fetched, 9629 kept, ~20,104,585 chars, 8513s elapsed
+[annapurnapost] 12000 fetched, 9630 kept, ~20,105,371 chars, 8683s elapsed
+[annapurnapost] 12200 fetched, 9630 kept, ~20,105,371 chars, 8886s elapsed
+[annapurnapost] 12400 fetched, 9630 kept, ~20,105,371 chars, 9078s elapsed
+[annapurnapost] 12600 fetched, 9630 kept, ~20,105,371 chars, 9254s elapsed
+[annapurnapost] 12800 fetched, 9630 kept, ~20,105,371 chars, 9398s elapsed
+[annapurnapost] 13000 fetched, 9630 kept, ~20,105,371 chars, 9596s elapsed
+[annapurnapost] 13200 fetched, 9630 kept, ~20,105,371 chars, 9772s elapsed
+[annapurnapost] 13400 fetched, 9630 kept, ~20,105,371 chars, 9907s elapsed
+[annapurnapost] 13600 fetched, 9630 kept, ~20,105,371 chars, 10016s elapsed
+[annapurnapost] 13800 fetched, 9631 kept, ~20,109,589 chars, 10162s elapsed
+[annapurnapost] 14000 fetched, 9632 kept, ~20,111,707 chars, 10300s elapsed
+[annapurnapost] 14200 fetched, 9632 kept, ~20,111,707 chars, 10437s elapsed
+[annapurnapost] 14400 fetched, 9632 kept, ~20,111,707 chars, 10630s elapsed
+[annapurnapost] 14600 fetched, 9632 kept, ~20,111,707 chars, 10861s elapsed
+[annapurnapost] 14800 fetched, 9632 kept, ~20,111,707 chars, 11039s elapsed
+[annapurnapost] 15000 fetched, 9632 kept, ~20,111,707 chars, 11243s elapsed
+[annapurnapost] 15200 fetched, 9632 kept, ~20,111,707 chars, 11401s elapsed
+[annapurnapost] 15400 fetched, 9632 kept, ~20,111,707 chars, 11602s elapsed
+[annapurnapost] 15600 fetched, 9632 kept, ~20,111,707 chars, 11786s elapsed
+[annapurnapost] 15800 fetched, 9632 kept, ~20,111,707 chars, 11981s elapsed
+[annapurnapost] 16000 fetched, 9632 kept, ~20,111,707 chars, 12147s elapsed
+[annapurnapost] 16200 fetched, 9632 kept, ~20,111,707 chars, 12326s elapsed
+[annapurnapost] 16400 fetched, 9632 kept, ~20,111,707 chars, 12534s elapsed
+[annapurnapost] 16600 fetched, 9632 kept, ~20,111,707 chars, 12684s elapsed
+[annapurnapost] 16800 fetched, 9632 kept, ~20,111,707 chars, 12852s elapsed
+[annapurnapost] 17000 fetched, 9632 kept, ~20,111,707 chars, 13022s elapsed
+[annapurnapost] 17200 fetched, 9632 kept, ~20,111,707 chars, 13177s elapsed
+[annapurnapost] 17400 fetched, 9632 kept, ~20,111,707 chars, 13315s elapsed
+[annapurnapost] 17600 fetched, 9632 kept, ~20,111,707 chars, 13498s elapsed
+[annapurnapost] 17800 fetched, 9632 kept, ~20,111,707 chars, 13723s elapsed
+[annapurnapost] 18000 fetched, 9632 kept, ~20,111,707 chars, 13918s elapsed
+[annapurnapost] 18200 fetched, 9632 kept, ~20,111,707 chars, 14095s elapsed
+[annapurnapost] 18400 fetched, 9632 kept, ~20,111,707 chars, 14194s elapsed
+[annapurnapost] 18600 fetched, 9632 kept, ~20,111,707 chars, 14390s elapsed
+[annapurnapost] 18800 fetched, 9632 kept, ~20,111,707 chars, 14569s elapsed
+[annapurnapost] 19000 fetched, 9632 kept, ~20,111,707 chars, 14760s elapsed
+[annapurnapost] 19200 fetched, 9632 kept, ~20,111,707 chars, 14943s elapsed
+[annapurnapost] 19400 fetched, 9632 kept, ~20,111,707 chars, 15078s elapsed
+[annapurnapost] 19600 fetched, 9632 kept, ~20,111,707 chars, 15220s elapsed
+[annapurnapost] 19800 fetched, 9632 kept, ~20,111,707 chars, 15414s elapsed
+[annapurnapost] 20000 fetched, 9632 kept, ~20,111,707 chars, 15638s elapsed
+[annapurnapost] 20200 fetched, 9632 kept, ~20,111,707 chars, 15863s elapsed
+[annapurnapost] 20400 fetched, 9632 kept, ~20,111,707 chars, 15981s elapsed
+[annapurnapost] 20600 fetched, 9632 kept, ~20,111,707 chars, 16153s elapsed
+[annapurnapost] 20800 fetched, 9632 kept, ~20,111,707 chars, 16370s elapsed
+[annapurnapost] 21000 fetched, 9632 kept, ~20,111,707 chars, 16577s elapsed
+[annapurnapost] 21200 fetched, 9632 kept, ~20,111,707 chars, 16784s elapsed
+[annapurnapost] 21400 fetched, 9632 kept, ~20,111,707 chars, 16990s elapsed
+[annapurnapost] 21600 fetched, 9632 kept, ~20,111,707 chars, 17191s elapsed
+[annapurnapost] 21800 fetched, 9632 kept, ~20,111,707 chars, 17383s elapsed
+[annapurnapost] 22000 fetched, 9632 kept, ~20,111,707 chars, 17576s elapsed
+[annapurnapost] 22200 fetched, 9632 kept, ~20,111,707 chars, 17744s elapsed
+[annapurnapost] 22400 fetched, 9632 kept, ~20,111,707 chars, 17937s elapsed
+[annapurnapost] 22600 fetched, 9632 kept, ~20,111,707 chars, 18143s elapsed
+[annapurnapost] 22800 fetched, 9632 kept, ~20,111,707 chars, 18346s elapsed
+[annapurnapost] 23000 fetched, 9632 kept, ~20,111,707 chars, 18568s elapsed
+[annapurnapost] 23200 fetched, 9632 kept, ~20,111,707 chars, 18786s elapsed
+[annapurnapost] 23400 fetched, 9632 kept, ~20,111,707 chars, 18933s elapsed
+[annapurnapost] 23600 fetched, 9632 kept, ~20,111,707 chars, 19150s elapsed
+[annapurnapost] 23800 fetched, 9632 kept, ~20,111,707 chars, 19383s elapsed
+[annapurnapost] 24000 fetched, 9632 kept, ~20,111,707 chars, 19624s elapsed
+[annapurnapost] 24200 fetched, 9632 kept, ~20,111,707 chars, 19865s elapsed
+[annapurnapost] 24400 fetched, 9632 kept, ~20,111,707 chars, 20106s elapsed
+[annapurnapost] 24600 fetched, 9632 kept, ~20,111,707 chars, 20347s elapsed
+[annapurnapost] 24800 fetched, 9632 kept, ~20,111,707 chars, 20589s elapsed
+[annapurnapost] 25000 fetched, 9632 kept, ~20,111,707 chars, 20824s elapsed
+[annapurnapost] 25200 fetched, 9632 kept, ~20,111,707 chars, 21066s elapsed
+[annapurnapost] 25400 fetched, 9632 kept, ~20,111,707 chars, 21307s elapsed
+[annapurnapost] 25600 fetched, 9632 kept, ~20,111,707 chars, 21548s elapsed
+[annapurnapost] 25800 fetched, 9632 kept, ~20,111,707 chars, 21753s elapsed
+[annapurnapost] 26000 fetched, 9808 kept, ~20,449,258 chars, 21829s elapsed
+[annapurnapost] 26200 fetched, 9928 kept, ~20,718,746 chars, 21874s elapsed
+[annapurnapost] 26400 fetched, 10034 kept, ~20,952,557 chars, 21917s elapsed
+[annapurnapost] 26600 fetched, 10038 kept, ~20,956,999 chars, 21918s elapsed
+[annapurnapost] 26800 fetched, 10039 kept, ~20,958,777 chars, 21919s elapsed
+[annapurnapost] 27000 fetched, 10042 kept, ~20,962,616 chars, 21919s elapsed
+[annapurnapost] 27200 fetched, 10043 kept, ~20,963,736 chars, 21920s elapsed
+[annapurnapost] 27400 fetched, 10043 kept, ~20,963,736 chars, 21920s elapsed
+[annapurnapost] 27600 fetched, 10044 kept, ~20,971,301 chars, 21921s elapsed
+[annapurnapost] 27800 fetched, 10045 kept, ~20,972,216 chars, 21921s elapsed
+[annapurnapost] 28000 fetched, 10045 kept, ~20,972,216 chars, 21921s elapsed
+[annapurnapost] 28200 fetched, 10045 kept, ~20,972,216 chars, 21922s elapsed
+[annapurnapost] 28400 fetched, 10046 kept, ~20,980,540 chars, 21922s elapsed
+[annapurnapost] 28600 fetched, 10046 kept, ~20,980,540 chars, 21922s elapsed
+[annapurnapost] 28800 fetched, 10046 kept, ~20,980,540 chars, 21923s elapsed
+[annapurnapost] 29000 fetched, 10046 kept, ~20,980,540 chars, 21923s elapsed
+[annapurnapost] 29200 fetched, 10046 kept, ~20,980,540 chars, 21923s elapsed
+[annapurnapost] 29400 fetched, 10046 kept, ~20,980,540 chars, 21924s elapsed
+[annapurnapost] 29600 fetched, 10046 kept, ~20,980,540 chars, 21924s elapsed
+[annapurnapost] 29800 fetched, 10046 kept, ~20,980,540 chars, 21924s elapsed
+[annapurnapost] 30000 fetched, 10046 kept, ~20,980,540 chars, 21924s elapsed
+[annapurnapost] 30200 fetched, 10046 kept, ~20,980,540 chars, 21925s elapsed
+[annapurnapost] 30400 fetched, 10046 kept, ~20,980,540 chars, 21925s elapsed
+[annapurnapost] 30600 fetched, 10046 kept, ~20,980,540 chars, 21925s elapsed
+[annapurnapost] 30800 fetched, 10046 kept, ~20,980,540 chars, 21926s elapsed
+[annapurnapost] 31000 fetched, 10046 kept, ~20,980,540 chars, 21926s elapsed
+[annapurnapost] 31200 fetched, 10046 kept, ~20,980,540 chars, 21926s elapsed
+[annapurnapost] 31400 fetched, 10046 kept, ~20,980,540 chars, 21927s elapsed
+[annapurnapost] 31600 fetched, 10046 kept, ~20,980,540 chars, 21927s elapsed
+[annapurnapost] 31800 fetched, 10046 kept, ~20,980,540 chars, 21927s elapsed
+[annapurnapost] 32000 fetched, 10046 kept, ~20,980,540 chars, 21927s elapsed
+[annapurnapost] 32200 fetched, 10046 kept, ~20,980,540 chars, 21928s elapsed
+[annapurnapost] 32400 fetched, 10047 kept, ~20,986,330 chars, 21928s elapsed
+[annapurnapost] 32600 fetched, 10047 kept, ~20,986,330 chars, 21928s elapsed
+[annapurnapost] 32800 fetched, 10047 kept, ~20,986,330 chars, 21929s elapsed
+[annapurnapost] 33000 fetched, 10047 kept, ~20,986,330 chars, 21929s elapsed
+[annapurnapost] 33200 fetched, 10047 kept, ~20,986,330 chars, 21929s elapsed
+[annapurnapost] 33400 fetched, 10047 kept, ~20,986,330 chars, 21929s elapsed
+[annapurnapost] 33600 fetched, 10047 kept, ~20,986,330 chars, 21930s elapsed
+[annapurnapost] 33800 fetched, 10047 kept, ~20,986,330 chars, 21930s elapsed
+[annapurnapost] 34000 fetched, 10047 kept, ~20,986,330 chars, 21930s elapsed
+[annapurnapost] 34200 fetched, 10047 kept, ~20,986,330 chars, 21931s elapsed
+[annapurnapost] 34400 fetched, 10047 kept, ~20,986,330 chars, 21931s elapsed
+[annapurnapost] 34600 fetched, 10047 kept, ~20,986,330 chars, 21931s elapsed
+[annapurnapost] 34800 fetched, 10047 kept, ~20,986,330 chars, 21932s elapsed
+[annapurnapost] 35000 fetched, 10047 kept, ~20,986,330 chars, 21932s elapsed
+[annapurnapost] 35200 fetched, 10047 kept, ~20,986,330 chars, 21932s elapsed
+[annapurnapost] 35400 fetched, 10047 kept, ~20,986,330 chars, 21933s elapsed
+[annapurnapost] 35600 fetched, 10047 kept, ~20,986,330 chars, 21933s elapsed
+[annapurnapost] 35800 fetched, 10047 kept, ~20,986,330 chars, 21934s elapsed
+[annapurnapost] 36000 fetched, 10047 kept, ~20,986,330 chars, 21934s elapsed
+[annapurnapost] 36200 fetched, 10047 kept, ~20,986,330 chars, 21934s elapsed
+[annapurnapost] 36400 fetched, 10047 kept, ~20,986,330 chars, 21935s elapsed
+[annapurnapost] 36600 fetched, 10047 kept, ~20,986,330 chars, 21935s elapsed
+[annapurnapost] 36800 fetched, 10047 kept, ~20,986,330 chars, 21935s elapsed
+[annapurnapost] 37000 fetched, 10047 kept, ~20,986,330 chars, 21936s elapsed
+[annapurnapost] 37200 fetched, 10047 kept, ~20,986,330 chars, 21936s elapsed
+[annapurnapost] 37400 fetched, 10047 kept, ~20,986,330 chars, 21936s elapsed
+[annapurnapost] 37600 fetched, 10047 kept, ~20,986,330 chars, 21937s elapsed
+[annapurnapost] 37800 fetched, 10047 kept, ~20,986,330 chars, 21937s elapsed
+[annapurnapost] 38000 fetched, 10047 kept, ~20,986,330 chars, 21937s elapsed
+[annapurnapost] 38200 fetched, 10047 kept, ~20,986,330 chars, 21938s elapsed
+[annapurnapost] 38400 fetched, 10047 kept, ~20,986,330 chars, 21938s elapsed
+[annapurnapost] 38600 fetched, 10047 kept, ~20,986,330 chars, 21939s elapsed
+[annapurnapost] 38800 fetched, 10047 kept, ~20,986,330 chars, 21939s elapsed
+[annapurnapost] 39000 fetched, 10047 kept, ~20,986,330 chars, 21939s elapsed
+[annapurnapost] 39200 fetched, 10047 kept, ~20,986,330 chars, 21940s elapsed
+[annapurnapost] 39400 fetched, 10047 kept, ~20,986,330 chars, 21940s elapsed
+[annapurnapost] 39600 fetched, 10047 kept, ~20,986,330 chars, 21940s elapsed
+[annapurnapost] 39800 fetched, 10047 kept, ~20,986,330 chars, 21941s elapsed
+[annapurnapost] 40000 fetched, 10047 kept, ~20,986,330 chars, 21941s elapsed
+[annapurnapost] 40200 fetched, 10047 kept, ~20,986,330 chars, 21942s elapsed
+[annapurnapost] 40400 fetched, 10047 kept, ~20,986,330 chars, 21942s elapsed
+[annapurnapost] 40600 fetched, 10047 kept, ~20,986,330 chars, 21942s elapsed
+[annapurnapost] 40800 fetched, 10047 kept, ~20,986,330 chars, 21943s elapsed
+[annapurnapost] 41000 fetched, 10047 kept, ~20,986,330 chars, 21943s elapsed
+[annapurnapost] 41200 fetched, 10047 kept, ~20,986,330 chars, 21943s elapsed
+[annapurnapost] 41400 fetched, 10047 kept, ~20,986,330 chars, 21944s elapsed
+[annapurnapost] 41600 fetched, 10047 kept, ~20,986,330 chars, 21944s elapsed
+[annapurnapost] 41800 fetched, 10047 kept, ~20,986,330 chars, 21944s elapsed
+[annapurnapost] 42000 fetched, 10047 kept, ~20,986,330 chars, 21945s elapsed
+[annapurnapost] 42200 fetched, 10047 kept, ~20,986,330 chars, 21945s elapsed
+[annapurnapost] 42400 fetched, 10047 kept, ~20,986,330 chars, 21945s elapsed
+[annapurnapost] 42600 fetched, 10047 kept, ~20,986,330 chars, 21946s elapsed
+[annapurnapost] 42800 fetched, 10047 kept, ~20,986,330 chars, 21946s elapsed
+[annapurnapost] 43000 fetched, 10047 kept, ~20,986,330 chars, 21947s elapsed
+[annapurnapost] 43200 fetched, 10047 kept, ~20,986,330 chars, 21947s elapsed
+[annapurnapost] 43400 fetched, 10047 kept, ~20,986,330 chars, 21947s elapsed
+[annapurnapost] 43600 fetched, 10047 kept, ~20,986,330 chars, 21948s elapsed
+[annapurnapost] 43800 fetched, 10047 kept, ~20,986,330 chars, 21948s elapsed
+[annapurnapost] 44000 fetched, 10047 kept, ~20,986,330 chars, 21948s elapsed
+[annapurnapost] 44200 fetched, 10047 kept, ~20,986,330 chars, 21949s elapsed
+[annapurnapost] 44400 fetched, 10047 kept, ~20,986,330 chars, 21949s elapsed
+[annapurnapost] 44600 fetched, 10047 kept, ~20,986,330 chars, 21950s elapsed
+[annapurnapost] 44800 fetched, 10047 kept, ~20,986,330 chars, 21950s elapsed
+[annapurnapost] 45000 fetched, 10047 kept, ~20,986,330 chars, 21950s elapsed
+[annapurnapost] 45200 fetched, 10047 kept, ~20,986,330 chars, 21951s elapsed
+[annapurnapost] 45400 fetched, 10047 kept, ~20,986,330 chars, 21951s elapsed
+[annapurnapost] 45600 fetched, 10047 kept, ~20,986,330 chars, 21952s elapsed
+[annapurnapost] 45800 fetched, 10047 kept, ~20,986,330 chars, 21952s elapsed
+[annapurnapost] 46000 fetched, 10047 kept, ~20,986,330 chars, 21952s elapsed
+[annapurnapost] 46200 fetched, 10047 kept, ~20,986,330 chars, 21953s elapsed
+[annapurnapost] 46400 fetched, 10047 kept, ~20,986,330 chars, 21953s elapsed
+[annapurnapost] 46600 fetched, 10047 kept, ~20,986,330 chars, 21954s elapsed
+[annapurnapost] 46800 fetched, 10047 kept, ~20,986,330 chars, 21954s elapsed
+[annapurnapost] 47000 fetched, 10047 kept, ~20,986,330 chars, 21954s elapsed
+[annapurnapost] 47200 fetched, 10047 kept, ~20,986,330 chars, 21955s elapsed
+[annapurnapost] 47400 fetched, 10047 kept, ~20,986,330 chars, 21955s elapsed
+[annapurnapost] 47600 fetched, 10047 kept, ~20,986,330 chars, 21956s elapsed
+[annapurnapost] 47800 fetched, 10047 kept, ~20,986,330 chars, 21956s elapsed
+[annapurnapost] 48000 fetched, 10047 kept, ~20,986,330 chars, 21957s elapsed
+[annapurnapost] 48200 fetched, 10047 kept, ~20,986,330 chars, 21957s elapsed
+[annapurnapost] 48400 fetched, 10047 kept, ~20,986,330 chars, 21957s elapsed
+[annapurnapost] 48600 fetched, 10047 kept, ~20,986,330 chars, 21958s elapsed
+[annapurnapost] 48800 fetched, 10047 kept, ~20,986,330 chars, 21958s elapsed
+[annapurnapost] 49000 fetched, 10047 kept, ~20,986,330 chars, 21959s elapsed
+[annapurnapost] 49200 fetched, 10047 kept, ~20,986,330 chars, 21959s elapsed
+[annapurnapost] 49400 fetched, 10047 kept, ~20,986,330 chars, 21959s elapsed
+[annapurnapost] 49600 fetched, 10047 kept, ~20,986,330 chars, 21960s elapsed
+[annapurnapost] 49800 fetched, 10047 kept, ~20,986,330 chars, 21960s elapsed
+[annapurnapost] 50000 fetched, 10047 kept, ~20,986,330 chars, 21960s elapsed
+[annapurnapost] 50200 fetched, 10047 kept, ~20,986,330 chars, 21961s elapsed
+[annapurnapost] 50400 fetched, 10047 kept, ~20,986,330 chars, 21961s elapsed
+[annapurnapost] 50600 fetched, 10047 kept, ~20,986,330 chars, 21961s elapsed
+[annapurnapost] 50800 fetched, 10047 kept, ~20,986,330 chars, 21962s elapsed
+[annapurnapost] DONE (candidates exhausted): 10047 articles kept, ~20,986,330 chars, 21962s
+2026-08-16T06:03:33+05:30 [nepali/annapurnapost] finished cleanly

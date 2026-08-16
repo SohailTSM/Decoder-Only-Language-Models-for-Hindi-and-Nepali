@@ -1,0 +1,11 @@
+[
+  {"name": "bhaskar", "sitemap": "https://www.bhaskar.com/sitemaps-v1--sitemap-google-news-index.xml"},
+  {"name": "amarujala", "sitemap": "https://www.amarujala.com/sitemap-news-v1.xml"},
+  {"name": "jagran", "sitemap": "https://www.jagran.com/all-news-sitemap.xml"},
+  {"name": "navbharattimes", "sitemap": "https://navbharattimes.indiatimes.com/staticsitemap/nbt/news/sitemap-48hours.xml"},
+  {"name": "abplive", "sitemap": "https://www.abplive.com/news-sitemap.xml"},
+  {"name": "prabhatkhabar", "sitemap": "https://www.prabhatkhabar.com/news-sitemap.xml"},
+  {"name": "abplive_archive", "type": "date_archive",
+   "date_template": "https://www.abplive.com/news-{dd}-{mm}-{yyyy}.xml",
+   "start_date": "2023-10-01"}
+]
