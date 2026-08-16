@@ -64,19 +64,41 @@ script) is the exact rule our own cleaning pipeline reuses.
 
 ### 3.3 Download method and target
 
-Target: **400M tokens per language** from the public portion. Converted to a character count
-using the chars-per-token estimates derived in §4.2 (same estimates used for both the scrape
-stop-condition and this download), then streamed only that many characters from `hi-1.txt` /
-`ne.txt` — incremental UTF-8 decoding (so a multi-byte character split across download chunks is
-never corrupted) and only complete lines written (a trailing partial line is held back, never
-truncated into the output).
+Initial target: **400M tokens per language** from the public portion. Converted to a character
+count using the chars-per-token estimates derived in §4.2 (same estimates used for both the
+scrape stop-condition and this download), then streamed only that many characters from
+`hi-1.txt` / `ne.txt` — incremental UTF-8 decoding (so a multi-byte character split across
+download chunks is never corrupted) and only complete lines written (a trailing partial line is
+held back, never truncated into the output).
 
-**Result:**
+**Initial result (400M-token target):**
 
 | Language | Chars downloaded | Tokens (est.) |
 |---|---|---|
 | Hindi | 1,600,354,148 | ~400,088,537 |
 | Nepali | 1,800,070,395 | ~400,015,643 |
+
+**Revised upward after a sufficiency check.** Once Hindi's preprocessing reached stage 2
+(cleaning + exact + paragraph dedup, before MinHash), the surviving corpus measured
+1,646,140,837 chars (~411.5M tokens) against a combined raw input of 2,120,354,480 chars
+(manual + public) — a **77.63% survival rate**. Extrapolating that rate, the original 400M-token
+public target would land the *final* corpus meaningfully under the assignment's ~500M-token
+target (roughly 370-410M final, depending on how much more MinHash removes on top). To compensate:
+raw-token target raised to **520M tokens per language** (500M ÷ 0.7763 ≈ 644M combined raw needed;
+manual tokens are fixed since those sources are exhausted — 130.0M Hindi / 122.7M Nepali — so the
+gap is made up entirely on the public side: ≈514-521M tokens depending on language, rounded to
+520M for both for simplicity). Re-downloaded from scratch to the new target (restarting rather
+than resuming mid-stream — see the download script's own reasoning: not worth the complexity of a
+byte-range resume for a multi-GB stream) after hardening it with retry+backoff (this download had
+by then hit two real transient network failures over the course of the project — a DNS resolution
+failure and a `ReadTimeout` — with no retry logic at the time; both are now handled automatically).
+
+**Final result (520M-token target):**
+
+| Language | Chars downloaded | Tokens (est.) |
+|---|---|---|
+| Hindi | 2,080,379,402 | ~520,094,850 |
+| Nepali | 2,340,313,117 | ~520,069,582 |
 
 ## 4. Manual data collection
 
@@ -227,14 +249,42 @@ like a former PM's name, a political party name, and region/ethnicity words mixe
 were profanity, which would have wrongly rejected large amounts of entirely normal news content.
 
 **Fix:** hand-transliterated a curated subset of the reviewed romanized list into Devanagari
-(`scripts/preprocessing/wordlists/offensive_hi.txt`, 66 entries), deliberately **excluding**
-common words with legitimate literal meanings that happened to appear in source lists as slang
-(e.g. साला/brother-in-law, पटाखा/firecracker, सूअर alone/pig, भालु/bear) to avoid false-positive
-filtering of ordinary content. Verified end-to-end: a document containing a genuine offensive
-term is correctly rejected; ordinary text passes. Nepali's list
-(`offensive_ne.txt`) is short by design — reliable Nepali-specific resources were scarce — and is
-unioned with the Hindi list at load time, since the languages share considerable vocabulary
-including profanity. Documented limitation: Nepali-specific coverage is not comprehensive.
+(`scripts/preprocessing/wordlists/offensive_hi.txt`), deliberately **excluding** common words
+with legitimate literal meanings that happened to appear in source lists as slang (e.g.
+साला/brother-in-law, पटाखा/firecracker, सूअर alone/pig, भालु/bear) to avoid false-positive
+filtering of ordinary content. Nepali's list (`offensive_ne.txt`) is short by design — reliable
+Nepali-specific resources were scarce — and is unioned with the Hindi list at load time, since the
+languages share considerable vocabulary including profanity.
+
+**Two further bugs found once real preprocessing runs surfaced actual false positives:**
+
+1. **Substring matching, not word matching.** `passes_safety_filter` originally checked
+   `word in lowered_text` — plain substring containment. On a live sample this silently rejected
+   5,000-document batches of entirely clean content: the slur "रांड" matched as a substring
+   inside "ग्रांडसन" (grandson, from a Bollywood movie title), "मिरांडा" (a footballer's
+   surname), "मरांडी" (a common surname — including a former Jharkhand CM), and "ब्रांडेड"
+   (branded). Tried Python's regex `\b` word-boundary first; found it **unreliable on
+   Devanagari** (it still matched inside some of the same false positives, likely due to how
+   combining vowel signs interact with the Unicode word-character class). Fixed with explicit
+   whitespace tokenization + whole-token set lookup for single-word entries, and
+   contiguous-token-sequence matching for multi-word phrases — verified against all four false
+   positives above (all now correctly pass) and the genuine slur (still correctly rejected).
+2. **Two classes of bad word choices in the list itself**, found by inspecting what was actually
+   triggering rejections on real data: (a) **`बलात्कार`/`बलात्कारी`** (rape/rapist) — standard
+   legal/journalistic vocabulary for reporting on sexual-assault crimes, not profanity; keeping
+   them would have silently deleted an entire category of legitimate crime journalism. (b)
+   **`छक्का`** and **`गश्ती`** — real vulgar slang senses, but both are also extremely common
+   *innocent* words (छक्का = "six" as in a cricket six; गश्ती = police "patrol") that a
+   context-free keyword blocklist can't disambiguate; removed since the false-positive cost
+   clearly outweighs the benefit for words this common. Also removed on a full list review (not
+   triggered by data, just recognized as a categorically different problem): **`भंगी`**,
+   **`कंजर`**, **`हिजड़ा`/`हिजडा`** — these are caste/tribe/gender-identity community names, not
+   profanity; including them both risks rejecting legitimate journalism about caste issues or
+   transgender rights, and is itself the kind of harm a "safety" filter shouldn't encode.
+
+Verified after all fixes on a 5,000-document live sample of public data: safety-filter false
+positives dropped from 21/5,000 (0.42%) to **0/5,000**, with the length/quality filter (§5.1,
+unrelated) still correctly removing the genuinely-short entries.
 
 ### 5.4 Engineering: a full pipeline rewrite after a memory crash
 
@@ -264,35 +314,137 @@ isolated benchmarking that the LSH bookkeeping itself, which doesn't parallelize
 significant fraction of the per-document cost (Amdahl's law), not per-batch dispatch overhead
 (tested larger batch sizes; no further improvement).
 
-### 5.6 Splits
+### 5.6 A second crash: unbounded LSH memory growth mid-run
+
+Even after the speed fix in §5.5, a full production run on Hindi's ~3.8M-document stage-2 output
+crashed with a clean Python `MemoryError` after ~1,133s, right near the end (2.4M of 3.8M
+documents processed). Root cause: `MinHashLSH`'s memory grows without bound as more signatures
+are inserted — measured ~671 bytes/document from the run's own RSS log (587MB at 200K documents
+inserted, 2,064MB at 2.4M) — and at this document count the *live* LSH index in the main process
+alone approached the 3GB `ulimit -v` safety cap (itself put in place after the earlier crash in
+§5.4) before the stage could finish.
+
+**Fix (v2, superseded by §5.7 below):** the LSH index was reset to a fresh, empty one every
+800,000 inserted documents, bounding its memory to a fixed ceiling regardless of total corpus size
+(≈800,000 × 671 bytes ≈ 537MB peak for the index itself). This worked (no crash), but the
+tradeoff was real, not just theoretical: near-duplicates landing in *different* 800K-document
+shards were never compared against each other — with ~6 shards for Hindi's corpus, a true
+near-duplicate pair had only roughly a 1-in-6 chance of landing in the same shard, so an estimated
+~83% of cross-shard near-duplicates (e.g. different outlets covering the same event, which is
+exactly the motivating case for adding MinHash in the first place — see §4.3's "buffer for
+cross-source overlap") were silently missed. Recovery from the crash used a `--resume-from-stage2`
+flag added to the pipeline specifically for this: since stages 1-2 had already completed
+successfully and their output was intact on disk, recovery skipped straight to a fresh stage 3
+rather than re-running the ~14 minutes of already-completed work — this flag remained useful for
+every subsequent stage-3 rewrite too.
+
+### 5.7 Doing MinHash properly: signature-and-bucket LSH (v3)
+
+The sharding compromise in §5.6 was accepted as a fast fix under time pressure, not because it was
+the right technique. Replaced with the standard way LSH deduplication is actually done at scale:
+
+1. Compute a MinHash signature per document (same parallelized computation as before) and store
+   **only the signatures**, not a live growing index — as one compact NumPy array
+   (N × 16 uint64 ≈ 128 bytes/document, e.g. ~1GB for Nepali's ~7.8M documents), which uses *less*
+   memory than the v1 live LSH index did at a fraction of that document count.
+2. For each of 4 LSH bands (4 rows/band from num_perm=16, giving an implied similarity threshold
+   of ≈0.71), bucket documents by their band's hash value using `numpy.lexsort` — a vectorized,
+   C-level sort, not a Python-level `hash()` call per document — then scan the sorted array for
+   runs of identical band values (candidate near-duplicate groups).
+3. Union same-bucket documents via a plain array-backed union-find (disjoint-set), across *all*
+   bands and the *entire* corpus at once — no arbitrary shard boundary. A document is kept iff it
+   is the smallest-index representative of its connected component (the first-seen copy of each
+   near-duplicate cluster survives; every later copy is dropped).
+4. A second streaming pass over the input writes only the kept documents.
+
+This gives full corpus-wide near-duplicate coverage with *better* memory bounds than either
+previous version, because it never holds a live, ever-growing Python object graph — just compact
+arrays that are discarded once no longer needed.
+
+**A real bug found while testing this, via a synthetic near-duplicate, not just eyeballing
+aggregate counts:** took a real document, changed only its first 5 words, and confirmed the
+pipeline should flag it as a near-duplicate of the original. It didn't. Root cause: the
+shingle-sampling function (`_shingles`, used to cap shingles/document to 40 for speed, §5.5)
+seeded its random sample from `hash(first_shingle)` — since the edit changed the very first
+shingle, the near-duplicate document sampled a *completely different* random 40-shingle subset
+than the original, even though the rest of the document was identical, and their MinHash
+signatures ended up looking unrelated. **Fix:** replaced position-dependent random sampling with
+deterministic bottom-k selection — sort all shingles by their own hash value and keep the lowest
+40. Since this depends only on each shingle's own content, not the document's position or context,
+two documents sharing most of their shingles will independently select mostly the same subset
+regardless of *where* they were edited. Re-ran the synthetic test after the fix: the near-duplicate
+was correctly caught (removed), and a genuinely unrelated document in the same test batch
+correctly survived.
+
+### 5.8 Splits and the final token-count cap
 
 95% / 2.5% / 2.5% train/val/test, assigned per-document at random (not drawn from contiguous
 blocks of the corpus, avoiding source- or time-ordering bias between splits).
 
-### 5.7 Status
+**Cap added:** both languages' preprocessing survival rate (§3.3) turned out better than the
+pre-run estimate, and after the public-data top-up both finished meaningfully over the ~500M-token
+target (Hindi ~520.5M, Nepali ~589.8M from the pre-fix v2 run). Capped the final corpus to
+**~510M tokens** per language — comfortably above 500M without overshooting by as much as the
+uncapped runs did. Implemented in `stage4_split`: documents are visited in the same random order
+used for the train/val/test shuffle, and included until the running character total reaches the
+target (510M tokens × the language's chars/token estimate, §4.2) — a genuine random sample of the
+corpus, not just "the first N documents by file order" — with any remaining documents beyond the
+cap excluded entirely rather than assigned to a split.
 
-Preprocessing was running in the background at the time of writing this report. Final post-dedup
-counts and the split sizes will be appended here once it completes — see `stats.json` under each
-language's `data/processed/` directory for the authoritative final numbers.
+### 5.9 Final results
+
+Both languages completed the full pipeline (v3 MinHash, 510M-token cap). The v3 rewrite's
+coverage difference versus the v2 sharded approach is stark and language-dependent: Hindi's
+near-dup rate was 0.55% (4,928,475 → 4,901,226, 27,249 removed — 12.6x more than v2's sharded
+result on the same stage-2 input); Nepali's was **4.58%** (7,835,734 → 7,476,841, 358,893
+removed — 31x more than v2 caught). The much higher Nepali rate is consistent with, not
+surprising given, the cross-source overlap concern raised back in §4.3 (the reason the Nepali
+scrape's collection buffer was raised in the first place) — v3's full corpus-wide coverage is
+catching exactly the kind of cross-outlet duplication v2's shard boundaries were structurally
+blind to.
+
+| Language | Train | Val | Test | Total chars | Total tokens (est.) | Target |
+|---|---:|---:|---:|---:|---:|---:|
+| Hindi | 4,581,781 docs / 1,937,829,626 chars | 120,573 / 51,055,460 | 120,574 / 51,115,161 | 2,040,000,247 | ~510,000,062 | 510M |
+| Nepali | 6,387,191 docs / 2,180,306,282 chars | 168,083 / 57,319,438 | 168,085 / 57,374,283 | 2,295,000,003 | ~510,000,001 | 510M |
+
+The token-budget cap (§5.8) landed within a few hundred characters of the exact target for both
+languages (247 chars over for Hindi, 3 chars over for Nepali, both against a ~2 billion-character
+target — effectively exact).
+
+**Manual/public provenance is not tracked through this pipeline** — `iter_all_documents` yields a
+`(source, text)` tuple, but stage 1 discards the source tag when writing its output, so the exact
+post-processing manual-token count isn't directly available from `stats.json`. The §6 ratio below
+is therefore still the pre-processing estimate from the raw collected counts, not a post-dedup
+measurement; treat it as an approximation, not the authoritative number, unless/until
+source-tracking is added and the pipeline is re-run.
 
 ## 6. Combined dataset statistics and the ≥20%-manual requirement
 
-Using the pre-preprocessing token estimates (§3.3, §4.4) — final post-dedup counts will be
-somewhat lower once §5's dedup passes finish, which is expected and is the entire point of
-running them:
+Using the raw (pre-preprocessing) token counts after the §3.3 top-up — **⚠️ this ratio needs
+active monitoring, not just a passing mention:**
 
 | Language | Manual tokens | Public tokens | Total | Manual % |
 |---|---:|---:|---:|---:|
-| Hindi | 130,000,083 | 400,088,537 | 530,088,620 | **24.5%** |
-| Nepali | 122,661,776 | 400,015,643 | 522,677,419 | **23.5%** |
+| Hindi | 130,000,083 | 520,094,850 | 650,094,933 | **20.00%** |
+| Nepali | 122,661,776 | 520,069,582 | 642,731,358 | **19.08%** |
 
-Both comfortably clear the assignment's **≥20% manual** requirement, despite Nepali's manual
-portion landing ~5.6% under its own *internal* 130M-token planning target — that target was never
-the actual requirement, just a convenient equal split assumption made before the real achievable
-pool size was known.
+Raising the public-data target to compensate for preprocessing loss (§3.3) fixed the *absolute*
+token-count shortfall but pushed the manual **ratio** down — Hindi is now sitting exactly on the
+20% line and Nepali has dropped **below** the assignment's required minimum, using raw counts.
+Manual sources are exhausted (§4.4) and can't easily be grown further, so the lever here is on the
+public side, or on carrying manual content through preprocessing more gently than public content.
+The true, decisive number is the **post-preprocessing** ratio once §5 finishes for both languages
+(manual and public content go through the identical pipeline, so the ratio could shift either way
+depending on relative survival rates) — this table must be recomputed with real post-dedup counts
+before Phase 1 is considered done, and if it's still under 20%, the public download target needs
+to come back down (or manual needs a genuinely new source) rather than just noting the shortfall.
 
 ## 7. Known limitations (documented, not silently glossed over)
 
+- **Open, unresolved as of writing:** the ≥20%-manual requirement is no longer comfortably clear
+  of the line (§6) after the public-data top-up — Nepali is currently under it on raw counts.
+  Needs the real post-preprocessing ratio and, if still short, a correction to the public target.
 - Tier 2 filtering (perplexity, semantic, topic) was scoped out entirely — see §5.1 for why.
 - The safety-filter blocklist is hand-curated and conservative, not comprehensive, especially for
   Nepali (§5.3).

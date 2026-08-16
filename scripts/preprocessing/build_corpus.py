@@ -44,6 +44,14 @@ PUBLIC_FILES = {
     "nepali": "indiccorpv2_ne.txt",
 }
 
+# Final-corpus token cap: both languages landed comfortably over the ~500M-token target
+# after preprocessing survival rates turned out better than the pre-run estimate (see
+# report/phase1_data_report.md) — Hindi ~520.5M, Nepali ~589.8M. Capped to ~510M tokens
+# (a little above 500M, not razor-thin against it) using the same chars-per-token
+# estimates as the rest of the pipeline.
+TARGET_TOKENS = 510_000_000
+CHARS_PER_TOKEN = {"hindi": 4.0, "nepali": 4.5}
+
 
 def _rss_mb() -> float:
     return resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024
@@ -166,13 +174,19 @@ def stage2_paragraph_dedup(in_path: Path, out_path: Path, lang: str,
 
 
 def _shingles(text: str, k: int = 5, max_shingles: int = MINHASH_MAX_SHINGLES) -> set[str]:
+    """Bottom-k sampling by shingle hash, NOT a per-document random sample. This matters:
+    an earlier version seeded the sample from hash(first_shingle), so two documents that
+    are near-identical except for an edit near the *start* got completely different
+    random subsets and the near-duplicate went undetected (caught by a synthetic-edit
+    test). Selecting the k shingles with the smallest hash value instead depends only on
+    each shingle's own content, not the document's position/context, so documents
+    sharing most of their shingles will independently select mostly the same subset."""
     words = text.split()
     if len(words) < k:
         return {" ".join(words)}
-    all_shingles = [" ".join(words[i:i + k]) for i in range(len(words) - k + 1)]
+    all_shingles = list({" ".join(words[i:i + k]) for i in range(len(words) - k + 1)})
     if len(all_shingles) > max_shingles:
-        rng = random.Random(hash(all_shingles[0]))  # deterministic per-doc, cheap
-        rng.shuffle(all_shingles)
+        all_shingles.sort(key=hash)
         all_shingles = all_shingles[:max_shingles]
     return set(all_shingles)
 
@@ -187,90 +201,187 @@ def _compute_minhash_signature(text: str) -> list[int]:
     return mh.hashvalues.tolist()
 
 
-# A live MinHashLSH's memory grows without bound as more documents are inserted (measured:
-# ~671 bytes/doc from RSS growth during a real run — 2064MB at 2.4M inserted docs, up from
-# 587MB at 200K). At Hindi's ~3.8M-document scale this alone approached 3GB and crashed the
-# whole stage with a MemoryError just short of finishing. Fix: periodically start a *fresh*
-# LSH index every SHARD_SIZE documents, bounding memory to a fixed ceiling regardless of
-# total corpus size. Tradeoff: near-duplicates that happen to fall in different shards won't
-# be caught (only within-shard near-dups are detected) — accepted given exact + paragraph
-# dedup (stages 1-2) already catch the exact-overlap cases precisely; this stage is on top
-# of those, not the only line of defense.
-MINHASH_SHARD_SIZE = 800_000  # ~800_000 * 671 bytes ≈ 537MB peak for the LSH index itself
+# --- History of this stage, kept because both attempts taught something real ---
+# v1: a single live MinHashLSH grew without bound as documents were inserted (measured
+# ~671 bytes/doc) and crashed with a MemoryError near the end of a full run.
+# v2 (sharded): reset the LSH index every 800K documents to bound memory. This worked
+# (no crash) but only catches near-dups *within* the same 800K-doc shard — with ~6
+# shards, a true near-duplicate pair had only a ~1-in-6 chance of landing in the same
+# shard, so most cross-shard near-dups (e.g. different outlets covering the same event,
+# scattered across the corpus by source) were silently missed.
+# v3 (this version): proper LSH banding via signatures-on-disk + sort-based bucketing +
+# union-find, giving full corpus-wide coverage with *better* memory bounds than v1, by
+# never holding a live growing Python object graph — just compact numpy arrays.
+MINHASH_NUM_BANDS = 4  # with num_perm=16 -> 4 rows/band -> threshold ~= (1/4)^(1/4) ~= 0.71
 
 
 def stage3_minhash_dedup(in_path: Path, out_path: Path, lang: str,
-                          threshold: float = 0.8, workers: int | None = None,
-                          batch_size: int = 2000,
-                          shard_size: int = MINHASH_SHARD_SIZE) -> dict:
-    """Signature computation (measured bottleneck: ~1.1ms/doc single-threaded) is
-    parallelized across worker processes; LSH insert/query stays single-threaded in
-    the main process, since duplicate detection must see documents in a stable order
-    to be deterministic. The LSH index itself is reset every `shard_size` documents to
-    bound memory (see MINHASH_SHARD_SIZE comment)."""
+                          workers: int | None = None, batch_size: int = 2000,
+                          num_bands: int = MINHASH_NUM_BANDS) -> dict:
+    """Pass 1: compute a MinHash signature per document (parallelized across worker
+    processes — this is the measured bottleneck, ~1.1ms/doc single-threaded) and store
+    them as one compact numpy array (N x num_perm uint64, ~128 bytes/doc — e.g. ~1GB for
+    8M documents, far less than a live LSH index at the same scale). Bucket documents by
+    each band's hash via numpy lexsort (vectorized, not a Python-level hash() per row)
+    and union same-bucket documents via a plain array-backed union-find. A document is
+    kept iff it's the smallest-index representative of its connected component — i.e.
+    the first-seen copy of each near-duplicate cluster survives.
+    Pass 2: re-read the input and write only the kept documents."""
     import multiprocessing
 
     import numpy as np
-    from datasketch import MinHash, MinHashLSH
 
     workers = workers or max(1, multiprocessing.cpu_count() - 2)
-    lsh = MinHashLSH(threshold=threshold, num_perm=MINHASH_NUM_PERM)
-    shard_inserted = 0
-    n_in = n_kept = batch_count = 0
     t0 = time.time()
-    log_every_n_batches = max(1, LOG_EVERY // batch_size)
 
-    def batches():
+    # --- Pass 1a: signatures ---
+    print(f"[{lang}] stage3 pass 1a: computing MinHash signatures ({workers} workers)...",
+          file=sys.stderr)
+    sig_chunks = []
+    n_sig = 0
+    with multiprocessing.Pool(workers) as pool:
         batch = []
+
+        def flush(texts):
+            nonlocal n_sig
+            sigs = pool.map(_compute_minhash_signature, texts)
+            sig_chunks.append(np.array(sigs, dtype=np.uint64))
+            n_sig += len(texts)
+            if n_sig % LOG_EVERY < batch_size:
+                print(f"[{lang}] stage3: {n_sig:,} signatures computed, "
+                      f"{time.time() - t0:.0f}s, rss={_rss_mb():.0f}MB", file=sys.stderr)
+
         for text in iter_jsonl(in_path):
             batch.append(text)
             if len(batch) >= batch_size:
-                yield batch
+                flush(batch)
                 batch = []
         if batch:
-            yield batch
+            flush(batch)
 
-    with out_path.open("w", encoding="utf-8") as out_f, \
-         multiprocessing.Pool(workers) as pool:
-        for batch in batches():
-            signatures = pool.map(_compute_minhash_signature, batch)
-            for text, sig in zip(batch, signatures):
-                mh = MinHash(num_perm=MINHASH_NUM_PERM,
-                              hashvalues=np.array(sig, dtype=np.uint64),
-                              scheme="affine32")
-                if not lsh.query(mh):
-                    lsh.insert(f"doc_{n_in}", mh)
-                    shard_inserted += 1
-                    out_f.write(json.dumps({"text": text}, ensure_ascii=False) + "\n")
-                    n_kept += 1
-                    if shard_inserted >= shard_size:
-                        lsh = MinHashLSH(threshold=threshold, num_perm=MINHASH_NUM_PERM)
-                        shard_inserted = 0
-                n_in += 1
-            batch_count += 1
-            if batch_count % log_every_n_batches == 0:
-                print(f"[{lang}] stage3 (minhash dedup, {workers} workers): "
-                      f"{n_in:,} read, {n_kept:,} kept, "
-                      f"{time.time() - t0:.0f}s, rss={_rss_mb():.0f}MB", file=sys.stderr)
-    return {"in": n_in, "kept": n_kept}
+    sig_array = np.concatenate(sig_chunks) if sig_chunks else np.zeros((0, MINHASH_NUM_PERM),
+                                                                        dtype=np.uint64)
+    del sig_chunks
+    n = len(sig_array)
+    print(f"[{lang}] stage3: {n:,} signatures ready, {time.time() - t0:.0f}s, "
+          f"rss={_rss_mb():.0f}MB", file=sys.stderr)
+
+    # --- Pass 1b: LSH banding + union-find ---
+    parent = np.arange(n, dtype=np.int64)
+
+    def find(x: int) -> int:
+        root = x
+        while parent[root] != root:
+            root = parent[root]
+        while parent[x] != root:  # path compression
+            parent[x], x = root, parent[x]
+        return root
+
+    def union(a: int, b: int) -> None:
+        ra, rb = find(a), find(b)
+        if ra != rb:
+            if ra < rb:
+                parent[rb] = ra
+            else:
+                parent[ra] = rb
+
+    rows_per_band = MINHASH_NUM_PERM // num_bands
+    for band_idx in range(num_bands):
+        start = band_idx * rows_per_band
+        band = sig_array[:, start:start + rows_per_band]
+        # lexsort: primary key last in the list; this sorts rows so identical bands
+        # (i.e. candidate near-duplicates for this band) become adjacent — vectorized,
+        # no per-row Python hash() calls.
+        order = np.lexsort([band[:, c] for c in reversed(range(rows_per_band))])
+        sorted_band = band[order]
+        same_as_prev = np.all(sorted_band[1:] == sorted_band[:-1], axis=1)
+        # union each run of equal consecutive rows (only iterates over actual matches,
+        # which is a small fraction of n given real near-dup rates). same_as_prev[k] means
+        # sorted_band[k] == sorted_band[k+1]; a maximal run of True at [i, j-1] means rows
+        # [i, j] (inclusive) are all equal, so union order[i] with order[i+1..j].
+        i = 0
+        m = len(same_as_prev)
+        while i < m:
+            if same_as_prev[i]:
+                j = i
+                while j < m and same_as_prev[j]:
+                    j += 1
+                # equal-row run spans sorted_band indices [i, j] inclusive
+                first_doc = int(order[i])
+                for k in range(i + 1, j + 1):
+                    union(first_doc, int(order[k]))
+                i = j + 1
+            else:
+                i += 1
+        print(f"[{lang}] stage3: band {band_idx + 1}/{num_bands} bucketed, "
+              f"{time.time() - t0:.0f}s, rss={_rss_mb():.0f}MB", file=sys.stderr)
+
+    roots = np.array([find(i) for i in range(n)])
+    keep_mask = roots == np.arange(n)
+    n_kept = int(keep_mask.sum())
+    print(f"[{lang}] stage3: {n:,} -> {n_kept:,} after near-dup merge "
+          f"({time.time() - t0:.0f}s)", file=sys.stderr)
+
+    # --- Pass 2: write survivors ---
+    with out_path.open("w", encoding="utf-8") as out_f:
+        for i, text in enumerate(iter_jsonl(in_path)):
+            if keep_mask[i]:
+                out_f.write(json.dumps({"text": text}, ensure_ascii=False) + "\n")
+
+    return {"in": n, "kept": n_kept}
 
 
-def stage4_split(in_path: Path, out_dir: Path, lang: str) -> dict:
+def stage4_split(in_path: Path, out_dir: Path, lang: str,
+                  target_chars: int | None = None) -> dict:
     """Two-pass, memory-light shuffle+split: holding every surviving document's full
     text in one Python list to shuffle it is the same class of bug that crashed things
     earlier (millions of docs x hundreds-to-thousands of chars each). Instead: pass 1
-    counts lines and builds a per-line split assignment (train/val/test) — an array of
-    single characters, a few MB even at millions of docs, not the text itself. Pass 2
-    streams the input once, routing each line straight to its assigned output file."""
+    reads document lengths and builds a per-line split-label array (int8, ~1 byte/doc —
+    a few MB even at millions of documents, not the text itself). Pass 2 streams the
+    input once, routing each line straight to its assigned output file (or skipping it,
+    if excluded by target_chars).
+
+    If target_chars is given, documents are visited in random order and included until
+    the running total reaches target_chars — a genuine random sample of the corpus, not
+    just "the first N by file order" — and only that sample is split into train/val/test;
+    the rest are excluded entirely. Use this to cap final corpus size (e.g. survival
+    rates turning out better than estimated can otherwise land meaningfully over target)."""
+    import numpy as np
+
     with in_path.open(encoding="utf-8") as f:
-        n = sum(1 for _ in f)
+        lengths = np.array([len(json.loads(line)["text"]) for line in f], dtype=np.int64)
+    n = len(lengths)
 
-    n_train = int(n * SPLIT_RATIOS[0])
-    n_val = int(n * SPLIT_RATIOS[1])
-    assignment = (["train"] * n_train + ["val"] * n_val
-                  + ["test"] * (n - n_train - n_val))
-    random.Random(SEED).shuffle(assignment)
+    order = np.arange(n)
+    np.random.RandomState(SEED).shuffle(order)
 
+    if target_chars is not None:
+        cumulative = np.cumsum(lengths[order])
+        # smallest n_included such that the first n_included docs' chars sum >= target;
+        # searchsorted(side='right') gives the count of cumulative entries <= target, so
+        # +1 includes the one document that actually crosses the threshold (unless the
+        # cap is hit exactly, in which case that +1 would overshoot by one document —
+        # negligible at this scale, and erring toward "at least the target" over "just
+        # under" is the safer direction for a token-budget cap).
+        n_included = int(np.searchsorted(cumulative, target_chars, side="right")) + 1
+        n_included = min(n_included, n)
+        order = order[:n_included]
+        print(f"[{lang}] stage4: capping to ~{target_chars:,} chars -> "
+              f"{n_included:,}/{n:,} documents included "
+              f"({int(cumulative[n_included - 1]):,} chars), "
+              f"{n - n_included:,} excluded", file=sys.stderr)
+
+    n_included = len(order)
+    n_train = int(n_included * SPLIT_RATIOS[0])
+    n_val = int(n_included * SPLIT_RATIOS[1])
+
+    TRAIN, VAL, TEST = 1, 2, 3
+    split_labels = np.zeros(n, dtype=np.int8)  # 0 = excluded (only relevant if target_chars set)
+    split_labels[order[:n_train]] = TRAIN
+    split_labels[order[n_train:n_train + n_val]] = VAL
+    split_labels[order[n_train + n_val:]] = TEST
+
+    label_name = {TRAIN: "train", VAL: "val", TEST: "test"}
     out_paths = {name: out_dir / f"{name}.txt" for name in ("train", "val", "test")}
     out_files = {name: p.open("w", encoding="utf-8") for name, p in out_paths.items()}
     counts = {name: 0 for name in out_files}
@@ -278,8 +389,11 @@ def stage4_split(in_path: Path, out_dir: Path, lang: str) -> dict:
     try:
         with in_path.open(encoding="utf-8") as f:
             for i, line in enumerate(f):
+                label = int(split_labels[i])
+                if label == 0:
+                    continue
+                split_name = label_name[label]
                 text = json.loads(line)["text"]
-                split_name = assignment[i]
                 out_files[split_name].write(text.strip() + "\n\n")
                 counts[split_name] += 1
                 chars[split_name] += len(text)
@@ -341,8 +455,10 @@ def main() -> None:
         stats["stage3"] = stage3_minhash_dedup(s2_path, s3_path, lang)
         print(f"[{lang}] stage3 done: {stats['stage3']}", file=sys.stderr)
 
-    print(f"[{lang}] stage 4: shuffle + split {SPLIT_RATIOS}...", file=sys.stderr)
-    stats["splits"] = stage4_split(s3_path, out_dir, lang)
+    target_chars = int(TARGET_TOKENS * CHARS_PER_TOKEN[lang])
+    print(f"[{lang}] stage 4: shuffle + split {SPLIT_RATIOS}, capped to "
+          f"~{TARGET_TOKENS:,} tokens (~{target_chars:,} chars)...", file=sys.stderr)
+    stats["splits"] = stage4_split(s3_path, out_dir, lang, target_chars=target_chars)
 
     with (out_dir / "stats.json").open("w", encoding="utf-8") as f:
         json.dump(stats, f, indent=2, ensure_ascii=False)

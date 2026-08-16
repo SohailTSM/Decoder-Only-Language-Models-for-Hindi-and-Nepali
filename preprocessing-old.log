@@ -1,0 +1,241 @@
+=== HINDI ===
+[hindi] stage 1: clean + exact dedup...
+[hindi] stage1: 200,000 read, 184,330 kept, 517s, rss=47MB
+[hindi] stage1: 400,000 read, 319,244 kept, 586s, rss=77MB
+[hindi] stage1: 600,000 read, 453,757 kept, 654s, rss=85MB
+[hindi] stage1: 800,000 read, 588,540 kept, 723s, rss=101MB
+[hindi] stage1: 1,000,000 read, 723,451 kept, 792s, rss=135MB
+[hindi] stage1: 1,200,000 read, 857,518 kept, 860s, rss=144MB
+[hindi] stage1: 1,400,000 read, 991,970 kept, 930s, rss=163MB
+[hindi] stage1: 1,600,000 read, 1,126,336 kept, 998s, rss=176MB
+[hindi] stage1: 1,800,000 read, 1,260,811 kept, 1067s, rss=254MB
+[hindi] stage1: 2,000,000 read, 1,395,380 kept, 1136s, rss=254MB
+[hindi] stage1: 2,200,000 read, 1,529,992 kept, 1204s, rss=254MB
+[hindi] stage1: 2,400,000 read, 1,664,666 kept, 1273s, rss=266MB
+[hindi] stage1: 2,600,000 read, 1,799,068 kept, 1342s, rss=280MB
+[hindi] stage1: 2,800,000 read, 1,933,485 kept, 1410s, rss=295MB
+[hindi] stage1: 3,000,000 read, 2,067,976 kept, 1479s, rss=309MB
+[hindi] stage1: 3,200,000 read, 2,202,240 kept, 1547s, rss=324MB
+[hindi] stage1: 3,400,000 read, 2,336,621 kept, 1616s, rss=338MB
+[hindi] stage1: 3,600,000 read, 2,470,872 kept, 1685s, rss=353MB
+[hindi] stage1: 3,800,000 read, 2,605,334 kept, 1754s, rss=486MB
+[hindi] stage1: 4,000,000 read, 2,740,161 kept, 1823s, rss=486MB
+[hindi] stage1: 4,200,000 read, 2,874,693 kept, 1892s, rss=486MB
+[hindi] stage1: 4,400,000 read, 3,009,186 kept, 1960s, rss=486MB
+[hindi] stage1: 4,600,000 read, 3,143,397 kept, 2029s, rss=490MB
+[hindi] stage1: 4,800,000 read, 3,277,832 kept, 2098s, rss=504MB
+[hindi] stage1: 5,000,000 read, 3,412,150 kept, 2166s, rss=520MB
+[hindi] stage1: 5,200,000 read, 3,546,397 kept, 2235s, rss=534MB
+[hindi] stage1: 5,400,000 read, 3,680,735 kept, 2303s, rss=548MB
+[hindi] stage1: 5,600,000 read, 3,815,326 kept, 2372s, rss=562MB
+[hindi] stage1: 5,800,000 read, 3,950,070 kept, 2441s, rss=578MB
+[hindi] stage1: 6,000,000 read, 4,084,503 kept, 2511s, rss=591MB
+[hindi] stage1: 6,200,000 read, 4,218,972 kept, 2580s, rss=606MB
+[hindi] stage1: 6,400,000 read, 4,353,189 kept, 2649s, rss=621MB
+[hindi] stage1: 6,600,000 read, 4,487,717 kept, 2718s, rss=639MB
+[hindi] stage1: 6,800,000 read, 4,621,677 kept, 2786s, rss=649MB
+[hindi] stage1: 7,000,000 read, 4,755,822 kept, 2854s, rss=664MB
+[hindi] stage1: 7,200,000 read, 4,889,844 kept, 2924s, rss=679MB
+[hindi] stage1 done: {'raw_documents': 7257421, 'dropped_by_cleaning': 2312672, 'dropped_exact_dup': 16274, 'kept': 4928475}
+[hindi] stage 2: paragraph-level dedup...
+[hindi] stage2 (paragraph dedup): 200,000 read, 200,000 kept, 29s, rss=683MB
+[hindi] stage2 (paragraph dedup): 400,000 read, 400,000 kept, 46s, rss=683MB
+[hindi] stage2 (paragraph dedup): 600,000 read, 600,000 kept, 53s, rss=683MB
+[hindi] stage2 (paragraph dedup): 800,000 read, 800,000 kept, 61s, rss=683MB
+[hindi] stage2 (paragraph dedup): 1,000,000 read, 1,000,000 kept, 69s, rss=683MB
+[hindi] stage2 (paragraph dedup): 1,200,000 read, 1,200,000 kept, 77s, rss=683MB
+[hindi] stage2 (paragraph dedup): 1,400,000 read, 1,400,000 kept, 85s, rss=683MB
+[hindi] stage2 (paragraph dedup): 1,600,000 read, 1,600,000 kept, 93s, rss=683MB
+[hindi] stage2 (paragraph dedup): 1,800,000 read, 1,800,000 kept, 100s, rss=683MB
+[hindi] stage2 (paragraph dedup): 2,000,000 read, 2,000,000 kept, 108s, rss=683MB
+[hindi] stage2 (paragraph dedup): 2,200,000 read, 2,200,000 kept, 117s, rss=683MB
+[hindi] stage2 (paragraph dedup): 2,400,000 read, 2,400,000 kept, 127s, rss=683MB
+[hindi] stage2 (paragraph dedup): 2,600,000 read, 2,600,000 kept, 134s, rss=683MB
+[hindi] stage2 (paragraph dedup): 2,800,000 read, 2,800,000 kept, 142s, rss=683MB
+[hindi] stage2 (paragraph dedup): 3,000,000 read, 3,000,000 kept, 152s, rss=683MB
+[hindi] stage2 (paragraph dedup): 3,200,000 read, 3,200,000 kept, 160s, rss=683MB
+[hindi] stage2 (paragraph dedup): 3,400,000 read, 3,400,000 kept, 168s, rss=683MB
+[hindi] stage2 (paragraph dedup): 3,600,000 read, 3,600,000 kept, 177s, rss=683MB
+[hindi] stage2 (paragraph dedup): 3,800,000 read, 3,800,000 kept, 186s, rss=683MB
+[hindi] stage2 (paragraph dedup): 4,000,000 read, 4,000,000 kept, 194s, rss=683MB
+[hindi] stage2 (paragraph dedup): 4,200,000 read, 4,200,000 kept, 206s, rss=683MB
+[hindi] stage2 (paragraph dedup): 4,400,000 read, 4,400,000 kept, 219s, rss=683MB
+[hindi] stage2 (paragraph dedup): 4,600,000 read, 4,600,000 kept, 227s, rss=683MB
+[hindi] stage2 (paragraph dedup): 4,800,000 read, 4,800,000 kept, 237s, rss=683MB
+[hindi] stage2 done: {'in': 4928475, 'kept': 4928475}
+[hindi] stage 3: MinHash near-duplicate dedup...
+[hindi] stage3 (minhash dedup, 6 workers): 200,000 read, 199,971 kept, 119s, rss=683MB
+[hindi] stage3 (minhash dedup, 6 workers): 400,000 read, 399,918 kept, 211s, rss=683MB
+[hindi] stage3 (minhash dedup, 6 workers): 600,000 read, 599,836 kept, 303s, rss=683MB
+[hindi] stage3 (minhash dedup, 6 workers): 800,000 read, 799,722 kept, 396s, rss=805MB
+[hindi] stage3 (minhash dedup, 6 workers): 1,000,000 read, 999,651 kept, 490s, rss=906MB
+[hindi] stage3 (minhash dedup, 6 workers): 1,200,000 read, 1,199,585 kept, 582s, rss=906MB
+[hindi] stage3 (minhash dedup, 6 workers): 1,400,000 read, 1,399,454 kept, 674s, rss=906MB
+[hindi] stage3 (minhash dedup, 6 workers): 1,600,000 read, 1,599,339 kept, 765s, rss=906MB
+[hindi] stage3 (minhash dedup, 6 workers): 1,800,000 read, 1,799,300 kept, 858s, rss=906MB
+[hindi] stage3 (minhash dedup, 6 workers): 2,000,000 read, 1,999,213 kept, 949s, rss=906MB
+[hindi] stage3 (minhash dedup, 6 workers): 2,200,000 read, 2,199,099 kept, 1043s, rss=906MB
+[hindi] stage3 (minhash dedup, 6 workers): 2,400,000 read, 2,398,967 kept, 1135s, rss=906MB
+[hindi] stage3 (minhash dedup, 6 workers): 2,600,000 read, 2,598,919 kept, 1228s, rss=906MB
+[hindi] stage3 (minhash dedup, 6 workers): 2,800,000 read, 2,798,844 kept, 1320s, rss=906MB
+[hindi] stage3 (minhash dedup, 6 workers): 3,000,000 read, 2,998,710 kept, 1412s, rss=906MB
+[hindi] stage3 (minhash dedup, 6 workers): 3,200,000 read, 3,198,602 kept, 1506s, rss=906MB
+[hindi] stage3 (minhash dedup, 6 workers): 3,400,000 read, 3,398,566 kept, 1598s, rss=936MB
+[hindi] stage3 (minhash dedup, 6 workers): 3,600,000 read, 3,598,468 kept, 1689s, rss=936MB
+[hindi] stage3 (minhash dedup, 6 workers): 3,800,000 read, 3,798,361 kept, 1781s, rss=936MB
+[hindi] stage3 (minhash dedup, 6 workers): 4,000,000 read, 3,998,233 kept, 1873s, rss=936MB
+[hindi] stage3 (minhash dedup, 6 workers): 4,200,000 read, 4,198,193 kept, 1968s, rss=936MB
+[hindi] stage3 (minhash dedup, 6 workers): 4,400,000 read, 4,398,108 kept, 2060s, rss=936MB
+[hindi] stage3 (minhash dedup, 6 workers): 4,600,000 read, 4,598,005 kept, 2154s, rss=936MB
+[hindi] stage3 (minhash dedup, 6 workers): 4,800,000 read, 4,797,856 kept, 2245s, rss=936MB
+[hindi] stage3 done: {'in': 4928475, 'kept': 4926314}
+[hindi] stage 4: shuffle + split (0.95, 0.025, 0.025)...
+[hindi] wrote train: 4,679,998 docs, 1,977,721,472 chars
+[hindi] wrote val: 123,157 docs, 52,439,616 chars
+[hindi] wrote test: 123,159 docs, 51,882,067 chars
+[hindi] DONE. Stats written to /home/sohailtsm/M Tech Contents/SEM III/LMA/Projects/Project 1/individual-project-SohailTSM/hindi/data/processed/stats.json
+=== NEPALI ===
+[nepali] stage 1: clean + exact dedup...
+[nepali] stage1: 200,000 read, 199,278 kept, 369s, rss=49MB
+[nepali] stage1: 400,000 read, 374,776 kept, 613s, rss=77MB
+[nepali] stage1: 600,000 read, 517,825 kept, 662s, rss=91MB
+[nepali] stage1: 800,000 read, 660,776 kept, 709s, rss=136MB
+[nepali] stage1: 1,000,000 read, 803,691 kept, 757s, rss=138MB
+[nepali] stage1: 1,200,000 read, 946,967 kept, 805s, rss=154MB
+[nepali] stage1: 1,400,000 read, 1,089,900 kept, 852s, rss=169MB
+[nepali] stage1: 1,600,000 read, 1,232,672 kept, 900s, rss=184MB
+[nepali] stage1: 1,800,000 read, 1,375,302 kept, 947s, rss=251MB
+[nepali] stage1: 2,000,000 read, 1,517,816 kept, 996s, rss=251MB
+[nepali] stage1: 2,200,000 read, 1,660,323 kept, 1044s, rss=262MB
+[nepali] stage1: 2,400,000 read, 1,802,630 kept, 1092s, rss=277MB
+[nepali] stage1: 2,600,000 read, 1,945,222 kept, 1140s, rss=293MB
+[nepali] stage1: 2,800,000 read, 2,086,953 kept, 1187s, rss=308MB
+[nepali] stage1: 3,000,000 read, 2,229,154 kept, 1235s, rss=323MB
+[nepali] stage1: 3,200,000 read, 2,371,561 kept, 1285s, rss=339MB
+[nepali] stage1: 3,400,000 read, 2,513,658 kept, 1333s, rss=355MB
+[nepali] stage1: 3,600,000 read, 2,656,033 kept, 1381s, rss=483MB
+[nepali] stage1: 3,800,000 read, 2,797,859 kept, 1429s, rss=483MB
+[nepali] stage1: 4,000,000 read, 2,939,686 kept, 1478s, rss=483MB
+[nepali] stage1: 4,200,000 read, 3,081,803 kept, 1527s, rss=483MB
+[nepali] stage1: 4,400,000 read, 3,223,501 kept, 1576s, rss=495MB
+[nepali] stage1: 4,600,000 read, 3,364,954 kept, 1624s, rss=510MB
+[nepali] stage1: 4,800,000 read, 3,506,637 kept, 1672s, rss=525MB
+[nepali] stage1: 5,000,000 read, 3,648,245 kept, 1720s, rss=540MB
+[nepali] stage1: 5,200,000 read, 3,789,748 kept, 1768s, rss=556MB
+[nepali] stage1: 5,400,000 read, 3,930,942 kept, 1816s, rss=571MB
+[nepali] stage1: 5,600,000 read, 4,072,298 kept, 1863s, rss=586MB
+[nepali] stage1: 5,800,000 read, 4,213,891 kept, 1911s, rss=602MB
+[nepali] stage1: 6,000,000 read, 4,355,104 kept, 1959s, rss=617MB
+[nepali] stage1: 6,200,000 read, 4,496,162 kept, 2007s, rss=631MB
+[nepali] stage1: 6,400,000 read, 4,637,065 kept, 2054s, rss=647MB
+[nepali] stage1: 6,600,000 read, 4,777,746 kept, 2102s, rss=662MB
+[nepali] stage1: 6,800,000 read, 4,918,627 kept, 2150s, rss=677MB
+[nepali] stage1: 7,000,000 read, 5,059,380 kept, 2198s, rss=946MB
+[nepali] stage1: 7,200,000 read, 5,199,886 kept, 2245s, rss=946MB
+[nepali] stage1: 7,400,000 read, 5,340,179 kept, 2293s, rss=946MB
+[nepali] stage1: 7,600,000 read, 5,481,102 kept, 2342s, rss=946MB
+[nepali] stage1: 7,800,000 read, 5,621,560 kept, 2390s, rss=946MB
+[nepali] stage1: 8,000,000 read, 5,762,075 kept, 2438s, rss=946MB
+[nepali] stage1: 8,200,000 read, 5,902,109 kept, 2485s, rss=946MB
+[nepali] stage1: 8,400,000 read, 6,042,777 kept, 2533s, rss=946MB
+[nepali] stage1: 8,600,000 read, 6,183,126 kept, 2581s, rss=946MB
+[nepali] stage1: 8,800,000 read, 6,323,288 kept, 2629s, rss=957MB
+[nepali] stage1: 9,000,000 read, 6,463,137 kept, 2678s, rss=972MB
+[nepali] stage1: 9,200,000 read, 6,603,726 kept, 2727s, rss=987MB
+[nepali] stage1: 9,400,000 read, 6,743,478 kept, 2774s, rss=1002MB
+[nepali] stage1: 9,600,000 read, 6,883,598 kept, 2822s, rss=1017MB
+[nepali] stage1: 9,800,000 read, 7,023,387 kept, 2869s, rss=1032MB
+[nepali] stage1: 10,000,000 read, 7,163,381 kept, 2917s, rss=1047MB
+[nepali] stage1: 10,200,000 read, 7,302,932 kept, 2965s, rss=1062MB
+[nepali] stage1: 10,400,000 read, 7,443,176 kept, 3014s, rss=1077MB
+[nepali] stage1: 10,600,000 read, 7,582,840 kept, 3063s, rss=1093MB
+[nepali] stage1: 10,800,000 read, 7,722,664 kept, 3111s, rss=1108MB
+[nepali] stage1 done: {'raw_documents': 10962276, 'dropped_by_cleaning': 3025818, 'dropped_exact_dup': 100724, 'kept': 7835734}
+[nepali] stage 2: paragraph-level dedup...
+[nepali] stage2 (paragraph dedup): 200,000 read, 200,000 kept, 30s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 400,000 read, 400,000 kept, 56s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 600,000 read, 600,000 kept, 62s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 800,000 read, 800,000 kept, 69s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 1,000,000 read, 1,000,000 kept, 78s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 1,200,000 read, 1,200,000 kept, 89s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 1,400,000 read, 1,400,000 kept, 95s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 1,600,000 read, 1,600,000 kept, 101s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 1,800,000 read, 1,800,000 kept, 107s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 2,000,000 read, 2,000,000 kept, 116s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 2,200,000 read, 2,200,000 kept, 128s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 2,400,000 read, 2,400,000 kept, 134s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 2,600,000 read, 2,600,000 kept, 140s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 2,800,000 read, 2,800,000 kept, 146s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 3,000,000 read, 3,000,000 kept, 152s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 3,200,000 read, 3,200,000 kept, 158s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 3,400,000 read, 3,400,000 kept, 164s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 3,600,000 read, 3,600,000 kept, 170s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 3,800,000 read, 3,800,000 kept, 179s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 4,000,000 read, 4,000,000 kept, 185s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 4,200,000 read, 4,200,000 kept, 191s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 4,400,000 read, 4,400,000 kept, 198s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 4,600,000 read, 4,600,000 kept, 207s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 4,800,000 read, 4,800,000 kept, 218s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 5,000,000 read, 5,000,000 kept, 224s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 5,200,000 read, 5,200,000 kept, 230s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 5,400,000 read, 5,400,000 kept, 240s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 5,600,000 read, 5,600,000 kept, 246s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 5,800,000 read, 5,800,000 kept, 255s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 6,000,000 read, 6,000,000 kept, 263s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 6,200,000 read, 6,200,000 kept, 269s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 6,400,000 read, 6,400,000 kept, 275s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 6,600,000 read, 6,600,000 kept, 281s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 6,800,000 read, 6,800,000 kept, 287s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 7,000,000 read, 7,000,000 kept, 295s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 7,200,000 read, 7,200,000 kept, 306s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 7,400,000 read, 7,400,000 kept, 315s, rss=1120MB
+[nepali] stage2 (paragraph dedup): 7,600,000 read, 7,600,000 kept, 321s, rss=1123MB
+[nepali] stage2 (paragraph dedup): 7,800,000 read, 7,800,000 kept, 327s, rss=1145MB
+[nepali] stage2 done: {'in': 7835734, 'kept': 7835734}
+[nepali] stage 3: MinHash near-duplicate dedup...
+[nepali] stage3 (minhash dedup, 6 workers): 200,000 read, 199,555 kept, 117s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 400,000 read, 399,508 kept, 226s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 600,000 read, 599,323 kept, 315s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 800,000 read, 798,994 kept, 404s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 1,000,000 read, 998,919 kept, 492s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 1,200,000 read, 1,198,654 kept, 578s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 1,400,000 read, 1,398,296 kept, 666s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 1,600,000 read, 1,597,695 kept, 753s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 1,800,000 read, 1,797,604 kept, 843s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 2,000,000 read, 1,997,337 kept, 930s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 2,200,000 read, 2,196,924 kept, 1018s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 2,400,000 read, 2,396,403 kept, 1105s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 2,600,000 read, 2,596,329 kept, 1198s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 2,800,000 read, 2,796,092 kept, 1290s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 3,000,000 read, 2,995,704 kept, 1378s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 3,200,000 read, 3,195,191 kept, 1464s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 3,400,000 read, 3,395,101 kept, 1553s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 3,600,000 read, 3,594,867 kept, 1641s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 3,800,000 read, 3,794,467 kept, 1729s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 4,000,000 read, 3,993,951 kept, 1816s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 4,200,000 read, 4,193,861 kept, 1904s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 4,400,000 read, 4,393,640 kept, 1992s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 4,600,000 read, 4,593,262 kept, 2081s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 4,800,000 read, 4,792,751 kept, 2167s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 5,000,000 read, 4,992,656 kept, 2256s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 5,200,000 read, 5,192,434 kept, 2344s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 5,400,000 read, 5,392,087 kept, 2432s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 5,600,000 read, 5,591,536 kept, 2521s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 5,800,000 read, 5,791,421 kept, 2609s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 6,000,000 read, 5,991,199 kept, 2696s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 6,200,000 read, 6,190,853 kept, 2784s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 6,400,000 read, 6,390,363 kept, 2871s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 6,600,000 read, 6,590,268 kept, 2959s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 6,800,000 read, 6,790,062 kept, 3050s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 7,000,000 read, 6,989,722 kept, 3138s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 7,200,000 read, 7,189,216 kept, 3225s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 7,400,000 read, 7,389,132 kept, 3313s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 7,600,000 read, 7,588,938 kept, 3400s, rss=1149MB
+[nepali] stage3 (minhash dedup, 6 workers): 7,800,000 read, 7,788,592 kept, 3487s, rss=1149MB
+[nepali] stage3 done: {'in': 7835734, 'kept': 7824252}
+[nepali] stage 4: shuffle + split (0.95, 0.025, 0.025)...
+[nepali] wrote train: 7,433,039 docs, 2,521,672,442 chars
+[nepali] wrote val: 195,606 docs, 65,970,396 chars
+[nepali] wrote test: 195,607 docs, 66,420,633 chars
+[nepali] DONE. Stats written to /home/sohailtsm/M Tech Contents/SEM III/LMA/Projects/Project 1/individual-project-SohailTSM/nepali/data/processed/stats.json
+=== ALL DONE ===

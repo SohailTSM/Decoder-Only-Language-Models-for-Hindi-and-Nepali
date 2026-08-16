@@ -1,0 +1,27 @@
+{
+  "language": "nepali",
+  "stage1": {
+    "skipped": "resumed"
+  },
+  "stage2": {
+    "skipped": "resumed"
+  },
+  "stage3": {
+    "in": 7835734,
+    "kept": 7476841
+  },
+  "splits": {
+    "train": {
+      "documents": 6387191,
+      "chars": 2180306282
+    },
+    "val": {
+      "documents": 168083,
+      "chars": 57319438
+    },
+    "test": {
+      "documents": 168085,
+      "chars": 57374283
+    }
+  }
+}

@@ -86,9 +86,34 @@ def load_blocklist(lang: str) -> set[str]:
     return words
 
 
+_TOKEN_PUNCT_RE = re.compile(r"^[^\w]+|[^\w]+$", re.UNICODE)
+
+
+def _tokenize(text: str) -> list[str]:
+    return [_TOKEN_PUNCT_RE.sub("", tok).lower() for tok in text.split()]
+
+
 def passes_safety_filter(text: str, blocklist: set[str]) -> bool:
-    lowered = text.lower()
-    return not any(word in lowered for word in blocklist)
+    """Whole-token (and, for multi-word entries, contiguous-token-sequence) matching —
+    NOT substring search. Plain substring matching was found to false-positive badly on
+    Devanagari: the single word 'रांड' (a slur) matched as a substring inside
+    'ग्रांडसन' (grandson), 'मिरांडा' (a footballer's surname), 'मरांडी' (a common
+    surname, e.g. a former Jharkhand CM), and 'ब्रांडेड' (branded) — none of which are
+    remotely offensive. Python's regex \\b word-boundary was tried first and found
+    unreliable on Devanagari (still matched inside some of the same false positives);
+    explicit whitespace tokenization is what actually works correctly here."""
+    tokens = _tokenize(text)
+    token_set = set(tokens)
+    single_words = {w for w in blocklist if " " not in w}
+    if token_set & single_words:
+        return False
+    phrases = [w.split() for w in blocklist if " " in w]
+    for phrase in phrases:
+        n = len(phrase)
+        for i in range(len(tokens) - n + 1):
+            if tokens[i:i + n] == phrase:
+                return False
+    return True
 
 
 def clean_document(text: str, blocklist: set[str]) -> str | None:
