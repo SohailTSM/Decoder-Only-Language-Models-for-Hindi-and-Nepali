@@ -231,6 +231,11 @@ reference LM or embedding model to score against, which is circular for a from-s
 pretraining corpus at this stage, and add substantial compute cost for benefit that's marginal
 once script/quality/dedup filtering has already run.
 
+Every document also passes through **Unicode NFC normalization** (`unicodedata.normalize("NFC",
+text)`, `clean.py`) before any filtering runs, so Devanagari text using visually-identical but
+differently-encoded codepoint sequences (a real issue in scraped/mixed-source text) is
+canonicalized before script-purity checks, dedup hashing, or the tokenizer ever see it.
+
 ### 5.2 Line-level script filtering (not document-level)
 
 Some scraped articles have an English sentence mixed in as a heading. Fix: apply the
@@ -527,6 +532,46 @@ coverage of each language's held-out text despite the reduced training sample si
 higher fertility and avg-chars-per-token relative to Hindi is consistent with Nepali's smaller,
 more repetitive collected corpus (§4.4) producing a slightly less efficient subword vocabulary at
 the same 32k budget.
+
+**Top-10 most frequent tokens (val.txt):**
+
+| Rank | Hindi | Count | Nepali | Count |
+|---:|---|---:|---|---:|
+| 1 | `▁के` | 414,291 | `▁।` | 308,403 |
+| 2 | `।` | 368,583 | `,` | 221,907 |
+| 3 | `▁में` | 309,727 | `।` | 162,259 |
+| 4 | `▁है` | 274,263 | `▁र` | 154,296 |
+| 5 | `▁की` | 257,857 | `▁छ` | 152,289 |
+| 6 | `,` | 220,312 | `को` | 123,812 |
+| 7 | `▁को` | 199,981 | `मा` | 86,305 |
+| 8 | `▁से` | 183,837 | `ले` | 72,175 |
+| 9 | `.` | 149,321 | `का` | 69,630 |
+| 10 | `▁और` | 144,740 | `▁पनि` | 68,612 |
+
+(`▁` marks a token that starts a new word, i.e. is preceded by whitespace in the source text —
+standard SentencePiece convention.)
+
+**Example tokenization (Hindi, val.txt):**
+
+> हमारी जिंदगी में कब किस तरह की आर्थिक चुनौतियां सामने आ जाए, इसका अंदाजा लगाना मुश्किल है...
+
+```
+▁हमारी ▁जिंदगी ▁में ▁कब ▁किस ▁तरह ▁की ▁आर्थिक ▁चुनौतियां ▁सामने ▁आ ▁जाए , ▁इसका
+▁अंदाजा ▁लगाना ▁मुश्किल ▁है . ▁अचानक ▁नौकरी ▁छूट ▁जाना , ▁मेडिकल ▁इमरजेंसी ▁आ
+```
+
+**Example tokenization (Nepali, val.txt):**
+
+> काठमाडौं : इरानसँग बढ्दो तनावका बीच अमेरिकी राष्ट्रपति डोनाल्ड ट्रम्पले...
+
+```
+▁काठमाडौं ▁: ▁इरानसँग ▁बढ्दो ▁तनाव का ▁बीच ▁अमेरिकी ▁राष्ट्रपति ▁डोनाल्ड ▁ट्रम्पले
+```
+
+Note `तनावका` ("tanaawka") splitting into `▁तनाव` + `का` — the vocabulary correctly recognizes
+`का` (a common possessive/genitive suffix) as a reusable subword piece rather than storing the
+inflected form whole, exactly the kind of morpheme-aware behavior a subword tokenizer is meant to
+learn.
 
 Output files: `hindi/tokenizer/hindi_unigram_32k.{model,vocab}`,
 `nepali/tokenizer/nepali_unigram_32k.{model,vocab}`,
