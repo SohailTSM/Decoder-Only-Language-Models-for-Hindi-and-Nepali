@@ -1,0 +1,79 @@
+[
+  {
+    "language": "hindi",
+    "vocab_size": 4000,
+    "input_sentence_size": 150000,
+    "eval_lines_sampled": 158729,
+    "eval_words": 9997648,
+    "eval_tokens": 14512150,
+    "fertility_tokens_per_word": 1.4516,
+    "unk_rate": 0.001922,
+    "avg_chars_per_token": 3.5153
+  },
+  {
+    "language": "hindi",
+    "vocab_size": 8000,
+    "input_sentence_size": 150000,
+    "eval_lines_sampled": 158729,
+    "eval_words": 9997648,
+    "eval_tokens": 13014150,
+    "fertility_tokens_per_word": 1.3017,
+    "unk_rate": 0.002143,
+    "avg_chars_per_token": 3.92
+  },
+  {
+    "language": "hindi",
+    "vocab_size": 16000,
+    "input_sentence_size": 150000,
+    "eval_lines_sampled": 158729,
+    "eval_words": 9997648,
+    "eval_tokens": 12095788,
+    "fertility_tokens_per_word": 1.2099,
+    "unk_rate": 0.002306,
+    "avg_chars_per_token": 4.2176
+  },
+  {
+    "language": "hindi",
+    "vocab_size": 24000,
+    "input_sentence_size": 150000,
+    "eval_lines_sampled": 158729,
+    "eval_words": 9997648,
+    "eval_tokens": 11763134,
+    "fertility_tokens_per_word": 1.1766,
+    "unk_rate": 0.002371,
+    "avg_chars_per_token": 4.3369
+  },
+  {
+    "language": "hindi",
+    "vocab_size": 32000,
+    "input_sentence_size": 150000,
+    "eval_lines_sampled": 158729,
+    "eval_words": 9997648,
+    "eval_tokens": 11595749,
+    "fertility_tokens_per_word": 1.1598,
+    "unk_rate": 0.002406,
+    "avg_chars_per_token": 4.3995
+  },
+  {
+    "language": "hindi",
+    "vocab_size": 40000,
+    "input_sentence_size": 150000,
+    "eval_lines_sampled": 158729,
+    "eval_words": 9997648,
+    "eval_tokens": 11497176,
+    "fertility_tokens_per_word": 1.15,
+    "unk_rate": 0.002426,
+    "avg_chars_per_token": 4.4372
+  },
+  {
+    "language": "hindi",
+    "vocab_size": 48000,
+    "input_sentence_size": 150000,
+    "eval_lines_sampled": 158729,
+    "eval_words": 9997648,
+    "eval_tokens": 11435085,
+    "fertility_tokens_per_word": 1.1438,
+    "unk_rate": 0.002439,
+    "avg_chars_per_token": 4.4613
+  }
+]

@@ -1,0 +1,79 @@
+[
+  {
+    "language": "nepali",
+    "vocab_size": 4000,
+    "input_sentence_size": 150000,
+    "eval_lines_sampled": 200000,
+    "eval_words": 8035831,
+    "eval_tokens": 13761979,
+    "fertility_tokens_per_word": 1.7126,
+    "unk_rate": 0.00153,
+    "avg_chars_per_token": 3.7822
+  },
+  {
+    "language": "nepali",
+    "vocab_size": 8000,
+    "input_sentence_size": 150000,
+    "eval_lines_sampled": 200000,
+    "eval_words": 8035831,
+    "eval_tokens": 12003280,
+    "fertility_tokens_per_word": 1.4937,
+    "unk_rate": 0.001754,
+    "avg_chars_per_token": 4.3363
+  },
+  {
+    "language": "nepali",
+    "vocab_size": 16000,
+    "input_sentence_size": 150000,
+    "eval_lines_sampled": 200000,
+    "eval_words": 8035831,
+    "eval_tokens": 10832376,
+    "fertility_tokens_per_word": 1.348,
+    "unk_rate": 0.001943,
+    "avg_chars_per_token": 4.805
+  },
+  {
+    "language": "nepali",
+    "vocab_size": 24000,
+    "input_sentence_size": 150000,
+    "eval_lines_sampled": 200000,
+    "eval_words": 8035831,
+    "eval_tokens": 10349422,
+    "fertility_tokens_per_word": 1.2879,
+    "unk_rate": 0.002034,
+    "avg_chars_per_token": 5.0293
+  },
+  {
+    "language": "nepali",
+    "vocab_size": 32000,
+    "input_sentence_size": 150000,
+    "eval_lines_sampled": 200000,
+    "eval_words": 8035831,
+    "eval_tokens": 10074916,
+    "fertility_tokens_per_word": 1.2537,
+    "unk_rate": 0.00209,
+    "avg_chars_per_token": 5.1663
+  },
+  {
+    "language": "nepali",
+    "vocab_size": 40000,
+    "input_sentence_size": 150000,
+    "eval_lines_sampled": 200000,
+    "eval_words": 8035831,
+    "eval_tokens": 9893854,
+    "fertility_tokens_per_word": 1.2312,
+    "unk_rate": 0.002128,
+    "avg_chars_per_token": 5.2608
+  },
+  {
+    "language": "nepali",
+    "vocab_size": 48000,
+    "input_sentence_size": 150000,
+    "eval_lines_sampled": 200000,
+    "eval_words": 8035831,
+    "eval_tokens": 9767562,
+    "fertility_tokens_per_word": 1.2155,
+    "unk_rate": 0.002155,
+    "avg_chars_per_token": 5.3289
+  }
+]
