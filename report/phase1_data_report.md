@@ -426,7 +426,7 @@ source-tracking is added and the pipeline is re-run.
 
 ## 6. Tokenizer construction
 
-SentencePiece Unigram, 32,000 vocab, trained **independently per language** on that language's
+SentencePiece Unigram, 16,000 vocab, trained **independently per language** on that language's
 own `train.txt` only — no shared vocabulary, no pretrained tokenizer, per the assignment's
 constraints. `character_coverage=0.9995`, standard special-token ids
 (`pad=0, unk=1, bos=2, eos=3`), shuffled sampling.
@@ -446,9 +446,9 @@ value already proven to train reliably within this machine's memory limits (`scr
 | ---------: | ----------------------: | ---------: | ----------------------------: |
 |      4,000 |                  1.4516 |     0.192% |                             — |
 |      8,000 |                  1.3017 |     0.214% |                       −0.1499 |
-|     16,000 |                  1.2099 |     0.231% |                       −0.0918 |
+| **16,000** |              **1.2099** | **0.231%** |                   **−0.0918** |
 |     24,000 |                  1.1766 |     0.237% |                       −0.0333 |
-| **32,000** |              **1.1598** | **0.241%** |                   **−0.0168** |
+|     32,000 |                  1.1598 |     0.241% |                       −0.0168 |
 |     40,000 |                  1.1500 |     0.243% |                       −0.0098 |
 |     48,000 |                  1.1438 |     0.244% |                       −0.0062 |
 
@@ -458,24 +458,31 @@ value already proven to train reliably within this machine's memory limits (`scr
 | ---------: | ----------------------: | ---------: | ----------------------------: |
 |      4,000 |                  1.7126 |     0.153% |                             — |
 |      8,000 |                  1.4937 |     0.175% |                       −0.2189 |
-|     16,000 |                  1.3480 |     0.194% |                       −0.1457 |
+| **16,000** |              **1.3480** | **0.194%** |                   **−0.1457** |
 |     24,000 |                  1.2879 |     0.203% |                       −0.0601 |
-| **32,000** |              **1.2537** | **0.209%** |                   **−0.0342** |
+|     32,000 |                  1.2537 |     0.209% |                       −0.0342 |
 |     40,000 |                  1.2312 |     0.213% |                       −0.0225 |
 |     48,000 |                  1.2155 |     0.216% |                       −0.0157 |
 
-**Why 32,000:** both languages show the same shape — fertility drops steeply from 4k through
-16k-24k, then flattens: past 24k, each further +8,000 vocab only buys a few thousandths of a
-fertility point (Hindi: −0.017 at the 24k→32k step, shrinking to −0.006 by 40k→48k; Nepali: −0.034
-shrinking to −0.016 over the same range), a clear diminishing-returns elbow. UNK rate moves in the
-_opposite_ direction as vocab grows — it rises slightly (Hindi 0.192%→0.244%, Nepali
-0.153%→0.216%) since a larger vocabulary spreads probability mass across more, rarer pieces, so
-larger vocab is not a free win on that axis either, though the absolute rates stay negligible
-throughout (<0.25%). 32,000 sits just past the elbow: it captures the large 4k-24k improvement in
-full and picks up a further real gain over 24k, while avoiding the flat, high-vocab region (40k+)
-where fertility barely moves and the embedding/softmax parameter count would keep growing for
-almost no benefit — a real cost given the ~510M-token training budget (§7) relative to a from-scratch
-model. Full sweep data: `report/{hindi,nepali}_vocab_sweep.json`.
+**On fertility/UNK alone, 24k-32k is the better elbow** — both languages show the same shape:
+fertility drops steeply from 4k through 16k-24k, then flattens (Hindi: −0.017 at the 24k→32k
+step, shrinking to −0.006 by 40k→48k; Nepali: −0.034 shrinking to −0.016 over the same range).
+UNK rate moves the *opposite* direction as vocab grows — it rises slightly (Hindi 0.192%→0.244%,
+Nepali 0.153%→0.216%) since a larger vocabulary spreads probability mass across more, rarer
+pieces — though the absolute rates stay negligible throughout (<0.25%) regardless of size.
+
+**Why 16,000 was chosen instead of 32,000.** The fertility/UNK sweep by itself favored 32k. But
+vocabulary size also drives the size of the token embedding table (`vocab_size × hidden_dim`),
+and the pretraining model this tokenizer feeds (Phase 2, ~25M parameters, a modest hidden
+dimension) would have had a *tied* embedding table eating roughly half of its entire parameter
+budget at 32k vocab — well above the ~30-35% typical of reference small language models at
+comparable width (checked against several small open decoder-only LMs). Since the fertility gain
+from 16k→32k is small in absolute terms (Hindi +0.050, Nepali +0.094 tokens/word — a real but
+modest cost, corresponding to roughly 4-7% fewer words fitting in a fixed-length context window),
+16,000 was chosen as the better trade-off once the downstream model's parameter budget was
+weighed alongside tokenizer quality alone. This is why the tokenizer choice for this project
+isn't fertility/UNK-optimal in isolation — it's optimal for the actual model it will train,
+which is the more relevant standard. Full sweep data: `report/{hindi,nepali}_vocab_sweep.json`.
 
 ### 6.2 The memory story: why the training sample is far smaller than planned
 
@@ -518,63 +525,70 @@ Evaluated on each language's held-out `val.txt` (never seen during training):
 
 | Metric                              |                       Hindi |                      Nepali |
 | ----------------------------------- | --------------------------: | --------------------------: |
-| Vocab size                          |                      32,000 |                      32,000 |
+| Vocab size                          |                      16,000 |                      16,000 |
 | Training sample size                |         1,000,000 sentences |         1,000,000 sentences |
 | Training sample as % of `train.txt` | ~9.4% (of 10,622,764 lines) | ~6.8% (of 14,691,412 lines) |
 | Eval lines sampled (from val.txt)   |                     158,729 |                     200,000 |
-| Fertility (tokens/word)             |                      1.1575 |                      1.2499 |
-| UNK rate                            |                      0.241% |                      0.214% |
-| Avg chars/token                     |                      4.4084 |                      5.1823 |
+| Fertility (tokens/word)             |                      1.2086 |                      1.3468 |
+| UNK rate                            |                      0.231% |                      0.195% |
+| Avg chars/token                     |                      4.2219 |                      4.8095 |
 
-Both languages show fertility close to 1 (most words map to a single token or a small handful of
-subword pieces, rather than excessive fragmentation) and UNK rates well under 1%, indicating good
-coverage of each language's held-out text despite the reduced training sample size. Nepali's
-higher fertility and avg-chars-per-token relative to Hindi is consistent with Nepali's smaller,
-more repetitive collected corpus (§4.4) producing a slightly less efficient subword vocabulary at
-the same 32k budget.
+Both languages show fertility comfortably close to 1 (most words map to one or two subword
+pieces, not excessive fragmentation) and UNK rates well under 1%, indicating good coverage of
+each language's held-out text at this vocab size and training sample. Nepali's higher fertility
+and avg-chars-per-token relative to Hindi is consistent with Nepali's smaller, more repetitive
+collected corpus (§4.4) producing a slightly less efficient subword vocabulary at the same 16k
+budget. These numbers are, as expected from §6.1's own sweep, modestly worse than the 32,000-vocab
+alternative (Hindi 1.1575→1.2086 fertility, Nepali 1.2499→1.3468) — the deliberate trade made in
+favor of a healthier parameter budget for the downstream model.
 
 **Top-10 most frequent tokens (val.txt):**
 
 | Rank | Hindi | Count | Nepali | Count |
 |---:|---|---:|---|---:|
-| 1 | `▁के` | 414,291 | `▁।` | 308,403 |
-| 2 | `।` | 368,583 | `,` | 221,907 |
-| 3 | `▁में` | 309,727 | `।` | 162,259 |
-| 4 | `▁है` | 274,263 | `▁र` | 154,296 |
-| 5 | `▁की` | 257,857 | `▁छ` | 152,289 |
-| 6 | `,` | 220,312 | `को` | 123,812 |
-| 7 | `▁को` | 199,981 | `मा` | 86,305 |
-| 8 | `▁से` | 183,837 | `ले` | 72,175 |
-| 9 | `.` | 149,321 | `का` | 69,630 |
-| 10 | `▁और` | 144,740 | `▁पनि` | 68,612 |
+| 1 | `▁के` | 415,235 | `▁।` | 308,587 |
+| 2 | `।` | 368,583 | `,` | 222,249 |
+| 3 | `▁में` | 309,986 | `को` | 194,956 |
+| 4 | `▁है` | 274,891 | `।` | 162,324 |
+| 5 | `▁की` | 258,018 | `▁र` | 157,202 |
+| 6 | `,` | 220,688 | `▁छ` | 154,844 |
+| 7 | `▁को` | 201,873 | `मा` | 148,516 |
+| 8 | `▁से` | 185,682 | `का` | 108,399 |
+| 9 | `.` | 150,889 | `ले` | 103,828 |
+| 10 | `▁ने` | 145,133 | `▁पनि` | 68,612 |
 
 (`▁` marks a token that starts a new word, i.e. is preceded by whitespace in the source text —
 standard SentencePiece convention.)
 
 **Example tokenization (Hindi, val.txt):**
 
-> हमारी जिंदगी में कब किस तरह की आर्थिक चुनौतियां सामने आ जाए, इसका अंदाजा लगाना मुश्किल है...
+> - 6 महीने का फंड: वेतनभोगी कर्मचारियों के लिए यह सबसे बेहतरीन ऑप्शन माना जाता है...
 
 ```
-▁हमारी ▁जिंदगी ▁में ▁कब ▁किस ▁तरह ▁की ▁आर्थिक ▁चुनौतियां ▁सामने ▁आ ▁जाए , ▁इसका
-▁अंदाजा ▁लगाना ▁मुश्किल ▁है . ▁अचानक ▁नौकरी ▁छूट ▁जाना , ▁मेडिकल ▁इमरजेंसी ▁आ
+▁- ▁6 ▁महीने ▁का ▁फंड : ▁वेतन भोग ी ▁कर्मचारियों ▁के ▁लिए ▁यह ▁सबसे ▁बेहतरीन
+▁ऑप्शन ▁माना ▁जाता ▁है .
 ```
 
 **Example tokenization (Nepali, val.txt):**
 
-> काठमाडौं : इरानसँग बढ्दो तनावका बीच अमेरिकी राष्ट्रपति डोनाल्ड ट्रम्पले...
+> काठमाडौं : इरानसँग बढ्दो तनावका बीच अमेरिकी राष्ट्रपति डोनाल्ड ट्रम्पले स्ट्रेट अफ हर्मुजलाई...
 
 ```
-▁काठमाडौं ▁: ▁इरानसँग ▁बढ्दो ▁तनाव का ▁बीच ▁अमेरिकी ▁राष्ट्रपति ▁डोनाल्ड ▁ट्रम्पले
+▁काठमाडौं ▁: ▁इरान सँग ▁बढ्दो ▁तनाव का ▁बीच ▁अमेरिकी ▁राष्ट्रपति ▁डोनाल्ड ▁ट्रम्पले
+▁स्ट्र ेट ▁अफ ▁हर् मु ज लाई
 ```
 
-Note `तनावका` ("tanaawka") splitting into `▁तनाव` + `का` — the vocabulary correctly recognizes
-`का` (a common possessive/genitive suffix) as a reusable subword piece rather than storing the
-inflected form whole, exactly the kind of morpheme-aware behavior a subword tokenizer is meant to
-learn.
+Two things worth naming here, both direct consequences of dropping from 32k to 16k vocab (§6.1):
+`तनावका` still splits cleanly into `▁तनाव` + `का` (a common possessive/genitive suffix,
+morpheme-aware behavior preserved), but the proper noun `हर्मुज` ("Hormuz") — infrequent enough
+to lose its dedicated token at 16k — fragments into three pieces (`▁हर्`, `मु`, `ज`), and
+`वेतनभोगी` similarly splits into `▁वेतन`+`भोग`+`ी` rather than the single token it got at 32k
+(compare the same example at 32k, still visible in git history at `report/hindi_tokenizer_stats.json`
+prior to this revision). This is exactly the fertility cost quantified in §6.1 — rarer, longer
+words pay for the smaller embedding table with more fragments per word.
 
-Output files: `hindi/tokenizer/hindi_unigram_32k.{model,vocab}`,
-`nepali/tokenizer/nepali_unigram_32k.{model,vocab}`,
+Output files: `hindi/tokenizer/hindi_unigram_16k.{model,vocab}`,
+`nepali/tokenizer/nepali_unigram_16k.{model,vocab}`,
 `report/{hindi,nepali}_tokenizer_stats.json` (full stats: top-20 tokens, example
 tokenizations).
 

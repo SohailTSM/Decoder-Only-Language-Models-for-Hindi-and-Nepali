@@ -1,18 +1,18 @@
 {
   "language": "hindi",
-  "model_file": "hindi_unigram_32k.model",
-  "vocab_size": 32000,
+  "model_file": "hindi_unigram_16k.model",
+  "vocab_size": 16000,
   "eval_split": "val (held out, never used in training)",
   "eval_lines_sampled": 158729,
   "eval_words": 9997648,
-  "eval_tokens": 11572263,
-  "fertility_tokens_per_word": 1.1575,
-  "unk_rate": 0.00241,
-  "avg_chars_per_token": 4.4084,
+  "eval_tokens": 12083300,
+  "fertility_tokens_per_word": 1.2086,
+  "unk_rate": 0.002308,
+  "avg_chars_per_token": 4.2219,
   "top_20_most_frequent_tokens": [
     {
       "token": "▁के",
-      "count": 414291
+      "count": 415235
     },
     {
       "token": "।",
@@ -20,59 +20,59 @@
     },
     {
       "token": "▁में",
-      "count": 309764
+      "count": 309986
     },
     {
       "token": "▁है",
-      "count": 274284
+      "count": 274891
     },
     {
       "token": "▁की",
-      "count": 257839
+      "count": 258018
     },
     {
       "token": ",",
-      "count": 220369
+      "count": 220688
     },
     {
       "token": "▁को",
-      "count": 200016
+      "count": 201873
     },
     {
       "token": "▁से",
-      "count": 183923
+      "count": 185682
     },
     {
       "token": ".",
-      "count": 149158
-    },
-    {
-      "token": "▁और",
-      "count": 144753
+      "count": 150889
     },
     {
       "token": "▁ने",
-      "count": 144390
+      "count": 145133
+    },
+    {
+      "token": "▁और",
+      "count": 144893
     },
     {
       "token": "▁का",
-      "count": 140536
+      "count": 142756
     },
     {
       "token": "▁पर",
-      "count": 119211
+      "count": 120697
     },
     {
       "token": "▁कि",
-      "count": 103330
+      "count": 104070
     },
     {
       "token": "▁हैं",
-      "count": 101739
+      "count": 101746
     },
     {
       "token": "▁भी",
-      "count": 83610
+      "count": 83709
     },
     {
       "token": "▁लिए",
@@ -80,22 +80,35 @@
     },
     {
       "token": "▁एक",
-      "count": 59888
+      "count": 60536
     },
     {
       "token": "▁कर",
-      "count": 59011
+      "count": 60022
     },
     {
       "token": "▁इस",
-      "count": 58354
+      "count": 58667
     }
   ],
   "examples": [
     {
-      "text": "हमारी जिंदगी में कब किस तरह की आर्थिक चुनौतियां सामने आ जाए, इसका अंदाजा लगाना मुश्किल है. अचानक नौकरी छूट जाना, मेडिकल इमरजेंसी ",
+      "text": "Emergency Fund News: हमारी जिंदगी में कब किस तरह की आर्थिक चुनौतियां सामने आ जाए, इसका अंदाजा लगाना मुश्किल है. अचानक नौकरी छूट जाना, मेडिकल इमरजेंसी ",
       "num_tokens": 103,
       "tokens": [
+        "▁E",
+        "m",
+        "er",
+        "g",
+        "en",
+        "cy",
+        "▁",
+        "Fu",
+        "nd",
+        "▁Ne",
+        "w",
+        "s",
+        ":",
         "▁हमारी",
         "▁जिंदगी",
         "▁में",
@@ -173,7 +186,7 @@
     },
     {
       "text": "- 6 महीने का फंड: वेतनभोगी कर्मचारियों के लिए यह सबसे बेहतरीन ऑप्शन माना जाता है. इससे अचानक नौकरी जाने या किसी आपात स्थिति में आपका सहारा बन सकता है.",
-      "num_tokens": 33,
+      "num_tokens": 35,
       "tokens": [
         "▁-",
         "▁6",
@@ -181,7 +194,9 @@
         "▁का",
         "▁फंड",
         ":",
-        "▁वेतनभोगी",
+        "▁वेतन",
+        "भोग",
+        "ी",
         "▁कर्मचारियों",
         "▁के",
         "▁लिए",

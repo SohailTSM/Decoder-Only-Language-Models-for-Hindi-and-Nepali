@@ -11,7 +11,7 @@ or weights.
 ```
 hindi/           # Model H
   data/          # manual/, raw_public/, processed/ (train/val/test.txt, stats.json)
-  tokenizer/     # hindi_unigram_32k.{model,vocab} + vocab_sweep/ (vocab-size selection experiment)
+  tokenizer/     # hindi_unigram_16k.{model,vocab} + vocab_sweep/ (vocab-size selection experiment)
 nepali/          # Model L — same structure
 scripts/
   scraping/      # manual data collection (sitemap-based news scraping)

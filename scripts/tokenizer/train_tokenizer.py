@@ -12,7 +12,10 @@ from pathlib import Path
 import sentencepiece as spm
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-VOCAB_SIZE = 32_000
+# 16k, not the more common 32k: at this project's d_model (384), a 32k vocab put the tied
+# embedding table at ~50% of the total parameter budget. 16k trades a modest fertility
+# cost (see report §6.1) for a much healthier ~24% embedding share — see report §6.1.
+VOCAB_SIZE = 16_000
 # SentencePiece samples this many lines (shuffled) from train.txt rather than reading
 # the whole multi-GB file — standard practice; a large representative sample trains a
 # vocabulary just as well as the full corpus at a fraction of the time/memory.
