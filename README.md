@@ -18,7 +18,8 @@ scripts/
   public_data/   # IndicCorpV2 download
   preprocessing/ # cleaning, dedup, splitting pipeline (build_corpus.py)
   tokenizer/     # tokenizer training, evaluation, vocab-size sweep, Colab notebook
-report/          # phase1_data_report.md + supporting stats/sweep JSON files
+  report/        # make_figures.py — generates report/figures/*.png
+report/          # phase1_data_report.md + supporting stats/sweep JSON files + figures/
 ```
 
 ## Phase 1 — Google Drive links
@@ -51,3 +52,4 @@ construction and vocab-size selection, dataset statistics): [`report/phase1_data
    for the full 1M-sentence run used for the final models.
 4. Tokenizer evaluation: `python -m scripts.tokenizer.evaluate_tokenizer --lang <hindi|nepali>`.
 5. Vocab-size sweep: `python -m scripts.tokenizer.vocab_size_sweep --lang <hindi|nepali>`.
+6. Report figures: `python -m scripts.report.make_figures` (writes `report/figures/*.png`).
