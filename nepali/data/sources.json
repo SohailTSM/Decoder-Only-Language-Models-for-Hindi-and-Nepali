@@ -1,0 +1,7 @@
+[
+  {"name": "annapurnapost", "sitemap": "https://annapurnapost.com/sitemap.xml", "max_sitemap_page": 400},
+  {"name": "nagariknews", "sitemap": "https://nagariknews.nagariknetwork.com/sitemap.xml"},
+  {"name": "khabarhub", "sitemap": "https://khabarhub.com/wp-sitemap.xml"},
+  {"name": "nepalpress", "sitemap": "https://nepalpress.com/wp-sitemap.xml"},
+  {"name": "deshsanchar", "sitemap": "https://deshsanchar.com/sitemap_index.xml"}
+]

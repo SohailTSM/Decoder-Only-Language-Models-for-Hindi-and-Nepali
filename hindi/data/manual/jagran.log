@@ -1,0 +1,26 @@
+[jagran] discovering URLs from sitemap...
+[jagran] 2500 new candidate URLs (already have 0)
+[jagran] 200/2500 fetched, 200 kept, ~548,233 chars, 16s elapsed
+[jagran] 400/2500 fetched, 400 kept, ~1,060,128 chars, 32s elapsed
+[jagran] 600/2500 fetched, 600 kept, ~1,578,099 chars, 47s elapsed
+[jagran] 800/2500 fetched, 800 kept, ~2,082,303 chars, 62s elapsed
+[jagran] 1000/2500 fetched, 1000 kept, ~2,595,087 chars, 79s elapsed
+[jagran] 1200/2500 fetched, 1200 kept, ~3,117,157 chars, 95s elapsed
+[jagran] 1400/2500 fetched, 1400 kept, ~3,599,241 chars, 110s elapsed
+[jagran] 1600/2500 fetched, 1600 kept, ~4,110,089 chars, 125s elapsed
+[jagran] 1800/2500 fetched, 1800 kept, ~4,616,048 chars, 139s elapsed
+[jagran] 2000/2500 fetched, 2000 kept, ~5,111,528 chars, 156s elapsed
+[jagran] 2200/2500 fetched, 2200 kept, ~5,603,725 chars, 170s elapsed
+[jagran] 2400/2500 fetched, 2400 kept, ~6,090,932 chars, 185s elapsed
+[jagran] DONE (candidates exhausted): 2500 articles kept, ~6,346,891 chars, 192s
+2026-08-15T17:06:56+05:30 [hindi/jagran] finished cleanly
+[jagran] discovering URLs from sitemap...
+[jagran] 94 new candidate URLs (already have 2500), discovery took 1s
+[jagran] DONE (candidates exhausted): 94 articles kept, ~228,384 chars, 6s
+2026-08-15T19:09:21+05:30 [hindi/jagran] finished cleanly
+[jagran] discovering URLs from sitemap...
+[jagran] 20 new candidate URLs (already have 2594), discovery took 1s
+[jagran] DONE (candidates exhausted): 20 articles kept, ~47,305 chars, 2s
+2026-08-15T19:59:36+05:30 [hindi/jagran] finished cleanly
+[jagran] shared budget already met (520,000,332/520,000,000 chars) — nothing to do
+2026-08-15T23:57:27+05:30 [hindi/jagran] finished cleanly

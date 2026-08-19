@@ -1,0 +1,61 @@
+nohup: ignoring input
+[hindi] progress baseline recomputed from disk: 0 chars already collected
+[hindi] target: 130000000 tokens -> 520000000 chars
+launching hindi/bhaskar -> hindi/data/manual/bhaskar.jsonl (log: hindi/data/manual/bhaskar.log)
+launching hindi/amarujala -> hindi/data/manual/amarujala.jsonl (log: hindi/data/manual/amarujala.log)
+launching hindi/jagran -> hindi/data/manual/jagran.jsonl (log: hindi/data/manual/jagran.log)
+launching hindi/navbharattimes -> hindi/data/manual/navbharattimes.jsonl (log: hindi/data/manual/navbharattimes.log)
+launching hindi/abplive -> hindi/data/manual/abplive.jsonl (log: hindi/data/manual/abplive.log)
+launching hindi/prabhatkhabar -> hindi/data/manual/prabhatkhabar.jsonl (log: hindi/data/manual/prabhatkhabar.log)
+[nepali] progress baseline recomputed from disk: 0 chars already collected
+[nepali] target: 130000000 tokens -> 585000000 chars
+launching nepali/annapurnapost -> nepali/data/manual/annapurnapost.jsonl (log: nepali/data/manual/annapurnapost.log)
+launching nepali/nagariknews -> nepali/data/manual/nagariknews.jsonl (log: nepali/data/manual/nagariknews.log)
+Terminated
+all scrapers finished
+[hindi] progress baseline recomputed from disk: 225,882,147 chars already collected
+[hindi] target: 130000000 tokens -> 520000000 chars, workers=5
+launching hindi/bhaskar -> hindi/data/manual/bhaskar.jsonl (log: hindi/data/manual/bhaskar.log)
+launching hindi/amarujala -> hindi/data/manual/amarujala.jsonl (log: hindi/data/manual/amarujala.log)
+launching hindi/jagran -> hindi/data/manual/jagran.jsonl (log: hindi/data/manual/jagran.log)
+launching hindi/navbharattimes -> hindi/data/manual/navbharattimes.jsonl (log: hindi/data/manual/navbharattimes.log)
+launching hindi/abplive -> hindi/data/manual/abplive.jsonl (log: hindi/data/manual/abplive.log)
+launching hindi/prabhatkhabar -> hindi/data/manual/prabhatkhabar.jsonl (log: hindi/data/manual/prabhatkhabar.log)
+launching hindi/abplive_archive -> hindi/data/manual/abplive_archive.jsonl (log: hindi/data/manual/abplive_archive.log)
+[nepali] progress baseline recomputed from disk: 4,763,829 chars already collected
+[nepali] target: 130000000 tokens -> 585000000 chars, workers=50
+launching nepali/annapurnapost -> nepali/data/manual/annapurnapost.jsonl (log: nepali/data/manual/annapurnapost.log)
+launching nepali/nagariknews -> nepali/data/manual/nagariknews.jsonl (log: nepali/data/manual/nagariknews.log)
+Terminated
+[hindi] progress baseline recomputed from disk: 311,051,308 chars already collected
+[hindi] target: 130000000 tokens -> 520000000 chars, workers=5
+launching hindi/bhaskar -> hindi/data/manual/bhaskar.jsonl (log: hindi/data/manual/bhaskar.log)
+launching hindi/amarujala -> hindi/data/manual/amarujala.jsonl (log: hindi/data/manual/amarujala.log)
+launching hindi/jagran -> hindi/data/manual/jagran.jsonl (log: hindi/data/manual/jagran.log)
+launching hindi/navbharattimes -> hindi/data/manual/navbharattimes.jsonl (log: hindi/data/manual/navbharattimes.log)
+launching hindi/abplive -> hindi/data/manual/abplive.jsonl (log: hindi/data/manual/abplive.log)
+launching hindi/prabhatkhabar -> hindi/data/manual/prabhatkhabar.jsonl (log: hindi/data/manual/prabhatkhabar.log)
+launching hindi/abplive_archive -> hindi/data/manual/abplive_archive.jsonl (log: hindi/data/manual/abplive_archive.log)
+[nepali] progress baseline recomputed from disk: 10,899,237 chars already collected
+[nepali] target: 130000000 tokens -> 585000000 chars, workers=50
+launching nepali/annapurnapost -> nepali/data/manual/annapurnapost.jsonl (log: nepali/data/manual/annapurnapost.log)
+launching nepali/nagariknews -> nepali/data/manual/nagariknews.jsonl (log: nepali/data/manual/nagariknews.log)
+Terminated
+all scrapers finished
+[hindi] progress baseline recomputed from disk: 520,000,332 chars already collected
+[hindi] target: 130000000 tokens -> 520000000 chars, workers=5
+launching hindi/bhaskar -> hindi/data/manual/bhaskar.jsonl (log: hindi/data/manual/bhaskar.log)
+launching hindi/amarujala -> hindi/data/manual/amarujala.jsonl (log: hindi/data/manual/amarujala.log)
+launching hindi/jagran -> hindi/data/manual/jagran.jsonl (log: hindi/data/manual/jagran.log)
+launching hindi/navbharattimes -> hindi/data/manual/navbharattimes.jsonl (log: hindi/data/manual/navbharattimes.log)
+launching hindi/abplive -> hindi/data/manual/abplive.jsonl (log: hindi/data/manual/abplive.log)
+launching hindi/prabhatkhabar -> hindi/data/manual/prabhatkhabar.jsonl (log: hindi/data/manual/prabhatkhabar.log)
+launching hindi/abplive_archive -> hindi/data/manual/abplive_archive.jsonl (log: hindi/data/manual/abplive_archive.log)
+[nepali] progress baseline recomputed from disk: 283,191,773 chars already collected
+[nepali] target: 130000000 tokens -> 650000000 chars, workers=50
+launching nepali/annapurnapost -> nepali/data/manual/annapurnapost.jsonl (log: nepali/data/manual/annapurnapost.log)
+launching nepali/nagariknews -> nepali/data/manual/nagariknews.jsonl (log: nepali/data/manual/nagariknews.log)
+launching nepali/khabarhub -> nepali/data/manual/khabarhub.jsonl (log: nepali/data/manual/khabarhub.log)
+launching nepali/nepalpress -> nepali/data/manual/nepalpress.jsonl (log: nepali/data/manual/nepalpress.log)
+launching nepali/deshsanchar -> nepali/data/manual/deshsanchar.jsonl (log: nepali/data/manual/deshsanchar.log)
+all scrapers finished

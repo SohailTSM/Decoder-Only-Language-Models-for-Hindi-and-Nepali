@@ -1,0 +1,75 @@
+[abplive] discovering URLs from sitemap...
+[abplive] 12331 new candidate URLs (already have 0)
+[abplive] 200/12331 fetched, 200 kept, ~569,357 chars, 25s elapsed
+[abplive] 400/12331 fetched, 400 kept, ~1,200,217 chars, 50s elapsed
+[abplive] 600/12331 fetched, 600 kept, ~1,792,295 chars, 74s elapsed
+[abplive] 800/12331 fetched, 800 kept, ~2,407,159 chars, 97s elapsed
+[abplive] 1000/12331 fetched, 1000 kept, ~2,995,168 chars, 122s elapsed
+[abplive] 1200/12331 fetched, 1200 kept, ~3,615,586 chars, 143s elapsed
+[abplive] 1400/12331 fetched, 1400 kept, ~4,207,634 chars, 162s elapsed
+[abplive] 1600/12331 fetched, 1600 kept, ~4,840,344 chars, 180s elapsed
+[abplive] 1800/12331 fetched, 1800 kept, ~5,417,886 chars, 197s elapsed
+[abplive] 2000/12331 fetched, 2000 kept, ~6,063,848 chars, 214s elapsed
+[abplive] 2200/12331 fetched, 2200 kept, ~6,639,208 chars, 231s elapsed
+[abplive] 2400/12331 fetched, 2400 kept, ~7,282,414 chars, 248s elapsed
+[abplive] 2600/12331 fetched, 2600 kept, ~7,932,035 chars, 266s elapsed
+[abplive] 2800/12331 fetched, 2800 kept, ~8,534,011 chars, 282s elapsed
+[abplive] 3000/12331 fetched, 3000 kept, ~9,189,248 chars, 299s elapsed
+[abplive] 3200/12331 fetched, 3200 kept, ~9,750,938 chars, 314s elapsed
+[abplive] 3400/12331 fetched, 3400 kept, ~10,352,520 chars, 331s elapsed
+[abplive] 3600/12331 fetched, 3600 kept, ~10,950,219 chars, 348s elapsed
+[abplive] 3800/12331 fetched, 3800 kept, ~11,550,309 chars, 365s elapsed
+[abplive] 4000/12331 fetched, 4000 kept, ~12,138,933 chars, 381s elapsed
+[abplive] 4200/12331 fetched, 4200 kept, ~12,703,852 chars, 398s elapsed
+[abplive] 4400/12331 fetched, 4400 kept, ~13,326,168 chars, 414s elapsed
+[abplive] 4600/12331 fetched, 4600 kept, ~13,893,571 chars, 431s elapsed
+[abplive] 4800/12331 fetched, 4800 kept, ~14,518,823 chars, 448s elapsed
+[abplive] 5000/12331 fetched, 5000 kept, ~15,080,888 chars, 464s elapsed
+[abplive] 5200/12331 fetched, 5200 kept, ~15,696,253 chars, 479s elapsed
+[abplive] 5400/12331 fetched, 5400 kept, ~16,284,029 chars, 496s elapsed
+[abplive] 5600/12331 fetched, 5600 kept, ~16,911,171 chars, 513s elapsed
+[abplive] 5800/12331 fetched, 5800 kept, ~17,534,571 chars, 530s elapsed
+[abplive] 6000/12331 fetched, 6000 kept, ~18,092,387 chars, 549s elapsed
+[abplive] 6200/12331 fetched, 6200 kept, ~18,736,501 chars, 566s elapsed
+[abplive] 6400/12331 fetched, 6400 kept, ~19,314,917 chars, 583s elapsed
+[abplive] 6600/12331 fetched, 6600 kept, ~19,926,048 chars, 599s elapsed
+[abplive] 6800/12331 fetched, 6800 kept, ~20,489,062 chars, 617s elapsed
+[abplive] 7000/12331 fetched, 7000 kept, ~21,043,239 chars, 634s elapsed
+[abplive] 7200/12331 fetched, 7200 kept, ~21,676,517 chars, 650s elapsed
+[abplive] 7400/12331 fetched, 7400 kept, ~22,254,579 chars, 667s elapsed
+[abplive] 7600/12331 fetched, 7600 kept, ~22,890,806 chars, 685s elapsed
+[abplive] 7800/12331 fetched, 7800 kept, ~23,472,394 chars, 703s elapsed
+[abplive] 8000/12331 fetched, 8000 kept, ~24,074,150 chars, 721s elapsed
+[abplive] 8200/12331 fetched, 8200 kept, ~24,709,122 chars, 739s elapsed
+[abplive] 8400/12331 fetched, 8400 kept, ~25,220,316 chars, 756s elapsed
+[abplive] 8600/12331 fetched, 8600 kept, ~25,823,617 chars, 773s elapsed
+[abplive] 8800/12331 fetched, 8800 kept, ~26,402,809 chars, 791s elapsed
+[abplive] 9000/12331 fetched, 9000 kept, ~27,038,494 chars, 808s elapsed
+[abplive] 9200/12331 fetched, 9200 kept, ~27,631,622 chars, 825s elapsed
+[abplive] 9400/12331 fetched, 9400 kept, ~28,231,432 chars, 843s elapsed
+[abplive] 9600/12331 fetched, 9600 kept, ~28,819,562 chars, 860s elapsed
+[abplive] 9800/12331 fetched, 9800 kept, ~29,339,639 chars, 876s elapsed
+[abplive] 10000/12331 fetched, 10000 kept, ~29,921,040 chars, 891s elapsed
+[abplive] 10200/12331 fetched, 10200 kept, ~30,451,224 chars, 906s elapsed
+[abplive] 10400/12331 fetched, 10400 kept, ~31,060,981 chars, 921s elapsed
+[abplive] 10600/12331 fetched, 10600 kept, ~31,585,669 chars, 936s elapsed
+[abplive] 10800/12331 fetched, 10800 kept, ~32,149,518 chars, 952s elapsed
+[abplive] 11000/12331 fetched, 11000 kept, ~32,680,321 chars, 968s elapsed
+[abplive] 11200/12331 fetched, 11200 kept, ~33,294,650 chars, 985s elapsed
+[abplive] 11400/12331 fetched, 11400 kept, ~33,836,062 chars, 1000s elapsed
+[abplive] 11600/12331 fetched, 11600 kept, ~34,445,640 chars, 1016s elapsed
+[abplive] 11800/12331 fetched, 11800 kept, ~35,016,625 chars, 1032s elapsed
+[abplive] 12000/12331 fetched, 12000 kept, ~35,606,238 chars, 1048s elapsed
+[abplive] 12200/12331 fetched, 12200 kept, ~36,157,912 chars, 1064s elapsed
+[abplive] DONE (candidates exhausted): 12331 articles kept, ~36,553,939 chars, 1074s
+2026-08-15T17:21:50+05:30 [hindi/abplive] finished cleanly
+[abplive] discovering URLs from sitemap...
+[abplive] 44 new candidate URLs (already have 12331), discovery took 2s
+[abplive] DONE (candidates exhausted): 44 articles kept, ~154,612 chars, 8s
+2026-08-15T19:09:23+05:30 [hindi/abplive] finished cleanly
+[abplive] discovering URLs from sitemap...
+[abplive] 11 new candidate URLs (already have 12375), discovery took 2s
+[abplive] DONE (candidates exhausted): 11 articles kept, ~29,712 chars, 4s
+2026-08-15T19:59:38+05:30 [hindi/abplive] finished cleanly
+[abplive] shared budget already met (520,000,332/520,000,000 chars) — nothing to do
+2026-08-15T23:57:27+05:30 [hindi/abplive] finished cleanly

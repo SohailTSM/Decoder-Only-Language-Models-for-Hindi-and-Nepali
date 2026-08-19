@@ -1,0 +1,17 @@
+[amarujala] discovering URLs from sitemap...
+[amarujala] 700 new candidate URLs (already have 0)
+[amarujala] 200/700 fetched, 188 kept, ~1,152,040 chars, 45s elapsed
+[amarujala] 400/700 fetched, 384 kept, ~2,053,686 chars, 107s elapsed
+[amarujala] 600/700 fetched, 574 kept, ~3,042,899 chars, 160s elapsed
+[amarujala] DONE (candidates exhausted): 671 articles kept, ~3,739,579 chars, 175s
+2026-08-15T17:06:39+05:30 [hindi/amarujala] finished cleanly
+[amarujala] discovering URLs from sitemap...
+[amarujala] 149 new candidate URLs (already have 671), discovery took 0s
+[amarujala] DONE (candidates exhausted): 120 articles kept, ~587,676 chars, 25s
+2026-08-15T19:09:39+05:30 [hindi/amarujala] finished cleanly
+[amarujala] discovering URLs from sitemap...
+[amarujala] 57 new candidate URLs (already have 791), discovery took 0s
+[amarujala] DONE (candidates exhausted): 29 articles kept, ~186,237 chars, 35s
+2026-08-15T20:00:08+05:30 [hindi/amarujala] finished cleanly
+[amarujala] shared budget already met (520,000,332/520,000,000 chars) — nothing to do
+2026-08-15T23:57:27+05:30 [hindi/amarujala] finished cleanly

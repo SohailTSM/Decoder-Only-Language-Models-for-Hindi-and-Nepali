@@ -1,0 +1,8 @@
+httpx
+trafilatura
+lxml
+tqdm
+sentencepiece
+datasketch
+numpy
+matplotlib

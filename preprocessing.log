@@ -1,0 +1,98 @@
+=== HINDI ===
+[hindi] resuming: reusing existing /home/sohailtsm/M Tech Contents/SEM III/LMA/Projects/Project 1/individual-project-SohailTSM/hindi/data/_intermediate/stage2.jsonl
+[hindi] stage 3: MinHash near-duplicate dedup...
+[hindi] stage3 pass 1a: computing MinHash signatures (6 workers)...
+[hindi] stage3: 200,000 signatures computed, 60s, rss=81MB
+[hindi] stage3: 400,000 signatures computed, 101s, rss=102MB
+[hindi] stage3: 600,000 signatures computed, 141s, rss=126MB
+[hindi] stage3: 800,000 signatures computed, 181s, rss=151MB
+[hindi] stage3: 1,000,000 signatures computed, 220s, rss=175MB
+[hindi] stage3: 1,200,000 signatures computed, 260s, rss=200MB
+[hindi] stage3: 1,400,000 signatures computed, 302s, rss=224MB
+[hindi] stage3: 1,600,000 signatures computed, 343s, rss=248MB
+[hindi] stage3: 1,800,000 signatures computed, 384s, rss=273MB
+[hindi] stage3: 2,000,000 signatures computed, 425s, rss=297MB
+[hindi] stage3: 2,200,000 signatures computed, 467s, rss=322MB
+[hindi] stage3: 2,400,000 signatures computed, 508s, rss=346MB
+[hindi] stage3: 2,600,000 signatures computed, 549s, rss=370MB
+[hindi] stage3: 2,800,000 signatures computed, 591s, rss=395MB
+[hindi] stage3: 3,000,000 signatures computed, 632s, rss=420MB
+[hindi] stage3: 3,200,000 signatures computed, 673s, rss=444MB
+[hindi] stage3: 3,400,000 signatures computed, 715s, rss=469MB
+[hindi] stage3: 3,600,000 signatures computed, 756s, rss=493MB
+[hindi] stage3: 3,800,000 signatures computed, 800s, rss=518MB
+[hindi] stage3: 4,000,000 signatures computed, 842s, rss=542MB
+[hindi] stage3: 4,200,000 signatures computed, 882s, rss=566MB
+[hindi] stage3: 4,400,000 signatures computed, 922s, rss=590MB
+[hindi] stage3: 4,600,000 signatures computed, 962s, rss=615MB
+[hindi] stage3: 4,800,000 signatures computed, 1001s, rss=639MB
+[hindi] stage3: 4,928,475 signatures ready, 1028s, rss=1257MB
+[hindi] stage3: band 1/4 bucketed, 1035s, rss=1257MB
+[hindi] stage3: band 2/4 bucketed, 1041s, rss=1257MB
+[hindi] stage3: band 3/4 bucketed, 1047s, rss=1257MB
+[hindi] stage3: band 4/4 bucketed, 1053s, rss=1257MB
+[hindi] stage3: 4,928,475 -> 4,901,226 after near-dup merge (1056s)
+[hindi] stage3 done: {'in': 4928475, 'kept': 4901226}
+[hindi] stage 4: shuffle + split (0.95, 0.025, 0.025), capped to ~510,000,000 tokens (~2,040,000,000 chars)...
+[hindi] stage4: capping to ~2,040,000,000 chars -> 4,822,928/4,901,226 documents included (2,040,000,247 chars), 78,298 excluded
+[hindi] wrote train: 4,581,781 docs, 1,937,829,626 chars
+[hindi] wrote val: 120,573 docs, 51,055,460 chars
+[hindi] wrote test: 120,574 docs, 51,115,161 chars
+[hindi] DONE. Stats written to /home/sohailtsm/M Tech Contents/SEM III/LMA/Projects/Project 1/individual-project-SohailTSM/hindi/data/processed/stats.json
+=== NEPALI ===
+[nepali] resuming: reusing existing /home/sohailtsm/M Tech Contents/SEM III/LMA/Projects/Project 1/individual-project-SohailTSM/nepali/data/_intermediate/stage2.jsonl
+[nepali] stage 3: MinHash near-duplicate dedup...
+[nepali] stage3 pass 1a: computing MinHash signatures (6 workers)...
+[nepali] stage3: 200,000 signatures computed, 59s, rss=77MB
+[nepali] stage3: 400,000 signatures computed, 108s, rss=102MB
+[nepali] stage3: 600,000 signatures computed, 142s, rss=126MB
+[nepali] stage3: 800,000 signatures computed, 176s, rss=151MB
+[nepali] stage3: 1,000,000 signatures computed, 210s, rss=175MB
+[nepali] stage3: 1,200,000 signatures computed, 245s, rss=200MB
+[nepali] stage3: 1,400,000 signatures computed, 279s, rss=224MB
+[nepali] stage3: 1,600,000 signatures computed, 313s, rss=249MB
+[nepali] stage3: 1,800,000 signatures computed, 348s, rss=273MB
+[nepali] stage3: 2,000,000 signatures computed, 382s, rss=297MB
+[nepali] stage3: 2,200,000 signatures computed, 416s, rss=322MB
+[nepali] stage3: 2,400,000 signatures computed, 451s, rss=346MB
+[nepali] stage3: 2,600,000 signatures computed, 485s, rss=371MB
+[nepali] stage3: 2,800,000 signatures computed, 519s, rss=395MB
+[nepali] stage3: 3,000,000 signatures computed, 553s, rss=420MB
+[nepali] stage3: 3,200,000 signatures computed, 588s, rss=444MB
+[nepali] stage3: 3,400,000 signatures computed, 622s, rss=468MB
+[nepali] stage3: 3,600,000 signatures computed, 656s, rss=493MB
+[nepali] stage3: 3,800,000 signatures computed, 690s, rss=517MB
+[nepali] stage3: 4,000,000 signatures computed, 725s, rss=542MB
+[nepali] stage3: 4,200,000 signatures computed, 759s, rss=566MB
+[nepali] stage3: 4,400,000 signatures computed, 794s, rss=590MB
+[nepali] stage3: 4,600,000 signatures computed, 828s, rss=615MB
+[nepali] stage3: 4,800,000 signatures computed, 863s, rss=639MB
+[nepali] stage3: 5,000,000 signatures computed, 897s, rss=664MB
+[nepali] stage3: 5,200,000 signatures computed, 932s, rss=688MB
+[nepali] stage3: 5,400,000 signatures computed, 966s, rss=713MB
+[nepali] stage3: 5,600,000 signatures computed, 1000s, rss=737MB
+[nepali] stage3: 5,800,000 signatures computed, 1035s, rss=762MB
+[nepali] stage3: 6,000,000 signatures computed, 1069s, rss=786MB
+[nepali] stage3: 6,200,000 signatures computed, 1103s, rss=811MB
+[nepali] stage3: 6,400,000 signatures computed, 1138s, rss=835MB
+[nepali] stage3: 6,600,000 signatures computed, 1172s, rss=859MB
+[nepali] stage3: 6,800,000 signatures computed, 1207s, rss=884MB
+[nepali] stage3: 7,000,000 signatures computed, 1241s, rss=908MB
+[nepali] stage3: 7,200,000 signatures computed, 1275s, rss=933MB
+[nepali] stage3: 7,400,000 signatures computed, 1310s, rss=957MB
+[nepali] stage3: 7,600,000 signatures computed, 1344s, rss=982MB
+[nepali] stage3: 7,800,000 signatures computed, 1379s, rss=1006MB
+[nepali] stage3: 7,835,734 signatures ready, 1386s, rss=1967MB
+[nepali] stage3: band 1/4 bucketed, 1398s, rss=1967MB
+[nepali] stage3: band 2/4 bucketed, 1409s, rss=1967MB
+[nepali] stage3: band 3/4 bucketed, 1420s, rss=1967MB
+[nepali] stage3: band 4/4 bucketed, 1430s, rss=1967MB
+[nepali] stage3: 7,835,734 -> 7,476,841 after near-dup merge (1434s)
+[nepali] stage3 done: {'in': 7835734, 'kept': 7476841}
+[nepali] stage 4: shuffle + split (0.95, 0.025, 0.025), capped to ~510,000,000 tokens (~2,295,000,000 chars)...
+[nepali] stage4: capping to ~2,295,000,000 chars -> 6,723,359/7,476,841 documents included (2,295,000,003 chars), 753,482 excluded
+[nepali] wrote train: 6,387,191 docs, 2,180,306,282 chars
+[nepali] wrote val: 168,083 docs, 57,319,438 chars
+[nepali] wrote test: 168,085 docs, 57,374,283 chars
+[nepali] DONE. Stats written to /home/sohailtsm/M Tech Contents/SEM III/LMA/Projects/Project 1/individual-project-SohailTSM/nepali/data/processed/stats.json
+=== ALL DONE ===
