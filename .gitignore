@@ -5,5 +5,9 @@ __pycache__/
 */data/raw_public/*
 */data/_intermediate/
 */data/processed/*.txt
+*/data/processed/*.zip
+*/data/processed/*.bin
+*/data/tokenized/*.bin
 */data/*.log
+*/checkpoints/
 .DS_Store

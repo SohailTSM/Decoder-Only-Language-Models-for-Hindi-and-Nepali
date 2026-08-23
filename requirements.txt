@@ -6,3 +6,6 @@ sentencepiece
 datasketch
 numpy
 matplotlib
+torch
+wandb
+huggingface_hub

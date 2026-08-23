@@ -11,6 +11,7 @@ or weights.
 ```
 hindi/           # Model H
   data/          # manual/, raw_public/, processed/ (train/val/test.txt, stats.json)
+                 # tokenized/ ({train,val,test}.bin + tokenized_meta.json, from prepare_bin.py)
   tokenizer/     # hindi_unigram_16k.{model,vocab} + vocab_sweep/ (vocab-size selection experiment)
 nepali/          # Model L — same structure
 scripts/
@@ -18,8 +19,10 @@ scripts/
   public_data/   # IndicCorpV2 download
   preprocessing/ # cleaning, dedup, splitting pipeline (build_corpus.py)
   tokenizer/     # tokenizer training, evaluation, vocab-size sweep, Colab notebook
+  training/      # prepare_bin.py, model.py (GPT + RoPE), dataset.py, train.py, kaggle_pretrain.ipynb
   report/        # make_figures.py — generates report/figures/*.png
-report/          # phase1_data_report.md + supporting stats/sweep JSON files + figures/
+report/          # phase1_data_report.md, phase2_model_report.md, architecture_grid_search.md,
+                 # supporting stats/sweep JSON files, figures/
 ```
 
 ## Phase 1 — Google Drive links
@@ -40,8 +43,12 @@ Permissions are set to "Anyone with the link can view" — no access request nee
 
 ## Report
 
-Full Phase 1 report (data collection, non-overlap methodology, preprocessing, tokenizer
-construction and vocab-size selection, dataset statistics): [`report/phase1_data_report.md`](report/phase1_data_report.md)
+- Full Phase 1 report (data collection, non-overlap methodology, preprocessing, tokenizer
+  construction and vocab-size selection, dataset statistics): [`report/phase1_data_report.md`](report/phase1_data_report.md)
+- Phase 2 report (model architecture configuration and rationale — pretraining/evaluation
+  to follow): [`report/phase2_model_report.md`](report/phase2_model_report.md), with the
+  full `d_model`/`n_layers` grid search and depth-vs-width literature review in
+  [`report/architecture_grid_search.md`](report/architecture_grid_search.md)
 
 ## Reproduction
 
@@ -53,3 +60,15 @@ construction and vocab-size selection, dataset statistics): [`report/phase1_data
 4. Tokenizer evaluation: `python -m scripts.tokenizer.evaluate_tokenizer --lang <hindi|nepali>`.
 5. Vocab-size sweep: `python -m scripts.tokenizer.vocab_size_sweep --lang <hindi|nepali>`.
 6. Report figures: `python -m scripts.report.make_figures` (writes `report/figures/*.png`).
+7. Tokenize for pretraining: `python -m scripts.training.prepare_bin --lang <hindi|nepali>`
+   (writes `{train,val,test}.bin` + `tokenized_meta.json` to `<lang>/data/tokenized/`; paths
+   are overridable via `--data-dir`/`--tokenizer`/`--out-dir` for running on Kaggle/Colab).
+8. Pretrain: `python -m scripts.training.train --lang <hindi|nepali> --data-dir <dir with
+   .bin files> --out-dir <checkpoint dir>` (see `scripts/training/train.py` module docstring for
+   Kaggle usage and resuming an interrupted run with `--resume`).
+9. End-to-end on Kaggle (GPU T4 x2): [`scripts/training/kaggle_pretrain.ipynb`](scripts/training/kaggle_pretrain.ipynb)
+   runs steps 7-8 for both languages in parallel (one per GPU) against the `lma-individual`
+   (processed data) and `lma-individual-files` (tokenizer + scripts) Kaggle datasets, logging
+   train/val loss to Weights & Biases and pushing checkpoints (including the latest, for
+   resuming) to the Hugging Face Hub as it trains — see the notebook's own first cell for
+   the exact inputs and Kaggle secrets (`WANDB_API_KEY`, `HF_TOKEN`) it expects.
