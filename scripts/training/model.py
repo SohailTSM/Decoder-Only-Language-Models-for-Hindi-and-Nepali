@@ -58,7 +58,8 @@ class CausalSelfAttention(nn.Module):
         self.attn_dropout_p = cfg.dropout
         self.resid_dropout = nn.Dropout(cfg.dropout)
 
-    def forward(self, x: torch.Tensor, cos: torch.Tensor, sin: torch.Tensor) -> torch.Tensor:
+    def forward(self, x: torch.Tensor, cos: torch.Tensor, sin: torch.Tensor,
+                return_attn: bool = False):
         B, T, D = x.shape
         q = self.wq(x).view(B, T, self.n_heads, self.head_dim).transpose(1, 2)
         k = self.wk(x).view(B, T, self.n_heads, self.head_dim).transpose(1, 2)
@@ -67,12 +68,24 @@ class CausalSelfAttention(nn.Module):
         q = apply_rope(q, cos, sin)
         k = apply_rope(k, cos, sin)
 
-        y = F.scaled_dot_product_attention(
-            q, k, v, is_causal=True,
-            dropout_p=self.attn_dropout_p if self.training else 0.0,
-        )
+        attn_weights = None
+        if return_attn:
+            # Explicit softmax(QK^T/sqrt(d_k) + M)V — only for attention analysis
+            # (heatmaps/entropy/mean-distance), which needs the weights themselves.
+            # Training/inference otherwise always use the fused SDPA path below,
+            # which never materializes this matrix.
+            scores = (q @ k.transpose(-2, -1)) / (self.head_dim ** 0.5)
+            causal_mask = torch.triu(torch.ones(T, T, dtype=torch.bool, device=x.device), diagonal=1)
+            scores = scores.masked_fill(causal_mask, float("-inf"))
+            attn_weights = F.softmax(scores, dim=-1)
+            y = attn_weights @ v
+        else:
+            y = F.scaled_dot_product_attention(
+                q, k, v, is_causal=True,
+                dropout_p=self.attn_dropout_p if self.training else 0.0,
+            )
         y = y.transpose(1, 2).contiguous().view(B, T, D)
-        return self.resid_dropout(self.wo(y))
+        return self.resid_dropout(self.wo(y)), attn_weights
 
 
 class FeedForward(nn.Module):
@@ -94,10 +107,12 @@ class Block(nn.Module):
         self.ln2 = nn.LayerNorm(cfg.d_model)
         self.ffn = FeedForward(cfg)
 
-    def forward(self, x: torch.Tensor, cos: torch.Tensor, sin: torch.Tensor) -> torch.Tensor:
-        x = x + self.attn(self.ln1(x), cos, sin)
+    def forward(self, x: torch.Tensor, cos: torch.Tensor, sin: torch.Tensor,
+                return_attn: bool = False):
+        attn_out, attn_weights = self.attn(self.ln1(x), cos, sin, return_attn=return_attn)
+        x = x + attn_out
         x = x + self.ffn(self.ln2(x))
-        return x
+        return x, attn_weights
 
 
 class GPT(nn.Module):
@@ -127,7 +142,8 @@ class GPT(nn.Module):
         elif isinstance(module, nn.Embedding):
             nn.init.normal_(module.weight, mean=0.0, std=0.02)
 
-    def forward(self, idx: torch.Tensor, targets: torch.Tensor | None = None):
+    def forward(self, idx: torch.Tensor, targets: torch.Tensor | None = None,
+                return_attn: bool = False):
         B, T = idx.shape
         assert T <= self.cfg.max_seq_len, \
             f"sequence length {T} exceeds max_seq_len {self.cfg.max_seq_len}"
@@ -135,15 +151,46 @@ class GPT(nn.Module):
         x = self.drop(self.tok_emb(idx))
         cos = self.rope_cos[:T].to(x.device)
         sin = self.rope_sin[:T].to(x.device)
+        attn_weights_by_layer = []
         for block in self.blocks:
-            x = block(x, cos, sin)
+            x, attn_weights = block(x, cos, sin, return_attn=return_attn)
+            if return_attn:
+                attn_weights_by_layer.append(attn_weights)
         x = self.ln_f(x)
         logits = self.head(x)
 
         loss = None
         if targets is not None:
             loss = F.cross_entropy(logits.view(-1, logits.size(-1)), targets.view(-1))
+
+        if return_attn:
+            return logits, loss, attn_weights_by_layer
         return logits, loss
+
+    @torch.no_grad()
+    def generate(self, idx: torch.Tensor, max_new_tokens: int, temperature: float = 1.0,
+                 top_k: int | None = None, greedy: bool = False) -> torch.Tensor:
+        """Autoregressive sampling. `idx`: (B, T) prompt token ids. `greedy=True` ignores
+        `temperature`/`top_k` and always takes the argmax (used for the assignment's
+        greedy-decoding condition; temperature sampling is used for 0.5/1.0/1.5)."""
+        self.eval()
+        for _ in range(max_new_tokens):
+            idx_cond = idx[:, -self.cfg.max_seq_len:]
+            logits, _ = self(idx_cond)
+            logits = logits[:, -1, :]
+
+            if greedy:
+                next_id = logits.argmax(dim=-1, keepdim=True)
+            else:
+                logits = logits / temperature
+                if top_k is not None:
+                    v, _ = torch.topk(logits, min(top_k, logits.size(-1)))
+                    logits[logits < v[:, [-1]]] = float("-inf")
+                probs = F.softmax(logits, dim=-1)
+                next_id = torch.multinomial(probs, num_samples=1)
+
+            idx = torch.cat([idx, next_id], dim=1)
+        return idx
 
     def num_params(self) -> int:
         return sum(p.numel() for p in self.parameters())

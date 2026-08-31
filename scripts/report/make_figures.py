@@ -1,4 +1,5 @@
-"""Generate the static figures embedded in report/phase1_data_report.md.
+"""Generate the static figures embedded in report/phase1_data_report.md and
+report/phase2_model_report.md.
 
 Uses a fixed, colorblind-validated categorical palette (blue=Hindi, orange=Nepali,
 kept consistent across every figure so color always identifies the same language).
@@ -6,6 +7,7 @@ kept consistent across every figure so color always identifies the same language
 Usage: python -m scripts.report.make_figures
 """
 
+import re
 from pathlib import Path
 
 import matplotlib
@@ -221,13 +223,60 @@ def fig_manual_ratio_scenarios():
     plt.close(fig)
 
 
+EVAL_RE = re.compile(r"iter (\d+): train_loss=([\d.]+) val_loss=([\d.]+)")
+RESUME_ITER = 19_000  # iter both languages' Kaggle sessions resumed from after the 12h cap
+
+
+def _parse_pretrain_log(lang: str) -> dict[int, tuple[float, float]]:
+    """Reads pre_train/<lang>_1.log + _2.log (session 1, session 2), keyed by iter —
+    later files overwrite earlier ones so the post-resume re-print of iter 19000
+    doesn't double up."""
+    events: dict[int, tuple[float, float]] = {}
+    for part in ("1", "2"):
+        path = REPO_ROOT / lang / "pre_train" / f"{lang}_{part}.log"
+        for m in EVAL_RE.finditer(path.read_text()):
+            events[int(m.group(1))] = (float(m.group(2)), float(m.group(3)))
+    return events
+
+
+def fig_pretrain_loss():
+    """§6: validation loss over the full pretraining run, both languages, with the
+    Kaggle 12-hour session boundary (auto-resumed from HF Hub) marked."""
+    fig, ax = plt.subplots(figsize=(9, 4.8))
+
+    for lang, color in [("hindi", HINDI), ("nepali", NEPALI)]:
+        events = _parse_pretrain_log(lang)
+        iters = sorted(events)
+        val_loss = [events[i][1] for i in iters]
+        ax.plot(iters, val_loss, color=color, linewidth=2, solid_capstyle="round",
+                 label=lang.capitalize())
+
+    ax.axvline(RESUME_ITER, color=INK_MUTED, linewidth=1, linestyle=(0, (4, 3)))
+    ax.text(RESUME_ITER, 9.2, "session resumed\n(12h Kaggle cap)", ha="center",
+            fontsize=9, color=INK_SECONDARY)
+
+    ax.set_xlabel("Iteration")
+    ax.set_ylabel("val/loss (cross-entropy, nats)")
+    ax.xaxis.set_major_formatter(lambda v, _: f"{int(v):,}")
+    ax.yaxis.grid(True, color=GRID, linewidth=0.8)
+    ax.set_axisbelow(True)
+    _clean_axes(ax)
+    ax.legend(loc="upper right", frameon=False, fontsize=11)
+    ax.set_title("Pretraining validation loss", fontsize=13, color=INK, loc="left",
+                 pad=12)
+    fig.tight_layout()
+    fig.savefig(OUT_DIR / "05_pretrain_loss.png", dpi=180, bbox_inches="tight")
+    plt.close(fig)
+
+
 def main() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     fig_manual_sources()
     fig_near_dup_rate()
     fig_vocab_fertility()
     fig_manual_ratio_scenarios()
-    print(f"wrote 4 figures to {OUT_DIR}")
+    fig_pretrain_loss()
+    print(f"wrote 5 figures to {OUT_DIR}")
 
 
 if __name__ == "__main__":

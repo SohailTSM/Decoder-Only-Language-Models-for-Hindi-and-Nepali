@@ -1,0 +1,10 @@
+{
+  "lang": "nepali",
+  "checkpoint": "/root/.cache/huggingface/hub/models--sohailtsm--lma-nepali-gpt/snapshots/1be5817a934a6cf5d2564a9cd22a11d50c5e56d7/best.pt",
+  "checkpoint_iter": 25000,
+  "test_loss_nats": 3.8113066975653545,
+  "perplexity": 45.20947539790587,
+  "bpb": 0.4333384406644207,
+  "tokens_evaluated": 12146688,
+  "test_bytes": 154127132
+}

@@ -13,6 +13,8 @@ hindi/           # Model H
   data/          # manual/, raw_public/, processed/ (train/val/test.txt, stats.json)
                  # tokenized/ ({train,val,test}.bin + tokenized_meta.json, from prepare_bin.py)
   tokenizer/     # hindi_unigram_16k.{model,vocab} + vocab_sweep/ (vocab-size selection experiment)
+  pre_train/     # pretraining logs (hindi_1.log = session 1, hindi_2.log = post-resume session 2)
+  eval/          # hindi_lm_metrics.json, hindi_generation.json, attention/ (heatmaps + summary)
 nepali/          # Model L — same structure
 scripts/
   scraping/      # manual data collection (sitemap-based news scraping)
@@ -20,6 +22,8 @@ scripts/
   preprocessing/ # cleaning, dedup, splitting pipeline (build_corpus.py)
   tokenizer/     # tokenizer training, evaluation, vocab-size sweep, Colab notebook
   training/      # prepare_bin.py, model.py (GPT + RoPE), dataset.py, train.py, kaggle_pretrain.ipynb
+  evaluation/    # eval_lm.py (PPL/BPB), generate_eval.py (BLEU/chrF/ROUGE-L + diversity),
+                 # attention_analysis.py (heatmaps/entropy/distance), kaggle_evaluate.ipynb
   report/        # make_figures.py — generates report/figures/*.png
 report/          # phase1_data_report.md, phase2_model_report.md, architecture_grid_search.md,
                  # supporting stats/sweep JSON files, figures/
@@ -40,6 +44,18 @@ Direct links to the final `train.txt` / `val.txt` / `test.txt` splits used for t
 - **Nepali** (`processed/`): https://drive.google.com/drive/folders/1tXaHj3OkzxtjkMJh1lRTHfkeuf5deAYs
 
 Permissions are set to "Anyone with the link can view" — no access request needed.
+
+## Phase 2 — pretrained checkpoints (Hugging Face Hub)
+
+Model checkpoints (`best.pt`, `last.pt` — full training state: model weights, optimizer
+state, iteration step, config) are hosted on the Hugging Face Hub rather than Google
+Drive, pushed automatically during pretraining (`report/phase2_model_report.md` §5.3):
+
+- **Model H (Hindi)**: https://huggingface.co/sohailtsm/lma-hindi-gpt
+- **Model L (Nepali)**: https://huggingface.co/sohailtsm/lma-nepali-gpt
+
+**⚠️ these repos are currently private** — set to Public (repo Settings on huggingface.co)
+before grading, or graders won't be able to open them without requesting access.
 
 ## Report
 
@@ -72,3 +88,8 @@ Permissions are set to "Anyone with the link can view" — no access request nee
    train/val loss to Weights & Biases and pushing checkpoints (including the latest, for
    resuming) to the Hugging Face Hub as it trains — see the notebook's own first cell for
    the exact inputs and Kaggle secrets (`WANDB_API_KEY`, `HF_TOKEN`) it expects.
+10. Evaluation (test-set PPL/BPB, generation quality, attention analysis — assignment §2.3):
+    [`scripts/evaluation/kaggle_evaluate.ipynb`](scripts/evaluation/kaggle_evaluate.ipynb) runs
+    `eval_lm.py`, `generate_eval.py`, and `attention_analysis.py` for both languages against
+    the checkpoints on the Hugging Face Hub; results are written to `<lang>/eval/` and
+    summarized in `report/phase2_model_report.md` §7.

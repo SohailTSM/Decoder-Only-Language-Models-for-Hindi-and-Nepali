@@ -9,3 +9,5 @@ matplotlib
 torch
 wandb
 huggingface_hub
+sacrebleu
+rouge-score

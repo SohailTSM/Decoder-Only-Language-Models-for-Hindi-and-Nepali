@@ -1,0 +1,577 @@
+2026-08-22 13:12:08 [nepali] iter 0: train_loss=9.7599 val_loss=9.7607 lr=1.00e-06
+2026-08-22 13:12:09 Processing Files (1 / 1)      : 100%|██████████|  103MB /  103MB,  117MB/s  
+2026-08-22 13:12:09 New Data Upload               : |          |  0.00B /  0.00B,  0.00B/s  
+2026-08-22 13:12:09   ...epali/checkpoints/best.pt: 100%|██████████|  103MB /  103MB            
+2026-08-22 13:13:59 [nepali] iter 50: loss=9.5174 (2889.7 ms/iter)
+2026-08-22 13:15:46 [nepali] iter 100: loss=8.4056 (2141.2 ms/iter)
+2026-08-22 13:17:33 [nepali] iter 150: loss=7.7163 (2142.3 ms/iter)
+2026-08-22 13:19:21 [nepali] iter 200: loss=7.3845 (2150.5 ms/iter)
+2026-08-22 13:21:08 [nepali] iter 250: loss=7.0177 (2151.7 ms/iter)
+2026-08-22 13:22:56 [nepali] iter 300: loss=6.7033 (2149.6 ms/iter)
+2026-08-22 13:24:43 [nepali] iter 350: loss=6.4483 (2147.5 ms/iter)
+2026-08-22 13:26:31 [nepali] iter 400: loss=6.2593 (2152.1 ms/iter)
+2026-08-22 13:28:18 [nepali] iter 450: loss=6.1131 (2151.1 ms/iter)
+2026-08-22 13:30:38 [nepali] iter 500: train_loss=5.9009 val_loss=5.8791 lr=3.00e-04
+2026-08-22 13:30:40 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 90.6MB/s  
+2026-08-22 13:30:40 New Data Upload               : 100%|██████████|  308MB /  308MB, 90.6MB/s  
+2026-08-22 13:30:41   ...epali/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 13:30:46 [nepali] iter 500: loss=6.0042 (2963.4 ms/iter)
+2026-08-22 13:32:34 [nepali] iter 550: loss=5.8831 (2153.4 ms/iter)
+2026-08-22 13:34:22 [nepali] iter 600: loss=5.7944 (2151.8 ms/iter)
+2026-08-22 13:36:09 [nepali] iter 650: loss=5.7059 (2148.6 ms/iter)
+2026-08-22 13:37:57 [nepali] iter 700: loss=5.6531 (2151.6 ms/iter)
+2026-08-22 13:39:44 [nepali] iter 750: loss=5.5751 (2153.2 ms/iter)
+2026-08-22 13:41:32 [nepali] iter 800: loss=5.5052 (2157.4 ms/iter)
+2026-08-22 13:43:20 [nepali] iter 850: loss=5.4584 (2155.1 ms/iter)
+2026-08-22 13:45:08 [nepali] iter 900: loss=5.4099 (2154.1 ms/iter)
+2026-08-22 13:46:55 [nepali] iter 950: loss=5.3513 (2156.5 ms/iter)
+2026-08-22 13:49:16 [nepali] iter 1000: train_loss=5.2220 val_loss=5.2157 lr=3.00e-04
+2026-08-22 13:49:18 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 73.4MB/s  
+2026-08-22 13:49:18 New Data Upload               : 100%|██████████|  308MB /  308MB, 73.4MB/s  
+2026-08-22 13:49:18   ...epali/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 13:49:25 [nepali] iter 1000: loss=5.3084 (2984.5 ms/iter)
+2026-08-22 13:49:26 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 46.7MB/s  
+2026-08-22 13:49:26 New Data Upload               : 100%|██████████|  308MB /  308MB, 46.7MB/s  
+2026-08-22 13:49:27   ...epali/checkpoints/last.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 13:51:21 [nepali] iter 1050: loss=5.2703 (2326.7 ms/iter)
+2026-08-22 13:53:09 [nepali] iter 1100: loss=5.2297 (2154.2 ms/iter)
+2026-08-22 13:54:56 [nepali] iter 1150: loss=5.1944 (2152.3 ms/iter)
+2026-08-22 13:56:44 [nepali] iter 1200: loss=5.1673 (2152.5 ms/iter)
+2026-08-22 13:58:31 [nepali] iter 1250: loss=5.1348 (2151.7 ms/iter)
+2026-08-22 14:00:19 [nepali] iter 1300: loss=5.1019 (2155.3 ms/iter)
+2026-08-22 14:02:07 [nepali] iter 1350: loss=5.0815 (2154.2 ms/iter)
+2026-08-22 14:03:55 [nepali] iter 1400: loss=5.0491 (2154.1 ms/iter)
+2026-08-22 14:05:42 [nepali] iter 1450: loss=5.0173 (2151.4 ms/iter)
+2026-08-22 14:08:03 [nepali] iter 1500: train_loss=4.9027 val_loss=4.9040 lr=2.99e-04
+2026-08-22 14:08:05 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 96.3MB/s  
+2026-08-22 14:08:05 New Data Upload               : 100%|██████████|  308MB /  308MB, 96.3MB/s  
+2026-08-22 14:08:05   ...epali/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 14:08:10 [nepali] iter 1500: loss=4.9928 (2965.1 ms/iter)
+2026-08-22 14:09:58 [nepali] iter 1550: loss=4.9650 (2153.2 ms/iter)
+2026-08-22 14:11:46 [nepali] iter 1600: loss=4.9471 (2154.0 ms/iter)
+2026-08-22 14:13:34 [nepali] iter 1650: loss=4.9221 (2155.1 ms/iter)
+2026-08-22 14:15:21 [nepali] iter 1700: loss=4.9057 (2156.2 ms/iter)
+2026-08-22 14:17:09 [nepali] iter 1750: loss=4.8861 (2151.6 ms/iter)
+2026-08-22 14:18:57 [nepali] iter 1800: loss=4.8663 (2150.6 ms/iter)
+2026-08-22 14:20:44 [nepali] iter 1850: loss=4.8487 (2152.4 ms/iter)
+2026-08-22 14:22:32 [nepali] iter 1900: loss=4.8263 (2156.9 ms/iter)
+2026-08-22 14:24:20 [nepali] iter 1950: loss=4.8167 (2156.9 ms/iter)
+2026-08-22 14:26:40 [nepali] iter 2000: train_loss=4.7153 val_loss=4.7337 lr=2.98e-04
+2026-08-22 14:26:42 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB,  103MB/s  
+2026-08-22 14:26:42 New Data Upload               : 100%|██████████|  308MB /  308MB,  103MB/s  
+2026-08-22 14:26:43   ...epali/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 14:26:48 [nepali] iter 2000: loss=4.8029 (2954.8 ms/iter)
+2026-08-22 14:26:49 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 90.6MB/s  
+2026-08-22 14:26:49 New Data Upload               : 100%|██████████|  308MB /  308MB, 90.6MB/s  
+2026-08-22 14:26:50   ...epali/checkpoints/last.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 14:28:41 [nepali] iter 2050: loss=4.7831 (2266.2 ms/iter)
+2026-08-22 14:30:29 [nepali] iter 2100: loss=4.7732 (2157.6 ms/iter)
+2026-08-22 14:32:16 [nepali] iter 2150: loss=4.7590 (2152.9 ms/iter)
+2026-08-22 14:34:04 [nepali] iter 2200: loss=4.7414 (2155.4 ms/iter)
+2026-08-22 14:35:52 [nepali] iter 2250: loss=4.7333 (2156.1 ms/iter)
+2026-08-22 14:37:40 [nepali] iter 2300: loss=4.7143 (2155.5 ms/iter)
+2026-08-22 14:39:28 [nepali] iter 2350: loss=4.6926 (2155.0 ms/iter)
+2026-08-22 14:41:15 [nepali] iter 2400: loss=4.6799 (2153.6 ms/iter)
+2026-08-22 14:43:03 [nepali] iter 2450: loss=4.6721 (2153.1 ms/iter)
+2026-08-22 14:45:23 [nepali] iter 2500: train_loss=4.5584 val_loss=4.5595 lr=2.96e-04
+2026-08-22 14:45:25 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 85.6MB/s  
+2026-08-22 14:45:25 New Data Upload               : 100%|██████████|  308MB /  308MB, 85.6MB/s  
+2026-08-22 14:45:26   ...epali/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 14:45:32 [nepali] iter 2500: loss=4.6584 (2978.4 ms/iter)
+2026-08-22 14:47:19 [nepali] iter 2550: loss=4.6459 (2154.0 ms/iter)
+2026-08-22 14:49:07 [nepali] iter 2600: loss=4.6360 (2159.7 ms/iter)
+2026-08-22 14:50:55 [nepali] iter 2650: loss=4.6295 (2154.4 ms/iter)
+2026-08-22 14:52:43 [nepali] iter 2700: loss=4.6178 (2154.7 ms/iter)
+2026-08-22 14:54:31 [nepali] iter 2750: loss=4.6098 (2156.7 ms/iter)
+2026-08-22 14:56:19 [nepali] iter 2800: loss=4.5920 (2159.3 ms/iter)
+2026-08-22 14:58:07 [nepali] iter 2850: loss=4.5780 (2157.3 ms/iter)
+2026-08-22 14:59:54 [nepali] iter 2900: loss=4.5759 (2154.2 ms/iter)
+2026-08-22 15:01:42 [nepali] iter 2950: loss=4.5564 (2160.2 ms/iter)
+2026-08-22 15:04:03 [nepali] iter 3000: train_loss=4.4673 val_loss=4.4680 lr=2.94e-04
+2026-08-22 15:04:05 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 81.1MB/s  
+2026-08-22 15:04:05 New Data Upload               : 100%|██████████|  308MB /  308MB, 81.1MB/s  
+2026-08-22 15:04:05   ...epali/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 15:04:11 [nepali] iter 3000: loss=4.5512 (2982.2 ms/iter)
+2026-08-22 15:04:13 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 85.6MB/s  
+2026-08-22 15:04:13 New Data Upload               : 100%|██████████|  308MB /  308MB, 85.6MB/s  
+2026-08-22 15:04:14   ...epali/checkpoints/last.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 15:06:05 [nepali] iter 3050: loss=4.5493 (2275.4 ms/iter)
+2026-08-22 15:07:53 [nepali] iter 3100: loss=4.5441 (2156.6 ms/iter)
+2026-08-22 15:09:41 [nepali] iter 3150: loss=4.5306 (2162.4 ms/iter)
+2026-08-22 15:11:29 [nepali] iter 3200: loss=4.5183 (2154.9 ms/iter)
+2026-08-22 15:13:17 [nepali] iter 3250: loss=4.5069 (2155.4 ms/iter)
+2026-08-22 15:15:05 [nepali] iter 3300: loss=4.5024 (2160.1 ms/iter)
+2026-08-22 15:16:53 [nepali] iter 3350: loss=4.5141 (2156.8 ms/iter)
+2026-08-22 15:18:40 [nepali] iter 3400: loss=4.4973 (2158.7 ms/iter)
+2026-08-22 15:20:29 [nepali] iter 3450: loss=4.4856 (2161.9 ms/iter)
+2026-08-22 15:22:49 [nepali] iter 3500: train_loss=4.3608 val_loss=4.3802 lr=2.91e-04
+2026-08-22 15:22:52 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 96.3MB/s  
+2026-08-22 15:22:52 New Data Upload               : 100%|██████████|  308MB /  308MB, 96.3MB/s  
+2026-08-22 15:22:52   ...epali/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 15:22:58 [nepali] iter 3500: loss=4.4729 (2981.9 ms/iter)
+2026-08-22 15:24:45 [nepali] iter 3550: loss=4.4594 (2156.3 ms/iter)
+2026-08-22 15:26:33 [nepali] iter 3600: loss=4.4547 (2158.0 ms/iter)
+2026-08-22 15:28:21 [nepali] iter 3650: loss=4.4646 (2157.1 ms/iter)
+2026-08-22 15:30:09 [nepali] iter 3700: loss=4.4482 (2150.7 ms/iter)
+2026-08-22 15:31:57 [nepali] iter 3750: loss=4.4381 (2162.1 ms/iter)
+2026-08-22 15:33:45 [nepali] iter 3800: loss=4.4378 (2154.1 ms/iter)
+2026-08-22 15:35:32 [nepali] iter 3850: loss=4.4396 (2153.9 ms/iter)
+2026-08-22 15:37:20 [nepali] iter 3900: loss=4.4283 (2159.9 ms/iter)
+2026-08-22 15:39:08 [nepali] iter 3950: loss=4.4109 (2158.0 ms/iter)
+2026-08-22 15:41:29 [nepali] iter 4000: train_loss=4.3175 val_loss=4.3283 lr=2.88e-04
+2026-08-22 15:41:30 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 73.4MB/s  
+2026-08-22 15:41:30 New Data Upload               : 100%|██████████|  308MB /  308MB, 73.4MB/s  
+2026-08-22 15:41:31   ...epali/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 15:41:37 [nepali] iter 4000: loss=4.4143 (2983.9 ms/iter)
+2026-08-22 15:41:39 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 81.1MB/s  
+2026-08-22 15:41:39 New Data Upload               : 100%|██████████|  308MB /  308MB, 81.1MB/s  
+2026-08-22 15:41:40   ...epali/checkpoints/last.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 15:43:31 [nepali] iter 4050: loss=4.4073 (2273.4 ms/iter)
+2026-08-22 15:45:19 [nepali] iter 4100: loss=4.4104 (2158.8 ms/iter)
+2026-08-22 15:47:07 [nepali] iter 4150: loss=4.3905 (2151.7 ms/iter)
+2026-08-22 15:48:55 [nepali] iter 4200: loss=4.3954 (2159.2 ms/iter)
+2026-08-22 15:50:42 [nepali] iter 4250: loss=4.3925 (2155.9 ms/iter)
+2026-08-22 15:52:30 [nepali] iter 4300: loss=4.3752 (2161.7 ms/iter)
+2026-08-22 15:54:18 [nepali] iter 4350: loss=4.3747 (2160.5 ms/iter)
+2026-08-22 15:56:06 [nepali] iter 4400: loss=4.3714 (2159.8 ms/iter)
+2026-08-22 15:57:54 [nepali] iter 4450: loss=4.3708 (2160.1 ms/iter)
+2026-08-22 16:00:15 [nepali] iter 4500: train_loss=4.2592 val_loss=4.2681 lr=2.85e-04
+2026-08-22 16:00:17 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 96.3MB/s  
+2026-08-22 16:00:17 New Data Upload               : 100%|██████████|  308MB /  308MB, 96.3MB/s  
+2026-08-22 16:00:18   ...epali/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 16:00:23 [nepali] iter 4500: loss=4.3714 (2972.4 ms/iter)
+2026-08-22 16:02:11 [nepali] iter 4550: loss=4.3641 (2155.0 ms/iter)
+2026-08-22 16:03:59 [nepali] iter 4600: loss=4.3554 (2155.3 ms/iter)
+2026-08-22 16:05:46 [nepali] iter 4650: loss=4.3595 (2154.3 ms/iter)
+2026-08-22 16:07:34 [nepali] iter 4700: loss=4.3514 (2152.9 ms/iter)
+2026-08-22 16:09:22 [nepali] iter 4750: loss=4.3535 (2157.3 ms/iter)
+2026-08-22 16:11:09 [nepali] iter 4800: loss=4.3358 (2150.6 ms/iter)
+2026-08-22 16:12:57 [nepali] iter 4850: loss=4.3348 (2149.9 ms/iter)
+2026-08-22 16:14:44 [nepali] iter 4900: loss=4.3257 (2148.5 ms/iter)
+2026-08-22 16:16:32 [nepali] iter 4950: loss=4.3189 (2153.1 ms/iter)
+2026-08-22 16:18:52 [nepali] iter 5000: train_loss=4.2141 val_loss=4.2447 lr=2.82e-04
+2026-08-22 16:18:54 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 77.0MB/s  
+2026-08-22 16:18:54 New Data Upload               : 100%|██████████|  308MB /  308MB, 77.0MB/s  
+2026-08-22 16:18:55   ...epali/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 16:19:01 [nepali] iter 5000: loss=4.3352 (2978.0 ms/iter)
+2026-08-22 16:19:03 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 81.1MB/s  
+2026-08-22 16:19:03 New Data Upload               : 100%|██████████|  308MB /  308MB, 81.1MB/s  
+2026-08-22 16:19:03   ...epali/checkpoints/last.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 16:20:55 [nepali] iter 5050: loss=4.3196 (2274.6 ms/iter)
+2026-08-22 16:22:42 [nepali] iter 5100: loss=4.3232 (2154.0 ms/iter)
+2026-08-22 16:24:30 [nepali] iter 5150: loss=4.3206 (2159.6 ms/iter)
+2026-08-22 16:26:18 [nepali] iter 5200: loss=4.3096 (2153.3 ms/iter)
+2026-08-22 16:28:06 [nepali] iter 5250: loss=4.3092 (2152.7 ms/iter)
+2026-08-22 16:29:53 [nepali] iter 5300: loss=4.3109 (2157.8 ms/iter)
+2026-08-22 16:31:41 [nepali] iter 5350: loss=4.2856 (2158.0 ms/iter)
+2026-08-22 16:33:29 [nepali] iter 5400: loss=4.2883 (2152.2 ms/iter)
+2026-08-22 16:35:17 [nepali] iter 5450: loss=4.2911 (2160.5 ms/iter)
+2026-08-22 16:37:38 [nepali] iter 5500: train_loss=4.1927 val_loss=4.2036 lr=2.77e-04
+2026-08-22 16:37:40 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 81.1MB/s  
+2026-08-22 16:37:40 New Data Upload               : 100%|██████████|  308MB /  308MB, 81.1MB/s  
+2026-08-22 16:37:40   ...epali/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 16:37:46 [nepali] iter 5500: loss=4.2971 (2989.1 ms/iter)
+2026-08-22 16:39:34 [nepali] iter 5550: loss=4.2869 (2155.9 ms/iter)
+2026-08-22 16:41:22 [nepali] iter 5600: loss=4.2658 (2156.1 ms/iter)
+2026-08-22 16:43:10 [nepali] iter 5650: loss=4.2727 (2154.2 ms/iter)
+2026-08-22 16:44:57 [nepali] iter 5700: loss=4.2840 (2151.3 ms/iter)
+2026-08-22 16:46:45 [nepali] iter 5750: loss=4.2730 (2149.3 ms/iter)
+2026-08-22 16:48:32 [nepali] iter 5800: loss=4.2735 (2152.0 ms/iter)
+2026-08-22 16:50:20 [nepali] iter 5850: loss=4.2732 (2159.6 ms/iter)
+2026-08-22 16:52:08 [nepali] iter 5900: loss=4.2658 (2154.2 ms/iter)
+2026-08-22 16:53:56 [nepali] iter 5950: loss=4.2652 (2157.5 ms/iter)
+2026-08-22 16:56:17 [nepali] iter 6000: train_loss=4.1438 val_loss=4.1526 lr=2.73e-04
+2026-08-22 16:56:18 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 90.6MB/s  
+2026-08-22 16:56:18 New Data Upload               : 100%|██████████|  308MB /  308MB, 90.6MB/s  
+2026-08-22 16:56:19   ...epali/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 16:56:25 [nepali] iter 6000: loss=4.2691 (2975.4 ms/iter)
+2026-08-22 16:56:26 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 90.6MB/s  
+2026-08-22 16:56:26 New Data Upload               : 100%|██████████|  308MB /  308MB, 90.6MB/s  
+2026-08-22 16:56:27   ...epali/checkpoints/last.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 16:58:18 [nepali] iter 6050: loss=4.2574 (2266.0 ms/iter)
+2026-08-22 17:00:06 [nepali] iter 6100: loss=4.2613 (2153.6 ms/iter)
+2026-08-22 17:01:53 [nepali] iter 6150: loss=4.2554 (2153.9 ms/iter)
+2026-08-22 17:03:41 [nepali] iter 6200: loss=4.2408 (2149.9 ms/iter)
+2026-08-22 17:05:29 [nepali] iter 6250: loss=4.2566 (2155.9 ms/iter)
+2026-08-22 17:07:17 [nepali] iter 6300: loss=4.2433 (2158.2 ms/iter)
+2026-08-22 17:09:04 [nepali] iter 6350: loss=4.2436 (2158.0 ms/iter)
+2026-08-22 17:10:52 [nepali] iter 6400: loss=4.2451 (2157.4 ms/iter)
+2026-08-22 17:12:40 [nepali] iter 6450: loss=4.2358 (2152.0 ms/iter)
+2026-08-22 17:15:01 [nepali] iter 6500: train_loss=4.1230 val_loss=4.1428 lr=2.68e-04
+2026-08-22 17:15:02 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB,  103MB/s  
+2026-08-22 17:15:02 New Data Upload               : 100%|██████████|  308MB /  308MB,  103MB/s  
+2026-08-22 17:15:03   ...epali/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 17:15:08 [nepali] iter 6500: loss=4.2315 (2965.0 ms/iter)
+2026-08-22 17:16:56 [nepali] iter 6550: loss=4.2377 (2155.3 ms/iter)
+2026-08-22 17:18:44 [nepali] iter 6600: loss=4.2241 (2158.2 ms/iter)
+2026-08-22 17:20:32 [nepali] iter 6650: loss=4.2247 (2154.6 ms/iter)
+2026-08-22 17:22:19 [nepali] iter 6700: loss=4.2282 (2155.5 ms/iter)
+2026-08-22 17:24:07 [nepali] iter 6750: loss=4.2173 (2158.9 ms/iter)
+2026-08-22 17:25:55 [nepali] iter 6800: loss=4.2148 (2156.6 ms/iter)
+2026-08-22 17:27:43 [nepali] iter 6850: loss=4.2203 (2158.0 ms/iter)
+2026-08-22 17:29:31 [nepali] iter 6900: loss=4.2108 (2157.4 ms/iter)
+2026-08-22 17:31:19 [nepali] iter 6950: loss=4.2061 (2156.0 ms/iter)
+2026-08-22 17:33:40 [nepali] iter 7000: train_loss=4.0873 val_loss=4.1370 lr=2.63e-04
+2026-08-22 17:33:41 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 90.6MB/s  
+2026-08-22 17:33:41 New Data Upload               : 100%|██████████|  308MB /  308MB, 90.6MB/s  
+2026-08-22 17:33:42   ...epali/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 17:33:48 [nepali] iter 7000: loss=4.2075 (2982.2 ms/iter)
+2026-08-22 17:33:50 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 90.6MB/s  
+2026-08-22 17:33:50 New Data Upload               : 100%|██████████|  308MB /  308MB, 90.6MB/s  
+2026-08-22 17:33:50   ...epali/checkpoints/last.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 17:35:41 [nepali] iter 7050: loss=4.2097 (2265.8 ms/iter)
+2026-08-22 17:37:29 [nepali] iter 7100: loss=4.2170 (2159.4 ms/iter)
+2026-08-22 17:39:17 [nepali] iter 7150: loss=4.2005 (2153.8 ms/iter)
+2026-08-22 17:41:05 [nepali] iter 7200: loss=4.1975 (2159.3 ms/iter)
+2026-08-22 17:42:53 [nepali] iter 7250: loss=4.1978 (2160.6 ms/iter)
+2026-08-22 17:44:40 [nepali] iter 7300: loss=4.1834 (2151.1 ms/iter)
+2026-08-22 17:46:28 [nepali] iter 7350: loss=4.1930 (2156.3 ms/iter)
+2026-08-22 17:48:16 [nepali] iter 7400: loss=4.1930 (2158.3 ms/iter)
+2026-08-22 17:50:04 [nepali] iter 7450: loss=4.1884 (2156.7 ms/iter)
+2026-08-22 17:52:25 [nepali] iter 7500: train_loss=4.0882 val_loss=4.1066 lr=2.58e-04
+2026-08-22 17:52:26 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 90.6MB/s  
+2026-08-22 17:52:26 New Data Upload               : 100%|██████████|  308MB /  308MB, 90.6MB/s  
+2026-08-22 17:52:27   ...epali/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 17:52:32 [nepali] iter 7500: loss=4.1817 (2969.4 ms/iter)
+2026-08-22 17:54:20 [nepali] iter 7550: loss=4.1819 (2153.7 ms/iter)
+2026-08-22 17:56:08 [nepali] iter 7600: loss=4.1854 (2157.8 ms/iter)
+2026-08-22 17:57:56 [nepali] iter 7650: loss=4.1847 (2152.6 ms/iter)
+2026-08-22 17:59:44 [nepali] iter 7700: loss=4.1729 (2158.3 ms/iter)
+2026-08-22 18:01:31 [nepali] iter 7750: loss=4.1771 (2157.5 ms/iter)
+2026-08-22 18:03:19 [nepali] iter 7800: loss=4.1672 (2155.9 ms/iter)
+2026-08-22 18:05:07 [nepali] iter 7850: loss=4.1627 (2154.3 ms/iter)
+2026-08-22 18:06:55 [nepali] iter 7900: loss=4.1653 (2154.6 ms/iter)
+2026-08-22 18:08:42 [nepali] iter 7950: loss=4.1823 (2155.4 ms/iter)
+2026-08-22 18:11:03 [nepali] iter 8000: train_loss=4.0480 val_loss=4.0741 lr=2.52e-04
+2026-08-22 18:11:05 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 96.3MB/s  
+2026-08-22 18:11:05 New Data Upload               : 100%|██████████|  308MB /  308MB, 96.3MB/s  
+2026-08-22 18:11:05   ...epali/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 18:11:11 [nepali] iter 8000: loss=4.1790 (2962.5 ms/iter)
+2026-08-22 18:11:12 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB,  103MB/s  
+2026-08-22 18:11:12 New Data Upload               : 100%|██████████|  308MB /  308MB,  103MB/s  
+2026-08-22 18:11:13   ...epali/checkpoints/last.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 18:13:03 [nepali] iter 8050: loss=4.1708 (2258.6 ms/iter)
+2026-08-22 18:14:51 [nepali] iter 8100: loss=4.1457 (2153.4 ms/iter)
+2026-08-22 18:16:39 [nepali] iter 8150: loss=4.1607 (2153.0 ms/iter)
+2026-08-22 18:18:27 [nepali] iter 8200: loss=4.1728 (2159.3 ms/iter)
+2026-08-22 18:20:14 [nepali] iter 8250: loss=4.1586 (2154.4 ms/iter)
+2026-08-22 18:22:02 [nepali] iter 8300: loss=4.1616 (2153.7 ms/iter)
+2026-08-22 18:23:50 [nepali] iter 8350: loss=4.1462 (2157.8 ms/iter)
+2026-08-22 18:25:38 [nepali] iter 8400: loss=4.1422 (2159.3 ms/iter)
+2026-08-22 18:27:26 [nepali] iter 8450: loss=4.1592 (2160.5 ms/iter)
+2026-08-22 18:29:47 [nepali] iter 8500: train_loss=4.0367 val_loss=4.0705 lr=2.46e-04
+2026-08-22 18:29:49 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 90.6MB/s  
+2026-08-22 18:29:49 New Data Upload               : 100%|██████████|  308MB /  308MB, 90.6MB/s  
+2026-08-22 18:29:49   ...epali/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 18:29:55 [nepali] iter 8500: loss=4.1472 (2974.2 ms/iter)
+2026-08-22 18:31:43 [nepali] iter 8550: loss=4.1462 (2155.2 ms/iter)
+2026-08-22 18:33:31 [nepali] iter 8600: loss=4.1466 (2161.7 ms/iter)
+2026-08-22 18:35:18 [nepali] iter 8650: loss=4.1381 (2152.6 ms/iter)
+2026-08-22 18:37:06 [nepali] iter 8700: loss=4.1409 (2149.9 ms/iter)
+2026-08-22 18:38:53 [nepali] iter 8750: loss=4.1517 (2149.8 ms/iter)
+2026-08-22 18:40:41 [nepali] iter 8800: loss=4.1315 (2146.9 ms/iter)
+2026-08-22 18:42:28 [nepali] iter 8850: loss=4.1386 (2155.0 ms/iter)
+2026-08-22 18:44:16 [nepali] iter 8900: loss=4.1311 (2161.1 ms/iter)
+2026-08-22 18:46:04 [nepali] iter 8950: loss=4.1374 (2161.5 ms/iter)
+2026-08-22 18:48:26 [nepali] iter 9000: train_loss=4.0405 val_loss=4.0720 lr=2.40e-04
+2026-08-22 18:48:28 [nepali] iter 9000: loss=4.1375 (2864.4 ms/iter)
+2026-08-22 18:48:29 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 96.3MB/s  
+2026-08-22 18:48:29 New Data Upload               : 100%|██████████|  308MB /  308MB, 96.3MB/s  
+2026-08-22 18:48:30   ...epali/checkpoints/last.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 18:50:21 [nepali] iter 9050: loss=4.1209 (2269.9 ms/iter)
+2026-08-22 18:52:09 [nepali] iter 9100: loss=4.1293 (2162.0 ms/iter)
+2026-08-22 18:53:57 [nepali] iter 9150: loss=4.1345 (2154.1 ms/iter)
+2026-08-22 18:55:44 [nepali] iter 9200: loss=4.1323 (2149.3 ms/iter)
+2026-08-22 18:57:32 [nepali] iter 9250: loss=4.1359 (2152.5 ms/iter)
+2026-08-22 18:59:20 [nepali] iter 9300: loss=4.1200 (2158.9 ms/iter)
+2026-08-22 19:01:08 [nepali] iter 9350: loss=4.1272 (2159.7 ms/iter)
+2026-08-22 19:02:56 [nepali] iter 9400: loss=4.1218 (2152.3 ms/iter)
+2026-08-22 19:04:43 [nepali] iter 9450: loss=4.1193 (2153.7 ms/iter)
+2026-08-22 19:07:04 [nepali] iter 9500: train_loss=4.0234 val_loss=4.0300 lr=2.34e-04
+2026-08-22 19:07:06 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 96.3MB/s  
+2026-08-22 19:07:06 New Data Upload               : 100%|██████████|  308MB /  308MB, 96.3MB/s  
+2026-08-22 19:07:07   ...epali/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 19:07:13 [nepali] iter 9500: loss=4.1215 (2984.2 ms/iter)
+2026-08-22 19:09:00 [nepali] iter 9550: loss=4.1188 (2157.0 ms/iter)
+2026-08-22 19:10:49 [nepali] iter 9600: loss=4.1260 (2163.4 ms/iter)
+2026-08-22 19:12:36 [nepali] iter 9650: loss=4.1083 (2151.9 ms/iter)
+2026-08-22 19:14:24 [nepali] iter 9700: loss=4.1141 (2148.5 ms/iter)
+2026-08-22 19:16:11 [nepali] iter 9750: loss=4.1200 (2152.4 ms/iter)
+2026-08-22 19:17:59 [nepali] iter 9800: loss=4.0973 (2162.4 ms/iter)
+2026-08-22 19:19:47 [nepali] iter 9850: loss=4.1055 (2161.7 ms/iter)
+2026-08-22 19:21:35 [nepali] iter 9900: loss=4.0992 (2158.4 ms/iter)
+2026-08-22 19:23:23 [nepali] iter 9950: loss=4.0929 (2151.3 ms/iter)
+2026-08-22 19:25:43 [nepali] iter 10000: train_loss=4.0106 val_loss=4.0355 lr=2.27e-04
+2026-08-22 19:25:46 [nepali] iter 10000: loss=4.0936 (2852.3 ms/iter)
+2026-08-22 19:25:47 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 90.6MB/s  
+2026-08-22 19:25:47 New Data Upload               : 100%|██████████|  308MB /  308MB, 90.6MB/s  
+2026-08-22 19:25:48   ...epali/checkpoints/last.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 19:27:40 [nepali] iter 10050: loss=4.1119 (2280.0 ms/iter)
+2026-08-22 19:29:27 [nepali] iter 10100: loss=4.0982 (2156.4 ms/iter)
+2026-08-22 19:31:15 [nepali] iter 10150: loss=4.0977 (2154.4 ms/iter)
+2026-08-22 19:33:03 [nepali] iter 10200: loss=4.0984 (2157.4 ms/iter)
+2026-08-22 19:34:51 [nepali] iter 10250: loss=4.0980 (2159.2 ms/iter)
+2026-08-22 19:36:39 [nepali] iter 10300: loss=4.0999 (2158.5 ms/iter)
+2026-08-22 19:38:27 [nepali] iter 10350: loss=4.1053 (2159.6 ms/iter)
+2026-08-22 19:40:15 [nepali] iter 10400: loss=4.0941 (2159.1 ms/iter)
+2026-08-22 19:42:03 [nepali] iter 10450: loss=4.1046 (2160.2 ms/iter)
+2026-08-22 19:44:24 [nepali] iter 10500: train_loss=3.9914 val_loss=4.0201 lr=2.20e-04
+2026-08-22 19:44:26 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 96.3MB/s  
+2026-08-22 19:44:26 New Data Upload               : 100%|██████████|  308MB /  308MB, 96.3MB/s  
+2026-08-22 19:44:26   ...epali/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 19:44:32 [nepali] iter 10500: loss=4.0849 (2976.1 ms/iter)
+2026-08-22 19:46:19 [nepali] iter 10550: loss=4.0825 (2156.8 ms/iter)
+2026-08-22 19:48:07 [nepali] iter 10600: loss=4.0846 (2159.4 ms/iter)
+2026-08-22 19:49:55 [nepali] iter 10650: loss=4.0935 (2155.7 ms/iter)
+2026-08-22 19:51:43 [nepali] iter 10700: loss=4.0833 (2153.4 ms/iter)
+2026-08-22 19:53:30 [nepali] iter 10750: loss=4.0869 (2152.4 ms/iter)
+2026-08-22 19:55:18 [nepali] iter 10800: loss=4.0856 (2152.9 ms/iter)
+2026-08-22 19:57:06 [nepali] iter 10850: loss=4.0747 (2160.2 ms/iter)
+2026-08-22 19:58:54 [nepali] iter 10900: loss=4.0809 (2157.8 ms/iter)
+2026-08-22 20:00:42 [nepali] iter 10950: loss=4.0924 (2152.8 ms/iter)
+2026-08-22 20:03:02 [nepali] iter 11000: train_loss=3.9883 val_loss=3.9969 lr=2.13e-04
+2026-08-22 20:03:04 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 96.3MB/s  
+2026-08-22 20:03:04 New Data Upload               : 100%|██████████|  308MB /  308MB, 96.3MB/s  
+2026-08-22 20:03:05   ...epali/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 20:03:10 [nepali] iter 11000: loss=4.0777 (2966.9 ms/iter)
+2026-08-22 20:03:12 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 85.6MB/s  
+2026-08-22 20:03:12 New Data Upload               : 100%|██████████|  308MB /  308MB, 85.6MB/s  
+2026-08-22 20:03:12   ...epali/checkpoints/last.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 20:05:03 [nepali] iter 11050: loss=4.0833 (2269.5 ms/iter)
+2026-08-22 20:06:52 [nepali] iter 11100: loss=4.0777 (2161.4 ms/iter)
+2026-08-22 20:08:40 [nepali] iter 11150: loss=4.0714 (2159.8 ms/iter)
+2026-08-22 20:10:27 [nepali] iter 11200: loss=4.0698 (2158.1 ms/iter)
+2026-08-22 20:12:15 [nepali] iter 11250: loss=4.0928 (2155.1 ms/iter)
+2026-08-22 20:14:03 [nepali] iter 11300: loss=4.0793 (2152.9 ms/iter)
+2026-08-22 20:15:51 [nepali] iter 11350: loss=4.0687 (2156.9 ms/iter)
+2026-08-22 20:17:39 [nepali] iter 11400: loss=4.0657 (2161.8 ms/iter)
+2026-08-22 20:19:27 [nepali] iter 11450: loss=4.0667 (2157.5 ms/iter)
+2026-08-22 20:21:47 [nepali] iter 11500: train_loss=3.9946 val_loss=3.9873 lr=2.06e-04
+2026-08-22 20:21:49 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 85.6MB/s  
+2026-08-22 20:21:49 New Data Upload               : 100%|██████████|  308MB /  308MB, 85.6MB/s  
+2026-08-22 20:21:50   ...epali/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 20:21:56 [nepali] iter 11500: loss=4.0560 (2980.5 ms/iter)
+2026-08-22 20:23:44 [nepali] iter 11550: loss=4.0662 (2157.4 ms/iter)
+2026-08-22 20:25:32 [nepali] iter 11600: loss=4.0659 (2162.0 ms/iter)
+2026-08-22 20:27:20 [nepali] iter 11650: loss=4.0721 (2156.8 ms/iter)
+2026-08-22 20:29:07 [nepali] iter 11700: loss=4.0622 (2154.5 ms/iter)
+2026-08-22 20:30:55 [nepali] iter 11750: loss=4.0623 (2152.2 ms/iter)
+2026-08-22 20:32:42 [nepali] iter 11800: loss=4.0654 (2153.0 ms/iter)
+2026-08-22 20:34:31 [nepali] iter 11850: loss=4.0672 (2161.1 ms/iter)
+2026-08-22 20:36:18 [nepali] iter 11900: loss=4.0608 (2157.5 ms/iter)
+2026-08-22 20:38:06 [nepali] iter 11950: loss=4.0469 (2156.7 ms/iter)
+2026-08-22 20:40:27 [nepali] iter 12000: train_loss=3.9578 val_loss=3.9765 lr=1.99e-04
+2026-08-22 20:40:29 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 90.6MB/s  
+2026-08-22 20:40:29 New Data Upload               : 100%|██████████|  308MB /  308MB, 90.6MB/s  
+2026-08-22 20:40:29   ...epali/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 20:40:35 [nepali] iter 12000: loss=4.0534 (2975.8 ms/iter)
+2026-08-22 20:40:37 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 85.6MB/s  
+2026-08-22 20:40:37 New Data Upload               : 100%|██████████|  308MB /  308MB, 85.6MB/s  
+2026-08-22 20:40:37   ...epali/checkpoints/last.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 20:42:29 [nepali] iter 12050: loss=4.0756 (2273.9 ms/iter)
+2026-08-22 20:44:17 [nepali] iter 12100: loss=4.0563 (2158.1 ms/iter)
+2026-08-22 20:46:04 [nepali] iter 12150: loss=4.0533 (2152.2 ms/iter)
+2026-08-22 20:47:52 [nepali] iter 12200: loss=4.0608 (2154.2 ms/iter)
+2026-08-22 20:49:40 [nepali] iter 12250: loss=4.0398 (2154.1 ms/iter)
+2026-08-22 20:51:27 [nepali] iter 12300: loss=4.0582 (2154.6 ms/iter)
+2026-08-22 20:53:16 [nepali] iter 12350: loss=4.0491 (2161.9 ms/iter)
+2026-08-22 20:55:03 [nepali] iter 12400: loss=4.0557 (2158.7 ms/iter)
+2026-08-22 20:56:51 [nepali] iter 12450: loss=4.0376 (2156.5 ms/iter)
+2026-08-22 20:59:12 [nepali] iter 12500: train_loss=3.9350 val_loss=3.9608 lr=1.91e-04
+2026-08-22 20:59:14 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 81.1MB/s  
+2026-08-22 20:59:14 New Data Upload               : 100%|██████████|  308MB /  308MB, 81.1MB/s  
+2026-08-22 20:59:15   ...epali/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 20:59:21 [nepali] iter 12500: loss=4.0494 (2986.3 ms/iter)
+2026-08-22 21:01:09 [nepali] iter 12550: loss=4.0446 (2159.3 ms/iter)
+2026-08-22 21:02:57 [nepali] iter 12600: loss=4.0401 (2160.5 ms/iter)
+2026-08-22 21:04:44 [nepali] iter 12650: loss=4.0550 (2155.3 ms/iter)
+2026-08-22 21:06:32 [nepali] iter 12700: loss=4.0367 (2153.2 ms/iter)
+2026-08-22 21:08:20 [nepali] iter 12750: loss=4.0450 (2161.1 ms/iter)
+2026-08-22 21:10:08 [nepali] iter 12800: loss=4.0578 (2158.5 ms/iter)
+2026-08-22 21:11:56 [nepali] iter 12850: loss=4.0333 (2155.1 ms/iter)
+2026-08-22 21:13:43 [nepali] iter 12900: loss=4.0428 (2152.1 ms/iter)
+2026-08-22 21:15:31 [nepali] iter 12950: loss=4.0468 (2153.4 ms/iter)
+2026-08-22 21:17:52 [nepali] iter 13000: train_loss=3.9367 val_loss=3.9593 lr=1.84e-04
+2026-08-22 21:17:54 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 81.1MB/s  
+2026-08-22 21:17:54 New Data Upload               : 100%|██████████|  308MB /  308MB, 81.1MB/s  
+2026-08-22 21:17:54   ...epali/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 21:18:00 [nepali] iter 13000: loss=4.0521 (2989.1 ms/iter)
+2026-08-22 21:18:02 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 90.6MB/s  
+2026-08-22 21:18:02 New Data Upload               : 100%|██████████|  308MB /  308MB, 90.6MB/s  
+2026-08-22 21:18:03   ...epali/checkpoints/last.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 21:19:55 [nepali] iter 13050: loss=4.0328 (2280.6 ms/iter)
+2026-08-22 21:21:42 [nepali] iter 13100: loss=4.0355 (2159.5 ms/iter)
+2026-08-22 21:23:30 [nepali] iter 13150: loss=4.0463 (2153.0 ms/iter)
+2026-08-22 21:25:18 [nepali] iter 13200: loss=4.0367 (2161.1 ms/iter)
+2026-08-22 21:27:06 [nepali] iter 13250: loss=4.0356 (2159.7 ms/iter)
+2026-08-22 21:28:54 [nepali] iter 13300: loss=4.0265 (2156.8 ms/iter)
+2026-08-22 21:30:42 [nepali] iter 13350: loss=4.0355 (2158.0 ms/iter)
+2026-08-22 21:32:30 [nepali] iter 13400: loss=4.0280 (2158.6 ms/iter)
+2026-08-22 21:34:18 [nepali] iter 13450: loss=4.0188 (2158.7 ms/iter)
+2026-08-22 21:36:39 [nepali] iter 13500: train_loss=3.9382 val_loss=3.9474 lr=1.76e-04
+2026-08-22 21:36:40 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 96.3MB/s  
+2026-08-22 21:36:40 New Data Upload               : 100%|██████████|  308MB /  308MB, 96.3MB/s  
+2026-08-22 21:36:41   ...epali/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 21:36:46 [nepali] iter 13500: loss=4.0298 (2972.8 ms/iter)
+2026-08-22 21:38:34 [nepali] iter 13550: loss=4.0138 (2156.6 ms/iter)
+2026-08-22 21:40:22 [nepali] iter 13600: loss=4.0306 (2163.5 ms/iter)
+2026-08-22 21:42:10 [nepali] iter 13650: loss=4.0327 (2158.8 ms/iter)
+2026-08-22 21:43:58 [nepali] iter 13700: loss=4.0280 (2156.1 ms/iter)
+2026-08-22 21:45:46 [nepali] iter 13750: loss=4.0339 (2157.5 ms/iter)
+2026-08-22 21:47:34 [nepali] iter 13800: loss=4.0295 (2154.8 ms/iter)
+2026-08-22 21:49:22 [nepali] iter 13850: loss=4.0153 (2157.8 ms/iter)
+2026-08-22 21:51:10 [nepali] iter 13900: loss=4.0231 (2157.6 ms/iter)
+2026-08-22 21:52:57 [nepali] iter 13950: loss=4.0349 (2155.9 ms/iter)
+2026-08-22 21:55:18 [nepali] iter 14000: train_loss=3.9255 val_loss=3.9211 lr=1.69e-04
+2026-08-22 21:55:20 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 85.6MB/s  
+2026-08-22 21:55:20 New Data Upload               : 100%|██████████|  308MB /  308MB, 85.6MB/s  
+2026-08-22 21:55:20   ...epali/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 21:55:26 [nepali] iter 14000: loss=4.0147 (2977.3 ms/iter)
+2026-08-22 21:55:28 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 85.6MB/s  
+2026-08-22 21:55:28 New Data Upload               : 100%|██████████|  308MB /  308MB, 85.6MB/s  
+2026-08-22 21:55:28   ...epali/checkpoints/last.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 21:57:20 [nepali] iter 14050: loss=4.0239 (2268.0 ms/iter)
+2026-08-22 21:59:08 [nepali] iter 14100: loss=4.0243 (2160.0 ms/iter)
+2026-08-22 22:00:56 [nepali] iter 14150: loss=4.0247 (2157.7 ms/iter)
+2026-08-22 22:02:43 [nepali] iter 14200: loss=4.0083 (2153.6 ms/iter)
+2026-08-22 22:04:31 [nepali] iter 14250: loss=4.0297 (2155.8 ms/iter)
+2026-08-22 22:06:19 [nepali] iter 14300: loss=4.0246 (2160.2 ms/iter)
+2026-08-22 22:08:07 [nepali] iter 14350: loss=4.0168 (2155.1 ms/iter)
+2026-08-22 22:09:55 [nepali] iter 14400: loss=4.0146 (2157.1 ms/iter)
+2026-08-22 22:11:43 [nepali] iter 14450: loss=4.0149 (2162.8 ms/iter)
+2026-08-22 22:14:04 [nepali] iter 14500: train_loss=3.9075 val_loss=3.9373 lr=1.61e-04
+2026-08-22 22:14:06 [nepali] iter 14500: loss=4.0033 (2861.9 ms/iter)
+2026-08-22 22:15:53 [nepali] iter 14550: loss=4.0268 (2152.1 ms/iter)
+2026-08-22 22:17:41 [nepali] iter 14600: loss=4.0129 (2154.9 ms/iter)
+2026-08-22 22:19:29 [nepali] iter 14650: loss=4.0094 (2159.5 ms/iter)
+2026-08-22 22:21:17 [nepali] iter 14700: loss=4.0081 (2156.1 ms/iter)
+2026-08-22 22:23:05 [nepali] iter 14750: loss=4.0032 (2156.4 ms/iter)
+2026-08-22 22:24:53 [nepali] iter 14800: loss=4.0073 (2158.6 ms/iter)
+2026-08-22 22:26:41 [nepali] iter 14850: loss=4.0024 (2161.5 ms/iter)
+2026-08-22 22:28:29 [nepali] iter 14900: loss=4.0078 (2156.4 ms/iter)
+2026-08-22 22:30:16 [nepali] iter 14950: loss=4.0052 (2155.8 ms/iter)
+2026-08-22 22:32:37 [nepali] iter 15000: train_loss=3.8850 val_loss=3.9203 lr=1.54e-04
+2026-08-22 22:32:39 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 90.6MB/s  
+2026-08-22 22:32:39 New Data Upload               : 100%|██████████|  308MB /  308MB, 90.6MB/s  
+2026-08-22 22:32:39   ...epali/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 22:32:45 [nepali] iter 15000: loss=4.0129 (2969.4 ms/iter)
+2026-08-22 22:32:47 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 90.6MB/s  
+2026-08-22 22:32:47 New Data Upload               : 100%|██████████|  308MB /  308MB, 90.6MB/s  
+2026-08-22 22:32:47   ...epali/checkpoints/last.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 22:34:38 [nepali] iter 15050: loss=3.9900 (2262.2 ms/iter)
+2026-08-22 22:36:26 [nepali] iter 15100: loss=4.0032 (2156.2 ms/iter)
+2026-08-22 22:38:14 [nepali] iter 15150: loss=3.9991 (2156.4 ms/iter)
+2026-08-22 22:40:01 [nepali] iter 15200: loss=4.0006 (2154.8 ms/iter)
+2026-08-22 22:41:49 [nepali] iter 15250: loss=3.9991 (2154.9 ms/iter)
+2026-08-22 22:43:37 [nepali] iter 15300: loss=3.9968 (2156.0 ms/iter)
+2026-08-22 22:45:25 [nepali] iter 15350: loss=4.0075 (2155.3 ms/iter)
+2026-08-22 22:47:13 [nepali] iter 15400: loss=3.9980 (2155.6 ms/iter)
+2026-08-22 22:49:00 [nepali] iter 15450: loss=3.9909 (2155.8 ms/iter)
+2026-08-22 22:51:21 [nepali] iter 15500: train_loss=3.8906 val_loss=3.9168 lr=1.46e-04
+2026-08-22 22:51:23 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 81.1MB/s  
+2026-08-22 22:51:23 New Data Upload               : 100%|██████████|  308MB /  308MB, 81.1MB/s  
+2026-08-22 22:51:23   ...epali/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 22:51:30 [nepali] iter 15500: loss=4.0080 (2985.7 ms/iter)
+2026-08-22 22:53:17 [nepali] iter 15550: loss=4.0033 (2157.4 ms/iter)
+2026-08-22 22:55:06 [nepali] iter 15600: loss=3.9891 (2161.2 ms/iter)
+2026-08-22 22:56:53 [nepali] iter 15650: loss=3.9964 (2154.8 ms/iter)
+2026-08-22 22:58:41 [nepali] iter 15700: loss=3.9744 (2153.4 ms/iter)
+2026-08-22 23:00:29 [nepali] iter 15750: loss=4.0011 (2152.6 ms/iter)
+2026-08-22 23:02:16 [nepali] iter 15800: loss=3.9943 (2152.3 ms/iter)
+2026-08-22 23:04:04 [nepali] iter 15850: loss=4.0029 (2152.5 ms/iter)
+2026-08-22 23:05:52 [nepali] iter 15900: loss=3.9980 (2154.7 ms/iter)
+2026-08-22 23:07:39 [nepali] iter 15950: loss=3.9815 (2154.4 ms/iter)
+2026-08-22 23:10:00 [nepali] iter 16000: train_loss=3.8828 val_loss=3.8931 lr=1.38e-04
+2026-08-22 23:10:01 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 90.6MB/s  
+2026-08-22 23:10:01 New Data Upload               : 100%|██████████|  308MB /  308MB, 90.6MB/s  
+2026-08-22 23:10:02   ...epali/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 23:10:08 [nepali] iter 16000: loss=3.9969 (2974.0 ms/iter)
+2026-08-22 23:10:10 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 96.3MB/s  
+2026-08-22 23:10:10 New Data Upload               : 100%|██████████|  308MB /  308MB, 96.3MB/s  
+2026-08-22 23:10:10   ...epali/checkpoints/last.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 23:12:02 [nepali] iter 16050: loss=4.0038 (2272.3 ms/iter)
+2026-08-22 23:13:49 [nepali] iter 16100: loss=3.9878 (2158.4 ms/iter)
+2026-08-22 23:15:37 [nepali] iter 16150: loss=3.9876 (2155.5 ms/iter)
+2026-08-22 23:17:25 [nepali] iter 16200: loss=3.9695 (2163.0 ms/iter)
+2026-08-22 23:19:13 [nepali] iter 16250: loss=3.9977 (2159.4 ms/iter)
+2026-08-22 23:21:01 [nepali] iter 16300: loss=3.9861 (2158.0 ms/iter)
+2026-08-22 23:22:49 [nepali] iter 16350: loss=3.9878 (2156.8 ms/iter)
+2026-08-22 23:24:37 [nepali] iter 16400: loss=3.9895 (2157.4 ms/iter)
+2026-08-22 23:26:25 [nepali] iter 16450: loss=3.9834 (2156.2 ms/iter)
+2026-08-22 23:28:46 [nepali] iter 16500: train_loss=3.8669 val_loss=3.9002 lr=1.31e-04
+2026-08-22 23:28:48 [nepali] iter 16500: loss=3.9853 (2858.5 ms/iter)
+2026-08-22 23:30:36 [nepali] iter 16550: loss=3.9676 (2160.0 ms/iter)
+2026-08-22 23:32:24 [nepali] iter 16600: loss=3.9886 (2156.7 ms/iter)
+2026-08-22 23:34:11 [nepali] iter 16650: loss=3.9722 (2155.9 ms/iter)
+2026-08-22 23:35:59 [nepali] iter 16700: loss=3.9929 (2161.1 ms/iter)
+2026-08-22 23:37:47 [nepali] iter 16750: loss=3.9793 (2156.2 ms/iter)
+2026-08-22 23:39:35 [nepali] iter 16800: loss=3.9675 (2163.9 ms/iter)
+2026-08-22 23:41:23 [nepali] iter 16850: loss=3.9846 (2157.5 ms/iter)
+2026-08-22 23:43:11 [nepali] iter 16900: loss=3.9806 (2156.1 ms/iter)
+2026-08-22 23:44:59 [nepali] iter 16950: loss=3.9793 (2155.9 ms/iter)
+2026-08-22 23:47:20 [nepali] iter 17000: train_loss=3.8641 val_loss=3.8982 lr=1.24e-04
+2026-08-22 23:47:22 [nepali] iter 17000: loss=3.9886 (2858.7 ms/iter)
+2026-08-22 23:47:23 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 85.6MB/s  
+2026-08-22 23:47:23 New Data Upload               : 100%|██████████|  308MB /  308MB, 85.6MB/s  
+2026-08-22 23:47:24   ...epali/checkpoints/last.pt: 100%|██████████|  308MB /  308MB            
+2026-08-22 23:49:15 [nepali] iter 17050: loss=3.9839 (2271.8 ms/iter)
+2026-08-22 23:51:04 [nepali] iter 17100: loss=3.9793 (2162.7 ms/iter)
+2026-08-22 23:52:52 [nepali] iter 17150: loss=3.9651 (2158.5 ms/iter)
+2026-08-22 23:54:39 [nepali] iter 17200: loss=3.9755 (2156.7 ms/iter)
+2026-08-22 23:56:27 [nepali] iter 17250: loss=3.9611 (2155.2 ms/iter)
+2026-08-22 23:58:15 [nepali] iter 17300: loss=3.9657 (2152.9 ms/iter)
+2026-08-23 00:00:02 [nepali] iter 17350: loss=3.9772 (2153.0 ms/iter)
+2026-08-23 00:01:50 [nepali] iter 17400: loss=3.9838 (2153.2 ms/iter)
+2026-08-23 00:03:38 [nepali] iter 17450: loss=3.9755 (2156.9 ms/iter)
+2026-08-23 00:05:59 [nepali] iter 17500: train_loss=3.8461 val_loss=3.8961 lr=1.17e-04
+2026-08-23 00:06:01 [nepali] iter 17500: loss=3.9643 (2860.5 ms/iter)
+2026-08-23 00:07:49 [nepali] iter 17550: loss=3.9714 (2159.5 ms/iter)
+2026-08-23 00:09:37 [nepali] iter 17600: loss=3.9728 (2155.7 ms/iter)
+2026-08-23 00:11:24 [nepali] iter 17650: loss=3.9787 (2154.5 ms/iter)
+2026-08-23 00:13:12 [nepali] iter 17700: loss=3.9725 (2154.0 ms/iter)
+2026-08-23 00:15:00 [nepali] iter 17750: loss=3.9708 (2153.7 ms/iter)
+2026-08-23 00:16:48 [nepali] iter 17800: loss=3.9651 (2157.5 ms/iter)
+2026-08-23 00:18:36 [nepali] iter 17850: loss=3.9691 (2161.9 ms/iter)
+2026-08-23 00:20:24 [nepali] iter 17900: loss=3.9640 (2161.5 ms/iter)
+2026-08-23 00:22:12 [nepali] iter 17950: loss=3.9581 (2160.8 ms/iter)
+2026-08-23 00:24:32 [nepali] iter 18000: train_loss=3.8606 val_loss=3.8767 lr=1.10e-04
+2026-08-23 00:24:34 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 85.6MB/s  
+2026-08-23 00:24:34 New Data Upload               : 100%|██████████|  308MB /  308MB, 85.6MB/s  
+2026-08-23 00:24:35   ...epali/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-23 00:24:40 [nepali] iter 18000: loss=3.9613 (2968.3 ms/iter)
+2026-08-23 00:24:42 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 85.6MB/s  
+2026-08-23 00:24:42 New Data Upload               : 100%|██████████|  308MB /  308MB, 85.6MB/s  
+2026-08-23 00:24:42   ...epali/checkpoints/last.pt: 100%|██████████|  308MB /  308MB            
+2026-08-23 00:26:34 [nepali] iter 18050: loss=3.9519 (2267.3 ms/iter)
+2026-08-23 00:28:22 [nepali] iter 18100: loss=3.9698 (2157.0 ms/iter)
+2026-08-23 00:30:10 [nepali] iter 18150: loss=3.9646 (2160.6 ms/iter)
+2026-08-23 00:31:58 [nepali] iter 18200: loss=3.9604 (2160.9 ms/iter)
+2026-08-23 00:33:46 [nepali] iter 18250: loss=3.9551 (2161.0 ms/iter)
+2026-08-23 00:35:34 [nepali] iter 18300: loss=3.9497 (2161.4 ms/iter)
+2026-08-23 00:37:22 [nepali] iter 18350: loss=3.9584 (2161.4 ms/iter)
+2026-08-23 00:39:10 [nepali] iter 18400: loss=3.9654 (2159.1 ms/iter)
+2026-08-23 00:40:58 [nepali] iter 18450: loss=3.9535 (2159.1 ms/iter)
+2026-08-23 00:43:19 [nepali] iter 18500: train_loss=3.8552 val_loss=3.8715 lr=1.03e-04
+2026-08-23 00:43:20 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 81.1MB/s  
+2026-08-23 00:43:20 New Data Upload               : 100%|██████████|  308MB /  308MB, 81.1MB/s  
+2026-08-23 00:43:21   ...epali/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-23 00:43:27 [nepali] iter 18500: loss=3.9486 (2980.3 ms/iter)
+2026-08-23 00:45:15 [nepali] iter 18550: loss=3.9470 (2157.3 ms/iter)
+2026-08-23 00:47:03 [nepali] iter 18600: loss=3.9625 (2162.6 ms/iter)
+2026-08-23 00:48:51 [nepali] iter 18650: loss=3.9691 (2158.9 ms/iter)
+2026-08-23 00:50:39 [nepali] iter 18700: loss=3.9609 (2159.7 ms/iter)
+2026-08-23 00:52:27 [nepali] iter 18750: loss=3.9426 (2161.5 ms/iter)
+2026-08-23 00:54:15 [nepali] iter 18800: loss=3.9430 (2162.2 ms/iter)
+2026-08-23 00:56:03 [nepali] iter 18850: loss=3.9590 (2156.9 ms/iter)
+2026-08-23 00:57:50 [nepali] iter 18900: loss=3.9445 (2151.0 ms/iter)
+2026-08-23 00:59:38 [nepali] iter 18950: loss=3.9518 (2158.6 ms/iter)
+2026-08-23 01:01:59 [nepali] iter 19000: train_loss=3.8263 val_loss=3.8768 lr=9.61e-05
+2026-08-23 01:02:01 [nepali] iter 19000: loss=3.9624 (2861.6 ms/iter)
+2026-08-23 01:02:03 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 90.6MB/s  
+2026-08-23 01:02:03 New Data Upload               : 100%|██████████|  308MB /  308MB, 90.6MB/s  
+2026-08-23 01:02:04   ...epali/checkpoints/last.pt: 100%|██████████|  308MB /  308MB            
+2026-08-23 01:03:55 [nepali] iter 19050: loss=3.9574 (2273.0 ms/iter)
+2026-08-23 01:05:43 [nepali] iter 19100: loss=3.9385 (2156.9 ms/iter)
+2026-08-23 01:07:30 [nepali] iter 19150: loss=3.9422 (2153.9 ms/iter)
+2026-08-23 01:09:18 [nepali] iter 19200: loss=3.9373 (2158.0 ms/iter)
+2026-08-23 01:11:06 [nepali] iter 19250: loss=3.9379 (2160.0 ms/iter)

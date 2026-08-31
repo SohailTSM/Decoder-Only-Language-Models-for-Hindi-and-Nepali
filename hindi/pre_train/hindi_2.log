@@ -1,0 +1,267 @@
+2026-08-23 01:18:33 No files have been modified since last commit. Skipping to prevent empty commit.
+2026-08-23 01:18:33 [hindi] resumed from /root/.cache/huggingface/hub/models--sohailtsm--lma-hindi-gpt/snapshots/16e4e4d09b7a78e1b068c7f261a4497f62488443/last.pt at iter 19000
+2026-08-23 01:19:14 [hindi] iter 19000: train_loss=3.3347 val_loss=3.3664 lr=9.75e-05
+2026-08-23 01:19:16 [hindi] iter 19000: loss=0.0682 (855.3 ms/iter)
+2026-08-23 01:19:18 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 6.41MB/s  
+2026-08-23 01:19:18 New Data Upload               : 100%|██████████|  308MB /  308MB, 6.41MB/s  
+2026-08-23 01:19:19   ...hindi/checkpoints/last.pt: 100%|██████████|  308MB /  308MB            
+2026-08-23 01:21:17 [hindi] iter 19050: loss=3.4305 (2425.2 ms/iter)
+2026-08-23 01:23:01 [hindi] iter 19100: loss=3.4340 (2079.1 ms/iter)
+2026-08-23 01:24:45 [hindi] iter 19150: loss=3.4328 (2079.4 ms/iter)
+2026-08-23 01:26:29 [hindi] iter 19200: loss=3.4380 (2081.2 ms/iter)
+2026-08-23 01:28:13 [hindi] iter 19250: loss=3.4254 (2079.4 ms/iter)
+2026-08-23 01:29:57 [hindi] iter 19300: loss=3.4255 (2075.1 ms/iter)
+2026-08-23 01:31:41 [hindi] iter 19350: loss=3.4304 (2080.8 ms/iter)
+2026-08-23 01:33:25 [hindi] iter 19400: loss=3.4417 (2083.3 ms/iter)
+2026-08-23 01:35:09 [hindi] iter 19450: loss=3.4256 (2076.4 ms/iter)
+2026-08-23 01:37:25 [hindi] iter 19500: train_loss=3.3252 val_loss=3.3588 lr=9.11e-05
+2026-08-23 01:37:26 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 45.3MB/s  
+2026-08-23 01:37:26 New Data Upload               : 100%|██████████|  308MB /  308MB, 45.3MB/s  
+2026-08-23 01:37:27   ...hindi/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-23 01:37:36 [hindi] iter 19500: loss=3.4291 (2937.1 ms/iter)
+2026-08-23 01:39:20 [hindi] iter 19550: loss=3.4371 (2071.2 ms/iter)
+2026-08-23 01:41:04 [hindi] iter 19600: loss=3.4374 (2082.7 ms/iter)
+2026-08-23 01:42:48 [hindi] iter 19650: loss=3.4230 (2083.9 ms/iter)
+2026-08-23 01:44:32 [hindi] iter 19700: loss=3.4376 (2078.6 ms/iter)
+2026-08-23 01:46:16 [hindi] iter 19750: loss=3.4193 (2078.1 ms/iter)
+2026-08-23 01:48:00 [hindi] iter 19800: loss=3.4178 (2085.4 ms/iter)
+2026-08-23 01:49:44 [hindi] iter 19850: loss=3.4283 (2079.8 ms/iter)
+2026-08-23 01:51:28 [hindi] iter 19900: loss=3.4367 (2076.8 ms/iter)
+2026-08-23 01:53:12 [hindi] iter 19950: loss=3.4172 (2077.5 ms/iter)
+2026-08-23 01:55:28 [hindi] iter 20000: train_loss=3.3311 val_loss=3.3476 lr=8.49e-05
+2026-08-23 01:55:30 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 6.51MB/s  
+2026-08-23 01:55:30 New Data Upload               : 100%|██████████|  308MB /  308MB, 6.51MB/s  
+2026-08-23 01:55:31   ...hindi/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-23 01:55:46 [hindi] iter 20000: loss=3.4348 (3093.1 ms/iter)
+2026-08-23 01:55:48 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 40.5MB/s  
+2026-08-23 01:55:48 New Data Upload               : 100%|██████████|  308MB /  308MB, 40.5MB/s  
+2026-08-23 01:55:49   ...hindi/checkpoints/last.pt: 100%|██████████|  308MB /  308MB            
+2026-08-23 01:57:38 [hindi] iter 20050: loss=3.4288 (2238.4 ms/iter)
+2026-08-23 01:59:22 [hindi] iter 20100: loss=3.4285 (2079.9 ms/iter)
+2026-08-23 02:01:06 [hindi] iter 20150: loss=3.4259 (2078.5 ms/iter)
+2026-08-23 02:02:50 [hindi] iter 20200: loss=3.4267 (2083.2 ms/iter)
+2026-08-23 02:04:34 [hindi] iter 20250: loss=3.4120 (2078.4 ms/iter)
+2026-08-23 02:06:18 [hindi] iter 20300: loss=3.4158 (2079.8 ms/iter)
+2026-08-23 02:08:02 [hindi] iter 20350: loss=3.4164 (2074.9 ms/iter)
+2026-08-23 02:09:46 [hindi] iter 20400: loss=3.4217 (2073.9 ms/iter)
+2026-08-23 02:11:30 [hindi] iter 20450: loss=3.4091 (2077.0 ms/iter)
+2026-08-23 02:13:46 [hindi] iter 20500: train_loss=3.3062 val_loss=3.3600 lr=7.89e-05
+2026-08-23 02:13:48 [hindi] iter 20500: loss=3.4151 (2761.5 ms/iter)
+2026-08-23 02:15:32 [hindi] iter 20550: loss=3.4104 (2084.4 ms/iter)
+2026-08-23 02:17:16 [hindi] iter 20600: loss=3.4043 (2076.2 ms/iter)
+2026-08-23 02:19:00 [hindi] iter 20650: loss=3.4175 (2083.5 ms/iter)
+2026-08-23 02:20:44 [hindi] iter 20700: loss=3.4227 (2084.4 ms/iter)
+2026-08-23 02:22:28 [hindi] iter 20750: loss=3.4231 (2078.6 ms/iter)
+2026-08-23 02:24:12 [hindi] iter 20800: loss=3.4158 (2075.1 ms/iter)
+2026-08-23 02:25:56 [hindi] iter 20850: loss=3.4257 (2078.0 ms/iter)
+2026-08-23 02:27:40 [hindi] iter 20900: loss=3.4136 (2081.0 ms/iter)
+2026-08-23 02:29:24 [hindi] iter 20950: loss=3.4168 (2079.4 ms/iter)
+2026-08-23 02:31:39 [hindi] iter 21000: train_loss=3.3136 val_loss=3.3385 lr=7.32e-05
+2026-08-23 02:31:41 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 6.10MB/s  
+2026-08-23 02:31:41 New Data Upload               : 100%|██████████|  308MB /  308MB, 6.10MB/s  
+2026-08-23 02:31:42   ...hindi/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-23 02:31:59 [hindi] iter 21000: loss=3.4149 (3108.4 ms/iter)
+2026-08-23 02:32:01 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 42.8MB/s  
+2026-08-23 02:32:01 New Data Upload               : 100%|██████████|  308MB /  308MB, 42.8MB/s  
+2026-08-23 02:32:02   ...hindi/checkpoints/last.pt: 100%|██████████|  308MB /  308MB            
+2026-08-23 02:33:51 [hindi] iter 21050: loss=3.4057 (2228.3 ms/iter)
+2026-08-23 02:35:34 [hindi] iter 21100: loss=3.4065 (2074.5 ms/iter)
+2026-08-23 02:37:18 [hindi] iter 21150: loss=3.4152 (2083.0 ms/iter)
+2026-08-23 02:39:03 [hindi] iter 21200: loss=3.4158 (2081.5 ms/iter)
+2026-08-23 02:40:47 [hindi] iter 21250: loss=3.4150 (2083.5 ms/iter)
+2026-08-23 02:42:31 [hindi] iter 21300: loss=3.4058 (2078.1 ms/iter)
+2026-08-23 02:44:15 [hindi] iter 21350: loss=3.4182 (2078.4 ms/iter)
+2026-08-23 02:45:59 [hindi] iter 21400: loss=3.4045 (2082.2 ms/iter)
+2026-08-23 02:47:43 [hindi] iter 21450: loss=3.4075 (2080.8 ms/iter)
+2026-08-23 02:49:58 [hindi] iter 21500: train_loss=3.3072 val_loss=3.3299 lr=6.79e-05
+2026-08-23 02:50:00 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 64.2MB/s  
+2026-08-23 02:50:00 New Data Upload               : 100%|██████████|  308MB /  308MB, 64.2MB/s  
+2026-08-23 02:50:01   ...hindi/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-23 02:50:08 [hindi] iter 21500: loss=3.4099 (2902.9 ms/iter)
+2026-08-23 02:51:52 [hindi] iter 21550: loss=3.4051 (2075.2 ms/iter)
+2026-08-23 02:53:36 [hindi] iter 21600: loss=3.4078 (2077.8 ms/iter)
+2026-08-23 02:55:20 [hindi] iter 21650: loss=3.4057 (2081.9 ms/iter)
+2026-08-23 02:57:04 [hindi] iter 21700: loss=3.4051 (2081.1 ms/iter)
+2026-08-23 02:58:48 [hindi] iter 21750: loss=3.4137 (2076.4 ms/iter)
+2026-08-23 03:00:32 [hindi] iter 21800: loss=3.4163 (2080.0 ms/iter)
+2026-08-23 03:02:16 [hindi] iter 21850: loss=3.4100 (2081.8 ms/iter)
+2026-08-23 03:04:00 [hindi] iter 21900: loss=3.4084 (2079.0 ms/iter)
+2026-08-23 03:05:43 [hindi] iter 21950: loss=3.4171 (2077.3 ms/iter)
+2026-08-23 03:07:59 [hindi] iter 22000: train_loss=3.3092 val_loss=3.3270 lr=6.28e-05
+2026-08-23 03:08:01 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 64.2MB/s  
+2026-08-23 03:08:01 New Data Upload               : 100%|██████████|  308MB /  308MB, 64.2MB/s  
+2026-08-23 03:08:02   ...hindi/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-23 03:08:09 [hindi] iter 22000: loss=3.4121 (2905.6 ms/iter)
+2026-08-23 03:08:10 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 70.0MB/s  
+2026-08-23 03:08:10 New Data Upload               : 100%|██████████|  308MB /  308MB, 70.0MB/s  
+2026-08-23 03:08:11   ...hindi/checkpoints/last.pt: 100%|██████████|  308MB /  308MB            
+2026-08-23 03:09:59 [hindi] iter 22050: loss=3.4023 (2200.4 ms/iter)
+2026-08-23 03:11:43 [hindi] iter 22100: loss=3.4023 (2078.8 ms/iter)
+2026-08-23 03:13:27 [hindi] iter 22150: loss=3.4101 (2078.8 ms/iter)
+2026-08-23 03:15:10 [hindi] iter 22200: loss=3.4089 (2077.9 ms/iter)
+2026-08-23 03:16:54 [hindi] iter 22250: loss=3.4046 (2078.9 ms/iter)
+2026-08-23 03:18:38 [hindi] iter 22300: loss=3.4005 (2079.4 ms/iter)
+2026-08-23 03:20:22 [hindi] iter 22350: loss=3.3974 (2081.3 ms/iter)
+2026-08-23 03:22:07 [hindi] iter 22400: loss=3.3947 (2080.6 ms/iter)
+2026-08-23 03:23:51 [hindi] iter 22450: loss=3.4067 (2081.0 ms/iter)
+2026-08-23 03:26:06 [hindi] iter 22500: train_loss=3.3090 val_loss=3.3173 lr=5.80e-05
+2026-08-23 03:26:08 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 64.2MB/s  
+2026-08-23 03:26:08 New Data Upload               : 100%|██████████|  308MB /  308MB, 64.2MB/s  
+2026-08-23 03:26:09   ...hindi/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-23 03:26:16 [hindi] iter 22500: loss=3.3975 (2907.3 ms/iter)
+2026-08-23 03:28:00 [hindi] iter 22550: loss=3.3962 (2074.9 ms/iter)
+2026-08-23 03:29:44 [hindi] iter 22600: loss=3.4029 (2079.8 ms/iter)
+2026-08-23 03:31:28 [hindi] iter 22650: loss=3.3913 (2081.6 ms/iter)
+2026-08-23 03:33:12 [hindi] iter 22700: loss=3.4008 (2081.3 ms/iter)
+2026-08-23 03:34:56 [hindi] iter 22750: loss=3.3934 (2081.7 ms/iter)
+2026-08-23 03:36:40 [hindi] iter 22800: loss=3.3954 (2082.7 ms/iter)
+2026-08-23 03:38:24 [hindi] iter 22850: loss=3.4008 (2082.4 ms/iter)
+2026-08-23 03:40:08 [hindi] iter 22900: loss=3.4053 (2080.5 ms/iter)
+2026-08-23 03:41:52 [hindi] iter 22950: loss=3.3920 (2080.4 ms/iter)
+2026-08-23 03:44:08 [hindi] iter 23000: train_loss=3.3124 val_loss=3.3317 lr=5.35e-05
+2026-08-23 03:44:10 [hindi] iter 23000: loss=3.4017 (2758.8 ms/iter)
+2026-08-23 03:44:12 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 16.5MB/s  
+2026-08-23 03:44:12 New Data Upload               : 100%|██████████|  308MB /  308MB, 16.5MB/s  
+2026-08-23 03:44:13   ...hindi/checkpoints/last.pt: 100%|██████████|  308MB /  308MB            
+2026-08-23 03:46:09 [hindi] iter 23050: loss=3.3995 (2367.7 ms/iter)
+2026-08-23 03:47:52 [hindi] iter 23100: loss=3.3823 (2078.6 ms/iter)
+2026-08-23 03:49:37 [hindi] iter 23150: loss=3.3874 (2081.8 ms/iter)
+2026-08-23 03:51:20 [hindi] iter 23200: loss=3.3828 (2077.7 ms/iter)
+2026-08-23 03:53:04 [hindi] iter 23250: loss=3.4025 (2077.2 ms/iter)
+2026-08-23 03:54:48 [hindi] iter 23300: loss=3.3972 (2076.7 ms/iter)
+2026-08-23 03:56:32 [hindi] iter 23350: loss=3.3902 (2077.2 ms/iter)
+2026-08-23 03:58:16 [hindi] iter 23400: loss=3.3960 (2076.2 ms/iter)
+2026-08-23 04:00:00 [hindi] iter 23450: loss=3.3930 (2077.4 ms/iter)
+2026-08-23 04:02:16 [hindi] iter 23500: train_loss=3.2949 val_loss=3.3251 lr=4.95e-05
+2026-08-23 04:02:18 [hindi] iter 23500: loss=3.3940 (2758.6 ms/iter)
+2026-08-23 04:04:01 [hindi] iter 23550: loss=3.3907 (2076.9 ms/iter)
+2026-08-23 04:05:46 [hindi] iter 23600: loss=3.3894 (2080.7 ms/iter)
+2026-08-23 04:07:29 [hindi] iter 23650: loss=3.3820 (2079.4 ms/iter)
+2026-08-23 04:09:13 [hindi] iter 23700: loss=3.3837 (2080.0 ms/iter)
+2026-08-23 04:10:57 [hindi] iter 23750: loss=3.3890 (2075.3 ms/iter)
+2026-08-23 04:12:41 [hindi] iter 23800: loss=3.3947 (2080.4 ms/iter)
+2026-08-23 04:14:25 [hindi] iter 23850: loss=3.3850 (2079.7 ms/iter)
+2026-08-23 04:16:09 [hindi] iter 23900: loss=3.3881 (2077.8 ms/iter)
+2026-08-23 04:17:53 [hindi] iter 23950: loss=3.3800 (2080.2 ms/iter)
+2026-08-23 04:20:09 [hindi] iter 24000: train_loss=3.2872 val_loss=3.3289 lr=4.57e-05
+2026-08-23 04:20:11 [hindi] iter 24000: loss=3.3990 (2761.9 ms/iter)
+2026-08-23 04:20:13 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 67.0MB/s  
+2026-08-23 04:20:13 New Data Upload               : 100%|██████████|  308MB /  308MB, 67.0MB/s  
+2026-08-23 04:20:14   ...hindi/checkpoints/last.pt: 100%|██████████|  308MB /  308MB            
+2026-08-23 04:22:02 [hindi] iter 24050: loss=3.3911 (2219.6 ms/iter)
+2026-08-23 04:23:46 [hindi] iter 24100: loss=3.3762 (2078.7 ms/iter)
+2026-08-23 04:25:30 [hindi] iter 24150: loss=3.3949 (2079.6 ms/iter)
+2026-08-23 04:27:14 [hindi] iter 24200: loss=3.3984 (2080.7 ms/iter)
+2026-08-23 04:28:58 [hindi] iter 24250: loss=3.3922 (2079.0 ms/iter)
+2026-08-23 04:30:42 [hindi] iter 24300: loss=3.3819 (2075.6 ms/iter)
+2026-08-23 04:32:26 [hindi] iter 24350: loss=3.3777 (2078.1 ms/iter)
+2026-08-23 04:34:10 [hindi] iter 24400: loss=3.3871 (2081.1 ms/iter)
+2026-08-23 04:35:54 [hindi] iter 24450: loss=3.3803 (2077.4 ms/iter)
+2026-08-23 04:38:09 [hindi] iter 24500: train_loss=3.2991 val_loss=3.3054 lr=4.24e-05
+2026-08-23 04:38:12 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 64.2MB/s  
+2026-08-23 04:38:12 New Data Upload               : 100%|██████████|  308MB /  308MB, 64.2MB/s  
+2026-08-23 04:38:12   ...hindi/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-23 04:38:19 [hindi] iter 24500: loss=3.3786 (2909.7 ms/iter)
+2026-08-23 04:40:03 [hindi] iter 24550: loss=3.3824 (2075.9 ms/iter)
+2026-08-23 04:41:47 [hindi] iter 24600: loss=3.3834 (2078.6 ms/iter)
+2026-08-23 04:43:31 [hindi] iter 24650: loss=3.3799 (2082.4 ms/iter)
+2026-08-23 04:45:15 [hindi] iter 24700: loss=3.3801 (2082.3 ms/iter)
+2026-08-23 04:46:59 [hindi] iter 24750: loss=3.3972 (2077.4 ms/iter)
+2026-08-23 04:48:43 [hindi] iter 24800: loss=3.3744 (2075.9 ms/iter)
+2026-08-23 04:50:27 [hindi] iter 24850: loss=3.3916 (2080.1 ms/iter)
+2026-08-23 04:52:11 [hindi] iter 24900: loss=3.3816 (2077.1 ms/iter)
+2026-08-23 04:53:55 [hindi] iter 24950: loss=3.3851 (2075.9 ms/iter)
+2026-08-23 04:56:10 [hindi] iter 25000: train_loss=3.2885 val_loss=3.3206 lr=3.94e-05
+2026-08-23 04:56:12 [hindi] iter 25000: loss=3.3853 (2755.3 ms/iter)
+2026-08-23 04:56:14 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 6.53MB/s  
+2026-08-23 04:56:14 New Data Upload               : 100%|██████████|  308MB /  308MB, 6.53MB/s  
+2026-08-23 04:56:15   ...hindi/checkpoints/last.pt: 100%|██████████|  308MB /  308MB            
+2026-08-23 04:58:12 [hindi] iter 25050: loss=3.3838 (2386.4 ms/iter)
+2026-08-23 04:59:56 [hindi] iter 25100: loss=3.3850 (2078.8 ms/iter)
+2026-08-23 05:01:39 [hindi] iter 25150: loss=3.3844 (2072.4 ms/iter)
+2026-08-23 05:03:23 [hindi] iter 25200: loss=3.3822 (2076.2 ms/iter)
+2026-08-23 05:05:07 [hindi] iter 25250: loss=3.3798 (2077.3 ms/iter)
+2026-08-23 05:06:51 [hindi] iter 25300: loss=3.3846 (2077.4 ms/iter)
+2026-08-23 05:08:35 [hindi] iter 25350: loss=3.3835 (2077.7 ms/iter)
+2026-08-23 05:10:18 [hindi] iter 25400: loss=3.3809 (2077.4 ms/iter)
+2026-08-23 05:12:02 [hindi] iter 25450: loss=3.3873 (2076.6 ms/iter)
+2026-08-23 05:14:18 [hindi] iter 25500: train_loss=3.2751 val_loss=3.3106 lr=3.68e-05
+2026-08-23 05:14:20 [hindi] iter 25500: loss=3.3779 (2753.6 ms/iter)
+2026-08-23 05:16:04 [hindi] iter 25550: loss=3.3907 (2079.1 ms/iter)
+2026-08-23 05:17:48 [hindi] iter 25600: loss=3.3725 (2077.6 ms/iter)
+2026-08-23 05:19:32 [hindi] iter 25650: loss=3.3846 (2077.9 ms/iter)
+2026-08-23 05:21:16 [hindi] iter 25700: loss=3.3809 (2077.2 ms/iter)
+2026-08-23 05:22:59 [hindi] iter 25750: loss=3.3675 (2077.3 ms/iter)
+2026-08-23 05:24:43 [hindi] iter 25800: loss=3.3854 (2077.1 ms/iter)
+2026-08-23 05:26:27 [hindi] iter 25850: loss=3.3774 (2082.6 ms/iter)
+2026-08-23 05:28:11 [hindi] iter 25900: loss=3.3689 (2079.3 ms/iter)
+2026-08-23 05:29:55 [hindi] iter 25950: loss=3.3811 (2078.2 ms/iter)
+2026-08-23 05:32:11 [hindi] iter 26000: train_loss=3.2823 val_loss=3.2942 lr=3.47e-05
+2026-08-23 05:32:13 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 59.3MB/s  
+2026-08-23 05:32:13 New Data Upload               : 100%|██████████|  308MB /  308MB, 59.3MB/s  
+2026-08-23 05:32:14   ...hindi/checkpoints/best.pt: 100%|██████████|  308MB /  308MB            
+2026-08-23 05:32:21 [hindi] iter 26000: loss=3.3726 (2909.3 ms/iter)
+2026-08-23 05:32:23 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 67.0MB/s  
+2026-08-23 05:32:23 New Data Upload               : 100%|██████████|  308MB /  308MB, 67.0MB/s  
+2026-08-23 05:32:23   ...hindi/checkpoints/last.pt: 100%|██████████|  308MB /  308MB            
+2026-08-23 05:34:11 [hindi] iter 26050: loss=3.3702 (2200.0 ms/iter)
+2026-08-23 05:35:55 [hindi] iter 26100: loss=3.3756 (2075.1 ms/iter)
+2026-08-23 05:37:39 [hindi] iter 26150: loss=3.3766 (2082.7 ms/iter)
+2026-08-23 05:39:23 [hindi] iter 26200: loss=3.3862 (2079.2 ms/iter)
+2026-08-23 05:41:07 [hindi] iter 26250: loss=3.3719 (2079.1 ms/iter)
+2026-08-23 05:42:51 [hindi] iter 26300: loss=3.3758 (2078.3 ms/iter)
+2026-08-23 05:44:34 [hindi] iter 26350: loss=3.3839 (2078.9 ms/iter)
+2026-08-23 05:46:18 [hindi] iter 26400: loss=3.3732 (2078.8 ms/iter)
+2026-08-23 05:48:02 [hindi] iter 26450: loss=3.3801 (2078.3 ms/iter)
+2026-08-23 05:50:18 [hindi] iter 26500: train_loss=3.2801 val_loss=3.3119 lr=3.29e-05
+2026-08-23 05:50:20 [hindi] iter 26500: loss=3.3768 (2753.7 ms/iter)
+2026-08-23 05:52:04 [hindi] iter 26550: loss=3.3739 (2078.2 ms/iter)
+2026-08-23 05:53:48 [hindi] iter 26600: loss=3.3899 (2077.7 ms/iter)
+2026-08-23 05:55:32 [hindi] iter 26650: loss=3.3776 (2077.2 ms/iter)
+2026-08-23 05:57:16 [hindi] iter 26700: loss=3.3791 (2077.0 ms/iter)
+2026-08-23 05:58:59 [hindi] iter 26750: loss=3.3731 (2077.2 ms/iter)
+2026-08-23 06:00:43 [hindi] iter 26800: loss=3.3649 (2078.2 ms/iter)
+2026-08-23 06:02:27 [hindi] iter 26850: loss=3.3717 (2077.8 ms/iter)
+2026-08-23 06:04:11 [hindi] iter 26900: loss=3.3734 (2078.1 ms/iter)
+2026-08-23 06:05:55 [hindi] iter 26950: loss=3.3749 (2078.2 ms/iter)
+2026-08-23 06:08:11 [hindi] iter 27000: train_loss=3.2822 val_loss=3.2988 lr=3.15e-05
+2026-08-23 06:08:13 [hindi] iter 27000: loss=3.3722 (2754.7 ms/iter)
+2026-08-23 06:08:15 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 61.6MB/s  
+2026-08-23 06:08:15 New Data Upload               : 100%|██████████|  308MB /  308MB, 61.6MB/s  
+2026-08-23 06:08:15   ...hindi/checkpoints/last.pt: 100%|██████████|  308MB /  308MB            
+2026-08-23 06:10:04 [hindi] iter 27050: loss=3.3642 (2230.1 ms/iter)
+2026-08-23 06:11:48 [hindi] iter 27100: loss=3.3723 (2080.6 ms/iter)
+2026-08-23 06:13:32 [hindi] iter 27150: loss=3.3689 (2079.2 ms/iter)
+2026-08-23 06:15:16 [hindi] iter 27200: loss=3.3723 (2078.2 ms/iter)
+2026-08-23 06:17:00 [hindi] iter 27250: loss=3.3837 (2077.6 ms/iter)
+2026-08-23 06:18:44 [hindi] iter 27300: loss=3.3721 (2078.4 ms/iter)
+2026-08-23 06:20:28 [hindi] iter 27350: loss=3.3621 (2078.0 ms/iter)
+2026-08-23 06:22:12 [hindi] iter 27400: loss=3.3781 (2078.0 ms/iter)
+2026-08-23 06:23:56 [hindi] iter 27450: loss=3.3667 (2078.4 ms/iter)
+2026-08-23 06:26:11 [hindi] iter 27500: train_loss=3.2796 val_loss=3.3046 lr=3.06e-05
+2026-08-23 06:26:13 [hindi] iter 27500: loss=3.3629 (2753.7 ms/iter)
+2026-08-23 06:27:57 [hindi] iter 27550: loss=3.3607 (2078.4 ms/iter)
+2026-08-23 06:29:41 [hindi] iter 27600: loss=3.3638 (2077.8 ms/iter)
+2026-08-23 06:31:25 [hindi] iter 27650: loss=3.3650 (2077.3 ms/iter)
+2026-08-23 06:33:09 [hindi] iter 27700: loss=3.3662 (2077.8 ms/iter)
+2026-08-23 06:34:53 [hindi] iter 27750: loss=3.3675 (2078.2 ms/iter)
+2026-08-23 06:36:37 [hindi] iter 27800: loss=3.3581 (2078.2 ms/iter)
+2026-08-23 06:38:21 [hindi] iter 27850: loss=3.3622 (2079.1 ms/iter)
+2026-08-23 06:40:05 [hindi] iter 27900: loss=3.3732 (2079.0 ms/iter)
+2026-08-23 06:41:49 [hindi] iter 27950: loss=3.3662 (2078.6 ms/iter)
+2026-08-23 06:44:04 [hindi] iter 28000: train_loss=3.2740 val_loss=3.3131 lr=3.01e-05
+2026-08-23 06:44:06 [hindi] iter 28000: loss=3.3668 (2755.0 ms/iter)
+2026-08-23 06:44:08 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 67.0MB/s  
+2026-08-23 06:44:08 New Data Upload               : 100%|██████████|  308MB /  308MB, 67.0MB/s  
+2026-08-23 06:44:09   ...hindi/checkpoints/last.pt: 100%|██████████|  308MB /  308MB            
+2026-08-23 06:45:57 [hindi] iter 28050: loss=3.3683 (2216.9 ms/iter)
+2026-08-23 06:47:41 [hindi] iter 28100: loss=3.3687 (2076.1 ms/iter)
+2026-08-23 06:49:25 [hindi] iter 28150: loss=3.3619 (2083.0 ms/iter)
+2026-08-23 06:51:09 [hindi] iter 28200: loss=3.3621 (2079.7 ms/iter)
+2026-08-23 06:52:53 [hindi] iter 28250: loss=3.3630 (2080.6 ms/iter)
+2026-08-23 06:54:37 [hindi] iter 28300: loss=3.3804 (2078.9 ms/iter)
+2026-08-23 06:56:21 [hindi] iter 28350: loss=3.3666 (2078.7 ms/iter)
+2026-08-23 06:56:29 Processing Files (1 / 1)      : 100%|██████████|  308MB /  308MB, 64.2MB/s  
+2026-08-23 06:56:29 New Data Upload               : 100%|██████████|  308MB /  308MB, 64.2MB/s  
+2026-08-23 06:56:30   ...hindi/checkpoints/last.pt: 100%|██████████|  308MB /  308MB            
+2026-08-23 06:56:35 [hindi] training complete: 28354 iters, best_val_loss=3.2942

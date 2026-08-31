@@ -7,8 +7,9 @@ which keeps the eventual H vs. L comparison a comparison of data/training, not o
 capacity.
 
 This report covers the architecture/configuration decision (§1-§2), the pretraining data
-pipeline and training procedure (§3-§4), and the training infrastructure used to actually
-run it (§5). Evaluation and attention analysis are separate, later deliverables of Phase 2.
+pipeline and training procedure (§3-§4), the training infrastructure used to actually run
+it (§5), and the pretraining run's own results (§6). Evaluation and attention analysis are
+separate, later deliverables of Phase 2.
 
 ## 1. Chosen configuration
 
@@ -150,8 +151,8 @@ GPT-2, nanoGPT). `uint16` rather than the more common `int32`/`int64` halves sto
 since vocab=16,000 fits comfortably under 65,536. Real measured token counts (per
 `tokenized_meta.json`):
 
-| Split | Hindi | Nepali |
-| --- | --: | --: |
+| Split |       Hindi |      Nepali |
+| ----- | ----------: | ----------: |
 | train | 464,565,873 | 461,871,393 |
 | val   |  12,242,655 |  12,139,620 |
 | test  |  12,262,365 |  12,146,825 |
@@ -170,10 +171,12 @@ follow that convention directly.
 
 The consequence worth being explicit about: `--max-iters` is sized so that, **in
 expectation**, every token position is included in some training window `EPOCHS` times —
+
 ```
 tokens_per_iter = batch_size · grad_accum_steps · block_size
 max_iters = floor(train_tokens · EPOCHS / tokens_per_iter)
 ```
+
 (EPOCHS=2 in the actual runs) — but because sampling is independent and random rather
 than a tracked, non-repeating pass, actual per-token coverage follows a Poisson-like
 spread around that mean of 2, not a flat "every token seen exactly twice." Under that
@@ -305,3 +308,195 @@ and the training notebook checks for it (`<dataset>/tokenized/<lang>/train.bin` 
 `tokenized_meta.json`) before re-tokenizing. Tokenizing ~930M tokens per language is a few
 minutes of CPU-only work — cheap once, but wasteful to repeat on every one of the several
 notebook re-runs §5.3's resume pattern implies across a multi-session run.
+
+## 6. Pretraining results
+
+Both models trained for their full computed `max_iters` (§4.5) at `EPOCHS=2`: Hindi
+28,354 iterations, Nepali 28,190.
+
+### 6.1 The run needed two Kaggle sessions, as expected
+
+§5.3's ~17-hour estimate against Kaggle's ~12-hour session cap wasn't just a planning
+number — it happened exactly as anticipated. Session 1 ran uninterrupted for **11h58m**
+(both languages, in parallel) before the session cap cut it off, at iter ~19,600 (Hindi)
+/ ~19,250 (Nepali). Re-running the notebook triggered §5.3's auto-resume path: both
+languages picked up from `last.pt` at **iter 19,000** — the last `--checkpoint-interval`
+boundary reached before the cutoff (confirmed directly by both logs' `resumed from ... at
+iter 19000` line) — meaning at most 250-600 iterations of compute were redone, not lost
+outright. A second, ~5h38m (Hindi) / ~5h52m (Nepali) session finished the remaining
+iterations. Total wall-clock: **~17h37m (Hindi), ~17h51m (Nepali)** — within a few percent
+of the estimate that motivated building auto-resume in the first place.
+
+### 6.2 Final loss and perplexity
+
+|                                            |                Hindi |               Nepali |
+| ------------------------------------------ | -------------------: | -------------------: |
+| Iterations completed                       |      28,354 / 28,354 |      28,190 / 28,190 |
+| Best val loss (nats)                       | 3.2942 (iter 26,000) | 3.8037 (iter 25,000) |
+| Perplexity at best val loss                | e^3.2942 ≈ **26.96** | e^3.8037 ≈ **44.87** |
+| Final eval (iter 28,000), train / val loss |        3.274 / 3.313 |        3.792 / 3.830 |
+
+Perplexity = `e^loss` throughout, since `F.cross_entropy` is natural-log-based, not
+`log2`-based — training itself doesn't log perplexity directly, these are computed from
+the recorded loss values.
+
+### 6.3 What the curve shows
+
+![Pretraining validation loss, both languages](figures/05_pretrain_loss.png)
+
+Both languages show the expected shape for from-scratch LM pretraining: a steep drop from
+the random-init loss (`ln(16,000) ≈ 9.68`, matching both models' actual iter-0 loss) to
+~5 within the first ~500-1,000 iterations, then a long tail that keeps improving, visibly
+still descending at iter 28,000 rather than having flattened out. Train and val loss track
+closely for both languages throughout — no overfitting signal at this scale/token budget —
+and there's no visible discontinuity at the iter-19,000 resume boundary, confirming the
+checkpoint/optimizer-state resume (§4.6) preserved training dynamics correctly across the
+two sessions rather than causing a loss spike or a reset-looking kink.
+
+Nepali's loss sits consistently above Hindi's for the entire run (final perplexity ≈45 vs.
+≈27) despite both models sharing identical architecture, hyperparameters, and a nearly
+identical tokens-to-parameters ratio (§4.5). This is consistent with Nepali being the
+lower-resource language in this project (Phase 1's smaller, less diverse manual-data
+share), not an artifact of the training setup itself.
+
+## 7. Evaluation (assignment §2.3)
+
+Run via `scripts/evaluation/kaggle_evaluate.ipynb` against each language's `best.pt`
+(Hindi iter 26,000, Nepali iter 25,000 — the lowest-val-loss checkpoint, not necessarily
+the last one). Full outputs are in `hindi/eval/` and `nepali/eval/`.
+
+### 7.1 Intrinsic language-modeling metrics: test-set PPL and BPB
+
+Evaluated deterministically over the entire test set (§3.2's random-window sampling is
+for cheap periodic monitoring _during_ training; a final reported number should cover
+all of it), per `scripts/evaluation/eval_lm.py`.
+
+|                  |      Hindi |     Nepali |
+| ---------------- | ---------: | ---------: |
+| Test loss (nats) |     3.3075 |     3.8113 |
+| **Perplexity**   |  **27.32** |  **45.21** |
+| **BPB**          | **0.4435** | **0.4333** |
+| Tokens evaluated | 12,261,888 | 12,146,688 |
+
+These test-set numbers land almost exactly where §6.2's training-time val-loss estimates
+predicted (27.0 / 44.9) — expected, since it's the same checkpoint, but a useful sanity
+check that nothing about the held-out test set behaves unexpectedly differently from val.
+
+**The Model H vs. Model L gap, and what BPB reveals about it:** raw perplexity makes
+Nepali look dramatically worse than Hindi (45.2 vs. 27.3, a 66% relative gap). BPB tells a
+different story: **0.4333 vs. 0.4435 — Nepali is essentially tied with Hindi, marginally
+_better_**. The reason is tokenizer fertility (Phase 1 report §6.1): at 16k vocab, Nepali's
+fertility is 1.348 tokens/word vs. Hindi's 1.210 — Nepali words split into more, smaller
+tokens. More tokens per word means each individual token is easier to predict (more of it
+is determined by the token(s) already seen earlier in the same word), which mechanically
+lowers perplexity's unit (cross-entropy _per token_) without the model having learned
+anything differently. BPB divides by bytes instead of tokens, cancelling out that
+tokenizer-granularity effect. Conclusion: **most of the H/L perplexity gap is a tokenizer
+fertility artifact, not evidence that pretraining itself went worse for Nepali** — though
+Nepali's smaller/less diverse manual-data share (Phase 1) remains a real, separate
+contributor, consistent with §6.3's observation that Nepali's _training_ loss curve also
+sat above Hindi's throughout, independent of any tokenizer effect.
+
+### 7.2 Generation quality
+
+Greedy decoding plus temperature sampling at 0.5, 1.0, 1.5, from 50 held-out prefixes
+(32 tokens) against 64-token reference continuations from the same test documents, per
+`scripts/evaluation/generate_eval.py`.
+
+**Hindi**
+
+| Setting  | BLEU-4 | chrF++ | ROUGE-L (F1) | Repetition (4-gram) | Distinct-1 | Distinct-2 |
+| -------- | -----: | -----: | -----------: | ------------------: | ---------: | ---------: |
+| Greedy   |   2.75 |  16.87 |        0.010 |               0.330 |      0.159 |      0.347 |
+| Temp 0.5 |   2.25 |  19.43 |        0.000 |               0.093 |      0.253 |      0.617 |
+| Temp 1.0 |   0.83 |  17.99 |        0.007 |               0.004 |      0.422 |      0.874 |
+| Temp 1.5 |   0.16 |  15.17 |        0.000 |               0.000 |      0.680 |      0.984 |
+
+**Nepali**
+
+| Setting  | BLEU-4 | chrF++ | ROUGE-L (F1) | Repetition (4-gram) | Distinct-1 | Distinct-2 |
+| -------- | -----: | -----: | -----------: | ------------------: | ---------: | ---------: |
+| Greedy   |   0.63 |  13.67 |        0.000 |               0.431 |      0.108 |      0.185 |
+| Temp 0.5 |   0.61 |  16.29 |        0.000 |               0.057 |      0.318 |      0.651 |
+| Temp 1.0 |   0.29 |  16.36 |        0.000 |              0.0003 |      0.531 |      0.924 |
+| Temp 1.5 |   0.09 |  15.58 |        0.000 |               0.000 |      0.721 |      0.993 |
+
+**The coherence/diversity tradeoff is exactly the textbook shape.** Greedy decoding gets
+the highest BLEU-4 (closest word-for-word match to the one available reference) but is
+also the most repetitive (33-43% of 4-grams repeated) and least diverse (distinct-1 as low
+as 0.11) — a well-documented failure mode of deterministic decoding on small LMs, where
+the model gets stuck cycling through a few high-probability tokens. Raising temperature
+monotonically fixes the repetition/diversity numbers (repetition → 0, distinct-1/2 → 0.7-1.0
+by temp 1.5) at the direct cost of reference-matching metrics, since the generated text
+drifts further from any one specific continuation the more randomness is injected. chrF++
+peaks at temp 0.5 for both languages rather than at greedy — a small amount of sampling
+apparently helps more than it hurts at the character level, escaping greedy's repetition
+loops without yet drifting far enough to lose reference similarity.
+
+**Why each metric is (or isn't) informative here:**
+
+- **BLEU-4** — n-gram precision against a _single_ reference. Open-ended generation has
+  many equally valid continuations, so BLEU only ever measures closeness to the one the
+  test set happened to contain; it's most useful _relatively_ (comparing decoding settings
+  against each other, as above) rather than as an absolute quality score.
+- **chrF++** — character-n-gram based, so it gives partial credit for shared roots/stems
+  even when whole tokens differ. This matters more for Hindi/Nepali than it would for
+  English: both are morphologically richer (case/postposition/verb-agreement suffixes
+  change the surface token but not the character-level root), so chrF++ is the more
+  linguistically appropriate of the three reference-based metrics here.
+- **ROUGE-L** — longest-common-subsequence recall. Near-zero across every setting and
+  both languages, but this mostly reflects the task, not model failure: matching a 64-token
+  span from one specific reference via literal shared subsequence is a very high bar for
+  open-ended generation with no fixed correct answer. Least informative of the three here.
+- **Repetition rate / Distinct-1/2** — reference-free, so unlike the three metrics above
+  they measure the decoding strategy's own behavior directly rather than similarity to one
+  fixed reference. These are arguably the most informative pair in this table for the
+  actual question the assignment is asking (how does decoding strategy affect quality),
+  since they don't depend on the reference-matching assumption the other three do.
+
+### 7.3 Attention analysis
+
+Heatmaps (all heads) for 2 early + 2 mid + 2 late layers per language are in
+`<lang>/eval/attention/`; layer-averaged entropy and mean attention distance for every
+layer/head are in `<lang>/eval/attention/<lang>_attention_summary.json`
+(`scripts/evaluation/attention_analysis.py`).
+
+![Hindi layer 0 (early) attention, all heads](../hindi/eval/attention/hindi_attn_layer0_early.png)
+
+![Hindi layer 10 (late) attention, all heads](../hindi/eval/attention/hindi_attn_layer10_late.png)
+
+**Entropy falls, mean distance rises, from early to late layers — for both languages:**
+
+|                                         | Hindi layer 0 | Hindi layer 10 | Nepali layer 0 | Nepali layer 10 |
+| --------------------------------------- | ------------: | -------------: | -------------: | --------------: |
+| Mean entropy (nats), avg over heads     |         1.236 |          0.993 |          1.743 |           1.073 |
+| Mean attention distance, avg over heads |         1.683 |          2.184 |          3.330 |           4.697 |
+
+Early layers spread attention more diffusely over nearby tokens (higher entropy, shorter
+distance); later layers commit more sharply to fewer positions, and reach further back to
+do it. This is the standard pattern for trained decoder-only Transformers: early layers
+compose local/syntactic structure, later layers integrate longer-range context using that
+structure. (Nepali's larger raw distance values throughout aren't necessarily a
+language-level finding — Nepali's higher tokenizer fertility, §7.1, means more tokens per
+sentence at the same content length, which mechanically stretches token-position
+distances; a fair H-vs-L distance comparison would need to normalize by sentence length
+in tokens, which this analysis doesn't yet do.)
+
+**Local/positional vs. content-based heads — concrete examples, not just averages:**
+
+- **Hindi's most local head (layer 3, head 3)**: mean distance 1.11 (essentially
+  adjacent-token attention) and the lowest entropy of any head (0.53) — a clear
+  local/positional head, always looking one position back.
+- **Hindi's longest-range head (layer 10, head 2)**: mean distance 2.89, but still
+  focused (entropy 0.78, not the highest) — reaching further back without becoming
+  diffuse suggests a specific, content-based long-distance link rather than just
+  generally-broad attention.
+- **Nepali's sharpest head overall (layer 8, head 2)**: lowest entropy of any head in
+  either language (0.33) _combined with_ the longest mean distance (6.77) — a head that
+  reaches far back but commits almost entirely to one specific position when it does,
+  the clearest content-based (not positional) head found in either model.
+
+Every layer contains a mix of both types in both languages (per-head entropy/distance
+spreads within a single layer are wide, e.g. Hindi layer 3 ranges from entropy 0.53 to
+1.26 across its 6 heads) — neither model relies on a single attention "style"; specialization
+happens at the head level, not the layer level.
