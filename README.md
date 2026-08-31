@@ -54,9 +54,6 @@ Drive, pushed automatically during pretraining (`report/phase2_model_report.md` 
 - **Model H (Hindi)**: https://huggingface.co/sohailtsm/lma-hindi-gpt
 - **Model L (Nepali)**: https://huggingface.co/sohailtsm/lma-nepali-gpt
 
-**⚠️ these repos are currently private** — set to Public (repo Settings on huggingface.co)
-before grading, or graders won't be able to open them without requesting access.
-
 ## Report
 
 - Full Phase 1 report (data collection, non-overlap methodology, preprocessing, tokenizer
