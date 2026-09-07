@@ -269,6 +269,217 @@ def fig_pretrain_loss():
     plt.close(fig)
 
 
+def fig_test_ppl_bpb():
+    """§7.1: test-set perplexity and BPB, Hindi vs Nepali, side by side — the pair
+    of panels makes the "PPL says Nepali is much worse, BPB says they're tied"
+    finding visible at a glance rather than only readable from the table."""
+    langs = ["Hindi", "Nepali"]
+    colors = [HINDI, NEPALI]
+    ppl = [27.32, 45.21]
+    bpb = [0.4435, 0.4333]
+
+    fig, axes = plt.subplots(1, 2, figsize=(8.6, 4.2))
+
+    ax = axes[0]
+    x = np.arange(2)
+    ax.bar(x, ppl, color=colors, width=0.52)
+    for xi, v in zip(x, ppl):
+        ax.text(xi, v + max(ppl) * 0.02, f"{v:.2f}", ha="center", fontsize=11.5,
+                 color=INK, fontweight="bold")
+    ax.set_xticks(x)
+    ax.set_xticklabels(langs, fontsize=11.5)
+    ax.set_ylabel("Perplexity (test set)")
+    ax.set_ylim(0, max(ppl) * 1.28)
+    ax.yaxis.grid(True, color=GRID, linewidth=0.8)
+    ax.set_axisbelow(True)
+    _clean_axes(ax)
+    ax.set_title("Perplexity", fontsize=12, color=INK, loc="left", pad=10)
+
+    ax = axes[1]
+    ax.bar(x, bpb, color=colors, width=0.52)
+    for xi, v in zip(x, bpb):
+        ax.text(xi, v + max(bpb) * 0.02, f"{v:.4f}", ha="center", fontsize=11.5,
+                 color=INK, fontweight="bold")
+    ax.set_xticks(x)
+    ax.set_xticklabels(langs, fontsize=11.5)
+    ax.set_ylabel("Bits-per-byte (test set)")
+    ax.set_ylim(0, max(bpb) * 1.28)
+    ax.yaxis.grid(True, color=GRID, linewidth=0.8)
+    ax.set_axisbelow(True)
+    _clean_axes(ax)
+    ax.set_title("BPB", fontsize=12, color=INK, loc="left", pad=10)
+
+    fig.suptitle("Test-set perplexity vs. bits-per-byte: PPL vs. BPB tell different "
+                  "stories", fontsize=12.5, color=INK, x=0.02, ha="left", y=1.03)
+    fig.tight_layout()
+    fig.savefig(OUT_DIR / "06_test_ppl_bpb.png", dpi=180, bbox_inches="tight")
+    plt.close(fig)
+
+
+DECODING_SETTINGS = ["Greedy", "Temp 0.5", "Temp 1.0", "Temp 1.5"]
+
+GENERATION_METRICS = {
+    "hindi": {
+        "bleu4": [2.75, 2.25, 0.83, 0.16],
+        "chrf": [16.87, 19.43, 17.99, 15.17],
+        "rougeL": [0.010, 0.000, 0.007, 0.000],
+    },
+    "nepali": {
+        "bleu4": [0.63, 0.61, 0.29, 0.09],
+        "chrf": [13.67, 16.29, 16.36, 15.58],
+        "rougeL": [0.000, 0.000, 0.0003, 0.000],
+    },
+}
+
+DIVERSITY_METRICS = {
+    "hindi": {
+        "repetition": [0.330, 0.093, 0.004, 0.000],
+        "distinct1": [0.159, 0.253, 0.422, 0.680],
+        "distinct2": [0.347, 0.617, 0.874, 0.984],
+    },
+    "nepali": {
+        "repetition": [0.431, 0.057, 0.0003, 0.000],
+        "distinct1": [0.108, 0.318, 0.531, 0.721],
+        "distinct2": [0.185, 0.651, 0.924, 0.993],
+    },
+}
+
+
+def fig_generation_quality():
+    """§7.2: BLEU-4 / chrF++ / ROUGE-L across the 4 decoding settings, one panel
+    per metric so each keeps its own natural scale (BLEU/chrF are 0-20ish,
+    ROUGE-L is near-zero throughout)."""
+    fig, axes = plt.subplots(1, 3, figsize=(12.6, 4.4))
+    x = np.arange(len(DECODING_SETTINGS))
+
+    panels = [("bleu4", "BLEU-4"), ("chrf", "chrF++"), ("rougeL", "ROUGE-L (F1)")]
+    for ax, (key, title) in zip(axes, panels):
+        for lang, color in [("hindi", HINDI), ("nepali", NEPALI)]:
+            vals = GENERATION_METRICS[lang][key]
+            ax.plot(x, vals, color=color, marker="o", markersize=6, linewidth=2,
+                     solid_capstyle="round", label=lang.capitalize())
+        ax.set_xticks(x)
+        ax.set_xticklabels(DECODING_SETTINGS, fontsize=9.5, rotation=12)
+        ax.set_ylabel(title)
+        ax.set_ylim(bottom=0)
+        ax.yaxis.grid(True, color=GRID, linewidth=0.8)
+        ax.set_axisbelow(True)
+        _clean_axes(ax)
+        ax.set_title(title, fontsize=11.5, color=INK, loc="left", pad=10)
+
+    axes[0].legend(loc="upper right", frameon=False, fontsize=10)
+    fig.suptitle("Generation quality vs. decoding setting", fontsize=13, color=INK,
+                 x=0.01, ha="left", y=1.04)
+    fig.tight_layout()
+    fig.savefig(OUT_DIR / "07_generation_quality.png", dpi=180, bbox_inches="tight")
+    plt.close(fig)
+
+
+def fig_generation_diversity():
+    """§7.2: repetition rate and Distinct-1/2 across decoding settings — the
+    coherence/diversity tradeoff that motivates using temperature at all."""
+    fig, axes = plt.subplots(1, 2, figsize=(9.6, 4.4))
+    x = np.arange(len(DECODING_SETTINGS))
+
+    ax = axes[0]
+    for lang, color in [("hindi", HINDI), ("nepali", NEPALI)]:
+        vals = DIVERSITY_METRICS[lang]["repetition"]
+        ax.plot(x, vals, color=color, marker="o", markersize=6, linewidth=2,
+                 solid_capstyle="round", label=lang.capitalize())
+    ax.set_xticks(x)
+    ax.set_xticklabels(DECODING_SETTINGS, fontsize=9.5, rotation=12)
+    ax.set_ylabel("Repetition rate (4-gram)")
+    ax.set_ylim(bottom=0)
+    ax.yaxis.grid(True, color=GRID, linewidth=0.8)
+    ax.set_axisbelow(True)
+    _clean_axes(ax)
+    ax.set_title("Repetition rate", fontsize=11.5, color=INK, loc="left", pad=10)
+    ax.legend(loc="upper right", frameon=False, fontsize=10)
+
+    ax = axes[1]
+    for lang, color, light in [("hindi", HINDI, HINDI_LIGHT),
+                                ("nepali", NEPALI, NEPALI_LIGHT)]:
+        ax.plot(x, DIVERSITY_METRICS[lang]["distinct1"], color=color, marker="o",
+                 markersize=6, linewidth=2, solid_capstyle="round",
+                 label=f"{lang.capitalize()} distinct-1")
+        ax.plot(x, DIVERSITY_METRICS[lang]["distinct2"], color=color, marker="o",
+                 markersize=6, linewidth=2, linestyle=(0, (4, 2)),
+                 solid_capstyle="round", label=f"{lang.capitalize()} distinct-2")
+    ax.set_xticks(x)
+    ax.set_xticklabels(DECODING_SETTINGS, fontsize=9.5, rotation=12)
+    ax.set_ylabel("Distinct-n ratio")
+    ax.set_ylim(0, 1.05)
+    ax.yaxis.grid(True, color=GRID, linewidth=0.8)
+    ax.set_axisbelow(True)
+    _clean_axes(ax)
+    ax.set_title("Distinct-1 / Distinct-2", fontsize=11.5, color=INK, loc="left",
+                 pad=10)
+    ax.legend(loc="lower right", frameon=False, fontsize=8.5)
+
+    fig.suptitle("Diversity/repetition diagnostics vs. decoding setting", fontsize=13,
+                 color=INK, x=0.01, ha="left", y=1.04)
+    fig.tight_layout()
+    fig.savefig(OUT_DIR / "08_generation_diversity.png", dpi=180, bbox_inches="tight")
+    plt.close(fig)
+
+
+def fig_attention_entropy_distance():
+    """§7.3: mean entropy and mean attention distance, early vs. late layer,
+    dumbbell style (mirrors fig_manual_ratio_scenarios' visual language) so the
+    early->late shift is the thing the eye follows, not just two more bars."""
+    langs = ["Hindi", "Nepali"]
+    entropy_early = [1.236, 1.743]
+    entropy_late = [0.993, 1.073]
+    dist_early = [1.683, 3.330]
+    dist_late = [2.184, 4.697]
+
+    fig, axes = plt.subplots(1, 2, figsize=(9.6, 3.8))
+    dark = [HINDI, NEPALI]
+    light = [HINDI_LIGHT, NEPALI_LIGHT]
+    y = np.arange(len(langs))
+
+    def _dumbbell(ax, early, late, xlabel, fmt):
+        for i in range(len(langs)):
+            ax.plot([early[i], late[i]], [y[i], y[i]], color=INK_MUTED,
+                     linewidth=1.5, zorder=1)
+            ax.scatter([early[i]], [y[i]], color=light[i], s=110, zorder=3,
+                        edgecolor=dark[i], linewidth=1.3)
+            ax.scatter([late[i]], [y[i]], color=dark[i], s=110, zorder=3)
+            ax.text(early[i], y[i] - 0.22, fmt.format(early[i]), ha="center",
+                     fontsize=9, color=INK_SECONDARY)
+            ax.text(late[i], y[i] + 0.26, fmt.format(late[i]), ha="center",
+                     fontsize=9, color=INK_SECONDARY)
+        ax.set_yticks(y)
+        ax.set_yticklabels(langs, fontsize=11.5)
+        ax.set_xlabel(xlabel)
+        ax.set_ylim(-0.6, len(langs) - 0.4)
+        ax.xaxis.grid(True, color=GRID, linewidth=0.8)
+        ax.set_axisbelow(True)
+        _clean_axes(ax, hide_left=True)
+
+    _dumbbell(axes[0], entropy_early, entropy_late,
+               "Mean entropy (nats)", "{:.3f}")
+    axes[0].set_title("Entropy: early -> late layer", fontsize=11.5, color=INK,
+                       loc="left", pad=10)
+    _dumbbell(axes[1], dist_early, dist_late,
+               "Mean attention distance", "{:.2f}")
+    axes[1].set_title("Distance: early -> late layer", fontsize=11.5, color=INK,
+                       loc="left", pad=10)
+
+    axes[0].scatter([], [], color=SURFACE, edgecolor=INK_MUTED, linewidth=1.3,
+                     s=110, label="Early layer (0)")
+    axes[0].scatter([], [], color=INK_MUTED, s=110, label="Late layer (10)")
+    axes[0].legend(loc="lower right", frameon=False, fontsize=9,
+                    bbox_to_anchor=(1.65, -0.42), ncol=2)
+
+    fig.suptitle("Attention entropy and distance, early vs. late layer",
+                 fontsize=13, color=INK, x=0.01, ha="left", y=1.05)
+    fig.tight_layout()
+    fig.savefig(OUT_DIR / "09_attention_entropy_distance.png", dpi=180,
+                bbox_inches="tight")
+    plt.close(fig)
+
+
 def main() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     fig_manual_sources()
@@ -276,7 +487,11 @@ def main() -> None:
     fig_vocab_fertility()
     fig_manual_ratio_scenarios()
     fig_pretrain_loss()
-    print(f"wrote 5 figures to {OUT_DIR}")
+    fig_test_ppl_bpb()
+    fig_generation_quality()
+    fig_generation_diversity()
+    fig_attention_entropy_distance()
+    print(f"wrote 9 figures to {OUT_DIR}")
 
 
 if __name__ == "__main__":

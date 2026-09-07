@@ -378,6 +378,8 @@ all of it), per `scripts/evaluation/eval_lm.py`.
 | **BPB**          | **0.4435** | **0.4333** |
 | Tokens evaluated | 12,261,888 | 12,146,688 |
 
+![Test-set perplexity vs. BPB, Hindi and Nepali](figures/06_test_ppl_bpb.png)
+
 These test-set numbers land almost exactly where §6.2's training-time val-loss estimates
 predicted (27.0 / 44.9) — expected, since it's the same checkpoint, but a useful sanity
 check that nothing about the held-out test set behaves unexpectedly differently from val.
@@ -420,6 +422,10 @@ Greedy decoding plus temperature sampling at 0.5, 1.0, 1.5, from 50 held-out pre
 | Temp 0.5 |   0.61 |  16.29 |        0.000 |               0.057 |      0.318 |      0.651 |
 | Temp 1.0 |   0.29 |  16.36 |        0.000 |              0.0003 |      0.531 |      0.924 |
 | Temp 1.5 |   0.09 |  15.58 |        0.000 |               0.000 |      0.721 |      0.993 |
+
+![BLEU-4, chrF++, and ROUGE-L across decoding settings, both languages](figures/07_generation_quality.png)
+
+![Repetition rate and Distinct-1/2 across decoding settings, both languages](figures/08_generation_diversity.png)
 
 **The coherence/diversity tradeoff is exactly the textbook shape.** Greedy decoding gets
 the highest BLEU-4 (closest word-for-word match to the one available reference) but is
@@ -471,6 +477,8 @@ layer/head are in `<lang>/eval/attention/<lang>_attention_summary.json`
 | --------------------------------------- | ------------: | -------------: | -------------: | --------------: |
 | Mean entropy (nats), avg over heads     |         1.236 |          0.993 |          1.743 |           1.073 |
 | Mean attention distance, avg over heads |         1.683 |          2.184 |          3.330 |           4.697 |
+
+![Mean attention entropy and distance, early vs. late layer, both languages](figures/09_attention_entropy_distance.png)
 
 Early layers spread attention more diffusely over nearby tokens (higher entropy, shorter
 distance); later layers commit more sharply to fewer positions, and reach further back to
