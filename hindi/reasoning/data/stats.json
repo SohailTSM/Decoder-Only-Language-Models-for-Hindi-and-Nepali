@@ -1,0 +1,354 @@
+{
+  "lang": "hindi",
+  "seed": 20260913,
+  "entity_pools": {
+    "persons": {
+      "train": 56,
+      "val": 12,
+      "test": 12
+    },
+    "objects": {
+      "train": 35,
+      "val": 8,
+      "test": 7
+    }
+  },
+  "splits": {
+    "train": {
+      "count": 4000,
+      "by_category": {
+        "chain_multihop": 1362,
+        "direct_numeric": 1329,
+        "chain_transitive": 1309
+      },
+      "by_form": {
+        "relation": 1708,
+        "which": 2292
+      },
+      "by_attribute": {
+        "age": 1018,
+        "height": 1009,
+        "weight": 947,
+        "price": 1026
+      }
+    },
+    "val": {
+      "count": 600,
+      "by_category": {
+        "direct_numeric": 198,
+        "chain_transitive": 193,
+        "chain_multihop": 209
+      },
+      "by_form": {
+        "which": 328,
+        "relation": 272
+      },
+      "by_attribute": {
+        "weight": 152,
+        "price": 149,
+        "height": 140,
+        "age": 159
+      }
+    },
+    "test": {
+      "count": 600,
+      "by_category": {
+        "chain_transitive": 193,
+        "chain_multihop": 215,
+        "direct_numeric": 192
+      },
+      "by_form": {
+        "which": 348,
+        "relation": 252
+      },
+      "by_attribute": {
+        "price": 146,
+        "weight": 160,
+        "age": 145,
+        "height": 149
+      }
+    }
+  },
+  "template_variety": {
+    "chain_multihop_relation": {
+      "train": [
+        "chain_multihop_relation_f0_q0",
+        "chain_multihop_relation_f1_q0"
+      ],
+      "val": [
+        "chain_multihop_relation_f0_q1"
+      ],
+      "test": [
+        "chain_multihop_relation_f1_q1"
+      ]
+    },
+    "direct_numeric_3_which": {
+      "train": [
+        "direct_numeric_3_which_f0_q0",
+        "direct_numeric_3_which_f1_q0"
+      ],
+      "val": [
+        "direct_numeric_3_which_f0_q1"
+      ],
+      "test": [
+        "direct_numeric_3_which_f1_q1"
+      ]
+    },
+    "direct_numeric_2_relation": {
+      "train": [
+        "direct_numeric_2_relation_f0_q0",
+        "direct_numeric_2_relation_f1_q0"
+      ],
+      "val": [
+        "direct_numeric_2_relation_f0_q1"
+      ],
+      "test": [
+        "direct_numeric_2_relation_f1_q1"
+      ]
+    },
+    "chain_transitive_which": {
+      "train": [
+        "chain_transitive_which_f0_q0",
+        "chain_transitive_which_f1_q0"
+      ],
+      "val": [
+        "chain_transitive_which_f0_q1"
+      ],
+      "test": [
+        "chain_transitive_which_f1_q1"
+      ]
+    },
+    "direct_numeric_2_which": {
+      "train": [
+        "direct_numeric_2_which_f0_q0",
+        "direct_numeric_2_which_f1_q0"
+      ],
+      "val": [
+        "direct_numeric_2_which_f0_q1"
+      ],
+      "test": [
+        "direct_numeric_2_which_f1_q1"
+      ]
+    },
+    "chain_transitive_relation": {
+      "train": [
+        "chain_transitive_relation_f0_q0",
+        "chain_transitive_relation_f1_q0"
+      ],
+      "val": [
+        "chain_transitive_relation_f0_q1"
+      ],
+      "test": [
+        "chain_transitive_relation_f1_q1"
+      ]
+    },
+    "chain_multihop_which": {
+      "train": [
+        "chain_multihop_which_f0_q0",
+        "chain_multihop_which_f1_q0"
+      ],
+      "val": [
+        "chain_multihop_which_f0_q1"
+      ],
+      "test": [
+        "chain_multihop_which_f1_q1"
+      ]
+    }
+  },
+  "examples": {
+    "train": [
+      {
+        "category": "chain_multihop",
+        "n_entities": 4,
+        "form": "relation",
+        "attribute": "age",
+        "entities": [
+          "प्रकाश",
+          "सरस्वती",
+          "सुरेश",
+          "दीपक"
+        ],
+        "values": [
+          75,
+          85,
+          90,
+          76
+        ],
+        "template_id": "chain_multihop_relation_f1_q0",
+        "prompt": "प्रकाश की उम्र सरस्वती से कम है। साथ ही, सरस्वती की उम्र सुरेश से कम है। साथ ही, सुरेश की उम्र दीपक से ज़्यादा है। प्रकाश और सुरेश की तुलना करें तो प्रकाश की उम्र सुरेश से ज़्यादा है, कम है, या बराबर है?",
+        "answer": "कम",
+        "id": "hindi-train-000000",
+        "lang": "hindi"
+      },
+      {
+        "category": "direct_numeric",
+        "n_entities": 3,
+        "form": "which",
+        "attribute": "height",
+        "entities": [
+          "विनोद",
+          "कृष्ण",
+          "मीरा"
+        ],
+        "values": [
+          196,
+          110,
+          185
+        ],
+        "template_id": "direct_numeric_3_which_f0_q0",
+        "prompt": "विनोद का कद 196 सेंटीमीटर है, कृष्ण का कद 110 सेंटीमीटर है, और मीरा का कद 185 सेंटीमीटर है। इनमें से किसका कद सबसे कम है?",
+        "answer": "कृष्ण",
+        "id": "hindi-train-000001",
+        "lang": "hindi"
+      },
+      {
+        "category": "chain_transitive",
+        "n_entities": 3,
+        "form": "relation",
+        "attribute": "weight",
+        "entities": [
+          "पंखा",
+          "नींबू",
+          "साइकिल"
+        ],
+        "values": [
+          24,
+          41,
+          36
+        ],
+        "template_id": "chain_transitive_relation_f1_q0",
+        "prompt": "पंखा का वज़न नींबू से कम है। साथ ही, नींबू का वज़न साइकिल से ज़्यादा है। पंखा और साइकिल की तुलना करें तो पंखा का वज़न साइकिल से ज़्यादा है, कम है, या बराबर है?",
+        "answer": "कम",
+        "id": "hindi-train-000002",
+        "lang": "hindi"
+      }
+    ],
+    "val": [
+      {
+        "category": "direct_numeric",
+        "n_entities": 3,
+        "form": "which",
+        "attribute": "weight",
+        "entities": [
+          "मेज़",
+          "गिलास",
+          "पेंसिल"
+        ],
+        "values": [
+          36,
+          48,
+          12
+        ],
+        "template_id": "direct_numeric_3_which_f0_q1",
+        "prompt": "मेज़ का वज़न 36 किलो है, गिलास का वज़न 48 किलो है, और पेंसिल का वज़न 12 किलो है। बताइए, इनमें से किसका वज़न सबसे ज़्यादा है?",
+        "answer": "गिलास",
+        "id": "hindi-val-000000",
+        "lang": "hindi"
+      },
+      {
+        "category": "direct_numeric",
+        "n_entities": 2,
+        "form": "relation",
+        "attribute": "weight",
+        "entities": [
+          "पपीता",
+          "छाता"
+        ],
+        "values": [
+          28,
+          32
+        ],
+        "template_id": "direct_numeric_2_relation_f0_q1",
+        "prompt": "पपीता का वज़न 28 किलो है और छाता का वज़न 32 किलो है। पपीता की तुलना छाता से करने पर वज़न ज़्यादा है, कम है, या बराबर है?",
+        "answer": "कम",
+        "id": "hindi-val-000001",
+        "lang": "hindi"
+      },
+      {
+        "category": "direct_numeric",
+        "n_entities": 2,
+        "form": "which",
+        "attribute": "price",
+        "entities": [
+          "मेज़",
+          "पेंसिल"
+        ],
+        "values": [
+          722,
+          2263
+        ],
+        "template_id": "direct_numeric_2_which_f0_q1",
+        "prompt": "मेज़ की कीमत 722 रुपये है और पेंसिल की कीमत 2263 रुपये है। मेज़ और पेंसिल में से किसकी कीमत अधिक है?",
+        "answer": "पेंसिल",
+        "id": "hindi-val-000002",
+        "lang": "hindi"
+      }
+    ],
+    "test": [
+      {
+        "category": "chain_transitive",
+        "n_entities": 3,
+        "form": "which",
+        "attribute": "price",
+        "entities": [
+          "चादर",
+          "थैला",
+          "केला"
+        ],
+        "values": [
+          105,
+          86,
+          460
+        ],
+        "template_id": "chain_transitive_which_f1_q1",
+        "prompt": "चादर की कीमत थैला से ज़्यादा है। साथ ही, थैला की कीमत केला से कम है। बताइए, इनमें से किसकी कीमत सबसे कम है?",
+        "answer": "थैला",
+        "id": "hindi-test-000000",
+        "lang": "hindi"
+      },
+      {
+        "category": "chain_multihop",
+        "n_entities": 4,
+        "form": "relation",
+        "attribute": "weight",
+        "entities": [
+          "केला",
+          "टीवी",
+          "चादर",
+          "प्याज़"
+        ],
+        "values": [
+          10,
+          17,
+          7,
+          41
+        ],
+        "template_id": "chain_multihop_relation_f1_q1",
+        "prompt": "केला का वज़न टीवी से कम है। साथ ही, टीवी का वज़न चादर से ज़्यादा है। साथ ही, चादर का वज़न प्याज़ से कम है। क्या टीवी का वज़न चादर से ज़्यादा है, कम है, या बराबर है?",
+        "answer": "ज़्यादा",
+        "id": "hindi-test-000001",
+        "lang": "hindi"
+      },
+      {
+        "category": "direct_numeric",
+        "n_entities": 2,
+        "form": "which",
+        "attribute": "price",
+        "entities": [
+          "टीवी",
+          "केला"
+        ],
+        "values": [
+          2055,
+          154
+        ],
+        "template_id": "direct_numeric_2_which_f1_q1",
+        "prompt": "टीवी की कीमत 2055 रुपये है, जबकि केला की कीमत 154 रुपये है। टीवी और केला में से किसकी कीमत अधिक है?",
+        "answer": "टीवी",
+        "id": "hindi-test-000002",
+        "lang": "hindi"
+      }
+    ]
+  },
+  "leakage_controls": "Entity names/nouns split disjoint 70/15/15 across train/val/test (see entity_pools above) - a name/object seen at test time never appears in train. Independently, every (category,form) combination's 4 phrasing variants (2x2 fact/link-join-style x question-style grid) are split disjoint the same way (see template_variety above) - val/test always use wording never seen in train."
+}
