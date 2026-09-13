@@ -41,7 +41,7 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 SEED = 20260913
 
 SPLIT_RATIOS = {"train": 0.70, "val": 0.15, "test": 0.15}
-SPLIT_TARGET_SIZE = {"train": 4000, "val": 600, "test": 600}
+SPLIT_TARGET_SIZE = {"train": 16000, "val": 2400, "test": 2400}
 
 # (fact/link-join style index, question-phrasing style index) allowed per split -
 # same 2x2 grid partition reused for every category/form combination.

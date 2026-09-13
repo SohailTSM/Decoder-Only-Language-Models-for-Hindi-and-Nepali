@@ -18,7 +18,6 @@ Usage:
 import argparse
 import glob
 import json
-import math
 import sys
 from pathlib import Path
 
@@ -91,6 +90,22 @@ def get_example_sentences(test_text_path: Path, n: int, max_tokens_len: int,
     return sentences
 
 
+def get_sentences_from_file(prompts_file: Path, n: int) -> list[str]:
+    """Fixed hand-picked prompts (e.g. comparative-reasoning sentences), used as-is
+    (no length filtering) so the same prompts can be fed to a pretrained and a
+    finetuned checkpoint for a directly comparable pre-vs-post-finetune heatmap."""
+    sentences = []
+    with open(prompts_file, encoding="utf-8") as f:
+        for line in f:
+            line = line.rstrip("\n")
+            if not line:
+                continue
+            sentences.append(line)
+            if len(sentences) >= n:
+                break
+    return sentences
+
+
 @torch.no_grad()
 def get_attn_for_sentence(model, sp: spm.SentencePieceProcessor, sentence: str, device: str):
     ids = sp.encode(sentence)
@@ -104,32 +119,34 @@ def get_attn_for_sentence(model, sp: spm.SentencePieceProcessor, sentence: str, 
 
 
 def plot_heatmaps(attn_by_layer, tokens: list[str], layer_idx: int, lang: str,
-                   label: str, out_path: Path, devanagari_font=None) -> None:
+                   label: str, out_dir: Path, devanagari_font=None) -> list[Path]:
+    """One full-size heatmap PER HEAD (not a packed multi-head grid) - a grid crams
+    each head's token labels down to single-digit font sizes, which made them
+    unreadable; a dedicated figure per head keeps every tick label legible."""
     attn = attn_by_layer[layer_idx][0]  # (n_heads, T, T)
     n_heads = attn.shape[0]
-    ncols = min(3, n_heads)
-    nrows = math.ceil(n_heads / ncols)
-    fig, axes = plt.subplots(nrows, ncols, figsize=(4.2 * ncols, 4.0 * nrows))
-    axes = np.atleast_1d(axes).flatten()
+    n_tokens = len(tokens)
+    side = max(5.5, 0.42 * n_tokens + 2.5)  # scale with sentence length so labels stay readable
 
+    written = []
     for h in range(n_heads):
-        ax = axes[h]
+        fig, ax = plt.subplots(figsize=(side, side))
         im = ax.imshow(attn[h].cpu().numpy(), cmap="viridis", vmin=0, vmax=1)
-        ax.set_xticks(range(len(tokens)))
-        ax.set_yticks(range(len(tokens)))
-        ax.set_xticklabels(tokens, rotation=90, fontsize=7, fontproperties=devanagari_font)
-        ax.set_yticklabels(tokens, fontsize=7, fontproperties=devanagari_font)
-        ax.set_title(f"head {h}", fontsize=10, color=INK)
-        ax.set_xlabel("key position", fontsize=8, color=INK_SECONDARY)
-        if h % ncols == 0:
-            ax.set_ylabel("query position", fontsize=8, color=INK_SECONDARY)
-    for h in range(n_heads, len(axes)):
-        axes[h].axis("off")
+        ax.set_xticks(range(n_tokens))
+        ax.set_yticks(range(n_tokens))
+        ax.set_xticklabels(tokens, rotation=90, fontsize=11, fontproperties=devanagari_font)
+        ax.set_yticklabels(tokens, fontsize=11, fontproperties=devanagari_font)
+        ax.set_xlabel("key position", fontsize=10, color=INK_SECONDARY)
+        ax.set_ylabel("query position", fontsize=10, color=INK_SECONDARY)
+        ax.set_title(f"{lang.capitalize()} — layer {layer_idx} ({label}) — head {h}",
+                     fontsize=12, color=INK)
+        fig.colorbar(im, ax=ax, shrink=0.85, label="attention weight")
 
-    fig.suptitle(f"{lang.capitalize()} — layer {layer_idx} ({label}) attention", fontsize=13)
-    fig.colorbar(im, ax=axes.tolist(), shrink=0.6, label="attention weight")
-    fig.savefig(out_path, dpi=160, bbox_inches="tight")
-    plt.close(fig)
+        out_path = out_dir / f"{lang}_attn_layer{layer_idx}_{label}_head{h}.png"
+        fig.savefig(out_path, dpi=160, bbox_inches="tight")
+        plt.close(fig)
+        written.append(out_path)
+    return written
 
 
 def select_layers(n_layers: int) -> dict[str, list[int]]:
@@ -170,6 +187,11 @@ def main() -> None:
     ap.add_argument("--checkpoint", type=Path, required=True)
     ap.add_argument("--tokenizer", type=Path, default=None)
     ap.add_argument("--test-text", type=Path, default=None)
+    ap.add_argument("--prompts-file", type=Path, default=None,
+                     help="Use these fixed sentences (one per line, no length filtering) "
+                          "instead of sampling from --test-text - e.g. comparative-reasoning "
+                          "prompts, so a pretrained and a finetuned checkpoint can be "
+                          "compared on identical input.")
     ap.add_argument("--n-sentences", type=int, default=5,
                      help="Example sentences used for entropy/distance averaging")
     ap.add_argument("--max-sentence-tokens", type=int, default=20,
@@ -191,19 +213,26 @@ def main() -> None:
     print(f"[{args.lang}] loaded checkpoint from iter {ckpt.get('iter_num')}, "
           f"n_layers={n_layers}", file=sys.stderr)
 
-    sentences = get_example_sentences(test_text_path, args.n_sentences,
-                                       args.max_sentence_tokens, sp)
-    print(f"[{args.lang}] using {len(sentences)} example sentences", file=sys.stderr)
+    if args.prompts_file:
+        sentences = get_sentences_from_file(args.prompts_file, args.n_sentences)
+        print(f"[{args.lang}] using {len(sentences)} fixed prompts from {args.prompts_file}",
+              file=sys.stderr)
+    else:
+        sentences = get_example_sentences(test_text_path, args.n_sentences,
+                                           args.max_sentence_tokens, sp)
+        print(f"[{args.lang}] using {len(sentences)} example sentences", file=sys.stderr)
 
     # Heatmaps: 2 early + 2 mid + 2 late layers, all heads, on the first example sentence.
     attn0, tokens0 = get_attn_for_sentence(model, sp, sentences[0], args.device)
     layer_groups = select_layers(n_layers)
     print(f"[{args.lang}] heatmap layers: {layer_groups}", file=sys.stderr)
+    n_heatmap_files = 0
     for group, layer_idxs in layer_groups.items():
         for layer_idx in layer_idxs:
-            plot_heatmaps(attn0, tokens0, layer_idx, args.lang, group,
-                          args.out_dir / f"{args.lang}_attn_layer{layer_idx}_{group}.png",
-                          devanagari_font)
+            written = plot_heatmaps(attn0, tokens0, layer_idx, args.lang, group,
+                                     args.out_dir, devanagari_font)
+            n_heatmap_files += len(written)
+    print(f"[{args.lang}] wrote {n_heatmap_files} per-head heatmap images", file=sys.stderr)
 
     # Entropy / mean distance, averaged over all example sentences.
     per_sentence_summaries = []

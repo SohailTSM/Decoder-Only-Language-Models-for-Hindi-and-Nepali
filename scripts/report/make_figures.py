@@ -480,6 +480,396 @@ def fig_attention_entropy_distance():
     plt.close(fig)
 
 
+REASONING_ACCURACY = {
+    "hindi": {"pretrained": 0.0000, "finetuned": 0.3629,
+              "finetuned_by_form": {"which": 0.2197, "relation": 0.5641}},
+    "nepali": {"pretrained": 0.0000, "finetuned": 0.3479,
+               "finetuned_by_form": {"which": 0.2318, "relation": 0.5005}},
+}
+
+REASONING_ACCURACY_BY_CATEGORY = {
+    "hindi": {"direct_numeric": 0.322, "chain_transitive": 0.425, "chain_multihop": 0.341},
+    "nepali": {"direct_numeric": 0.322, "chain_transitive": 0.407, "chain_multihop": 0.315},
+}
+
+
+def fig_reasoning_accuracy():
+    """Phase 3 §3: exact-match accuracy, pretrained (zero-shot) vs. finetuned, both
+    languages (panel 1); finetuned accuracy by category (panel 2); and finetuned
+    accuracy by answer form (panel 3) - the most informative split, since "relation"
+    (closed 3-word vocabulary) scores much higher than "which" (must reproduce a
+    held-out entity name) for both languages."""
+    langs = ["Hindi", "Nepali"]
+    dark = [HINDI, NEPALI]
+    light = [HINDI_LIGHT, NEPALI_LIGHT]
+
+    fig, axes = plt.subplots(1, 3, figsize=(13.8, 4.2))
+
+    ax = axes[0]
+    x = np.arange(len(langs))
+    width = 0.32
+    pretrained = [REASONING_ACCURACY[l.lower()]["pretrained"] for l in langs]
+    finetuned = [REASONING_ACCURACY[l.lower()]["finetuned"] for l in langs]
+    ax.bar(x - width / 2, pretrained, width, color=light, label="Pretrained (zero-shot)")
+    ax.bar(x + width / 2, finetuned, width, color=dark, label="Finetuned")
+    for xi, v in zip(x - width / 2, pretrained):
+        ax.text(xi, v + 0.015, f"{v:.2f}", ha="center", fontsize=9.5, color=INK_SECONDARY)
+    for xi, v in zip(x + width / 2, finetuned):
+        ax.text(xi, v + 0.015, f"{v:.2f}", ha="center", fontsize=10.5, color=INK, fontweight="bold")
+    ax.set_xticks(x)
+    ax.set_xticklabels(langs, fontsize=11.5)
+    ax.set_ylabel("Exact-match accuracy")
+    ax.set_ylim(0, 0.54)
+    ax.yaxis.grid(True, color=GRID, linewidth=0.8)
+    ax.set_axisbelow(True)
+    _clean_axes(ax)
+    ax.legend(loc="upper left", frameon=False, fontsize=9.5)
+    ax.set_title("Overall accuracy", fontsize=11.5, color=INK, loc="left", pad=10)
+
+    ax = axes[1]
+    cats = ["direct_numeric", "chain_transitive", "chain_multihop"]
+    x = np.arange(len(cats))
+    for i, (lang, color) in enumerate(zip(langs, dark)):
+        vals = [REASONING_ACCURACY_BY_CATEGORY[lang.lower()][c] for c in cats]
+        offset = (i - 0.5) * width
+        ax.bar(x + offset, vals, width, color=color, label=lang)
+        for xi, v in zip(x + offset, vals):
+            ax.text(xi, v + 0.012, f"{v:.2f}", ha="center", fontsize=9, color=INK_SECONDARY)
+    ax.set_xticks(x)
+    ax.set_xticklabels(["direct\nnumeric", "chain\ntransitive", "chain\nmultihop"], fontsize=9.5)
+    ax.set_ylabel("Finetuned accuracy")
+    ax.set_ylim(0, 0.52)
+    ax.yaxis.grid(True, color=GRID, linewidth=0.8)
+    ax.set_axisbelow(True)
+    _clean_axes(ax)
+    ax.legend(loc="upper center", frameon=False, fontsize=9.5, ncol=2)
+    ax.set_title("Finetuned accuracy by category", fontsize=11.5, color=INK,
+                 loc="left", pad=10)
+
+    ax = axes[2]
+    forms = ["which", "relation"]
+    x = np.arange(len(forms))
+    for i, (lang, color) in enumerate(zip(langs, dark)):
+        vals = [REASONING_ACCURACY[lang.lower()]["finetuned_by_form"][f] for f in forms]
+        offset = (i - 0.5) * width
+        ax.bar(x + offset, vals, width, color=color, label=lang)
+        for xi, v in zip(x + offset, vals):
+            ax.text(xi, v + 0.015, f"{v:.2f}", ha="center", fontsize=9.5, color=INK_SECONDARY)
+    ax.set_xticks(x)
+    ax.set_xticklabels(["\"which\" (entity name)", "\"relation\" (3-word)"], fontsize=9.5)
+    ax.set_ylabel("Finetuned accuracy")
+    ax.set_ylim(0, 0.68)
+    ax.yaxis.grid(True, color=GRID, linewidth=0.8)
+    ax.set_axisbelow(True)
+    _clean_axes(ax)
+    ax.legend(loc="upper center", frameon=False, fontsize=9.5, ncol=2)
+    ax.set_title("Finetuned accuracy by answer form", fontsize=11.5, color=INK,
+                 loc="left", pad=10)
+
+    fig.suptitle("Reasoning test-set exact-match accuracy", fontsize=13, color=INK,
+                 x=0.01, ha="left", y=1.04)
+    fig.tight_layout()
+    fig.savefig(OUT_DIR / "10_reasoning_accuracy.png", dpi=180, bbox_inches="tight")
+    plt.close(fig)
+
+
+REASONING_ATTENTION = {
+    # (lang, layer) -> {pretrained, finetuned} mean entropy (nats) / mean distance
+    "hindi_early": {"entropy": (2.285, 2.259), "distance": (8.151, 8.098)},
+    "hindi_late": {"entropy": (1.665, 1.555), "distance": (9.749, 10.598)},
+    "nepali_early": {"entropy": (2.429, 2.409), "distance": (7.896, 7.861)},
+    "nepali_late": {"entropy": (1.655, 1.829), "distance": (8.424, 7.266)},
+}
+
+
+def fig_reasoning_attention_comparison():
+    """Phase 3 §4: mean entropy and mean attention distance, pretrained vs. finetuned,
+    early and late layer, both languages - dumbbell style (mirrors
+    fig_manual_ratio_scenarios' light-circle=before/dark-circle=after visual language),
+    on the same fixed comparative-reasoning prompts for both checkpoints."""
+    rows = ["Hindi - early", "Hindi - late", "Nepali - early", "Nepali - late"]
+    keys = ["hindi_early", "hindi_late", "nepali_early", "nepali_late"]
+    dark = [HINDI, HINDI, NEPALI, NEPALI]
+    light = [HINDI_LIGHT, HINDI_LIGHT, NEPALI_LIGHT, NEPALI_LIGHT]
+    y = np.arange(len(rows))
+
+    fig, axes = plt.subplots(1, 2, figsize=(9.8, 4.4))
+
+    def _dumbbell(ax, metric, xlabel, fmt):
+        for i, k in enumerate(keys):
+            pre, fine = REASONING_ATTENTION[k][metric]
+            ax.plot([pre, fine], [y[i], y[i]], color=INK_MUTED, linewidth=1.5, zorder=1)
+            ax.scatter([pre], [y[i]], color=light[i], s=110, zorder=3,
+                       edgecolor=dark[i], linewidth=1.3)
+            ax.scatter([fine], [y[i]], color=dark[i], s=110, zorder=3)
+            lo, hi = (pre, fine) if pre <= fine else (fine, pre)
+            lo_label, hi_label = (fmt.format(pre), fmt.format(fine)) if pre <= fine \
+                else (fmt.format(fine), fmt.format(pre))
+            ax.text(lo, y[i] - 0.24, lo_label, ha="right", fontsize=8.5,
+                    color=INK_SECONDARY)
+            ax.text(hi, y[i] + 0.28, hi_label, ha="left", fontsize=8.5,
+                    color=INK_SECONDARY)
+        ax.set_yticks(y)
+        ax.set_yticklabels(rows, fontsize=10)
+        ax.set_xlabel(xlabel)
+        ax.set_ylim(-0.6, len(rows) - 0.4)
+        ax.xaxis.grid(True, color=GRID, linewidth=0.8)
+        ax.set_axisbelow(True)
+        _clean_axes(ax, hide_left=True)
+
+    _dumbbell(axes[0], "entropy", "Mean entropy (nats)", "{:.3f}")
+    axes[0].set_title("Entropy: pretrained -> finetuned", fontsize=11, color=INK,
+                       loc="left", pad=10)
+    _dumbbell(axes[1], "distance", "Mean attention distance", "{:.2f}")
+    axes[1].set_title("Distance: pretrained -> finetuned", fontsize=11, color=INK,
+                       loc="left", pad=10)
+
+    axes[0].scatter([], [], color=SURFACE, edgecolor=INK_MUTED, linewidth=1.3, s=110,
+                     label="Pretrained")
+    axes[0].scatter([], [], color=INK_MUTED, s=110, label="Finetuned")
+    axes[0].legend(loc="lower right", frameon=False, fontsize=9,
+                   bbox_to_anchor=(1.75, -0.32), ncol=2)
+
+    fig.suptitle("Attention entropy/distance on reasoning prompts: pretrained vs. finetuned",
+                 fontsize=12.5, color=INK, x=0.01, ha="left", y=1.05)
+    fig.tight_layout()
+    fig.savefig(OUT_DIR / "11_reasoning_attention_comparison.png", dpi=180,
+                bbox_inches="tight")
+    plt.close(fig)
+
+
+REASONING_DATASET_STATS = {
+    # train-split counts only (val/test are proportionally similar, §1.4) - both
+    # languages' entity pools also include val/test sizes, shown as stacked segments.
+    "entity_pools": {
+        "hindi_persons": {"train": 56, "val": 12, "test": 12},
+        "hindi_objects": {"train": 35, "val": 8, "test": 7},
+        "nepali_persons": {"train": 49, "val": 10, "test": 11},
+        "nepali_objects": {"train": 31, "val": 7, "test": 7},
+    },
+    "category": {
+        "hindi": {"direct_numeric": 5309, "chain_transitive": 5271, "chain_multihop": 5420},
+        "nepali": {"direct_numeric": 5457, "chain_transitive": 5272, "chain_multihop": 5271},
+    },
+    "form": {
+        "hindi": {"which": 9128, "relation": 6872},
+        "nepali": {"which": 9146, "relation": 6854},
+    },
+    "attribute": {
+        "hindi": {"age": 3994, "height": 3984, "price": 4004, "weight": 4018},
+        "nepali": {"age": 4029, "height": 3965, "price": 4054, "weight": 3952},
+    },
+}
+
+
+def fig_reasoning_dataset_composition():
+    """Phase 3 §1.4: one figure covering all four dataset-composition tables - entity
+    pool sizes (stacked train/val/test), and the train-split category/form/attribute
+    distributions - so every table in §1.4 has a companion visualization."""
+    d = REASONING_DATASET_STATS
+    fig, axes = plt.subplots(1, 4, figsize=(16.5, 4.2))
+
+    # Panel 1: entity pools, stacked train/val/test.
+    ax = axes[0]
+    pool_keys = ["hindi_persons", "hindi_objects", "nepali_persons", "nepali_objects"]
+    pool_labels = ["Hindi\npersons", "Hindi\nobjects", "Nepali\npersons", "Nepali\nobjects"]
+    pool_colors = [HINDI, HINDI_LIGHT, NEPALI, NEPALI_LIGHT]
+    x = np.arange(len(pool_keys))
+    bottoms = np.zeros(len(pool_keys))
+    for split, alpha in (("train", 1.0), ("val", 0.65), ("test", 0.4)):
+        vals = [d["entity_pools"][k][split] for k in pool_keys]
+        ax.bar(x, vals, bottom=bottoms, color=pool_colors, alpha=alpha, width=0.6,
+               edgecolor=SURFACE, linewidth=0.6)
+        bottoms += np.array(vals)
+    for xi, total in zip(x, bottoms):
+        ax.text(xi, total + 1.5, f"{int(total)}", ha="center", fontsize=9.5, color=INK)
+    ax.set_xticks(x)
+    ax.set_xticklabels(pool_labels, fontsize=8.5)
+    ax.set_ylabel("Pool size (names/nouns)")
+    ax.set_ylim(0, max(bottoms) * 1.2)
+    ax.yaxis.grid(True, color=GRID, linewidth=0.8)
+    ax.set_axisbelow(True)
+    _clean_axes(ax)
+    ax.set_title("Entity pools\n(dark=train, mid=val, light=test)", fontsize=10,
+                 color=INK, loc="left", pad=10)
+
+    # Panel 2: category distribution (train).
+    ax = axes[1]
+    cats = ["direct_numeric", "chain_transitive", "chain_multihop"]
+    x = np.arange(len(cats))
+    width = 0.32
+    for i, lang in enumerate(["hindi", "nepali"]):
+        vals = [d["category"][lang][c] for c in cats]
+        color = HINDI if lang == "hindi" else NEPALI
+        ax.bar(x + (i - 0.5) * width, vals, width, color=color, label=lang.capitalize())
+    ax.set_xticks(x)
+    ax.set_xticklabels(["direct\nnumeric", "chain\ntransitive", "chain\nmultihop"], fontsize=8.5)
+    ax.set_ylabel("Train examples")
+    ax.set_ylim(0, 6200)
+    ax.yaxis.grid(True, color=GRID, linewidth=0.8)
+    ax.set_axisbelow(True)
+    _clean_axes(ax)
+    ax.legend(loc="upper center", frameon=False, fontsize=8.5, ncol=2)
+    ax.set_title("Category distribution\n(train)", fontsize=10, color=INK, loc="left", pad=10)
+
+    # Panel 3: answer-form distribution (train).
+    ax = axes[2]
+    forms = ["which", "relation"]
+    x = np.arange(len(forms))
+    for i, lang in enumerate(["hindi", "nepali"]):
+        vals = [d["form"][lang][f] for f in forms]
+        color = HINDI if lang == "hindi" else NEPALI
+        ax.bar(x + (i - 0.5) * width, vals, width, color=color, label=lang.capitalize())
+    ax.set_xticks(x)
+    ax.set_xticklabels(["which", "relation"], fontsize=9.5)
+    ax.set_ylabel("Train examples")
+    ax.set_ylim(0, 10500)
+    ax.yaxis.grid(True, color=GRID, linewidth=0.8)
+    ax.set_axisbelow(True)
+    _clean_axes(ax)
+    ax.legend(loc="upper center", frameon=False, fontsize=8.5, ncol=2)
+    ax.set_title("Answer-form distribution\n(train)", fontsize=10, color=INK, loc="left", pad=10)
+
+    # Panel 4: attribute distribution (train).
+    ax = axes[3]
+    attrs = ["age", "height", "price", "weight"]
+    x = np.arange(len(attrs))
+    for i, lang in enumerate(["hindi", "nepali"]):
+        vals = [d["attribute"][lang][a] for a in attrs]
+        color = HINDI if lang == "hindi" else NEPALI
+        ax.bar(x + (i - 0.5) * width, vals, width, color=color, label=lang.capitalize())
+    ax.set_xticks(x)
+    ax.set_xticklabels(attrs, fontsize=9.5)
+    ax.set_ylabel("Train examples")
+    ax.set_ylim(0, 4700)
+    ax.yaxis.grid(True, color=GRID, linewidth=0.8)
+    ax.set_axisbelow(True)
+    _clean_axes(ax)
+    ax.legend(loc="upper center", frameon=False, fontsize=8.5, ncol=2)
+    ax.set_title("Attribute distribution\n(train)", fontsize=10, color=INK, loc="left", pad=10)
+
+    fig.suptitle("Reasoning dataset composition", fontsize=13, color=INK, x=0.01,
+                 ha="left", y=1.06)
+    fig.tight_layout()
+    fig.savefig(OUT_DIR / "12_reasoning_dataset_composition.png", dpi=180,
+                bbox_inches="tight")
+    plt.close(fig)
+
+
+TUNING_ROUNDS = {
+    "hindi": {
+        "round1": {"overall": 0.327, "which": 0.221, "relation": 0.472},
+        "round2": {"overall": 0.363, "which": 0.220, "relation": 0.564},
+    },
+    "nepali": {
+        "round1": {"overall": 0.315, "which": 0.176, "relation": 0.512},
+        "round2": {"overall": 0.348, "which": 0.232, "relation": 0.500},
+    },
+}
+
+
+def fig_tuning_rounds():
+    """Phase 3 §2.3: round 1 (4k examples, checked once/epoch) vs. round 2 (16k
+    examples, checked every 50 iters) exact-match accuracy - overall and by form,
+    both languages - the evidence behind the two tuning changes made."""
+    langs = ["hindi", "nepali"]
+    metrics = ["overall", "which", "relation"]
+    metric_labels = ["Overall", "\"which\"", "\"relation\""]
+
+    fig, axes = plt.subplots(1, 2, figsize=(9.6, 4.2))
+    for ax, lang in zip(axes, langs):
+        x = np.arange(len(metrics))
+        width = 0.32
+        r1 = [TUNING_ROUNDS[lang]["round1"][m] for m in metrics]
+        r2 = [TUNING_ROUNDS[lang]["round2"][m] for m in metrics]
+        color = HINDI if lang == "hindi" else NEPALI
+        light = HINDI_LIGHT if lang == "hindi" else NEPALI_LIGHT
+        ax.bar(x - width / 2, r1, width, color=light, label="Round 1 (4k, per-epoch check)")
+        ax.bar(x + width / 2, r2, width, color=color, label="Round 2 (16k, every-50-iter check)")
+        for xi, v in zip(x - width / 2, r1):
+            ax.text(xi, v + 0.012, f"{v:.2f}", ha="center", fontsize=8.5, color=INK_SECONDARY)
+        for xi, v in zip(x + width / 2, r2):
+            ax.text(xi, v + 0.012, f"{v:.2f}", ha="center", fontsize=9, color=INK, fontweight="bold")
+        ax.set_xticks(x)
+        ax.set_xticklabels(metric_labels, fontsize=9.5)
+        ax.set_ylabel("Exact-match accuracy")
+        ax.set_ylim(0, 0.66)
+        ax.yaxis.grid(True, color=GRID, linewidth=0.8)
+        ax.set_axisbelow(True)
+        _clean_axes(ax)
+        ax.legend(loc="upper center", frameon=False, fontsize=8, ncol=1)
+        ax.set_title(lang.capitalize(), fontsize=12, color=INK, loc="left", pad=10)
+
+    fig.suptitle("Finetuning round 1 vs. round 2: dataset size + checkpoint-check granularity",
+                 fontsize=12.5, color=INK, x=0.01, ha="left", y=1.04)
+    fig.tight_layout()
+    fig.savefig(OUT_DIR / "13_tuning_rounds.png", dpi=180, bbox_inches="tight")
+    plt.close(fig)
+
+
+def fig_cross_phase_summary():
+    """Phase 3 §5.2: the final consolidated cross-phase comparison - test perplexity
+    and BPB (Phase 2) alongside reasoning accuracy pretrained/finetuned (Phase 3),
+    Hindi vs. Nepali - the numbers behind §5.2's "task-level numbers converge, raw
+    perplexity doesn't" argument, in one place."""
+    langs = ["Hindi", "Nepali"]
+    colors = [HINDI, NEPALI]
+    ppl = [27.32, 45.21]
+    bpb = [0.4435, 0.4333]
+    reasoning = [0.363, 0.348]
+
+    fig, axes = plt.subplots(1, 3, figsize=(12.8, 4.2))
+    x = np.arange(2)
+
+    ax = axes[0]
+    ax.bar(x, ppl, color=colors, width=0.52)
+    for xi, v in zip(x, ppl):
+        ax.text(xi, v + max(ppl) * 0.02, f"{v:.2f}", ha="center", fontsize=11, color=INK,
+                fontweight="bold")
+    ax.set_xticks(x)
+    ax.set_xticklabels(langs, fontsize=11)
+    ax.set_ylabel("Test perplexity")
+    ax.set_ylim(0, max(ppl) * 1.28)
+    ax.yaxis.grid(True, color=GRID, linewidth=0.8)
+    ax.set_axisbelow(True)
+    _clean_axes(ax)
+    ax.set_title("Perplexity (Phase 2)", fontsize=11, color=INK, loc="left", pad=10)
+
+    ax = axes[1]
+    ax.bar(x, bpb, color=colors, width=0.52)
+    for xi, v in zip(x, bpb):
+        ax.text(xi, v + max(bpb) * 0.02, f"{v:.4f}", ha="center", fontsize=11, color=INK,
+                fontweight="bold")
+    ax.set_xticks(x)
+    ax.set_xticklabels(langs, fontsize=11)
+    ax.set_ylabel("Test BPB")
+    ax.set_ylim(0, max(bpb) * 1.28)
+    ax.yaxis.grid(True, color=GRID, linewidth=0.8)
+    ax.set_axisbelow(True)
+    _clean_axes(ax)
+    ax.set_title("Bits-per-byte (Phase 2)", fontsize=11, color=INK, loc="left", pad=10)
+
+    ax = axes[2]
+    ax.bar(x, reasoning, color=colors, width=0.52)
+    for xi, v in zip(x, reasoning):
+        ax.text(xi, v + max(reasoning) * 0.02, f"{v:.2f}", ha="center", fontsize=11,
+                color=INK, fontweight="bold")
+    ax.set_xticks(x)
+    ax.set_xticklabels(langs, fontsize=11)
+    ax.set_ylabel("Finetuned reasoning accuracy")
+    ax.set_ylim(0, max(reasoning) * 1.35)
+    ax.yaxis.grid(True, color=GRID, linewidth=0.8)
+    ax.set_axisbelow(True)
+    _clean_axes(ax)
+    ax.set_title("Reasoning accuracy (Phase 3)", fontsize=11, color=INK, loc="left", pad=10)
+
+    fig.suptitle("Cross-phase summary: raw perplexity diverges, task-level metrics converge",
+                 fontsize=12.5, color=INK, x=0.01, ha="left", y=1.05)
+    fig.tight_layout()
+    fig.savefig(OUT_DIR / "14_cross_phase_summary.png", dpi=180, bbox_inches="tight")
+    plt.close(fig)
+
+
 def main() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     fig_manual_sources()
@@ -491,7 +881,12 @@ def main() -> None:
     fig_generation_quality()
     fig_generation_diversity()
     fig_attention_entropy_distance()
-    print(f"wrote 9 figures to {OUT_DIR}")
+    fig_reasoning_accuracy()
+    fig_reasoning_attention_comparison()
+    fig_reasoning_dataset_composition()
+    fig_tuning_rounds()
+    fig_cross_phase_summary()
+    print(f"wrote 14 figures to {OUT_DIR}")
 
 
 if __name__ == "__main__":

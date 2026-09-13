@@ -10,4 +10,5 @@ __pycache__/
 */data/tokenized/*.bin
 */data/*.log
 */checkpoints/
+*/reasoning/checkpoints/
 .DS_Store

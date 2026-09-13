@@ -15,6 +15,10 @@ hindi/           # Model H
   tokenizer/     # hindi_unigram_16k.{model,vocab} + vocab_sweep/ (vocab-size selection experiment)
   pre_train/     # pretraining logs (hindi_1.log = session 1, hindi_2.log = post-resume session 2)
   eval/          # hindi_lm_metrics.json, hindi_generation.json, attention/ (heatmaps + summary)
+                 # attention_reasoning/{pretrained,finetuned}/ (Phase 3 attention comparison)
+  reasoning/     # data/{train,val,test}.jsonl + stats.json (synthetic reasoning finetune set)
+                 # attention_prompts.txt, eval/hindi_reasoning_metrics.json
+                 # checkpoints/ (git-ignored — Phase 3 finetuned best.pt/last.pt, see HF link below)
 nepali/          # Model L — same structure
 scripts/
   scraping/      # manual data collection (sitemap-based news scraping)
@@ -22,11 +26,14 @@ scripts/
   preprocessing/ # cleaning, dedup, splitting pipeline (build_corpus.py)
   tokenizer/     # tokenizer training, evaluation, vocab-size sweep, Colab notebook
   training/      # prepare_bin.py, model.py (GPT + RoPE), dataset.py, train.py, kaggle_pretrain.ipynb
+                 # finetune.py, finetune_dataset.py, kaggle_finetune.ipynb (Phase 3 reasoning finetune)
   evaluation/    # eval_lm.py (PPL/BPB), generate_eval.py (BLEU/chrF/ROUGE-L + diversity),
-                 # attention_analysis.py (heatmaps/entropy/distance), kaggle_evaluate.ipynb
+                 # attention_analysis.py (heatmaps/entropy/distance; --prompts-file for Phase 3),
+                 # reasoning_eval.py (Phase 3 exact-match accuracy), kaggle_evaluate.ipynb
+  reasoning/     # generate_reasoning_data.py — synthetic comparative/transitive reasoning dataset
   report/        # make_figures.py — generates report/figures/*.png
-report/          # phase1_data_report.md, phase2_model_report.md, architecture_grid_search.md,
-                 # supporting stats/sweep JSON files, figures/
+report/          # phase1_data_report.md, phase2_model_report.md, phase3_reasoning_report.md,
+                 # architecture_grid_search.md, supporting stats/sweep JSON files, figures/
 ```
 
 ## Phase 1 — Google Drive links
@@ -54,14 +61,26 @@ Drive, pushed automatically during pretraining (`report/phase2_model_report.md` 
 - **Model H (Hindi)**: https://huggingface.co/sohailtsm/lma-hindi-gpt
 - **Model L (Nepali)**: https://huggingface.co/sohailtsm/lma-nepali-gpt
 
+## Phase 3 — finetuned reasoning checkpoints (Hugging Face Hub)
+
+Each language's own Phase 2 checkpoint, finetuned independently on that language's
+synthetic reasoning dataset (`report/phase3_reasoning_report.md` §2), same
+`best.pt`/`last.pt` full-state format:
+
+- **Model H (Hindi)**: https://huggingface.co/sohailtsm/lma-hindi-gpt-reasoning
+- **Model L (Nepali)**: https://huggingface.co/sohailtsm/lma-nepali-gpt-reasoning
+
 ## Report
 
 - Full Phase 1 report (data collection, non-overlap methodology, preprocessing, tokenizer
   construction and vocab-size selection, dataset statistics): [`report/phase1_data_report.md`](report/phase1_data_report.md)
-- Phase 2 report (model architecture configuration and rationale — pretraining/evaluation
-  to follow): [`report/phase2_model_report.md`](report/phase2_model_report.md), with the
-  full `d_model`/`n_layers` grid search and depth-vs-width literature review in
+- Phase 2 report (model architecture, pretraining, and evaluation — test PPL/BPB,
+  generation quality, attention analysis): [`report/phase2_model_report.md`](report/phase2_model_report.md),
+  with the full `d_model`/`n_layers` grid search and depth-vs-width literature review in
   [`report/architecture_grid_search.md`](report/architecture_grid_search.md)
+- Phase 3 report (synthetic reasoning dataset design, finetuning protocol, pretrained-
+  vs-finetuned reasoning accuracy, pretrained-vs-finetuned attention comparison, and
+  the final consolidated report): [`report/phase3_reasoning_report.md`](report/phase3_reasoning_report.md)
 
 ## Reproduction
 
@@ -90,3 +109,35 @@ Drive, pushed automatically during pretraining (`report/phase2_model_report.md` 
     `eval_lm.py`, `generate_eval.py`, and `attention_analysis.py` for both languages against
     the checkpoints on the Hugging Face Hub; results are written to `<lang>/eval/` and
     summarized in `report/phase2_model_report.md` §7.
+11. Reasoning dataset generation (assignment §3.1): `python -m
+    scripts.reasoning.generate_reasoning_data` (add `--lang <hindi|nepali>` for one
+    language only) writes `<lang>/reasoning/data/{train,val,test}.jsonl` +
+    `stats.json` — a synthetic, programmatically-generated comparative/transitive
+    reasoning dataset per language, with held-out entity names and held-out phrasing
+    across splits. Deterministic (fixed seed) — no external inputs needed. Statistics
+    summarized in `report/phase3_reasoning_report.md` §1.
+12. Reasoning finetuning: `python -m scripts.training.finetune --lang <hindi|nepali>
+    --init-checkpoint <path to that language's Phase 2 best.pt> --eval-interval 50`
+    (see `scripts/training/finetune.py`'s module docstring for `--resume` usage;
+    `--eval-interval 50` matters — the default (once per epoch) finds a visibly worse
+    checkpoint at this dataset size, §2.3's "round 1 vs. round 2" finding). Saves
+    `{best,last}.pt` in the same resume-capable format as pretraining to
+    `<lang>/reasoning/checkpoints/` (git-ignored — see the Phase 3 HF links above), and
+    a full training log to `<lang>/reasoning/finetune.log`.
+    Protocol and hyperparameters in `report/phase3_reasoning_report.md` §2.
+13. Reasoning evaluation: `python -m scripts.evaluation.reasoning_eval --lang
+    <hindi|nepali> --label <pretrained|finetuned> --checkpoint <path> --out
+    <lang>/reasoning/eval/<lang>_reasoning_metrics.json` — run once per checkpoint
+    (results accumulate into the same output file by label). Exact-match accuracy by
+    category/answer-form in `report/phase3_reasoning_report.md` §3.
+14. Attention comparison, pretrained vs. finetuned (assignment §3.2): `python -m
+    scripts.evaluation.attention_analysis --lang <hindi|nepali> --checkpoint <path>
+    --prompts-file <lang>/reasoning/attention_prompts.txt --out-dir <dir>` — run once
+    per checkpoint against the same fixed prompt file so the two runs are directly
+    comparable. Results in `<lang>/eval/attention_reasoning/{pretrained,finetuned}/`,
+    discussed in `report/phase3_reasoning_report.md` §4.
+15. Kaggle notebook (alternative to steps 12-14 above, if not running locally):
+    [`scripts/training/kaggle_finetune.ipynb`](scripts/training/kaggle_finetune.ipynb)
+    runs the full finetune -> reasoning-eval -> attention-comparison pipeline for both
+    languages on GPU T4 x2 (see the notebook's own first cell for required input
+    datasets and secrets).

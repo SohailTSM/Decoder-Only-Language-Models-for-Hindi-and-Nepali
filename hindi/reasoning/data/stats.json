@@ -15,83 +15,71 @@
   },
   "splits": {
     "train": {
-      "count": 4000,
+      "count": 16000,
       "by_category": {
-        "chain_multihop": 1362,
-        "direct_numeric": 1329,
-        "chain_transitive": 1309
+        "chain_multihop": 5420,
+        "direct_numeric": 5309,
+        "chain_transitive": 5271
       },
       "by_form": {
-        "relation": 1708,
-        "which": 2292
+        "relation": 6872,
+        "which": 9128
       },
       "by_attribute": {
-        "age": 1018,
-        "height": 1009,
-        "weight": 947,
-        "price": 1026
+        "age": 3994,
+        "height": 3984,
+        "weight": 4018,
+        "price": 4004
       }
     },
     "val": {
-      "count": 600,
+      "count": 2400,
       "by_category": {
-        "direct_numeric": 198,
-        "chain_transitive": 193,
-        "chain_multihop": 209
+        "chain_multihop": 780,
+        "direct_numeric": 803,
+        "chain_transitive": 817
       },
       "by_form": {
-        "which": 328,
-        "relation": 272
+        "relation": 1016,
+        "which": 1384
       },
       "by_attribute": {
-        "weight": 152,
-        "price": 149,
-        "height": 140,
-        "age": 159
+        "age": 622,
+        "weight": 618,
+        "height": 594,
+        "price": 566
       }
     },
     "test": {
-      "count": 600,
+      "count": 2400,
       "by_category": {
-        "chain_transitive": 193,
-        "chain_multihop": 215,
-        "direct_numeric": 192
+        "chain_multihop": 790,
+        "chain_transitive": 814,
+        "direct_numeric": 796
       },
       "by_form": {
-        "which": 348,
-        "relation": 252
+        "which": 1402,
+        "relation": 998
       },
       "by_attribute": {
-        "price": 146,
-        "weight": 160,
-        "age": 145,
-        "height": 149
+        "price": 602,
+        "age": 615,
+        "height": 586,
+        "weight": 597
       }
     }
   },
   "template_variety": {
-    "chain_multihop_relation": {
+    "chain_multihop_which": {
       "train": [
-        "chain_multihop_relation_f0_q0",
-        "chain_multihop_relation_f1_q0"
+        "chain_multihop_which_f0_q0",
+        "chain_multihop_which_f1_q0"
       ],
       "val": [
-        "chain_multihop_relation_f0_q1"
+        "chain_multihop_which_f0_q1"
       ],
       "test": [
-        "chain_multihop_relation_f1_q1"
-      ]
-    },
-    "direct_numeric_3_which": {
-      "train": [
-        "direct_numeric_3_which_f0_q0",
-        "direct_numeric_3_which_f1_q0"
-      ],
-      "val": [
-        "direct_numeric_3_which_f0_q1"
-      ],
-      "test": [
-        "direct_numeric_3_which_f1_q1"
+        "chain_multihop_which_f1_q1"
       ]
     },
     "direct_numeric_2_relation": {
@@ -106,16 +94,16 @@
         "direct_numeric_2_relation_f1_q1"
       ]
     },
-    "chain_transitive_which": {
+    "chain_multihop_relation": {
       "train": [
-        "chain_transitive_which_f0_q0",
-        "chain_transitive_which_f1_q0"
+        "chain_multihop_relation_f0_q0",
+        "chain_multihop_relation_f1_q0"
       ],
       "val": [
-        "chain_transitive_which_f0_q1"
+        "chain_multihop_relation_f0_q1"
       ],
       "test": [
-        "chain_transitive_which_f1_q1"
+        "chain_multihop_relation_f1_q1"
       ]
     },
     "direct_numeric_2_which": {
@@ -142,16 +130,28 @@
         "chain_transitive_relation_f1_q1"
       ]
     },
-    "chain_multihop_which": {
+    "direct_numeric_3_which": {
       "train": [
-        "chain_multihop_which_f0_q0",
-        "chain_multihop_which_f1_q0"
+        "direct_numeric_3_which_f0_q0",
+        "direct_numeric_3_which_f1_q0"
       ],
       "val": [
-        "chain_multihop_which_f0_q1"
+        "direct_numeric_3_which_f0_q1"
       ],
       "test": [
-        "chain_multihop_which_f1_q1"
+        "direct_numeric_3_which_f1_q1"
+      ]
+    },
+    "chain_transitive_which": {
+      "train": [
+        "chain_transitive_which_f0_q0",
+        "chain_transitive_which_f1_q0"
+      ],
+      "val": [
+        "chain_transitive_which_f0_q1"
+      ],
+      "test": [
+        "chain_transitive_which_f1_q1"
       ]
     }
   },
@@ -225,126 +225,132 @@
     ],
     "val": [
       {
-        "category": "direct_numeric",
-        "n_entities": 3,
-        "form": "which",
-        "attribute": "weight",
+        "category": "chain_multihop",
+        "n_entities": 4,
+        "form": "relation",
+        "attribute": "age",
         "entities": [
-          "मेज़",
-          "गिलास",
-          "पेंसिल"
+          "रमेश",
+          "अशोक",
+          "दिनेश",
+          "अजय"
         ],
         "values": [
-          36,
-          48,
-          12
+          59,
+          35,
+          75,
+          44
         ],
-        "template_id": "direct_numeric_3_which_f0_q1",
-        "prompt": "मेज़ का वज़न 36 किलो है, गिलास का वज़न 48 किलो है, और पेंसिल का वज़न 12 किलो है। बताइए, इनमें से किसका वज़न सबसे ज़्यादा है?",
-        "answer": "गिलास",
+        "template_id": "chain_multihop_relation_f0_q1",
+        "prompt": "रमेश की उम्र अशोक से ज़्यादा है। अशोक की उम्र दिनेश से कम है। दिनेश की उम्र अजय से ज़्यादा है। क्या अशोक की उम्र दिनेश से ज़्यादा है, कम है, या बराबर है?",
+        "answer": "कम",
         "id": "hindi-val-000000",
         "lang": "hindi"
       },
       {
         "category": "direct_numeric",
-        "n_entities": 2,
-        "form": "relation",
+        "n_entities": 3,
+        "form": "which",
         "attribute": "weight",
         "entities": [
-          "पपीता",
-          "छाता"
+          "छाता",
+          "गिलास",
+          "तकिया"
         ],
         "values": [
-          28,
-          32
+          13,
+          29,
+          18
         ],
-        "template_id": "direct_numeric_2_relation_f0_q1",
-        "prompt": "पपीता का वज़न 28 किलो है और छाता का वज़न 32 किलो है। पपीता की तुलना छाता से करने पर वज़न ज़्यादा है, कम है, या बराबर है?",
-        "answer": "कम",
+        "template_id": "direct_numeric_3_which_f0_q1",
+        "prompt": "छाता का वज़न 13 किलो है, गिलास का वज़न 29 किलो है, और तकिया का वज़न 18 किलो है। बताइए, इनमें से किसका वज़न सबसे कम है?",
+        "answer": "छाता",
         "id": "hindi-val-000001",
         "lang": "hindi"
       },
       {
         "category": "direct_numeric",
         "n_entities": 2,
-        "form": "which",
-        "attribute": "price",
+        "form": "relation",
+        "attribute": "height",
         "entities": [
-          "मेज़",
-          "पेंसिल"
+          "नीलम",
+          "अजय"
         ],
         "values": [
-          722,
-          2263
+          137,
+          99
         ],
-        "template_id": "direct_numeric_2_which_f0_q1",
-        "prompt": "मेज़ की कीमत 722 रुपये है और पेंसिल की कीमत 2263 रुपये है। मेज़ और पेंसिल में से किसकी कीमत अधिक है?",
-        "answer": "पेंसिल",
+        "template_id": "direct_numeric_2_relation_f0_q1",
+        "prompt": "नीलम का कद 137 सेंटीमीटर है और अजय का कद 99 सेंटीमीटर है। नीलम की तुलना अजय से करने पर कद ज़्यादा है, कम है, या बराबर है?",
+        "answer": "ज़्यादा",
         "id": "hindi-val-000002",
         "lang": "hindi"
       }
     ],
     "test": [
       {
-        "category": "chain_transitive",
-        "n_entities": 3,
+        "category": "chain_multihop",
+        "n_entities": 4,
         "form": "which",
         "attribute": "price",
         "entities": [
-          "चादर",
+          "केला",
           "थैला",
-          "केला"
+          "तरबूज़",
+          "कुर्सी"
         ],
         "values": [
-          105,
-          86,
-          460
+          1097,
+          2276,
+          280,
+          440
         ],
-        "template_id": "chain_transitive_which_f1_q1",
-        "prompt": "चादर की कीमत थैला से ज़्यादा है। साथ ही, थैला की कीमत केला से कम है। बताइए, इनमें से किसकी कीमत सबसे कम है?",
+        "template_id": "chain_multihop_which_f1_q1",
+        "prompt": "केला की कीमत थैला से कम है। साथ ही, थैला की कीमत तरबूज़ से ज़्यादा है। साथ ही, तरबूज़ की कीमत कुर्सी से कम है। बताइए, इन चारों में से किसकी कीमत सबसे ज़्यादा है?",
         "answer": "थैला",
         "id": "hindi-test-000000",
         "lang": "hindi"
       },
       {
-        "category": "chain_multihop",
-        "n_entities": 4,
-        "form": "relation",
-        "attribute": "weight",
+        "category": "chain_transitive",
+        "n_entities": 3,
+        "form": "which",
+        "attribute": "age",
         "entities": [
-          "केला",
-          "टीवी",
-          "चादर",
-          "प्याज़"
+          "ज्योति",
+          "कमला",
+          "हरीश"
         ],
         "values": [
-          10,
-          17,
-          7,
-          41
+          6,
+          38,
+          82
         ],
-        "template_id": "chain_multihop_relation_f1_q1",
-        "prompt": "केला का वज़न टीवी से कम है। साथ ही, टीवी का वज़न चादर से ज़्यादा है। साथ ही, चादर का वज़न प्याज़ से कम है। क्या टीवी का वज़न चादर से ज़्यादा है, कम है, या बराबर है?",
-        "answer": "ज़्यादा",
+        "template_id": "chain_transitive_which_f1_q1",
+        "prompt": "ज्योति की उम्र कमला से कम है। साथ ही, कमला की उम्र हरीश से कम है। बताइए, इनमें से किसकी उम्र सबसे ज़्यादा है?",
+        "answer": "हरीश",
         "id": "hindi-test-000001",
         "lang": "hindi"
       },
       {
-        "category": "direct_numeric",
-        "n_entities": 2,
+        "category": "chain_transitive",
+        "n_entities": 3,
         "form": "which",
-        "attribute": "price",
+        "attribute": "height",
         "entities": [
-          "टीवी",
-          "केला"
+          "अमित",
+          "नेहा",
+          "स्वाति"
         ],
         "values": [
-          2055,
-          154
+          176,
+          196,
+          172
         ],
-        "template_id": "direct_numeric_2_which_f1_q1",
-        "prompt": "टीवी की कीमत 2055 रुपये है, जबकि केला की कीमत 154 रुपये है। टीवी और केला में से किसकी कीमत अधिक है?",
-        "answer": "टीवी",
+        "template_id": "chain_transitive_which_f1_q1",
+        "prompt": "अमित का कद नेहा से कम है। साथ ही, नेहा का कद स्वाति से ज़्यादा है। बताइए, इनमें से किसका कद सबसे कम है?",
+        "answer": "स्वाति",
         "id": "hindi-test-000002",
         "lang": "hindi"
       }
