@@ -20,6 +20,10 @@ Optional logging/backup, both off by default:
                               WANDB_API_KEY in the environment)
     --hf-repo-id <user/repo> push best.pt/last.pt/config.json to a HF Hub model repo
                               on every checkpoint save (needs HF_TOKEN in the environment)
+
+Bonus ablation:
+    --no-rope                disable RoPE entirely (report/bonus_ablation_report.md) -
+                              no positional information anywhere in the model
 """
 
 import argparse
@@ -119,6 +123,9 @@ def main() -> None:
     ap.add_argument("--d-ff", type=int, default=1536)
     ap.add_argument("--block-size", type=int, default=512)
     ap.add_argument("--dropout", type=float, default=0.1)
+    ap.add_argument("--no-rope", action="store_true",
+                     help="Bonus ablation: disable RoPE entirely (no positional "
+                          "information anywhere in the model)")
 
     ap.add_argument("--batch-size", type=int, default=32)
     ap.add_argument("--grad-accum-steps", type=int, default=1,
@@ -189,7 +196,7 @@ def main() -> None:
     cfg = GPTConfig(
         vocab_size=args.vocab_size, d_model=args.d_model, n_layers=args.n_layers,
         n_heads=args.n_heads, d_ff=args.d_ff, max_seq_len=args.block_size,
-        dropout=args.dropout,
+        dropout=args.dropout, use_rope=not args.no_rope,
     )
     model = GPT(cfg).to(device)
     print(f"[{args.lang}] {model.num_params():,} parameters", file=sys.stderr)

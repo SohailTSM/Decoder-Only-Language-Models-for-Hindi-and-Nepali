@@ -870,6 +870,180 @@ def fig_cross_phase_summary():
     plt.close(fig)
 
 
+STANDARD = HINDI
+ABLATED = "#7d5ba6"
+ABLATED_LIGHT = "#c3aede"
+
+
+def fig_bonus_lm_generation():
+    """Bonus §: standard (RoPE) vs. ablated (no positional embeddings) Hindi -
+    test PPL/BPB (panel 1-2) and BLEU-4 across decoding settings (panel 3), the
+    quantitative core of "what breaks without position information"."""
+    fig, axes = plt.subplots(1, 3, figsize=(13.2, 4.2))
+    labels = ["Standard\n(RoPE)", "Ablated\n(no position)"]
+    colors = [STANDARD, ABLATED]
+    x = np.arange(2)
+
+    ax = axes[0]
+    ppl = [27.32, 31.23]
+    ax.bar(x, ppl, color=colors, width=0.52)
+    for xi, v in zip(x, ppl):
+        ax.text(xi, v + max(ppl) * 0.02, f"{v:.2f}", ha="center", fontsize=11, color=INK, fontweight="bold")
+    ax.set_xticks(x)
+    ax.set_xticklabels(labels, fontsize=10)
+    ax.set_ylabel("Test perplexity")
+    ax.set_ylim(0, max(ppl) * 1.28)
+    ax.yaxis.grid(True, color=GRID, linewidth=0.8)
+    ax.set_axisbelow(True)
+    _clean_axes(ax)
+    ax.set_title("Perplexity", fontsize=11.5, color=INK, loc="left", pad=10)
+
+    ax = axes[1]
+    bpb = [0.4435, 0.4614]
+    ax.bar(x, bpb, color=colors, width=0.52)
+    for xi, v in zip(x, bpb):
+        ax.text(xi, v + max(bpb) * 0.02, f"{v:.4f}", ha="center", fontsize=11, color=INK, fontweight="bold")
+    ax.set_xticks(x)
+    ax.set_xticklabels(labels, fontsize=10)
+    ax.set_ylabel("Test BPB")
+    ax.set_ylim(0, max(bpb) * 1.28)
+    ax.yaxis.grid(True, color=GRID, linewidth=0.8)
+    ax.set_axisbelow(True)
+    _clean_axes(ax)
+    ax.set_title("Bits-per-byte", fontsize=11.5, color=INK, loc="left", pad=10)
+
+    ax = axes[2]
+    settings = ["Greedy", "Temp 0.5", "Temp 1.0", "Temp 1.5"]
+    xs = np.arange(len(settings))
+    standard_bleu = [2.75, 2.25, 0.83, 0.16]
+    ablated_bleu = [1.93, 1.96, 1.43, 0.18]
+    ax.plot(xs, standard_bleu, color=STANDARD, marker="o", markersize=6, linewidth=2,
+            solid_capstyle="round", label="Standard")
+    ax.plot(xs, ablated_bleu, color=ABLATED, marker="o", markersize=6, linewidth=2,
+            solid_capstyle="round", label="Ablated")
+    ax.set_xticks(xs)
+    ax.set_xticklabels(settings, fontsize=9, rotation=12)
+    ax.set_ylabel("BLEU-4")
+    ax.set_ylim(bottom=0)
+    ax.yaxis.grid(True, color=GRID, linewidth=0.8)
+    ax.set_axisbelow(True)
+    _clean_axes(ax)
+    ax.legend(loc="upper right", frameon=False, fontsize=9.5)
+    ax.set_title("Generation quality (BLEU-4)", fontsize=11.5, color=INK, loc="left", pad=10)
+
+    fig.suptitle("Bonus ablation: standard vs. no-positional-embeddings Hindi",
+                 fontsize=13, color=INK, x=0.01, ha="left", y=1.04)
+    fig.tight_layout()
+    fig.savefig(OUT_DIR / "15_bonus_lm_generation.png", dpi=180, bbox_inches="tight")
+    plt.close(fig)
+
+
+BONUS_ATTENTION = {
+    0: {"entropy": (1.236, 1.051), "distance": (1.683, 1.095)},
+    1: {"entropy": (1.201, 1.144), "distance": (1.725, 1.602)},
+    4: {"entropy": (1.020, 1.309), "distance": (1.805, 2.272)},
+    5: {"entropy": (1.111, 1.193), "distance": (2.098, 1.924)},
+    9: {"entropy": (1.034, 1.111), "distance": (1.955, 2.151)},
+    10: {"entropy": (0.993, 1.027), "distance": (2.184, 2.352)},
+}
+
+
+def fig_bonus_attention_comparison():
+    """Bonus §: mean entropy and mean attention distance by layer, standard vs.
+    ablated Hindi, on identical held-out sentences - shows the standard model's
+    clean early->late (diffuse->focused, near->far) progression becomes markedly
+    less monotonic once positional information is removed."""
+    layers = [0, 1, 4, 5, 9, 10]
+    y = np.arange(len(layers))
+
+    fig, axes = plt.subplots(1, 2, figsize=(9.8, 4.4))
+
+    def _dumbbell(ax, metric, xlabel, fmt):
+        for i, layer in enumerate(layers):
+            std_v, abl_v = BONUS_ATTENTION[layer][metric]
+            ax.plot([std_v, abl_v], [y[i], y[i]], color=INK_MUTED, linewidth=1.5, zorder=1)
+            ax.scatter([std_v], [y[i]], color=STANDARD, s=110, zorder=3)
+            ax.scatter([abl_v], [y[i]], color=ABLATED, s=110, zorder=3)
+        ax.set_yticks(y)
+        ax.set_yticklabels([f"layer {l}" for l in layers], fontsize=10)
+        ax.set_xlabel(xlabel)
+        ax.set_ylim(-0.6, len(layers) - 0.4)
+        ax.xaxis.grid(True, color=GRID, linewidth=0.8)
+        ax.set_axisbelow(True)
+        _clean_axes(ax, hide_left=True)
+
+    _dumbbell(axes[0], "entropy", "Mean entropy (nats)", "{:.3f}")
+    axes[0].set_title("Entropy by layer", fontsize=11.5, color=INK, loc="left", pad=10)
+    _dumbbell(axes[1], "distance", "Mean attention distance", "{:.2f}")
+    axes[1].set_title("Distance by layer", fontsize=11.5, color=INK, loc="left", pad=10)
+
+    axes[0].scatter([], [], color=STANDARD, s=110, label="Standard (RoPE)")
+    axes[0].scatter([], [], color=ABLATED, s=110, label="Ablated (no position)")
+    axes[0].legend(loc="lower right", frameon=False, fontsize=9,
+                   bbox_to_anchor=(1.85, -0.32), ncol=2)
+
+    fig.suptitle("Bonus ablation: attention entropy/distance by layer, standard vs. ablated",
+                 fontsize=12.5, color=INK, x=0.01, ha="left", y=1.05)
+    fig.tight_layout()
+    fig.savefig(OUT_DIR / "16_bonus_attention_comparison.png", dpi=180, bbox_inches="tight")
+    plt.close(fig)
+
+
+BONUS_LAG_RATIO = {
+    500: 1.077, 1000: 1.319, 1500: 1.309, 2000: 1.282, 2500: 1.288, 3000: 1.308,
+    3500: 1.332, 4000: 1.390, 4500: 1.408, 5000: 1.388, 5500: 1.368, 6000: 1.389,
+    6500: 1.442, 7000: 1.434, 7500: 1.402, 8000: 1.486, 8500: 1.411, 9000: 1.455,
+    9500: 1.492, 10000: 1.520, 10500: 1.571, 11000: 1.458, 11500: 1.491, 12000: 1.521,
+    12500: 1.505, 13000: 1.450, 13500: 1.486, 14000: 1.502, 14500: 1.575, 15000: 1.525,
+    15500: 1.651, 16000: 1.591, 16500: 1.595, 17000: 1.509, 17500: 1.563, 18000: 1.731,
+    18500: 1.529, 19000: 1.655, 19500: 1.608, 20000: 1.617,
+}
+
+
+def fig_bonus_lag_ratio():
+    """Bonus §: at each ablated-model checkpoint, find the (interpolated) iteration
+    at which the standard model reached the same val loss, and plot
+    ablated_iter / equivalent_standard_iter over training. A flat line would mean
+    "the ablated model is simply the standard model run some fixed number of extra
+    iterations behind" (i.e. purely a training-duration artifact); a rising line
+    means the per-iteration learning penalty from removing position is growing, not
+    constant - directly testable evidence against the "it's just undertraining"
+    explanation for the perplexity gap."""
+    iters = sorted(BONUS_LAG_RATIO)
+    ratios = [BONUS_LAG_RATIO[i] for i in iters]
+
+    fig, ax = plt.subplots(figsize=(8.6, 4.6))
+    ax.plot(iters, ratios, color=ABLATED, linewidth=1.3, alpha=0.55, zorder=1)
+    ax.scatter(iters, ratios, color=ABLATED, s=22, zorder=2)
+
+    # simple linear trend line to make the direction unambiguous
+    n = len(iters)
+    mean_x = sum(iters) / n
+    mean_y = sum(ratios) / n
+    slope = sum((x - mean_x) * (y - mean_y) for x, y in zip(iters, ratios)) / \
+        sum((x - mean_x) ** 2 for x in iters)
+    intercept = mean_y - slope * mean_x
+    trend = [slope * x + intercept for x in iters]
+    ax.plot(iters, trend, color=INK, linewidth=1.8, linestyle=(0, (5, 3)), zorder=3,
+            label="linear trend")
+
+    ax.axhline(1.0, color=INK_MUTED, linewidth=1, linestyle=(0, (2, 2)))
+    ax.text(iters[-1], 1.02, "1.0 = no penalty", ha="right", fontsize=8.5, color=INK_SECONDARY)
+
+    ax.set_xlabel("Ablated model's training iteration")
+    ax.set_ylabel("Iterations needed ÷ standard model's\niterations to reach the same loss")
+    ax.xaxis.set_major_formatter(lambda v, _: f"{int(v):,}")
+    ax.yaxis.grid(True, color=GRID, linewidth=0.8)
+    ax.set_axisbelow(True)
+    _clean_axes(ax)
+    ax.legend(loc="upper left", frameon=False, fontsize=9.5)
+    ax.set_title("Bonus ablation: sample-efficiency penalty grows over training, not constant",
+                 fontsize=12, color=INK, loc="left", pad=12)
+    fig.tight_layout()
+    fig.savefig(OUT_DIR / "17_bonus_lag_ratio.png", dpi=180, bbox_inches="tight")
+    plt.close(fig)
+
+
 def main() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     fig_manual_sources()
@@ -886,7 +1060,10 @@ def main() -> None:
     fig_reasoning_dataset_composition()
     fig_tuning_rounds()
     fig_cross_phase_summary()
-    print(f"wrote 14 figures to {OUT_DIR}")
+    fig_bonus_lm_generation()
+    fig_bonus_attention_comparison()
+    fig_bonus_lag_ratio()
+    print(f"wrote 17 figures to {OUT_DIR}")
 
 
 if __name__ == "__main__":

@@ -5,6 +5,12 @@ attention (zero extra parameters), d_ff = 4 * d_model, biases on every Linear/La
 Default GPTConfig field values are exactly the chosen configuration (vocab=16,000,
 d_model=384, n_layers=11, n_heads=6, d_ff=1536, max_seq_len=512) — instantiating
 GPT(GPTConfig()) reproduces the reported 25,663,872-parameter model.
+
+`GPTConfig.use_rope=False` (bonus ablation, report/bonus_ablation_report.md) skips
+both apply_rope calls in CausalSelfAttention.forward, leaving attention with no
+positional signal at all (purely content-based, permutation-invariant) — this is the
+project's only positional scheme, so disabling it is a genuine no-position ablation,
+not a swap to a different scheme. Zero other change to the architecture.
 """
 
 from dataclasses import dataclass
@@ -24,6 +30,7 @@ class GPTConfig:
     max_seq_len: int = 512
     dropout: float = 0.1
     rope_base: float = 10_000.0
+    use_rope: bool = True  # bonus ablation: False = no positional information at all
 
 
 def precompute_rope(head_dim: int, max_seq_len: int, base: float) -> tuple[torch.Tensor, torch.Tensor]:
@@ -57,6 +64,7 @@ class CausalSelfAttention(nn.Module):
         self.wo = nn.Linear(cfg.d_model, cfg.d_model)
         self.attn_dropout_p = cfg.dropout
         self.resid_dropout = nn.Dropout(cfg.dropout)
+        self.use_rope = cfg.use_rope
 
     def forward(self, x: torch.Tensor, cos: torch.Tensor, sin: torch.Tensor,
                 return_attn: bool = False):
@@ -65,8 +73,9 @@ class CausalSelfAttention(nn.Module):
         k = self.wk(x).view(B, T, self.n_heads, self.head_dim).transpose(1, 2)
         v = self.wv(x).view(B, T, self.n_heads, self.head_dim).transpose(1, 2)
 
-        q = apply_rope(q, cos, sin)
-        k = apply_rope(k, cos, sin)
+        if self.use_rope:
+            q = apply_rope(q, cos, sin)
+            k = apply_rope(k, cos, sin)
 
         attn_weights = None
         if return_attn:
