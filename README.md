@@ -19,21 +19,26 @@ hindi/           # Model H
   reasoning/     # data/{train,val,test}.jsonl + stats.json (synthetic reasoning finetune set)
                  # attention_prompts.txt, eval/hindi_reasoning_metrics.json
                  # checkpoints/ (git-ignored — Phase 3 finetuned best.pt/last.pt, see HF link below)
-nepali/          # Model L — same structure
+  eval_ablation/ # hindi_lm_metrics.json, hindi_generation.json, attention_{standard,ablated}/
+                 # (Bonus: standard-vs-no-position comparison, Hindi only)
+nepali/          # Model L — same structure (no eval_ablation/ — bonus is Hindi-only)
 scripts/
   scraping/      # manual data collection (sitemap-based news scraping)
   public_data/   # IndicCorpV2 download
   preprocessing/ # cleaning, dedup, splitting pipeline (build_corpus.py)
   tokenizer/     # tokenizer training, evaluation, vocab-size sweep, Colab notebook
-  training/      # prepare_bin.py, model.py (GPT + RoPE), dataset.py, train.py, kaggle_pretrain.ipynb
+  training/      # prepare_bin.py, model.py (GPT + RoPE + use_rope ablation flag), dataset.py,
+                 # train.py (incl. --no-rope), kaggle_pretrain.ipynb
                  # finetune.py, finetune_dataset.py, kaggle_finetune.ipynb (Phase 3 reasoning finetune)
+                 # kaggle_ablation_pretrain.ipynb (Bonus: no-positional-embeddings pretrain)
   evaluation/    # eval_lm.py (PPL/BPB), generate_eval.py (BLEU/chrF/ROUGE-L + diversity),
                  # attention_analysis.py (heatmaps/entropy/distance; --prompts-file for Phase 3),
                  # reasoning_eval.py (Phase 3 exact-match accuracy), kaggle_evaluate.ipynb
   reasoning/     # generate_reasoning_data.py — synthetic comparative/transitive reasoning dataset
   report/        # make_figures.py — generates report/figures/*.png
 report/          # phase1_data_report.md, phase2_model_report.md, phase3_reasoning_report.md,
-                 # architecture_grid_search.md, supporting stats/sweep JSON files, figures/
+                 # bonus_ablation_report.md, architecture_grid_search.md,
+                 # supporting stats/sweep JSON files, figures/
 ```
 
 ## Phase 1 — Google Drive links
@@ -70,6 +75,17 @@ synthetic reasoning dataset (`report/phase3_reasoning_report.md` §2), same
 - **Model H (Hindi)**: https://huggingface.co/sohailtsm/lma-hindi-gpt-reasoning
 - **Model L (Nepali)**: https://huggingface.co/sohailtsm/lma-nepali-gpt-reasoning
 
+## Bonus — no-positional-embeddings ablation (Hugging Face Hub)
+
+Model H (Hindi) retrained fully from scratch with RoPE disabled (`GPTConfig.use_rope=False`,
+`train.py --no-rope`) — this project's only positional scheme, so this is a genuine
+no-position ablation. Same data/tokenizer/architecture/token budget as the standard
+Hindi model otherwise; full Phase 2 evaluation suite compared in
+`report/bonus_ablation_report.md`.
+
+- **Model H, no positional embeddings**: https://huggingface.co/sohailtsm/lma-hindi-gpt-noposition
+  (`best.pt`/`last.pt` at iteration 20,000 — see the report for why)
+
 ## Report
 
 - Full Phase 1 report (data collection, non-overlap methodology, preprocessing, tokenizer
@@ -81,6 +97,9 @@ synthetic reasoning dataset (`report/phase3_reasoning_report.md` §2), same
 - Phase 3 report (synthetic reasoning dataset design, finetuning protocol, pretrained-
   vs-finetuned reasoning accuracy, pretrained-vs-finetuned attention comparison, and
   the final consolidated report): [`report/phase3_reasoning_report.md`](report/phase3_reasoning_report.md)
+- Bonus report (no-positional-embeddings ablation setup, full Phase 2 eval suite
+  standard-vs-ablated, and what breaks/doesn't without position information):
+  [`report/bonus_ablation_report.md`](report/bonus_ablation_report.md)
 
 ## Reproduction
 
@@ -141,3 +160,11 @@ synthetic reasoning dataset (`report/phase3_reasoning_report.md` §2), same
     runs the full finetune -> reasoning-eval -> attention-comparison pipeline for both
     languages on GPU T4 x2 (see the notebook's own first cell for required input
     datasets and secrets).
+16. Bonus ablation (assignment "Bonus" section): `python -m scripts.training.train
+    --lang hindi --no-rope --data-dir <dir with .bin files> --out-dir <checkpoint dir>`
+    (same as pretraining, plus `--no-rope` to disable RoPE entirely — see
+    `report/bonus_ablation_report.md` §1 for the exact hyperparameters used). On
+    Kaggle: [`scripts/training/kaggle_ablation_pretrain.ipynb`](scripts/training/kaggle_ablation_pretrain.ipynb).
+    Evaluation reuses `eval_lm.py`/`generate_eval.py`/`attention_analysis.py`
+    unmodified against the resulting checkpoint — no new eval code needed. Results in
+    `report/bonus_ablation_report.md`.

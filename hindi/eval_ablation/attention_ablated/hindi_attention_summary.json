@@ -1,0 +1,288 @@
+{
+  "lang": "hindi",
+  "checkpoint": "/home/sohailtsm/.cache/huggingface/hub/models--sohailtsm--lma-hindi-gpt-noposition/snapshots/7b9f41df0d1ea0ac277d482eac85ea5a25dba215/best.pt",
+  "n_layers": 11,
+  "n_heads": 6,
+  "heatmap_layers": {
+    "early": [
+      0,
+      1
+    ],
+    "mid": [
+      4,
+      5
+    ],
+    "late": [
+      9,
+      10
+    ]
+  },
+  "n_sentences_averaged": 5,
+  "example_sentence_for_heatmaps": "शिक्षा व्यवस्था चौपट करने का आरोप",
+  "per_head_summary": {
+    "layer0_head0": {
+      "mean_entropy_nats": 1.113378536509764,
+      "mean_attention_distance": 1.2328366453761959
+    },
+    "layer0_head1": {
+      "mean_entropy_nats": 1.092631358537409,
+      "mean_attention_distance": 1.115619269899196
+    },
+    "layer0_head2": {
+      "mean_entropy_nats": 1.3212101433674495,
+      "mean_attention_distance": 1.485536911206113
+    },
+    "layer0_head3": {
+      "mean_entropy_nats": 0.7835157842023505,
+      "mean_attention_distance": 0.7306674609312581
+    },
+    "layer0_head4": {
+      "mean_entropy_nats": 1.011969307197465,
+      "mean_attention_distance": 1.017066273258792
+    },
+    "layer0_head5": {
+      "mean_entropy_nats": 0.9818820640113619,
+      "mean_attention_distance": 0.9873709284100268
+    },
+    "layer1_head0": {
+      "mean_entropy_nats": 1.2910586089889209,
+      "mean_attention_distance": 1.6669782598647807
+    },
+    "layer1_head1": {
+      "mean_entropy_nats": 0.9843921963539388,
+      "mean_attention_distance": 1.8472449156559176
+    },
+    "layer1_head2": {
+      "mean_entropy_nats": 1.3515224602818487,
+      "mean_attention_distance": 1.843125694791476
+    },
+    "layer1_head3": {
+      "mean_entropy_nats": 0.7769097395737966,
+      "mean_attention_distance": 0.7904548126893739
+    },
+    "layer1_head4": {
+      "mean_entropy_nats": 1.2388631309072176,
+      "mean_attention_distance": 2.0461980583601527
+    },
+    "layer1_head5": {
+      "mean_entropy_nats": 1.2228064299292034,
+      "mean_attention_distance": 1.4189856841829087
+    },
+    "layer2_head0": {
+      "mean_entropy_nats": 1.025928543474939,
+      "mean_attention_distance": 1.7647683111122912
+    },
+    "layer2_head1": {
+      "mean_entropy_nats": 1.324775259561009,
+      "mean_attention_distance": 1.8811226956215172
+    },
+    "layer2_head2": {
+      "mean_entropy_nats": 1.3600919623507395,
+      "mean_attention_distance": 1.9478672729929287
+    },
+    "layer2_head3": {
+      "mean_entropy_nats": 1.3660537920395532,
+      "mean_attention_distance": 2.0674507990810604
+    },
+    "layer2_head4": {
+      "mean_entropy_nats": 0.9601734441415303,
+      "mean_attention_distance": 1.3047413791995495
+    },
+    "layer2_head5": {
+      "mean_entropy_nats": 1.2269392817715805,
+      "mean_attention_distance": 1.8353620659001169
+    },
+    "layer3_head0": {
+      "mean_entropy_nats": 0.9628622627755007,
+      "mean_attention_distance": 1.7278593533817266
+    },
+    "layer3_head1": {
+      "mean_entropy_nats": 1.3598168636361758,
+      "mean_attention_distance": 2.1343898310263953
+    },
+    "layer3_head2": {
+      "mean_entropy_nats": 1.356998979581727,
+      "mean_attention_distance": 2.0786475182573003
+    },
+    "layer3_head3": {
+      "mean_entropy_nats": 1.373602444363965,
+      "mean_attention_distance": 2.179619256688489
+    },
+    "layer3_head4": {
+      "mean_entropy_nats": 1.1054255358046956,
+      "mean_attention_distance": 2.0371642366713947
+    },
+    "layer3_head5": {
+      "mean_entropy_nats": 1.3142946911851565,
+      "mean_attention_distance": 2.229418832692835
+    },
+    "layer4_head0": {
+      "mean_entropy_nats": 1.4266083302762775,
+      "mean_attention_distance": 2.1294164076447486
+    },
+    "layer4_head1": {
+      "mean_entropy_nats": 1.213703733517064,
+      "mean_attention_distance": 2.3971313435501522
+    },
+    "layer4_head2": {
+      "mean_entropy_nats": 1.3636437808805042,
+      "mean_attention_distance": 2.3023264236913787
+    },
+    "layer4_head3": {
+      "mean_entropy_nats": 1.2284078076481817,
+      "mean_attention_distance": 2.5504694625073006
+    },
+    "layer4_head4": {
+      "mean_entropy_nats": 1.2985356705056295,
+      "mean_attention_distance": 1.9337758821580144
+    },
+    "layer4_head5": {
+      "mean_entropy_nats": 1.3232428501711953,
+      "mean_attention_distance": 2.316790276434687
+    },
+    "layer5_head0": {
+      "mean_entropy_nats": 1.249325858089659,
+      "mean_attention_distance": 2.5893638645278085
+    },
+    "layer5_head1": {
+      "mean_entropy_nats": 1.0376975960615609,
+      "mean_attention_distance": 1.4849945226311685
+    },
+    "layer5_head2": {
+      "mean_entropy_nats": 1.0976335436436866,
+      "mean_attention_distance": 1.4332890880107878
+    },
+    "layer5_head3": {
+      "mean_entropy_nats": 1.140716648598512,
+      "mean_attention_distance": 1.8998604501949417
+    },
+    "layer5_head4": {
+      "mean_entropy_nats": 1.366429101857874,
+      "mean_attention_distance": 2.3177668631407946
+    },
+    "layer5_head5": {
+      "mean_entropy_nats": 1.2689099218116866,
+      "mean_attention_distance": 1.8166676696803834
+    },
+    "layer6_head0": {
+      "mean_entropy_nats": 1.1988211972845926,
+      "mean_attention_distance": 1.9288807948761515
+    },
+    "layer6_head1": {
+      "mean_entropy_nats": 1.2979213643405172,
+      "mean_attention_distance": 1.8396433544490072
+    },
+    "layer6_head2": {
+      "mean_entropy_nats": 1.1348188831470907,
+      "mean_attention_distance": 2.4646498047974372
+    },
+    "layer6_head3": {
+      "mean_entropy_nats": 0.9273274888429377,
+      "mean_attention_distance": 1.6376373743017514
+    },
+    "layer6_head4": {
+      "mean_entropy_nats": 0.24069469424999426,
+      "mean_attention_distance": 1.0628583222296502
+    },
+    "layer6_head5": {
+      "mean_entropy_nats": 1.2070081828700172,
+      "mean_attention_distance": 1.5142244680391417
+    },
+    "layer7_head0": {
+      "mean_entropy_nats": 0.9039711491018533,
+      "mean_attention_distance": 1.2858753553364013
+    },
+    "layer7_head1": {
+      "mean_entropy_nats": 1.0867136826531756,
+      "mean_attention_distance": 1.4492097214278246
+    },
+    "layer7_head2": {
+      "mean_entropy_nats": 0.6584640184417367,
+      "mean_attention_distance": 1.2640447695056598
+    },
+    "layer7_head3": {
+      "mean_entropy_nats": 1.2472526084714466,
+      "mean_attention_distance": 2.5176036892003486
+    },
+    "layer7_head4": {
+      "mean_entropy_nats": 0.907858152091503,
+      "mean_attention_distance": 1.987095809115304
+    },
+    "layer7_head5": {
+      "mean_entropy_nats": 1.0691678024994002,
+      "mean_attention_distance": 1.702903878622585
+    },
+    "layer8_head0": {
+      "mean_entropy_nats": 0.2808250134887122,
+      "mean_attention_distance": 0.9977356806728575
+    },
+    "layer8_head1": {
+      "mean_entropy_nats": 1.0683856014410655,
+      "mean_attention_distance": 2.170253142019113
+    },
+    "layer8_head2": {
+      "mean_entropy_nats": 1.2419577559828758,
+      "mean_attention_distance": 1.8261464890340964
+    },
+    "layer8_head3": {
+      "mean_entropy_nats": 1.044037282715241,
+      "mean_attention_distance": 1.4476502646009126
+    },
+    "layer8_head4": {
+      "mean_entropy_nats": 1.1279741891887454,
+      "mean_attention_distance": 1.579461253715886
+    },
+    "layer8_head5": {
+      "mean_entropy_nats": 0.9891532517804039,
+      "mean_attention_distance": 2.543935691946083
+    },
+    "layer9_head0": {
+      "mean_entropy_nats": 1.0988925420410103,
+      "mean_attention_distance": 1.8145588863889377
+    },
+    "layer9_head1": {
+      "mean_entropy_nats": 1.2473638088835608,
+      "mean_attention_distance": 1.91053852127658
+    },
+    "layer9_head2": {
+      "mean_entropy_nats": 1.2717960917287403,
+      "mean_attention_distance": 2.200431755317582
+    },
+    "layer9_head3": {
+      "mean_entropy_nats": 0.8998347213698757,
+      "mean_attention_distance": 2.013872860769431
+    },
+    "layer9_head4": {
+      "mean_entropy_nats": 0.8613537179347542,
+      "mean_attention_distance": 2.666184965835677
+    },
+    "layer9_head5": {
+      "mean_entropy_nats": 1.2844410149587524,
+      "mean_attention_distance": 2.302062243984805
+    },
+    "layer10_head0": {
+      "mean_entropy_nats": 1.0793633882204692,
+      "mean_attention_distance": 1.8956424018409515
+    },
+    "layer10_head1": {
+      "mean_entropy_nats": 1.182545722424984,
+      "mean_attention_distance": 2.3845205620924634
+    },
+    "layer10_head2": {
+      "mean_entropy_nats": 0.8379333869119485,
+      "mean_attention_distance": 2.4689168466793165
+    },
+    "layer10_head3": {
+      "mean_entropy_nats": 0.9661631854871908,
+      "mean_attention_distance": 2.24532930329442
+    },
+    "layer10_head4": {
+      "mean_entropy_nats": 1.2275940539936223,
+      "mean_attention_distance": 2.183246547389362
+    },
+    "layer10_head5": {
+      "mean_entropy_nats": 0.8702452366467979,
+      "mean_attention_distance": 2.9321874380442834
+    }
+  }
+}
