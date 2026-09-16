@@ -1,0 +1,10 @@
+{
+  "lang": "hindi",
+  "checkpoint": "/root/.cache/huggingface/hub/models--sohailtsm--lma-hindi-gpt/snapshots/f1a50c377d990d495aacd9f9f2021020d3671c8f/best.pt",
+  "checkpoint_iter": 26000,
+  "test_loss_nats": 3.3075464687903313,
+  "perplexity": 27.318017571206358,
+  "bpb": 0.4434740295717304,
+  "tokens_evaluated": 12261888,
+  "test_bytes": 131937924
+}

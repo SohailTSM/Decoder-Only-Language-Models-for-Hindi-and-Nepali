@@ -1,0 +1,360 @@
+{
+  "lang": "hindi",
+  "seed": 20260913,
+  "entity_pools": {
+    "persons": {
+      "train": 56,
+      "val": 12,
+      "test": 12
+    },
+    "objects": {
+      "train": 35,
+      "val": 8,
+      "test": 7
+    }
+  },
+  "splits": {
+    "train": {
+      "count": 16000,
+      "by_category": {
+        "chain_multihop": 5420,
+        "direct_numeric": 5309,
+        "chain_transitive": 5271
+      },
+      "by_form": {
+        "relation": 6872,
+        "which": 9128
+      },
+      "by_attribute": {
+        "age": 3994,
+        "height": 3984,
+        "weight": 4018,
+        "price": 4004
+      }
+    },
+    "val": {
+      "count": 2400,
+      "by_category": {
+        "chain_multihop": 780,
+        "direct_numeric": 803,
+        "chain_transitive": 817
+      },
+      "by_form": {
+        "relation": 1016,
+        "which": 1384
+      },
+      "by_attribute": {
+        "age": 622,
+        "weight": 618,
+        "height": 594,
+        "price": 566
+      }
+    },
+    "test": {
+      "count": 2400,
+      "by_category": {
+        "chain_multihop": 790,
+        "chain_transitive": 814,
+        "direct_numeric": 796
+      },
+      "by_form": {
+        "which": 1402,
+        "relation": 998
+      },
+      "by_attribute": {
+        "price": 602,
+        "age": 615,
+        "height": 586,
+        "weight": 597
+      }
+    }
+  },
+  "template_variety": {
+    "chain_multihop_which": {
+      "train": [
+        "chain_multihop_which_f0_q0",
+        "chain_multihop_which_f1_q0"
+      ],
+      "val": [
+        "chain_multihop_which_f0_q1"
+      ],
+      "test": [
+        "chain_multihop_which_f1_q1"
+      ]
+    },
+    "direct_numeric_2_relation": {
+      "train": [
+        "direct_numeric_2_relation_f0_q0",
+        "direct_numeric_2_relation_f1_q0"
+      ],
+      "val": [
+        "direct_numeric_2_relation_f0_q1"
+      ],
+      "test": [
+        "direct_numeric_2_relation_f1_q1"
+      ]
+    },
+    "chain_multihop_relation": {
+      "train": [
+        "chain_multihop_relation_f0_q0",
+        "chain_multihop_relation_f1_q0"
+      ],
+      "val": [
+        "chain_multihop_relation_f0_q1"
+      ],
+      "test": [
+        "chain_multihop_relation_f1_q1"
+      ]
+    },
+    "direct_numeric_2_which": {
+      "train": [
+        "direct_numeric_2_which_f0_q0",
+        "direct_numeric_2_which_f1_q0"
+      ],
+      "val": [
+        "direct_numeric_2_which_f0_q1"
+      ],
+      "test": [
+        "direct_numeric_2_which_f1_q1"
+      ]
+    },
+    "chain_transitive_relation": {
+      "train": [
+        "chain_transitive_relation_f0_q0",
+        "chain_transitive_relation_f1_q0"
+      ],
+      "val": [
+        "chain_transitive_relation_f0_q1"
+      ],
+      "test": [
+        "chain_transitive_relation_f1_q1"
+      ]
+    },
+    "direct_numeric_3_which": {
+      "train": [
+        "direct_numeric_3_which_f0_q0",
+        "direct_numeric_3_which_f1_q0"
+      ],
+      "val": [
+        "direct_numeric_3_which_f0_q1"
+      ],
+      "test": [
+        "direct_numeric_3_which_f1_q1"
+      ]
+    },
+    "chain_transitive_which": {
+      "train": [
+        "chain_transitive_which_f0_q0",
+        "chain_transitive_which_f1_q0"
+      ],
+      "val": [
+        "chain_transitive_which_f0_q1"
+      ],
+      "test": [
+        "chain_transitive_which_f1_q1"
+      ]
+    }
+  },
+  "examples": {
+    "train": [
+      {
+        "category": "chain_multihop",
+        "n_entities": 4,
+        "form": "relation",
+        "attribute": "age",
+        "entities": [
+          "प्रकाश",
+          "सरस्वती",
+          "सुरेश",
+          "दीपक"
+        ],
+        "values": [
+          75,
+          85,
+          90,
+          76
+        ],
+        "template_id": "chain_multihop_relation_f1_q0",
+        "prompt": "प्रकाश की उम्र सरस्वती से कम है। साथ ही, सरस्वती की उम्र सुरेश से कम है। साथ ही, सुरेश की उम्र दीपक से ज़्यादा है। प्रकाश और सुरेश की तुलना करें तो प्रकाश की उम्र सुरेश से ज़्यादा है, कम है, या बराबर है?",
+        "answer": "कम",
+        "id": "hindi-train-000000",
+        "lang": "hindi"
+      },
+      {
+        "category": "direct_numeric",
+        "n_entities": 3,
+        "form": "which",
+        "attribute": "height",
+        "entities": [
+          "विनोद",
+          "कृष्ण",
+          "मीरा"
+        ],
+        "values": [
+          196,
+          110,
+          185
+        ],
+        "template_id": "direct_numeric_3_which_f0_q0",
+        "prompt": "विनोद का कद 196 सेंटीमीटर है, कृष्ण का कद 110 सेंटीमीटर है, और मीरा का कद 185 सेंटीमीटर है। इनमें से किसका कद सबसे कम है?",
+        "answer": "कृष्ण",
+        "id": "hindi-train-000001",
+        "lang": "hindi"
+      },
+      {
+        "category": "chain_transitive",
+        "n_entities": 3,
+        "form": "relation",
+        "attribute": "weight",
+        "entities": [
+          "पंखा",
+          "नींबू",
+          "साइकिल"
+        ],
+        "values": [
+          24,
+          41,
+          36
+        ],
+        "template_id": "chain_transitive_relation_f1_q0",
+        "prompt": "पंखा का वज़न नींबू से कम है। साथ ही, नींबू का वज़न साइकिल से ज़्यादा है। पंखा और साइकिल की तुलना करें तो पंखा का वज़न साइकिल से ज़्यादा है, कम है, या बराबर है?",
+        "answer": "कम",
+        "id": "hindi-train-000002",
+        "lang": "hindi"
+      }
+    ],
+    "val": [
+      {
+        "category": "chain_multihop",
+        "n_entities": 4,
+        "form": "relation",
+        "attribute": "age",
+        "entities": [
+          "रमेश",
+          "अशोक",
+          "दिनेश",
+          "अजय"
+        ],
+        "values": [
+          59,
+          35,
+          75,
+          44
+        ],
+        "template_id": "chain_multihop_relation_f0_q1",
+        "prompt": "रमेश की उम्र अशोक से ज़्यादा है। अशोक की उम्र दिनेश से कम है। दिनेश की उम्र अजय से ज़्यादा है। क्या अशोक की उम्र दिनेश से ज़्यादा है, कम है, या बराबर है?",
+        "answer": "कम",
+        "id": "hindi-val-000000",
+        "lang": "hindi"
+      },
+      {
+        "category": "direct_numeric",
+        "n_entities": 3,
+        "form": "which",
+        "attribute": "weight",
+        "entities": [
+          "छाता",
+          "गिलास",
+          "तकिया"
+        ],
+        "values": [
+          13,
+          29,
+          18
+        ],
+        "template_id": "direct_numeric_3_which_f0_q1",
+        "prompt": "छाता का वज़न 13 किलो है, गिलास का वज़न 29 किलो है, और तकिया का वज़न 18 किलो है। बताइए, इनमें से किसका वज़न सबसे कम है?",
+        "answer": "छाता",
+        "id": "hindi-val-000001",
+        "lang": "hindi"
+      },
+      {
+        "category": "direct_numeric",
+        "n_entities": 2,
+        "form": "relation",
+        "attribute": "height",
+        "entities": [
+          "नीलम",
+          "अजय"
+        ],
+        "values": [
+          137,
+          99
+        ],
+        "template_id": "direct_numeric_2_relation_f0_q1",
+        "prompt": "नीलम का कद 137 सेंटीमीटर है और अजय का कद 99 सेंटीमीटर है। नीलम की तुलना अजय से करने पर कद ज़्यादा है, कम है, या बराबर है?",
+        "answer": "ज़्यादा",
+        "id": "hindi-val-000002",
+        "lang": "hindi"
+      }
+    ],
+    "test": [
+      {
+        "category": "chain_multihop",
+        "n_entities": 4,
+        "form": "which",
+        "attribute": "price",
+        "entities": [
+          "केला",
+          "थैला",
+          "तरबूज़",
+          "कुर्सी"
+        ],
+        "values": [
+          1097,
+          2276,
+          280,
+          440
+        ],
+        "template_id": "chain_multihop_which_f1_q1",
+        "prompt": "केला की कीमत थैला से कम है। साथ ही, थैला की कीमत तरबूज़ से ज़्यादा है। साथ ही, तरबूज़ की कीमत कुर्सी से कम है। बताइए, इन चारों में से किसकी कीमत सबसे ज़्यादा है?",
+        "answer": "थैला",
+        "id": "hindi-test-000000",
+        "lang": "hindi"
+      },
+      {
+        "category": "chain_transitive",
+        "n_entities": 3,
+        "form": "which",
+        "attribute": "age",
+        "entities": [
+          "ज्योति",
+          "कमला",
+          "हरीश"
+        ],
+        "values": [
+          6,
+          38,
+          82
+        ],
+        "template_id": "chain_transitive_which_f1_q1",
+        "prompt": "ज्योति की उम्र कमला से कम है। साथ ही, कमला की उम्र हरीश से कम है। बताइए, इनमें से किसकी उम्र सबसे ज़्यादा है?",
+        "answer": "हरीश",
+        "id": "hindi-test-000001",
+        "lang": "hindi"
+      },
+      {
+        "category": "chain_transitive",
+        "n_entities": 3,
+        "form": "which",
+        "attribute": "height",
+        "entities": [
+          "अमित",
+          "नेहा",
+          "स्वाति"
+        ],
+        "values": [
+          176,
+          196,
+          172
+        ],
+        "template_id": "chain_transitive_which_f1_q1",
+        "prompt": "अमित का कद नेहा से कम है। साथ ही, नेहा का कद स्वाति से ज़्यादा है। बताइए, इनमें से किसका कद सबसे कम है?",
+        "answer": "स्वाति",
+        "id": "hindi-test-000002",
+        "lang": "hindi"
+      }
+    ]
+  },
+  "leakage_controls": "Entity names/nouns split disjoint 70/15/15 across train/val/test (see entity_pools above) - a name/object seen at test time never appears in train. Independently, every (category,form) combination's 4 phrasing variants (2x2 fact/link-join-style x question-style grid) are split disjoint the same way (see template_variety above) - val/test always use wording never seen in train."
+}

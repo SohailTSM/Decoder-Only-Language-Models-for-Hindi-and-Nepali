@@ -1,0 +1,288 @@
+{
+  "lang": "hindi",
+  "checkpoint": "/home/sohailtsm/.cache/huggingface/hub/models--sohailtsm--lma-hindi-gpt/snapshots/f1a50c377d990d495aacd9f9f2021020d3671c8f/best.pt",
+  "n_layers": 11,
+  "n_heads": 6,
+  "heatmap_layers": {
+    "early": [
+      0,
+      1
+    ],
+    "mid": [
+      4,
+      5
+    ],
+    "late": [
+      9,
+      10
+    ]
+  },
+  "n_sentences_averaged": 6,
+  "example_sentence_for_heatmaps": "थैला की कीमत 2441 रुपये है, तरबूज़ की कीमत 345 रुपये है, और केला की कीमत 804 रुपये है। बताइए, इनमें से किसकी कीमत सबसे कम है?",
+  "per_head_summary": {
+    "layer0_head0": {
+      "mean_entropy_nats": 2.2827578613984856,
+      "mean_attention_distance": 8.620183686195794
+    },
+    "layer0_head1": {
+      "mean_entropy_nats": 2.4965567562723034,
+      "mean_attention_distance": 10.010951056234395
+    },
+    "layer0_head2": {
+      "mean_entropy_nats": 2.525321676560463,
+      "mean_attention_distance": 9.793586443153247
+    },
+    "layer0_head3": {
+      "mean_entropy_nats": 1.8569642393355084,
+      "mean_attention_distance": 4.596171274476235
+    },
+    "layer0_head4": {
+      "mean_entropy_nats": 2.101589214151542,
+      "mean_attention_distance": 6.1728733223426815
+    },
+    "layer0_head5": {
+      "mean_entropy_nats": 2.445766228092874,
+      "mean_attention_distance": 9.710947832713762
+    },
+    "layer1_head0": {
+      "mean_entropy_nats": 2.340796155188691,
+      "mean_attention_distance": 8.30387836910699
+    },
+    "layer1_head1": {
+      "mean_entropy_nats": 2.4649572811979454,
+      "mean_attention_distance": 8.709806939209114
+    },
+    "layer1_head2": {
+      "mean_entropy_nats": 2.325406003288733,
+      "mean_attention_distance": 6.780316981760495
+    },
+    "layer1_head3": {
+      "mean_entropy_nats": 2.246989721251436,
+      "mean_attention_distance": 9.821292412437293
+    },
+    "layer1_head4": {
+      "mean_entropy_nats": 2.1577828105593717,
+      "mean_attention_distance": 8.40821902896178
+    },
+    "layer1_head5": {
+      "mean_entropy_nats": 2.1439624153676116,
+      "mean_attention_distance": 6.241142190111496
+    },
+    "layer2_head0": {
+      "mean_entropy_nats": 1.9485875144070899,
+      "mean_attention_distance": 7.39355079973571
+    },
+    "layer2_head1": {
+      "mean_entropy_nats": 2.0180342901558457,
+      "mean_attention_distance": 6.727423417326453
+    },
+    "layer2_head2": {
+      "mean_entropy_nats": 1.9937150965740436,
+      "mean_attention_distance": 9.417808817252967
+    },
+    "layer2_head3": {
+      "mean_entropy_nats": 2.2676003071775535,
+      "mean_attention_distance": 6.286213530079138
+    },
+    "layer2_head4": {
+      "mean_entropy_nats": 1.7632075694287377,
+      "mean_attention_distance": 6.595640560291215
+    },
+    "layer2_head5": {
+      "mean_entropy_nats": 2.3180753533419876,
+      "mean_attention_distance": 7.927374720089204
+    },
+    "layer3_head0": {
+      "mean_entropy_nats": 2.377817100791002,
+      "mean_attention_distance": 8.676682608420014
+    },
+    "layer3_head1": {
+      "mean_entropy_nats": 2.0358722977964505,
+      "mean_attention_distance": 8.16386840147624
+    },
+    "layer3_head2": {
+      "mean_entropy_nats": 1.798093231583742,
+      "mean_attention_distance": 6.430604002153081
+    },
+    "layer3_head3": {
+      "mean_entropy_nats": 1.8072650341667569,
+      "mean_attention_distance": 12.162704278818856
+    },
+    "layer3_head4": {
+      "mean_entropy_nats": 2.203113456772803,
+      "mean_attention_distance": 7.251825506835058
+    },
+    "layer3_head5": {
+      "mean_entropy_nats": 2.2629141537537003,
+      "mean_attention_distance": 8.1354536912332
+    },
+    "layer4_head0": {
+      "mean_entropy_nats": 1.6003100193693685,
+      "mean_attention_distance": 3.468682829654407
+    },
+    "layer4_head1": {
+      "mean_entropy_nats": 2.134779547145835,
+      "mean_attention_distance": 7.581212562564886
+    },
+    "layer4_head2": {
+      "mean_entropy_nats": 2.0339588711512544,
+      "mean_attention_distance": 8.719230216733534
+    },
+    "layer4_head3": {
+      "mean_entropy_nats": 1.5031343890918842,
+      "mean_attention_distance": 6.630610836014701
+    },
+    "layer4_head4": {
+      "mean_entropy_nats": 1.8797128090304085,
+      "mean_attention_distance": 6.524233326450214
+    },
+    "layer4_head5": {
+      "mean_entropy_nats": 1.8873098731891034,
+      "mean_attention_distance": 4.928046660922976
+    },
+    "layer5_head0": {
+      "mean_entropy_nats": 1.988147473744159,
+      "mean_attention_distance": 9.33962304277938
+    },
+    "layer5_head1": {
+      "mean_entropy_nats": 2.054802337595508,
+      "mean_attention_distance": 6.962190973515182
+    },
+    "layer5_head2": {
+      "mean_entropy_nats": 1.706092571555507,
+      "mean_attention_distance": 6.425653620272663
+    },
+    "layer5_head3": {
+      "mean_entropy_nats": 1.9640977472065204,
+      "mean_attention_distance": 6.623569265307587
+    },
+    "layer5_head4": {
+      "mean_entropy_nats": 1.9394161032071777,
+      "mean_attention_distance": 5.683032428862993
+    },
+    "layer5_head5": {
+      "mean_entropy_nats": 1.9044454220726363,
+      "mean_attention_distance": 6.156178764231502
+    },
+    "layer6_head0": {
+      "mean_entropy_nats": 2.1155664304214583,
+      "mean_attention_distance": 10.79191495548833
+    },
+    "layer6_head1": {
+      "mean_entropy_nats": 1.8458062250281444,
+      "mean_attention_distance": 5.1211073017355995
+    },
+    "layer6_head2": {
+      "mean_entropy_nats": 2.111573723336075,
+      "mean_attention_distance": 11.037688276511403
+    },
+    "layer6_head3": {
+      "mean_entropy_nats": 1.9589107840984388,
+      "mean_attention_distance": 7.644749814250855
+    },
+    "layer6_head4": {
+      "mean_entropy_nats": 1.8234695713497937,
+      "mean_attention_distance": 9.663075904734496
+    },
+    "layer6_head5": {
+      "mean_entropy_nats": 1.969592577794839,
+      "mean_attention_distance": 6.93822621421712
+    },
+    "layer7_head0": {
+      "mean_entropy_nats": 1.704901002379026,
+      "mean_attention_distance": 5.78367518353497
+    },
+    "layer7_head1": {
+      "mean_entropy_nats": 1.693690851294625,
+      "mean_attention_distance": 6.846184558045137
+    },
+    "layer7_head2": {
+      "mean_entropy_nats": 1.3377785287869353,
+      "mean_attention_distance": 6.231935232963232
+    },
+    "layer7_head3": {
+      "mean_entropy_nats": 2.2709849134223057,
+      "mean_attention_distance": 10.692714215735444
+    },
+    "layer7_head4": {
+      "mean_entropy_nats": 1.7528791531280106,
+      "mean_attention_distance": 7.280124988683828
+    },
+    "layer7_head5": {
+      "mean_entropy_nats": 1.7918819214381172,
+      "mean_attention_distance": 6.891781306199326
+    },
+    "layer8_head0": {
+      "mean_entropy_nats": 1.5956190807834802,
+      "mean_attention_distance": 7.701968649108118
+    },
+    "layer8_head1": {
+      "mean_entropy_nats": 1.8819280240696348,
+      "mean_attention_distance": 4.01920922292273
+    },
+    "layer8_head2": {
+      "mean_entropy_nats": 1.1515228057064661,
+      "mean_attention_distance": 3.9159976187412404
+    },
+    "layer8_head3": {
+      "mean_entropy_nats": 1.8346909070122168,
+      "mean_attention_distance": 8.290501444613122
+    },
+    "layer8_head4": {
+      "mean_entropy_nats": 2.0429605726269915,
+      "mean_attention_distance": 11.819368411184847
+    },
+    "layer8_head5": {
+      "mean_entropy_nats": 1.5938932151889862,
+      "mean_attention_distance": 7.734499991599453
+    },
+    "layer9_head0": {
+      "mean_entropy_nats": 1.4477689429694311,
+      "mean_attention_distance": 7.472514053334059
+    },
+    "layer9_head1": {
+      "mean_entropy_nats": 1.4394795826301767,
+      "mean_attention_distance": 5.429428956505363
+    },
+    "layer9_head2": {
+      "mean_entropy_nats": 2.0632177071180133,
+      "mean_attention_distance": 9.665881012787763
+    },
+    "layer9_head3": {
+      "mean_entropy_nats": 1.6750399552235298,
+      "mean_attention_distance": 11.363596750932807
+    },
+    "layer9_head4": {
+      "mean_entropy_nats": 1.5193008096520417,
+      "mean_attention_distance": 4.938920110582541
+    },
+    "layer9_head5": {
+      "mean_entropy_nats": 2.0266765839930225,
+      "mean_attention_distance": 11.588548731472159
+    },
+    "layer10_head0": {
+      "mean_entropy_nats": 1.6517347302982388,
+      "mean_attention_distance": 4.478779546487033
+    },
+    "layer10_head1": {
+      "mean_entropy_nats": 1.8025308996047145,
+      "mean_attention_distance": 12.084992740962493
+    },
+    "layer10_head2": {
+      "mean_entropy_nats": 1.3622634953073078,
+      "mean_attention_distance": 12.662826935692726
+    },
+    "layer10_head3": {
+      "mean_entropy_nats": 1.5161442006042096,
+      "mean_attention_distance": 13.090271701162921
+    },
+    "layer10_head4": {
+      "mean_entropy_nats": 1.7898332973646351,
+      "mean_attention_distance": 6.651866927035871
+    },
+    "layer10_head5": {
+      "mean_entropy_nats": 1.868672935387953,
+      "mean_attention_distance": 9.52296493874053
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "lang": "hindi",
+  "tokenizer": "/kaggle/input/datasets/sohailmemon/lma-individual-files/hindi/tokenizer/hindi_unigram_16k.model",
+  "vocab_size": 16000,
+  "eos_id": 3,
+  "bos_id": 2,
+  "pad_id": 0,
+  "unk_id": 1,
+  "dtype": "uint16",
+  "tokens": {
+    "train": 464565873,
+    "val": 12242655,
+    "test": 12262365
+  }
+}

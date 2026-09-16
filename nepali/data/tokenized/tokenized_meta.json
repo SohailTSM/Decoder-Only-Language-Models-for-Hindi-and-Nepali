@@ -1,0 +1,15 @@
+{
+  "lang": "nepali",
+  "tokenizer": "/kaggle/input/datasets/sohailmemon/lma-individual-files/nepali/tokenizer/nepali_unigram_16k.model",
+  "vocab_size": 16000,
+  "eos_id": 3,
+  "bos_id": 2,
+  "pad_id": 0,
+  "unk_id": 1,
+  "dtype": "uint16",
+  "tokens": {
+    "train": 461871393,
+    "val": 12139620,
+    "test": 12146825
+  }
+}

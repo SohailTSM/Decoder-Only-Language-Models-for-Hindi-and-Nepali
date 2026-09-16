@@ -1,0 +1,366 @@
+{
+  "lang": "nepali",
+  "seed": 20260913,
+  "entity_pools": {
+    "persons": {
+      "train": 49,
+      "val": 10,
+      "test": 11
+    },
+    "objects": {
+      "train": 31,
+      "val": 7,
+      "test": 7
+    }
+  },
+  "splits": {
+    "train": {
+      "count": 16000,
+      "by_category": {
+        "direct_numeric": 5457,
+        "chain_multihop": 5271,
+        "chain_transitive": 5272
+      },
+      "by_form": {
+        "which": 9146,
+        "relation": 6854
+      },
+      "by_attribute": {
+        "age": 4029,
+        "weight": 3952,
+        "height": 3965,
+        "price": 4054
+      }
+    },
+    "val": {
+      "count": 2400,
+      "by_category": {
+        "direct_numeric": 756,
+        "chain_multihop": 810,
+        "chain_transitive": 834
+      },
+      "by_form": {
+        "which": 1336,
+        "relation": 1064
+      },
+      "by_attribute": {
+        "age": 614,
+        "weight": 619,
+        "price": 570,
+        "height": 597
+      }
+    },
+    "test": {
+      "count": 2400,
+      "by_category": {
+        "chain_multihop": 790,
+        "chain_transitive": 796,
+        "direct_numeric": 814
+      },
+      "by_form": {
+        "relation": 1037,
+        "which": 1363
+      },
+      "by_attribute": {
+        "height": 611,
+        "weight": 630,
+        "age": 603,
+        "price": 556
+      }
+    }
+  },
+  "template_variety": {
+    "chain_multihop_which": {
+      "train": [
+        "chain_multihop_which_f0_q0",
+        "chain_multihop_which_f1_q0"
+      ],
+      "val": [
+        "chain_multihop_which_f0_q1"
+      ],
+      "test": [
+        "chain_multihop_which_f1_q1"
+      ]
+    },
+    "direct_numeric_2_relation": {
+      "train": [
+        "direct_numeric_2_relation_f0_q0",
+        "direct_numeric_2_relation_f1_q0"
+      ],
+      "val": [
+        "direct_numeric_2_relation_f0_q1"
+      ],
+      "test": [
+        "direct_numeric_2_relation_f1_q1"
+      ]
+    },
+    "chain_multihop_relation": {
+      "train": [
+        "chain_multihop_relation_f0_q0",
+        "chain_multihop_relation_f1_q0"
+      ],
+      "val": [
+        "chain_multihop_relation_f0_q1"
+      ],
+      "test": [
+        "chain_multihop_relation_f1_q1"
+      ]
+    },
+    "direct_numeric_2_which": {
+      "train": [
+        "direct_numeric_2_which_f0_q0",
+        "direct_numeric_2_which_f1_q0"
+      ],
+      "val": [
+        "direct_numeric_2_which_f0_q1"
+      ],
+      "test": [
+        "direct_numeric_2_which_f1_q1"
+      ]
+    },
+    "chain_transitive_relation": {
+      "train": [
+        "chain_transitive_relation_f0_q0",
+        "chain_transitive_relation_f1_q0"
+      ],
+      "val": [
+        "chain_transitive_relation_f0_q1"
+      ],
+      "test": [
+        "chain_transitive_relation_f1_q1"
+      ]
+    },
+    "direct_numeric_3_which": {
+      "train": [
+        "direct_numeric_3_which_f0_q0",
+        "direct_numeric_3_which_f1_q0"
+      ],
+      "val": [
+        "direct_numeric_3_which_f0_q1"
+      ],
+      "test": [
+        "direct_numeric_3_which_f1_q1"
+      ]
+    },
+    "chain_transitive_which": {
+      "train": [
+        "chain_transitive_which_f0_q0",
+        "chain_transitive_which_f1_q0"
+      ],
+      "val": [
+        "chain_transitive_which_f0_q1"
+      ],
+      "test": [
+        "chain_transitive_which_f1_q1"
+      ]
+    }
+  },
+  "examples": {
+    "train": [
+      {
+        "category": "direct_numeric",
+        "n_entities": 3,
+        "form": "which",
+        "attribute": "age",
+        "entities": [
+          "प्रियंका",
+          "अञ्जली",
+          "मञ्जु"
+        ],
+        "values": [
+          79,
+          5,
+          42
+        ],
+        "template_id": "direct_numeric_3_which_f0_q0",
+        "prompt": "प्रियंकाको उमेर 79 वर्ष छ, अञ्जलीको उमेर 5 वर्ष छ, र मञ्जुको उमेर 42 वर्ष छ। यी तीनैमध्ये कसको उमेर सबैभन्दा कम छ?",
+        "answer": "अञ्जली",
+        "id": "nepali-train-000000",
+        "lang": "nepali"
+      },
+      {
+        "category": "chain_multihop",
+        "n_entities": 4,
+        "form": "relation",
+        "attribute": "weight",
+        "entities": [
+          "आँप",
+          "अदुवा",
+          "प्याज",
+          "कागती"
+        ],
+        "values": [
+          45,
+          14,
+          9,
+          39
+        ],
+        "template_id": "chain_multihop_relation_f0_q0",
+        "prompt": "आँपको तौल अदुवाको भन्दा बढी छ। अदुवाको तौल प्याजको भन्दा बढी छ। प्याजको तौल कागतीको भन्दा कम छ। अदुवा र प्याजबीचको तुलना गर्दा अदुवाको तौल प्याजको भन्दा बढी, कम वा बराबर छ?",
+        "answer": "बढी",
+        "id": "nepali-train-000001",
+        "lang": "nepali"
+      },
+      {
+        "category": "chain_multihop",
+        "n_entities": 4,
+        "form": "relation",
+        "attribute": "weight",
+        "entities": [
+          "मेच",
+          "आलु",
+          "तेल",
+          "पीठो"
+        ],
+        "values": [
+          2,
+          21,
+          24,
+          41
+        ],
+        "template_id": "chain_multihop_relation_f1_q0",
+        "prompt": "मेचको तौल आलुको भन्दा कम छ। त्यस्तै, आलुको तौल तेलको भन्दा कम छ। त्यस्तै, तेलको तौल पीठोको भन्दा कम छ। आलु र तेलबीचको तुलना गर्दा आलुको तौल तेलको भन्दा बढी, कम वा बराबर छ?",
+        "answer": "कम",
+        "id": "nepali-train-000002",
+        "lang": "nepali"
+      }
+    ],
+    "val": [
+      {
+        "category": "direct_numeric",
+        "n_entities": 3,
+        "form": "which",
+        "attribute": "age",
+        "entities": [
+          "राजु",
+          "अजय",
+          "माया"
+        ],
+        "values": [
+          58,
+          64,
+          20
+        ],
+        "template_id": "direct_numeric_3_which_f0_q1",
+        "prompt": "राजुको उमेर 58 वर्ष छ, अजयको उमेर 64 वर्ष छ, र मायाको उमेर 20 वर्ष छ। भन्नुहोस्, यी तीनैमध्ये कसको उमेर सबैभन्दा बढी छ?",
+        "answer": "अजय",
+        "id": "nepali-val-000000",
+        "lang": "nepali"
+      },
+      {
+        "category": "direct_numeric",
+        "n_entities": 3,
+        "form": "which",
+        "attribute": "age",
+        "entities": [
+          "नवीन",
+          "माया",
+          "सुजन"
+        ],
+        "values": [
+          30,
+          79,
+          53
+        ],
+        "template_id": "direct_numeric_3_which_f0_q1",
+        "prompt": "नवीनको उमेर 30 वर्ष छ, मायाको उमेर 79 वर्ष छ, र सुजनको उमेर 53 वर्ष छ। भन्नुहोस्, यी तीनैमध्ये कसको उमेर सबैभन्दा कम छ?",
+        "answer": "नवीन",
+        "id": "nepali-val-000001",
+        "lang": "nepali"
+      },
+      {
+        "category": "direct_numeric",
+        "n_entities": 3,
+        "form": "which",
+        "attribute": "weight",
+        "entities": [
+          "चियापत्ती",
+          "छाता",
+          "नासपाती"
+        ],
+        "values": [
+          38,
+          45,
+          19
+        ],
+        "template_id": "direct_numeric_3_which_f0_q1",
+        "prompt": "चियापत्तीको तौल 38 किलोग्राम छ, छाताको तौल 45 किलोग्राम छ, र नासपातीको तौल 19 किलोग्राम छ। भन्नुहोस्, यी तीनैमध्ये कसको तौल सबैभन्दा बढी छ?",
+        "answer": "छाता",
+        "id": "nepali-val-000002",
+        "lang": "nepali"
+      }
+    ],
+    "test": [
+      {
+        "category": "chain_multihop",
+        "n_entities": 4,
+        "form": "relation",
+        "attribute": "height",
+        "entities": [
+          "कल्पना",
+          "सुनिल",
+          "आरती",
+          "विनोद"
+        ],
+        "values": [
+          125,
+          156,
+          174,
+          151
+        ],
+        "template_id": "chain_multihop_relation_f1_q1",
+        "prompt": "कल्पनाको उचाइ सुनिलको भन्दा कम छ। त्यस्तै, सुनिलको उचाइ आरतीको भन्दा कम छ। त्यस्तै, आरतीको उचाइ विनोदको भन्दा बढी छ। के आरतीको उचाइ विनोदको भन्दा बढी, कम वा बराबर छ?",
+        "answer": "बढी",
+        "id": "nepali-test-000000",
+        "lang": "nepali"
+      },
+      {
+        "category": "chain_multihop",
+        "n_entities": 4,
+        "form": "which",
+        "attribute": "weight",
+        "entities": [
+          "सुन्तला",
+          "अनार",
+          "कापी",
+          "झोला"
+        ],
+        "values": [
+          46,
+          3,
+          32,
+          7
+        ],
+        "template_id": "chain_multihop_which_f1_q1",
+        "prompt": "सुन्तलाको तौल अनारको भन्दा बढी छ। त्यस्तै, अनारको तौल कापीको भन्दा कम छ। त्यस्तै, कापीको तौल झोलाको भन्दा बढी छ। भन्नुहोस्, यी चारैमध्ये कसको तौल सबैभन्दा कम छ?",
+        "answer": "अनार",
+        "id": "nepali-test-000001",
+        "lang": "nepali"
+      },
+      {
+        "category": "chain_multihop",
+        "n_entities": 4,
+        "form": "which",
+        "attribute": "weight",
+        "entities": [
+          "मोबाइल",
+          "सुन्तला",
+          "घडी",
+          "अनार"
+        ],
+        "values": [
+          5,
+          14,
+          23,
+          35
+        ],
+        "template_id": "chain_multihop_which_f1_q1",
+        "prompt": "मोबाइलको तौल सुन्तलाको भन्दा कम छ। त्यस्तै, सुन्तलाको तौल घडीको भन्दा कम छ। त्यस्तै, घडीको तौल अनारको भन्दा कम छ। भन्नुहोस्, यी चारैमध्ये कसको तौल सबैभन्दा बढी छ?",
+        "answer": "अनार",
+        "id": "nepali-test-000002",
+        "lang": "nepali"
+      }
+    ]
+  },
+  "leakage_controls": "Entity names/nouns split disjoint 70/15/15 across train/val/test (see entity_pools above) - a name/object seen at test time never appears in train. Independently, every (category,form) combination's 4 phrasing variants (2x2 fact/link-join-style x question-style grid) are split disjoint the same way (see template_variety above) - val/test always use wording never seen in train."
+}
