@@ -12,3 +12,4 @@ __pycache__/
 */checkpoints/
 */reasoning/checkpoints/
 .DS_Store
+report/LaTeX/
